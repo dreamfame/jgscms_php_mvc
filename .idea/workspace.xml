@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c7749a1-70c7-404f-906e-a59d4ff055e3" name="默认的" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/json/navs.json" beforeDir="false" afterPath="$PROJECT_DIR$/View/json/navs.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -97,16 +97,16 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="html" value="4" />
-          <entry key="js" value="5" />
-          <entry key="json" value="1" />
+          <entry key="js" value="6" />
+          <entry key="json" value="2" />
           <entry key="php" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="HTML" value="4" />
-          <entry key="JSON" value="1" />
-          <entry key="JavaScript" value="5" />
+          <entry key="JSON" value="2" />
+          <entry key="JavaScript" value="6" />
           <entry key="PHP" value="3" />
         </counts>
       </usages-collector>
@@ -114,12 +114,14 @@
         <counts>
           <entry key="html" value="32" />
           <entry key="js" value="188" />
+          <entry key="json" value="33" />
           <entry key="php" value="53" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="32" />
+          <entry key="JSON" value="33" />
           <entry key="JavaScript" value="188" />
           <entry key="PHP" value="53" />
         </counts>
@@ -167,14 +169,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/View/js/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="312" column="21" lean-forward="true" selection-start-line="312" selection-start-column="21" selection-end-line="312" selection-end-column="21" />
+            <state relative-caret-position="14">
+              <caret line="332" column="41" lean-forward="true" selection-start-line="332" selection-start-column="41" selection-end-line="332" selection-end-column="41" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/View/json/navs.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="133">
+              <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -239,6 +250,7 @@
         <option value="$PROJECT_DIR$/View/Media/Js/index.js" />
         <option value="$PROJECT_DIR$/View/js/index.js" />
         <option value="$PROJECT_DIR$/View/page/main.html" />
+        <option value="$PROJECT_DIR$/View/json/navs.json" />
       </list>
     </option>
   </component>
@@ -276,13 +288,7 @@
               <item name="JGSCMS" type="b2602c69:ProjectViewProjectNode" />
               <item name="JGSCMS" type="462c0819:PsiDirectoryNode" />
               <item name="View" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="JGSCMS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JGSCMS" type="462c0819:PsiDirectoryNode" />
-              <item name="View" type="462c0819:PsiDirectoryNode" />
-              <item name="json" type="462c0819:PsiDirectoryNode" />
+              <item name="layui" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -332,12 +338,12 @@
       <workItem from="1544616481569" duration="4421000" />
       <workItem from="1544622801728" duration="1394000" />
       <workItem from="1544669666868" duration="296000" />
-      <workItem from="1544670009480" duration="6422000" />
+      <workItem from="1544670009480" duration="8950000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27710000" />
+    <option name="totallyTimeSpent" value="30238000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -375,9 +381,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/View/layui/layui.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/JS/info.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="437">
@@ -510,13 +513,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/View/json/navs.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" column="3" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/View/js/leftNav.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -543,11 +539,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/View/js/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="312" column="21" lean-forward="true" selection-start-line="312" selection-start-column="21" selection-end-line="312" selection-end-column="21" />
+        <state relative-caret-position="14">
+          <caret line="332" column="41" lean-forward="true" selection-start-line="332" selection-start-column="41" selection-end-line="332" selection-end-column="41" />
           <folding>
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/layui/layui.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/json/navs.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
         </state>
       </provider>
     </entry>

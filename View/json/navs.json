@@ -4,6 +4,26 @@
 	"href" : "page/main.html",
 	"spread" : false
 },{
+	"title" : "用户管理",
+	"icon" : "&#xe613;",
+	"href" : "",
+	"spread" : false,
+	"children" : [
+		{
+			"title" : "用户信息",
+			"icon" : "&#xe612;",
+			"href" : "page/404.html",
+			"spread" : false
+		},
+		{
+			"title" : "权限管理",
+			"icon" : "&#xe613;",
+			"href" : "page/login/login.html",
+			"spread" : false,
+			"target" : "_blank"
+		}
+	]
+},{
 	"title" : "文章列表",
 	"icon" : "icon-text",
 	"href" : "page/news/newsList.html",
