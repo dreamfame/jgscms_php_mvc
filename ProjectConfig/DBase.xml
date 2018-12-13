@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<db name="jgs">
+	<table name="admin">
+		<field label="userId" type="varchar"/>
+		<field label="password" type="varchar"/>
+	</table>
+	<table name="user"></table>
+	<table name="sports"></table>
+	<table name="recommend"></table>
+	<table name="video"></table>
+	<table name="headimg"></table>
+	<table name="plan"></table>
+	<table name="integral"></table>
+	<table name="picture"></table>
+	<table name="message"></table>
+	<table name="store"></table>
+</db>
