@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1c7749a1-70c7-404f-906e-a59d4ff055e3" name="默认的" comment="">
-      <change afterPath="$PROJECT_DIR$/Control/TestControl.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/View/json/adminList.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/View/page/admin/adminAdd.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/View/page/admin/adminAdd.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/View/page/admin/adminList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Control/AdminControl.php" beforeDir="false" afterPath="$PROJECT_DIR$/Control/AdminControl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataBaseHandle/AdminServer.php" beforeDir="false" afterPath="$PROJECT_DIR$/DataBaseHandle/AdminServer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/Admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Admin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/layui/css/layui.css" beforeDir="false" afterPath="$PROJECT_DIR$/View/layui/css/layui.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/admin/adminList.html" beforeDir="false" afterPath="$PROJECT_DIR$/View/page/admin/adminList.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/news/newsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/View/page/news/newsList.js" afterDir="false" />
-    </list>
+    <list default="true" id="1c7749a1-70c7-404f-906e-a59d4ff055e3" name="默认的" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +94,7 @@
     <session id="569187798">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.20" value="1" />
           <entry key="project.open.time.21" value="1" />
@@ -193,7 +180,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/View/json/adminList.json">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
@@ -225,11 +212,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Control/AdminControl.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="256">
-              <caret line="175" column="48" selection-start-line="175" selection-start-column="48" selection-end-line="175" selection-end-column="48" />
+            <state relative-caret-position="294">
+              <caret line="177" column="38" lean-forward="true" selection-start-line="177" selection-start-column="38" selection-end-line="177" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -321,17 +308,6 @@
               <item name="JGSCMS" type="b2602c69:ProjectViewProjectNode" />
               <item name="JGSCMS" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="JGSCMS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JGSCMS" type="462c0819:PsiDirectoryNode" />
-              <item name="View" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="JGSCMS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JGSCMS" type="462c0819:PsiDirectoryNode" />
-              <item name="View" type="462c0819:PsiDirectoryNode" />
-              <item name="json" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -394,16 +370,15 @@
       <workItem from="1544622801728" duration="1394000" />
       <workItem from="1544669666868" duration="296000" />
       <workItem from="1544670009480" duration="8950000" />
-      <workItem from="1544749431018" duration="25050000" />
+      <workItem from="1544749431018" duration="25244000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60257000" />
+    <option name="totallyTimeSpent" value="60451000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49886876" visible="true" weight="0.20045386" />
       <window_info id="Structure" order="1" sideWeight="0.50113124" side_tool="true" weight="0.25751072" />
@@ -712,9 +687,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/View/json/adminList.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/DataBaseHandle/AdminServer.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="185">
@@ -724,10 +696,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Control/AdminControl.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="175" column="48" selection-start-line="175" selection-start-column="48" selection-end-line="175" selection-end-column="48" />
+        <state relative-caret-position="294">
+          <caret line="177" column="38" lean-forward="true" selection-start-line="177" selection-start-column="38" selection-end-line="177" selection-end-column="38" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/json/adminList.json">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>
