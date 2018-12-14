@@ -4,20 +4,20 @@
 	"href" : "page/main.html",
 	"spread" : false
 },{
-	"title" : "用户管理",
+	"title" : "权限管理",
 	"icon" : "&#xe613;",
 	"href" : "",
 	"spread" : false,
 	"children" : [
 		{
-			"title" : "用户信息",
+			"title" : "管理员信息",
 			"icon" : "&#xe612;",
-			"href" : "page/404.html",
+			"href" : "page/admin/adminList.html",
 			"spread" : false
 		},
 		{
-			"title" : "权限管理",
-			"icon" : "&#xe613;",
+			"title" : "角色管理",
+			"icon" : "&#xe673;",
 			"href" : "page/login/login.html",
 			"spread" : false,
 			"target" : "_blank"
