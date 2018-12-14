@@ -6,10 +6,11 @@
 		private $head_pic;
         private $auth_key;
         private $password_reset_token;
-        private $sex;
         private $email;
         private $phone;
-        private $birth;
+        private $age;
+        private $status;
+        private $role;
         private $created_at;
         private $updated_at;
 		

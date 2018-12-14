@@ -39,7 +39,7 @@
 
 		public function InsertAdmin($admin)
 		{
-			$sql = "insert into ".$this->db_table." values('$admin->userId','$admin->password')";
+			$sql = "insert into ".$this->db_table."(username,head_pic,nickname,password,age,phone,password_reset_token,email,updated_at,created_at,role,status) values('$admin->username','$admin->head_pic','$admin->nickname','$admin->password','$admin->age','$admin->phone','$admin->password_reset_token','$admin->email','$admin->updated_at','$admin->created_at','$admin->role','$admin->status')";
 			try{
 				$this->db->ExeSql($sql,$this->conn);
 				return true;
@@ -67,9 +67,35 @@
 
 		public function GetAdmin($userId)
 		{
-			$sql = "select id,username,password,nickname from ".$this->db_table." where username = '$userId'";
+			$sql = "select id,username,password,nickname,phone,email from ".$this->db_table." where username = '$userId'";
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
+		}
+
+        public function GetAdminByCondition($condition,$content)
+		{
+            $sql = "select id,username,password,nickname,phone,email from ".$this->db_table." where ".$condition." = '$content'";
+            $result = $this->db->ExeSql($sql, $this->conn);
+            return $result;
+        }
+
+		public function GetAll(){
+            $sql = "select id,username,nickname,phone,email,age,status,role from ".$this->db_table;
+            $result = $this->db->ExeSql($sql, $this->conn);
+            return $result;
+		}
+
+		public function DeleteAdmin($id){
+            $sql="delete from ".$this->db_table." where id= '$id'";
+            try{
+                $this->db->ExeSql($sql,$this->conn);
+                return true;
+            }
+            catch(Exception $e)
+            {
+                return false;
+            }
+            return false;
 		}
 	}
 ?>
