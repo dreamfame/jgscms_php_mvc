@@ -51,9 +51,18 @@
 			return false;
 		}
 
-		public function UpdateAdmin($admin)
+		public function UpdateAdmin($admin,$field)
 		{
-			$sql = "update ".$this->db_table." set password = '$admin->password' where userId = '$admin->userId'";
+			$sql = "";
+			if($field=="role"){
+				$sql = "update " . $this->db_table . " set ".$field." = '$admin->role' where username = '$admin->username'";
+			}
+			else if($field=="status"){
+                $sql = "update " . $this->db_table . " set ".$field." = '$admin->status' where username = '$admin->username'";
+			}
+            else if($field=="password"){
+                $sql = "update " . $this->db_table . " set ".$field." = '$admin->password' where username = '$admin->username'";
+            }
 			try{
 				$this->db->ExeSql($sql,$this->conn);
 				return true;
@@ -63,6 +72,13 @@
 				return false;
 			}
 			return true;
+		}
+
+		public function GetAdminById($userId)
+		{
+            $sql = "select id,username,role from ".$this->db_table." where id = '$userId'";
+            $result = $this->db->ExeSql($sql, $this->conn);
+            return $result;
 		}
 
 		public function GetAdmin($userId)
@@ -80,7 +96,7 @@
         }
 
 		public function GetAll(){
-            $sql = "select id,username,nickname,phone,email,age,status,role from ".$this->db_table;
+            $sql = "select id,username,nickname,phone,email,age,status,role from ".$this->db_table." where id <> 1";
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
 		}

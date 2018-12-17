@@ -29,6 +29,15 @@
 				case "login":
                     AdminControl::ValidateLogin();
 					break;
+				case "role":
+					AdminControl::ChangeRole();
+					break;
+				case "status":
+					AdminControl::ChangeStatus();
+					break;
+				case "reset":
+					AdminControl::ResetPwd();
+					break;
 			}
 		}
 
@@ -155,12 +164,12 @@
 		{
 			$userid = $_REQUEST['userid'];
 			$as = new AdminServer();
-			$result = $as->GetAdmin($userid);
+			$result = $as->GetAdminById($userid);
 			$re = array('state'=>'0','content'=>null);
 			while ($u = mysqli_fetch_array($result))
 			{
 				$re['state'] = '1';
-				$row[]= array('userId'=>$u['userId'],'password'=>$u['password']);
+				$row[]= array('username'=>$u['username'],'role'=>$u['role']);
 				$re['content'] = $row;
 			}
 			echo json_encode($re,JSON_UNESCAPED_UNICODE);
@@ -203,6 +212,57 @@
 				}
 			}
 			echo json_encode($re,JSON_UNESCAPED_UNICODE);
+		}
+
+		public function ChangeRole(){
+			$username = $_REQUEST['username'];
+			$role = $_REQUEST['role'];
+			$as = new AdminServer();
+			$admin = new Admin();
+			$admin->username = $username;
+			$admin->role = $role;
+			$result = $as->UpdateAdmin($admin,"role");
+            $re = array('state'=>'0','content'=>'修改失败');
+            if($result) {
+                AdminControl::UpdateAdminJson();
+                $re['state']='1';
+                $re['content']='修改成功';
+            }
+            echo  json_encode($re,JSON_UNESCAPED_UNICODE);
+		}
+
+        public function ChangeStatus(){
+            $username = $_REQUEST['username'];
+            $status = $_REQUEST['status'];
+            $as = new AdminServer();
+            $admin = new Admin();
+            $admin->username = $username;
+            $admin->role = $status;
+            $result = $as->UpdateAdmin($admin,"status");
+            $re = array('state'=>'0','content'=>'修改失败');
+            if($result) {
+                AdminControl::UpdateAdminJson();
+                $re['state']='1';
+                $re['content']='修改成功';
+            }
+            echo  json_encode($re,JSON_UNESCAPED_UNICODE);
+        }
+
+        public function ResetPwd(){
+			$username = $_REQUEST['username'];
+			$password = password_hash("666666",PASSWORD_DEFAULT);
+            $as = new AdminServer();
+            $admin = new Admin();
+            $admin->username = $username;
+            $admin->password = $password;
+            $result = $as->UpdateAdmin($admin,"password");
+            $re = array('state'=>'0','content'=>'修改失败');
+            if($result) {
+                AdminControl::UpdateAdminJson();
+                $re['state']='1';
+                $re['content']='修改成功';
+            }
+            echo  json_encode($re,JSON_UNESCAPED_UNICODE);
 		}
 	}
 ?>

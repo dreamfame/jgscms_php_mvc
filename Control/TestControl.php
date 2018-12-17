@@ -10,7 +10,6 @@ require_once '../DataBaseHandle/AdminServer.php';
 class TestControl
 {
     public function Test(){
-        $re = array('state'=>'0','content'=>'添加失败');
-        echo $re['content'];
+
     }
 }

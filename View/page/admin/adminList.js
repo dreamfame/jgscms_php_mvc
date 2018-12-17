@@ -12,15 +12,17 @@ layui.config({
         var data = eval('(' + data + ')');
 		if(data.state=="0")
 		{
-            layer.msg("请求出错啦");
-            return;
+            var dataHtml = '<tr><td colspan="9">暂无数据</td></tr>';
+            $(".admin_content").html(dataHtml);
+            $('.admin_list thead input[type="checkbox"]').prop("checked",false);
+            form.render();
 		}
 		else{
 			var newArray = [];
 			adminData = data.content;
-			if(window.sessionStorage.getItem("addNews")){
-				var addNews = window.sessionStorage.getItem("addNews");
-				newsData = JSON.parse(addNews).concat(newsData);
+			if(window.sessionStorage.getItem("addAdmin")){
+				var addAdmin = window.sessionStorage.getItem("addAdmin");
+				adminData = JSON.parse(addAdmin).concat(adminData);
 			}
 			//执行加载数据的方法
 			adminList();
@@ -123,7 +125,7 @@ layui.config({
         },2000);
     })
 
-	//添加文章
+	//添加管理员
 	//改变窗口大小时，重置弹窗的高度，防止超出可视区域（如F12调出debug的操作）
 	$(window).one("resize",function(){
 		$(".adminAdd_btn").click(function(){
@@ -195,25 +197,77 @@ layui.config({
 	//禁用
 	form.on('switch(isShow)', function(data){
 		var index = layer.msg('修改中，请稍候',{icon: 16,time:false,shade:0.8});
-        setTimeout(function(){
-            layer.close(index);
-			layer.msg("状态修改成功！");
-        },2000);
+        var url = "/index.php/admin/JugdeOperate/status";
+        var status = this.checked?1:0;
+        var _this = $(this);
+        $.ajax({
+            data: {"username":_this.attr("data-id"),"status":status},
+            type: "POST",
+            dataType: "JSON",
+            url: url,
+            beforeSend: function () {
+
+            },
+            complete: function () {
+
+            },
+            success: function (result) {
+                if(result.state=="1"){
+                    layer.close(index);
+                    layer.msg("状态修改成功！");
+                }
+            },
+            error:function(data){
+                console.log(data.responseText);
+            }
+        })
 	})
  
 	//操作
-	$("body").on("click",".news_edit",function(){  //编辑
-		layer.alert('您点击了编辑按钮，由于是纯静态页面，所以暂时不存在编辑内容，后期会添加，敬请谅解。。。',{icon:6, title:'文章编辑'});
-	})
+	$("body").on("click",".admin_role",function(e){  //设置权限
+        var id = $(e.currentTarget).data('id');
+		var index = layui.layer.open({
+            title : "角色设置",
+            type : 2,
+			area:['600px','250px'],
+            content : "adminEdit.html?id="+id,
+            success : function(layero, index){
+                setTimeout(function(){
+                    layui.layer.tips('点击此处返回信息列表', '.layui-layer-setwin .layui-layer-close', {
+                        tips: 3
+                    });
+                },500)
+            }
+        })
+		//layui.layer.full(index);
+    })
 
-	$("body").on("click",".news_collect",function(){  //收藏.
-		if($(this).text().indexOf("已收藏") > 0){
-			layer.msg("取消收藏成功！");
-			$(this).html("<i class='layui-icon'>&#xe600;</i> 收藏");
-		}else{
-			layer.msg("收藏成功！");
-			$(this).html("<i class='iconfont icon-star'></i> 已收藏");
-		}
+	$("body").on("click",".admin_reset",function(){  //重置密码.
+        var _this = $(this);
+        layer.confirm('确定要重置'+_this.attr("data-id")+'的密码吗？',{icon:3, title:'提示信息'},function(index){
+            var url = "/index.php/admin/JugdeOperate/reset";
+            $.ajax({
+                data: {"username":_this.attr("data-id")},
+                type: "POST",
+                dataType: "JSON",
+                url: url,
+                beforeSend: function () {
+
+                },
+                complete: function () {
+
+                },
+                success: function (result) {
+                    if(result.state=="1"){
+                        layer.msg("重置成功");
+                    }
+                },
+                error:function(data){
+                    console.log(data.responseText);
+                }
+            })
+            layer.close(index);
+        });
 	})
 
 	$("body").on("click",".admin_del",function(){  //删除
@@ -276,16 +330,16 @@ layui.config({
                     +'<td>'+age+'</td>'
                     +'<td>'+phone+'</td>'
                     +'<td>'+email+'</td>'
-					+'<td><input type="checkbox" name="show" lay-skin="switch" lay-text="启用|禁用" lay-filter="isShow"'+status+'></td>'
+					+'<td><input type="checkbox" name="show" lay-skin="switch" data-id="'+data[i].username+'" lay-text="启用|禁用" lay-filter="isShow"'+status+'></td>'
 			    	+'<td>'
-					+  '<a class="layui-btn layui-btn-mini admin_edit" data-id="'+data[i].id+'"><i class="iconfont icon-edit"></i> 编辑</a>'
-					+  '<a class="layui-btn layui-btn-normal layui-btn-mini admin_reset"><i class="layui-icon">&#xe600;</i> 重置密码</a>'
+					+  '<a class="layui-btn layui-btn-mini admin_role" data-id="'+data[i].id+'"><i class="iconfont icon-edit"></i> 权限设置</a>'
+					+  '<a class="layui-btn layui-btn-normal layui-btn-mini admin_reset" data-id="'+data[i].username+'"><i class="layui-icon">&#xe600;</i> 重置密码</a>'
 					+  '<a class="layui-btn layui-btn-danger layui-btn-mini admin_del" data-id="'+data[i].id+'"><i class="layui-icon">&#xe640;</i> 删除</a>'
 			        +'</td>'
 			    	+'</tr>';
 				}
 			}else{
-				dataHtml = '<tr><td colspan="8">暂无数据</td></tr>';
+				dataHtml = '<tr><td colspan="9">暂无数据</td></tr>';
 			}
 		    return dataHtml;
 		}
