@@ -18,9 +18,27 @@
 		{
 			"title" : "角色管理",
 			"icon" : "&#xe673;",
-			"href" : "page/login/login.html",
-			"spread" : false,
-			"target" : "_blank"
+			"href" : "page/admin/roleList.html",
+			"spread" : false
+		}
+	]
+},{
+	"title" : "景区内容管理",
+	"icon" : "&#xe613;",
+	"href" : "",
+	"spread" : false,
+	"children" : [
+		{
+			"title" : "文章列表",
+			"icon" : "icon-text",
+			"href" : "page/news/newsList.html",
+			"spread" : false
+		},
+		{
+			"title" : "文章分类",
+			"icon" : "&#xe673;",
+			"href" : "page/admin/roleList.html",
+			"spread" : false
 		}
 	]
 },{

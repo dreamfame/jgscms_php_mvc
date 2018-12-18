@@ -85,7 +85,7 @@
 		{
 			$admin = new Admin();
 			$admin->username = $_REQUEST['username'];
-			$admin->password = password_hash("123456", PASSWORD_DEFAULT);
+			$admin->password = password_hash("666666", PASSWORD_DEFAULT);
 			$admin->nickname = $_REQUEST['nickname'];
 			$admin->role = $_REQUEST['role'];
 			$admin->age = 0;

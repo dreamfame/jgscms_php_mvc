@@ -112,9 +112,9 @@ layui.config({
                 type : "get",
                 dataType : "json",
                 success : function(data){
-                    if(window.sessionStorage.getItem("addAdmin")){
-                        var addAdmin = window.sessionStorage.getItem("addAdmin");
-                        adminData = JSON.parse(addAdmin).concat(data);
+                    if(window.sessionStorage.getItem("addNews")){
+                        var addNews = window.sessionStorage.getItem("addNews");
+                        adminData = JSON.parse(addNews).concat(data);
                     }else{
                         adminData = data;
                     }

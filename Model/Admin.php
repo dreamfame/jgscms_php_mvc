@@ -1,5 +1,6 @@
 <?php
 	Class Admin{
+		private $id;
 		private $username;
 		private $password;
 		private $nickname;

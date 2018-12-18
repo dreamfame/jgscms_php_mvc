@@ -4,6 +4,7 @@
 		<field label="userId" type="varchar"/>
 		<field label="password" type="varchar"/>
 	</table>
+	<table name="news"></table>
 	<table name="user"></table>
 	<table name="sports"></table>
 	<table name="recommend"></table>
