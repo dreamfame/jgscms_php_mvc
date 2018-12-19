@@ -5,7 +5,7 @@
 		<field label="password" type="varchar"/>
 	</table>
 	<table name="news"></table>
-	<table name="user"></table>
+	<table name="scenic"></table>
 	<table name="sports"></table>
 	<table name="recommend"></table>
 	<table name="video"></table>

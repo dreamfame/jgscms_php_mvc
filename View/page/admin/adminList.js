@@ -8,7 +8,7 @@ layui.config({
 
 	//加载页面数据
 	var adminData = '';
-	$.get("/index.php/admin/JugdeOperate/list", function(data){
+	$.get("/index.php/admin/JudgeOperate/list", function(data){
         var data = eval('(' + data + ')');
 		if(data.state=="0")
 		{
@@ -197,7 +197,7 @@ layui.config({
 	//禁用
 	form.on('switch(isShow)', function(data){
 		var index = layer.msg('修改中，请稍候',{icon: 16,time:false,shade:0.8});
-        var url = "/index.php/admin/JugdeOperate/status";
+        var url = "/index.php/admin/JudgeOperate/status";
         var status = this.checked?1:0;
         var _this = $(this);
         $.ajax({
@@ -245,7 +245,7 @@ layui.config({
 	$("body").on("click",".admin_reset",function(){  //重置密码.
         var _this = $(this);
         layer.confirm('确定要重置'+_this.attr("data-id")+'的密码吗？',{icon:3, title:'提示信息'},function(index){
-            var url = "/index.php/admin/JugdeOperate/reset";
+            var url = "/index.php/admin/JudgeOperate/reset";
             $.ajax({
                 data: {"username":_this.attr("data-id")},
                 type: "POST",
@@ -274,7 +274,7 @@ layui.config({
 		var _this = $(this);
 		layer.confirm('确定删除此信息？',{icon:3, title:'提示信息'},function(index){
 			//_this.parents("tr").remove();
-            var url = "/index.php/admin/JugdeOperate/del";
+            var url = "/index.php/admin/JudgeOperate/del";
             $.ajax({
                 data: {"id":_this.attr("data-id")},
                 type: "POST",

@@ -3,7 +3,7 @@
 	header("Content-Type: text/html;charset=utf-8");
 	Class PictureControl
     {
-        public function JugdeOperate($operate)
+        public function JudgeOperate($operate)
         {
             switch ($operate) {
                 case "uploadImg":

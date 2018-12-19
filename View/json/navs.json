@@ -29,15 +29,15 @@
 	"spread" : false,
 	"children" : [
 		{
-			"title" : "文章列表",
+			"title" : "景区新闻",
 			"icon" : "icon-text",
 			"href" : "page/news/newsList.html",
 			"spread" : false
 		},
 		{
-			"title" : "文章分类",
-			"icon" : "&#xe673;",
-			"href" : "page/admin/roleList.html",
+			"title" : "景区介绍",
+			"icon" : "icon-text",
+			"href" : "page/news/scenicList.html",
 			"spread" : false
 		}
 	]

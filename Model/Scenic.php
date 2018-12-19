@@ -1,18 +1,15 @@
 <?php
 	Class News{
 		private $id;
-		private $title;
-		private $type;
-		private $content;
-        private $show;
+		private $name;
+		private $intro;
+		private $brief;
+        private $recommend;
+        private $isshow;
         private $top;
         private $see;
-		private $operator;
         private $created_at;
         private $updated_at;
-        private $keyword;
-        private $abstract;
-        private $pic;
 		
 		function __set($name,$value)
 		{

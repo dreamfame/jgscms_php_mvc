@@ -25,48 +25,55 @@ layui.config({
         }
     });
 
-    $.ajax({
-        type: "POST",
-        dataType: "JSON",
-        url: "/index.php/news/JudgeOperate/gettype",
-        success: function (result) {
-			if(result.state=="1")
-			{
-				for(var i= 0;i<result.content.length;i++){
-                    $(".newsLook").append("<option value='"+result.content[i].id+"'>"+result.content[i].name+"</option>");
-				}
-                form.render('select');
-			}
+    function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+        var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+        if (r != null) return unescape(r[2]); return null; //返回参数值
+    }
 
-        },
+    var json_data = JSON.parse( window.sessionStorage.getItem("edit_news"));
+    var type_data = JSON.parse( window.sessionStorage.getItem("type"));
+    $(".title").val(json_data['title']);
+    $(".operator").val(json_data['operator']);
+    $(".created_at").val(json_data['created_at']);
+    $("input[name^='keyword']").val(json_data['keyword']);
+    $("textarea[name^='abstract']").val(json_data['abstract']);
+    $("#news_content").val(json_data['content']);
+    $("#pic").attr("src",json_data['pic']);
+    for(var i= 0;i<type_data.length;i++){
+        $(".newsLook").append("<option value='"+type_data[i].id+"'>"+type_data[i].name+"</option>");
+    }
+    $(".newsLook option").each(function(i,n){
+        if($(n).text()==json_data['type'])
+        {
+            $(n).attr("selected",true);
+        }
     })
+    form.render('select');
+
 
 	//创建一个编辑器
  	var editIndex = layedit.build('news_content');
- 	var addNewsArray = [],addNews;
- 	form.on("submit(addNews)",function(data){
+ 	var editNews;
+ 	form.on("submit(editNews)",function(data){
 	 	//显示、审核状态
- 		var show = data.field.show=="on" ? 1 : 0,
- 			topstr = data.field.top=="on" ? 1 : 0;
         var content = layedit.getContent(editIndex);
         var pic = $("#pic")[0].src;
- 		addNews = '{"title":"'+data.field.title+'",';  //文章名称
- 		addNews += '"type":"'+$(".newsLook option:selected").val()+'",'; //文章分类
- 		addNews += '"created_at":"'+data.field.created_at+'",'; //发布时间
- 		addNews += '"operator":"'+data.field.operator+'",'; //文章作者
- 		addNews += '"show":"'+ show +'",';  //是否展示
- 		addNews += '"top":"'+ topstr +'",'; //是否置顶
-        addNews += '"keyword":"'+ data.field.keyword +'",'; //关键字
-        addNews += '"abstract":"'+ data.field.abstract +'",'; //摘要
-        addNews += '"see":"'+ 0 +'",';
-        addNews += '"pic":"'+ pic +'",';
+        editNews = '{"id":"'+json_data['id']+'",';
+        editNews += '"title":"'+data.field.title+'",';  //文章名称
+        editNews += '"type":"'+$(".newsLook option:selected").val()+'",'; //文章分类
+        editNews += '"created_at":"'+data.field.created_at+'",'; //发布时间
+        editNews += '"operator":"'+data.field.operator+'",'; //文章作者
+        editNews += '"keyword":"'+ data.field.keyword +'",'; //关键字
+        editNews += '"abstract":"'+ data.field.abstract +'",'; //摘要
+        editNews += '"pic":"'+ pic +'",'; //图片
 		content = content.replace(/\"/g,"'");
-        addNews += '"content":"'+ content +'"}'; //内容
+        editNews += '"content":"'+ content +'"}'; //内容
  		//弹出loading
  		var index = top.layer.msg('数据提交中，请稍候',{icon: 16,time:false,shade:0.8});
-        var url = "/index.php/news/JudgeOperate/add";
+        var url = "/index.php/news/JudgeOperate/edit";
         $.ajax({
-            data: JSON.parse(addNews),
+            data: JSON.parse(editNews),
             type: "POST",
             dataType: "JSON",
             url: url,
@@ -79,7 +86,7 @@ layui.config({
             success: function (result) {
                 if(result.state=="1"){
                     top.layer.close(index);
-                    top.layer.msg("添加成功！");
+                    top.layer.msg("编辑成功！");
                     layer.closeAll("iframe");
                     //刷新父页面
                     parent.location.reload();
@@ -95,7 +102,7 @@ layui.config({
             error:function(data){
                 console.log(data.responseText);
                 top.layer.close(index);
-                top.layer.msg("添加失败!"+data.responseText);
+                top.layer.msg("编辑失败!"+data.responseText);
                 layer.closeAll("iframe");
                 //刷新父页面
                 parent.location.reload();

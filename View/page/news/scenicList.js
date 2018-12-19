@@ -7,34 +7,23 @@ layui.config({
 		$ = layui.jquery;
 
 	//加载页面数据
-	var newsData = '';
-	var typeData = '';
-	$.get("/index.php/news/JudgeOperate/gettype", function(result){
-        var result = eval('(' + result + ')');
-		typeData = result.content;
-        if(result.state=="1")
-        {
-            for(var i= 0;i<result.content.length;i++){
-                $(".type").append("<option value='"+result.content[i].id+"'>"+result.content[i].name+"</option>");
-            }
-            form.render('select');
-        }
-	})
-	$.get("/index.php/news/JudgeOperate/list", function(data){
+	var scenicData = '';
+
+	$.get("/index.php/scenic/JudgeOperate/list", function(data){
 		var newArray = [];
         var data = eval('(' + data + ')');
         if(data.state=="0")
         {
-            var dataHtml = '<tr><td colspan="9">暂无数据</td></tr>';
-            $(".news_content").html(dataHtml);
-            $('.news_list thead input[type="checkbox"]').prop("checked",false);
+            var dataHtml = '<tr><td colspan="7">暂无数据</td></tr>';
+            $(".scenic_content").html(dataHtml);
+            $('.scenic_list thead input[type="checkbox"]').prop("checked",false);
             form.render();
         }
         else{
             var newArray = [];
-            newsData = data.content;
+            scenicData = data.content;
             //执行加载数据的方法
-            newsList();
+            scenicList();
         }
 	})
 
@@ -45,13 +34,13 @@ layui.config({
 			var index = layer.msg('查询中，请稍候',{icon: 16,time:false,shade:0.8});
             setTimeout(function(){
             	$.ajax({
-					url : "../../json/newsList.json",
+					url : "../../json/scenicList.json",
 					type : "get",
 					dataType : "json",
 					success : function(data){
-						newsData = data;
-						for(var i=0;i<newsData.length;i++){
-							var newsStr = newsData[i];
+						scenicData = data;
+						for(var i=0;i<scenicData.length;i++){
+							var scenicStr = scenicData[i];
 							var selectStr = $(".search_input").val();
 		            		function changeStr(data){
 		            			var dataStr = '';
@@ -68,27 +57,27 @@ layui.config({
 		            			}
 		            		}
 		            		//文章标题
-		            		if(newsStr.title.indexOf(selectStr) > -1){
-			            		newsStr["title"] = changeStr(newsStr.title);
+		            		if(scenicStr.title.indexOf(selectStr) > -1){
+			            		scenicStr["title"] = changeStr(scenicStr.title);
 		            		}
 		            		//发布人
-		            		if(newsStr.operator.indexOf(selectStr) > -1){
-			            		newsStr["operator"] = changeStr(newsStr.operator);
+		            		if(scenicStr.operator.indexOf(selectStr) > -1){
+			            		scenicStr["operator"] = changeStr(scenicStr.operator);
 		            		}
 		            		//浏览量
-		            		if(newsStr.see.indexOf(selectStr) > -1){
-			            		newsStr["see"] = changeStr(newsStr.see);
+		            		if(scenicStr.see.indexOf(selectStr) > -1){
+			            		scenicStr["see"] = changeStr(scenicStr.see);
 		            		}
 		            		//发布时间
-		            		if(newsStr.created_at.indexOf(selectStr) > -1){
-			            		newsStr["created_at"] = changeStr(newsStr.created_at);
+		            		if(scenicStr.created_at.indexOf(selectStr) > -1){
+			            		scenicStr["created_at"] = changeStr(scenicStr.created_at);
 		            		}
-		            		if(newsStr.title.indexOf(selectStr)>-1 || newsStr.operator.indexOf(selectStr)>-1 ||  newsStr.see.indexOf(selectStr)>-1 || newsStr.created_at.indexOf(selectStr)>-1){
-		            			newArray.push(newsStr);
+		            		if(scenicStr.title.indexOf(selectStr)>-1 || scenicStr.operator.indexOf(selectStr)>-1 ||  scenicStr.see.indexOf(selectStr)>-1 || scenicStr.created_at.indexOf(selectStr)>-1){
+		            			newArray.push(scenicStr);
 		            		}
 		            	}
-		            	newsData = newArray;
-		            	newsList(newsData);
+		            	scenicData = newArray;
+		            	scenicList(scenicData);
 					}
 				})
             	
@@ -104,12 +93,12 @@ layui.config({
         var index = layer.msg('加载中，请稍候',{icon: 16,time:false,shade:0.8});
         setTimeout(function(){
             $.ajax({
-                url : "../../json/newsList.json",
+                url : "../../json/scenicList.json",
                 type : "get",
                 dataType : "json",
                 success : function(data){
-                	newsData = data;
-                    newsList(newsData);
+                	scenicData = data;
+                    scenicList(scenicData);
                 }
             })
             layer.close(index);
@@ -119,11 +108,11 @@ layui.config({
 	//添加文章
 	//改变窗口大小时，重置弹窗的高度，防止超出可视区域（如F12调出debug的操作）
 	$(window).one("resize",function(){
-		$(".newsAdd_btn").click(function(){
+		$(".scenicAdd_btn").click(function(){
 			var index = layui.layer.open({
 				title : "添加文章",
 				type : 2,
-				content : "newsAdd.html",
+				content : "scenicAdd.html",
 				success : function(layero, index){
 					setTimeout(function(){
 						layui.layer.tips('点击此处返回文章列表', '.layui-layer-setwin .layui-layer-close', {
@@ -138,22 +127,22 @@ layui.config({
 
 	//批量删除
 	$(".batchDel").click(function(){
-		var $checkbox = $('.news_list tbody input[type="checkbox"][name="checked"]');
-		var $checked = $('.news_list tbody input[type="checkbox"][name="checked"]:checked');
+		var $checkbox = $('.scenic_list tbody input[type="checkbox"][name="checked"]');
+		var $checked = $('.scenic_list tbody input[type="checkbox"][name="checked"]:checked');
 		if($checkbox.is(":checked")){
 			layer.confirm('确定删除选中的信息？',{icon:3, title:'提示信息'},function(index){
 				var index = layer.msg('删除中，请稍候',{icon: 16,time:false,shade:0.8});
 	            setTimeout(function(){
 	            	//删除数据
 	            	for(var j=0;j<$checked.length;j++){
-	            		for(var i=0;i<newsData.length;i++){
-							if(newsData[i].newsId == $checked.eq(j).parents("tr").find(".news_del").attr("data-id")){
-								newsData.splice(i,1);
-								newsList(newsData);
+	            		for(var i=0;i<scenicData.length;i++){
+							if(scenicData[i].scenicId == $checked.eq(j).parents("tr").find(".scenic_del").attr("data-id")){
+								scenicData.splice(i,1);
+								scenicList(scenicData);
 							}
 						}
 	            	}
-	            	$('.news_list thead input[type="checkbox"]').prop("checked",false);
+	            	$('.scenic_list thead input[type="checkbox"]').prop("checked",false);
 	            	form.render();
 	                layer.close(index);
 					layer.msg("删除成功");
@@ -188,7 +177,7 @@ layui.config({
 	//是否展示
 	form.on('switch(isShow)', function(data){
         var index = layer.msg('修改中，请稍候',{icon: 16,time:false,shade:0.8});
-        var url = "/index.php/news/JudgeOperate/show";
+        var url = "/index.php/scenic/JudgeOperate/show";
         var show = this.checked?1:0;
         var _this = $(this);
         $.ajax({
@@ -217,7 +206,7 @@ layui.config({
     //是否置顶
     form.on('switch(isTop)', function(data){
         var index = layer.msg('修改中，请稍候',{icon: 16,time:false,shade:0.8});
-        var url = "/index.php/news/JudgeOperate/top";
+        var url = "/index.php/scenic/JudgeOperate/top";
         var top = this.checked?1:0;
         var _this = $(this);
         $.ajax({
@@ -244,16 +233,16 @@ layui.config({
     })
  
 	//操作
-	$("body").on("click",".news_edit",function(e){  //编辑
+	$("body").on("click",".scenic_edit",function(e){  //编辑
         var no = $(e.currentTarget).data('id');
-        var str = JSON.stringify(newsData[no]);
+        var str = JSON.stringify(scenicData[no]);
         var typestr = JSON.stringify(typeData);
-        window.sessionStorage.setItem("edit_news",str);
+        window.sessionStorage.setItem("edit_scenic",str);
         window.sessionStorage.setItem("type",typestr);
         var index = layui.layer.open({
 			title : "编辑文章",
 			type : 2,
-			content : "newsEdit.html",
+			content : "scenicEdit.html",
 			success : function(layero, index){
 				setTimeout(function(){
 					layui.layer.tips('点击此处返回信息列表', '.layui-layer-setwin .layui-layer-close', {
@@ -265,11 +254,11 @@ layui.config({
 		layui.layer.full(index);
 	})
 
-    $("body").on("click",".news_del",function(){  //删除
+    $("body").on("click",".scenic_del",function(){  //删除
         var _this = $(this);
         layer.confirm('确定删除此信息？',{icon:3, title:'提示信息'},function(index){
             //_this.parents("tr").remove();
-            var url = "/index.php/news/JudgeOperate/del";
+            var url = "/index.php/scenic/JudgeOperate/del";
             $.ajax({
                 data: {"id":_this.attr("data-id")},
                 type: "POST",
@@ -283,10 +272,10 @@ layui.config({
                 },
                 success: function (result) {
                     if(result.state=="1"){
-                        for(var i=0;i<newsData.length;i++){
-                            if(newsData[i].id == _this.attr("data-id")){
-                                newsData.splice(i,1);
-                                newsList(newsData);
+                        for(var i=0;i<scenicData.length;i++){
+                            if(scenicData[i].id == _this.attr("data-id")){
+                                scenicData.splice(i,1);
+                                scenicList(scenicData);
                             }
                         }
                     }
@@ -299,12 +288,12 @@ layui.config({
         });
     })
 
-	function newsList(that){
+	function scenicList(that){
 		//渲染数据
 		function renderDate(data,curr){
 			var dataHtml = '';
 			if(!that){
-				currData = newsData.concat().splice(curr*nums-nums, nums);
+				currData = scenicData.concat().splice(curr*nums-nums, nums);
 			}else{
 				currData = that.concat().splice(curr*nums-nums, nums);
 			}
@@ -327,8 +316,8 @@ layui.config({
                     +'<td><input type="checkbox" name="top" lay-skin="switch" data-id="'+data[i].id+'" lay-text="是|否" lay-filter="isTop"'+top+'></td>'
 			    	+'<td>'+time+'</td>'
 			    	+'<td>'
-					+  '<a class="layui-btn layui-btn-mini news_edit" data-id="'+i+'"><i class="iconfont icon-edit"></i> 编辑</a>'
-					+  '<a class="layui-btn layui-btn-danger layui-btn-mini news_del" data-id="'+data[i].id+'"><i class="layui-icon">&#xe640;</i> 删除</a>'
+					+  '<a class="layui-btn layui-btn-mini scenic_edit" data-id="'+i+'"><i class="iconfont icon-edit"></i> 编辑</a>'
+					+  '<a class="layui-btn layui-btn-danger layui-btn-mini scenic_del" data-id="'+data[i].id+'"><i class="layui-icon">&#xe640;</i> 删除</a>'
 			        +'</td>'
 			    	+'</tr>';
 				}
@@ -341,14 +330,14 @@ layui.config({
 		//分页
 		var nums = 13; //每页出现的数据量
 		if(that){
-			newsData = that;
+			scenicData = that;
 		}
 		laypage({
 			cont : "page",
-			pages : Math.ceil(newsData.length/nums),
+			pages : Math.ceil(scenicData.length/nums),
 			jump : function(obj){
-				$(".news_content").html(renderDate(newsData,obj.curr));
-				$('.news_list thead input[type="checkbox"]').prop("checked",false);
+				$(".scenic_content").html(renderDate(scenicData,obj.curr));
+				$('.scenic_list thead input[type="checkbox"]').prop("checked",false);
 		    	form.render();
 			}
 		})

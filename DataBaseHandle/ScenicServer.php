@@ -3,42 +3,41 @@
 	require_once '../Extensions/Security.php';
 	require_once '../Extensions/LoadXmlData.php';
 	header("Content-Type: text/html;charset=utf-8");
-	Class NewsServer
+	Class ScenicServer
 	{
 		public $db;
 		public $conn;
 		public $dbase;
 		public $db_table;
-		public function NewsServer()
+		public function ScenicServer()
 		{
 			$this->db = new DBHelper();
 			$xc = new XmlControl();
 			$this->dbase = $xc->GetXmlAttribute("../ProjectConfig/DBase.xml","db",0,"name");
-			$this->db_table = $xc->GetXmlAttribute("../ProjectConfig/DBase.xml","table",1,"name");
+			$this->db_table = $xc->GetXmlAttribute("../ProjectConfig/DBase.xml","table",2,"name");
 			$this->conn = $this->db->Open($this->dbase);
 		}
 
 		public function GetAll(){
-			$sql = "select news.id,news_type.name as type,news.title,news.content,news.isshow,news.top,news.created_at,news.operator,news.see,news.updated_at,abstract,keyword,pic from news left join news_type on news.type=news_type.id";
-            //$sql = "select * from ".$this->db_table;
+			$sql = "select * from ".$this->db_table;
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
 		}
 
         public function GetType(){
-            $sql = "select id,name from news_type";
+            $sql = "select id,name from Scenic_type";
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
         }
 
-        public function GetNewsById($id){
+        public function GetScenicById($id){
             $sql = "select * from ".$this->db_table." where id = '$id'";
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
         }
 
-		public function InsertNews($news){
-            $sql = "insert into ".$this->db_table."(type,title,content,isshow,top,updated_at,created_at,operator,see,keyword,abstract,pic) values('$news->type','$news->title','$news->content','$news->show','$news->top','$news->updated_at','$news->created_at','$news->operator','$news->see','$news->keyword','$news->abstract','$news->pic')";
+		public function InsertScenic($Scenic){
+            $sql = "insert into ".$this->db_table."(type,title,content,isshow,top,updated_at,created_at,operator,see,keyword,abstract,pic) values('$Scenic->type','$Scenic->title','$Scenic->content','$Scenic->show','$Scenic->top','$Scenic->updated_at','$Scenic->created_at','$Scenic->operator','$Scenic->see','$Scenic->keyword','$Scenic->abstract','$Scenic->pic')";
             try{
                 $this->db->ExeSql($sql,$this->conn);
                 return true;
@@ -50,16 +49,16 @@
             return false;
 		}
 
-		public function UpdateNews($news,$field){
+		public function UpdateScenic($Scenic,$field){
             $sql = "";
             if($field=="top"){
-                $sql = "update " . $this->db_table . " set ".$field." = '$news->top' where id = '$news->id'";
+                $sql = "update " . $this->db_table . " set ".$field." = '$Scenic->top' where id = '$Scenic->id'";
             }
             else if($field=="isshow"){
-                $sql = "update " . $this->db_table . " set ".$field." = '$news->show' where id = '$news->id'";
+                $sql = "update " . $this->db_table . " set ".$field." = '$Scenic->show' where id = '$Scenic->id'";
 			}
 			else if($field=="all"){
-                $sql = "update " . $this->db_table . " set title = '$news->title',operator = '$news->operator',created_at = '$news->created_at',type = '$news->type',keyword = '$news->keyword',abstract = '$news->abstract',content = '$news->content',pic = '$news->pic' where id = '$news->id'";
+                $sql = "update " . $this->db_table . " set title = '$Scenic->title',operator = '$Scenic->operator',created_at = '$Scenic->created_at',type = '$Scenic->type',keyword = '$Scenic->keyword',abstract = '$Scenic->abstract',content = '$Scenic->content',pic = '$Scenic->pic' where id = '$Scenic->id'";
             }
             try{
                 $this->db->ExeSql($sql,$this->conn);
@@ -72,7 +71,7 @@
             return true;
 		}
 
-		public function DeleteNews($id)
+		public function DeleteScenic($id)
         {
             $sql="delete from ".$this->db_table." where id= '$id'";
             try{

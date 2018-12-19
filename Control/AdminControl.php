@@ -7,7 +7,7 @@
 	{
         const key = "made with liuliu";
 
-		public function JugdeOperate($operate)
+		public function JudgeOperate($operate)
 		{
 			switch($operate)
 			{

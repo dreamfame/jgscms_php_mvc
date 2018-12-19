@@ -7,7 +7,7 @@ layui.config({
 		layedit = layui.layedit,
 		$ = layui.jquery;
 
-	var url = "/index.php/admin/JugdeOperate/query";
+	var url = "/index.php/admin/JudgeOperate/query";
 	var id = getUrlParam("id");
 	$.ajax({
         data: {userid:id},
@@ -60,7 +60,7 @@ layui.config({
  		window.sessionStorage.setItem("editAdmin",JSON.stringify(editAdminArray));
  		//弹出loading
  		var index = top.layer.msg('数据提交中，请稍候',{icon: 16,time:false,shade:0.8});
- 		var url = "/index.php/admin/JugdeOperate/role";
+ 		var url = "/index.php/admin/JudgeOperate/role";
         $.ajax({
             data: JSON.parse(editAdmin),
             type: "POST",

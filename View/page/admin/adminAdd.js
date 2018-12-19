@@ -28,7 +28,7 @@ layui.config({
  		window.sessionStorage.setItem("addAdmin",JSON.stringify(addAdminArray));
  		//弹出loading
  		var index = top.layer.msg('数据提交中，请稍候',{icon: 16,time:false,shade:0.8});
- 		var url = "/index.php/admin/JugdeOperate/add";
+ 		var url = "/index.php/admin/JudgeOperate/add";
         $.ajax({
             data: JSON.parse(addAdmin),
             type: "POST",
