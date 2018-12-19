@@ -14,7 +14,7 @@ layui.config({
         var data = eval('(' + data + ')');
         if(data.state=="0")
         {
-            var dataHtml = '<tr><td colspan="7">暂无数据</td></tr>';
+            var dataHtml = '<tr><td colspan="8">暂无数据</td></tr>';
             $(".scenic_content").html(dataHtml);
             $('.scenic_list thead input[type="checkbox"]').prop("checked",false);
             form.render();
@@ -56,13 +56,13 @@ layui.config({
 		            				return dataStr;
 		            			}
 		            		}
-		            		//文章标题
-		            		if(scenicStr.title.indexOf(selectStr) > -1){
-			            		scenicStr["title"] = changeStr(scenicStr.title);
+		            		//景点
+		            		if(scenicStr.name.indexOf(selectStr) > -1){
+			            		scenicStr["name"] = changeStr(scenicStr.name);
 		            		}
-		            		//发布人
-		            		if(scenicStr.operator.indexOf(selectStr) > -1){
-			            		scenicStr["operator"] = changeStr(scenicStr.operator);
+		            		//推荐星级
+		            		if(scenicStr.recommend.indexOf(selectStr) > -1){
+			            		scenicStr["recommend"] = changeStr(scenicStr.recommend);
 		            		}
 		            		//浏览量
 		            		if(scenicStr.see.indexOf(selectStr) > -1){
@@ -72,7 +72,7 @@ layui.config({
 		            		if(scenicStr.created_at.indexOf(selectStr) > -1){
 			            		scenicStr["created_at"] = changeStr(scenicStr.created_at);
 		            		}
-		            		if(scenicStr.title.indexOf(selectStr)>-1 || scenicStr.operator.indexOf(selectStr)>-1 ||  scenicStr.see.indexOf(selectStr)>-1 || scenicStr.created_at.indexOf(selectStr)>-1){
+		            		if(scenicStr.name.indexOf(selectStr)>-1 || scenicStr.recommend.indexOf(selectStr)>-1 ||  scenicStr.see.indexOf(selectStr)>-1 || scenicStr.created_at.indexOf(selectStr)>-1){
 		            			newArray.push(scenicStr);
 		            		}
 		            	}
@@ -110,7 +110,7 @@ layui.config({
 	$(window).one("resize",function(){
 		$(".scenicAdd_btn").click(function(){
 			var index = layui.layer.open({
-				title : "添加文章",
+				title : "添加景点",
 				type : 2,
 				content : "scenicAdd.html",
 				success : function(layero, index){
@@ -236,9 +236,7 @@ layui.config({
 	$("body").on("click",".scenic_edit",function(e){  //编辑
         var no = $(e.currentTarget).data('id');
         var str = JSON.stringify(scenicData[no]);
-        var typestr = JSON.stringify(typeData);
         window.sessionStorage.setItem("edit_scenic",str);
-        window.sessionStorage.setItem("type",typestr);
         var index = layui.layer.open({
 			title : "编辑文章",
 			type : 2,
@@ -299,22 +297,20 @@ layui.config({
 			}
 			if(currData.length != 0){
 				for(var i=0;i<currData.length;i++){
-                    var title = currData[i].title==''?'-':currData[i].title;
-                    var type = currData[i].type==''?'-':currData[i].type;
+                    var name = currData[i].name==''?'-':currData[i].name;
+                    var see = currData[i].see==''?'-':currData[i].see;
                     var top = currData[i].top==1?"checked":"";
                     var show = currData[i].show==1?"checked":"";
-                    var operator = currData[i].operator==''?'-':currData[i].operator;
                     var time = currData[i].created_at==''?'-':currData[i].created_at;
-                    var see = currData[i].see==''?'-':currData[i].see;
+                    var recommend = currData[i].recommend==''?'-':currData[i].recommend;
 					dataHtml += '<tr>'
 			    	+'<td><input type="checkbox" name="checked" lay-skin="primary" lay-filter="choose"></td>'
-			    	+'<td align="left">'+title+'</td>'
-                    +'<td>'+type+'</td>'
-                    +'<td>'+operator+'</td>'
-			    	+ '<td>'+see+'</td>'
+			    	+'<td align="left">'+name+'</td>'
+                    +'<td>'+see+'</td>'
 			    	+'<td><input type="checkbox" name="show" lay-skin="switch" data-id="'+data[i].id+'" lay-text="是|否" lay-filter="isShow"'+show+'></td>'
                     +'<td><input type="checkbox" name="top" lay-skin="switch" data-id="'+data[i].id+'" lay-text="是|否" lay-filter="isTop"'+top+'></td>'
 			    	+'<td>'+time+'</td>'
+                    +'<td>'+recommend+'</td>'
 			    	+'<td>'
 					+  '<a class="layui-btn layui-btn-mini scenic_edit" data-id="'+i+'"><i class="iconfont icon-edit"></i> 编辑</a>'
 					+  '<a class="layui-btn layui-btn-danger layui-btn-mini scenic_del" data-id="'+data[i].id+'"><i class="layui-icon">&#xe640;</i> 删除</a>'
@@ -322,7 +318,7 @@ layui.config({
 			    	+'</tr>';
 				}
 			}else{
-				dataHtml = '<tr><td colspan="9">暂无数据</td></tr>';
+				dataHtml = '<tr><td colspan="8">暂无数据</td></tr>';
 			}
 		    return dataHtml;
 		}

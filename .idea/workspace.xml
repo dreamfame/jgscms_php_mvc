@@ -2,32 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c7749a1-70c7-404f-906e-a59d4ff055e3" name="默认的" comment="">
-      <change afterPath="$PROJECT_DIR$/Control/ScenicControl.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DataBaseHandle/ScenicServer.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Model/Scenic.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/View/json/scenicList.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/View/page/news/newsEdit.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/View/page/news/newsEdit.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/View/page/news/scenicList.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/View/page/news/scenicList.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/View/css/scenic.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/View/page/news/scenicAdd.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/View/page/news/scenicAdd.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/View/page/news/scenicEdit.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/View/page/news/scenicEdit.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Control/AdminControl.php" beforeDir="false" afterPath="$PROJECT_DIR$/Control/AdminControl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Control/NewsControl.php" beforeDir="false" afterPath="$PROJECT_DIR$/Control/NewsControl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Control/PictureControl.php" beforeDir="false" afterPath="$PROJECT_DIR$/Control/PictureControl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/jgs.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Data/jgs.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataBaseHandle/NewsServer.php" beforeDir="false" afterPath="$PROJECT_DIR$/DataBaseHandle/NewsServer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/News.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/News.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectConfig/DBase.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectConfig/DBase.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Control/ScenicControl.php" beforeDir="false" afterPath="$PROJECT_DIR$/Control/ScenicControl.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataBaseHandle/DBHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/DataBaseHandle/DBHelper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataBaseHandle/ScenicServer.php" beforeDir="false" afterPath="$PROJECT_DIR$/DataBaseHandle/ScenicServer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/Scenic.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Scenic.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/View/json/navs.json" beforeDir="false" afterPath="$PROJECT_DIR$/View/json/navs.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/json/newsList.json" beforeDir="false" afterPath="$PROJECT_DIR$/View/json/newsList.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/admin/adminAdd.js" beforeDir="false" afterPath="$PROJECT_DIR$/View/page/admin/adminAdd.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/admin/adminEdit.js" beforeDir="false" afterPath="$PROJECT_DIR$/View/page/admin/adminEdit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/admin/adminList.js" beforeDir="false" afterPath="$PROJECT_DIR$/View/page/admin/adminList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/admin/roleList.js" beforeDir="false" afterPath="$PROJECT_DIR$/View/page/admin/roleList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/news/newsAdd.html" beforeDir="false" afterPath="$PROJECT_DIR$/View/page/news/newsAdd.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/news/newsAdd.js" beforeDir="false" afterPath="$PROJECT_DIR$/View/page/news/newsAdd.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/news/newsList.html" beforeDir="false" afterPath="$PROJECT_DIR$/View/page/news/newsList.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/news/newsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/View/page/news/newsList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/json/scenicList.json" beforeDir="false" afterPath="$PROJECT_DIR$/View/json/scenicList.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/page/news/scenicList.html" beforeDir="false" afterPath="$PROJECT_DIR$/View/page/news/scenicList.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/page/news/scenicList.js" beforeDir="false" afterPath="$PROJECT_DIR$/View/page/news/scenicList.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -60,18 +48,19 @@
           <entry key="project.open.time.11" value="2" />
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.15" value="1" />
+          <entry key="project.open.time.17" value="1" />
           <entry key="project.open.time.24" value="2" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="7" />
+          <entry key="project.opened" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="css" value="5" />
-          <entry key="html" value="5" />
-          <entry key="js" value="15" />
-          <entry key="json" value="2" />
-          <entry key="php" value="21" />
+          <entry key="css" value="7" />
+          <entry key="html" value="10" />
+          <entry key="js" value="22" />
+          <entry key="json" value="3" />
+          <entry key="php" value="23" />
           <entry key="png" value="2" />
           <entry key="sql" value="1" />
           <entry key="svg" value="2" />
@@ -80,12 +69,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSS" value="5" />
-          <entry key="HTML" value="5" />
+          <entry key="CSS" value="7" />
+          <entry key="HTML" value="10" />
           <entry key="Image" value="2" />
-          <entry key="JSON" value="2" />
-          <entry key="JavaScript" value="15" />
-          <entry key="PHP" value="21" />
+          <entry key="JSON" value="3" />
+          <entry key="JavaScript" value="22" />
+          <entry key="PHP" value="23" />
           <entry key="SVG" value="2" />
           <entry key="Scratch" value="1" />
           <entry key="XML" value="1" />
@@ -95,20 +84,20 @@
         <counts>
           <entry key="css" value="59" />
           <entry key="dummy" value="8" />
-          <entry key="html" value="300" />
-          <entry key="js" value="1580" />
-          <entry key="json" value="20" />
-          <entry key="php" value="1665" />
+          <entry key="html" value="446" />
+          <entry key="js" value="1789" />
+          <entry key="json" value="23" />
+          <entry key="php" value="1817" />
           <entry key="txt" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="59" />
-          <entry key="HTML" value="300" />
-          <entry key="JSON" value="20" />
-          <entry key="JavaScript" value="1580" />
-          <entry key="PHP" value="1665" />
+          <entry key="HTML" value="446" />
+          <entry key="JSON" value="23" />
+          <entry key="JavaScript" value="1789" />
+          <entry key="PHP" value="1817" />
           <entry key="PLAIN_TEXT" value="11" />
         </counts>
       </usages-collector>
@@ -182,14 +171,37 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/View/page/news/scenicList.js">
+        <entry file="file://$PROJECT_DIR$/View/page/news/scenicEdit.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="13" column="8" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="42" />
-              <folding>
-                <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="345">
+              <caret line="46" column="14" lean-forward="true" selection-start-line="46" selection-start-column="14" selection-end-line="46" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/View/json/navs.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="436">
+              <caret line="43" column="27" selection-start-line="43" selection-start-column="27" selection-end-line="43" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/View/page/news/scenicEdit.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="598">
+              <caret line="26" column="47" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/View/page/news/scenicAdd.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="414">
+              <caret line="33" column="53" lean-forward="true" selection-start-line="25" selection-start-column="8" selection-end-line="33" selection-end-column="53" />
             </state>
           </provider>
         </entry>
@@ -197,8 +209,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Control/ScenicControl.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="287">
-              <caret line="46" column="269" selection-start-line="46" selection-start-column="269" selection-end-line="46" selection-end-column="269" />
+            <state relative-caret-position="368">
+              <caret line="112" column="76" selection-start-line="112" selection-start-column="76" selection-end-line="112" selection-end-column="76" />
             </state>
           </provider>
         </entry>
@@ -206,26 +218,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DataBaseHandle/ScenicServer.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="21" column="12" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/View/page/news/scenicList.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="31" column="14" selection-start-line="31" selection-start-column="14" selection-end-line="31" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Control/NewsControl.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="13" column="26" lean-forward="true" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
+            <state relative-caret-position="483">
+              <caret line="47" column="13" lean-forward="true" selection-start-line="47" selection-start-column="13" selection-end-line="47" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -247,16 +241,17 @@
       <find>refresh</find>
       <find>isShow</find>
       <find>reset</find>
-      <find>news_content</find>
       <find>jugd</find>
       <find>76</find>
-      <find>news</find>
       <find>ns</find>
+      <find>news</find>
+      <find>scenic_intro</find>
+      <find>news_content</find>
       <find>News</find>
     </findStrings>
     <replaceStrings>
-      <replace>scenic</replace>
       <replace>ss</replace>
+      <replace>scenic</replace>
       <replace>Scenic</replace>
     </replaceStrings>
   </component>
@@ -266,10 +261,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Media/Js/verifycode.js" />
-        <option value="$PROJECT_DIR$/View/css/login.css" />
-        <option value="$PROJECT_DIR$/Control/Dumbbell.php" />
-        <option value="$PROJECT_DIR$/Control/AdminControl1.php" />
         <option value="$PROJECT_DIR$/View/Media/Js/verifycode.js" />
         <option value="$PROJECT_DIR$/Control/Hello.php" />
         <option value="$PROJECT_DIR$/Control/HelloControl.php" />
@@ -287,7 +278,6 @@
         <option value="$PROJECT_DIR$/Control/TestControl.php" />
         <option value="$PROJECT_DIR$/View/page/admin/adminEdit.html" />
         <option value="$PROJECT_DIR$/DataBaseHandle/AdminServer.php" />
-        <option value="$PROJECT_DIR$/DataBaseHandle/DBHelper.php" />
         <option value="$PROJECT_DIR$/View/layui/treetable-lay/treetable.js" />
         <option value="$PROJECT_DIR$/View/index.html" />
         <option value="$PROJECT_DIR$/View/page/admin/roleList.html" />
@@ -302,7 +292,6 @@
         <option value="$PROJECT_DIR$/View/page/news/newsList.js" />
         <option value="$PROJECT_DIR$/Control/PictureControl.php" />
         <option value="$PROJECT_DIR$/View/page/news/newstypeList.html" />
-        <option value="$PROJECT_DIR$/View/json/navs.json" />
         <option value="$PROJECT_DIR$/View/page/news/newsAdd.html" />
         <option value="$PROJECT_DIR$/Control/NewsControl.php" />
         <option value="$PROJECT_DIR$/DataBaseHandle/NewsServer.php" />
@@ -310,12 +299,19 @@
         <option value="$PROJECT_DIR$/View/page/news/newsAdd.js" />
         <option value="$PROJECT_DIR$/View/page/news/newsEdit.html" />
         <option value="$PROJECT_DIR$/View/page/news/newsEdit.js" />
-        <option value="$PROJECT_DIR$/View/page/news/scenicList.js" />
-        <option value="$PROJECT_DIR$/Model/Scenic.php" />
         <option value="$PROJECT_DIR$/ProjectConfig/DBase.xml" />
+        <option value="$PROJECT_DIR$/DataBaseHandle/DBHelper.php" />
+        <option value="$PROJECT_DIR$/View/css/news.css" />
+        <option value="$PROJECT_DIR$/Model/Scenic.php" />
+        <option value="$PROJECT_DIR$/View/page/news/scenicList.html" />
         <option value="$PROJECT_DIR$/DataBaseHandle/ScenicServer.php" />
         <option value="$PROJECT_DIR$/Control/ScenicControl.php" />
-        <option value="$PROJECT_DIR$/View/page/news/scenicList.html" />
+        <option value="$PROJECT_DIR$/View/page/news/scenicAdd.js" />
+        <option value="$PROJECT_DIR$/View/page/news/scenicList.js" />
+        <option value="$PROJECT_DIR$/View/page/news/scenicEdit.js" />
+        <option value="$PROJECT_DIR$/View/page/news/scenicEdit.html" />
+        <option value="$PROJECT_DIR$/View/page/news/scenicAdd.html" />
+        <option value="$PROJECT_DIR$/View/json/navs.json" />
       </list>
     </option>
   </component>
@@ -325,7 +321,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="260" />
     <option name="y" value="20" />
     <option name="width" value="1400" />
@@ -339,7 +335,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -362,26 +357,28 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;null&#9;null" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="G:\xampp\www\JGSCMS\View" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\xampp\www\JGSCMS\View\page\news" />
+      <recent name="G:\xampp\www\JGSCMS\View\css" />
       <recent name="D:\xampp\www\JGSCMS\View\json" />
       <recent name="D:\xampp\www\JGSCMS\DataBaseHandle" />
       <recent name="D:\xampp\www\JGSCMS\Control" />
-      <recent name="D:\xampp\www\JGSCMS\Model" />
-      <recent name="D:\xampp\www\JGSCMS\View\page\news" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\xampp\www\JGSCMS\View" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -427,17 +424,18 @@
       <workItem from="1545008421514" duration="15385000" />
       <workItem from="1545027704075" duration="2112000" />
       <workItem from="1545180845881" duration="25163000" />
+      <workItem from="1545215730230" duration="7764000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="134596000" />
+    <option name="totallyTimeSpent" value="142360000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49886876" visible="true" weight="0.2065053" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49886876" visible="true" weight="0.14967811" />
       <window_info id="Structure" order="1" sideWeight="0.50113124" side_tool="true" weight="0.25751072" />
       <window_info id="Favorites" order="2" sideWeight="0.50113124" side_tool="true" weight="0.25751072" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -470,29 +468,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/View/layui/lay/modules/treetable.js" />
-    <entry file="file://$PROJECT_DIR$/View/json/menus.json" />
-    <entry file="file://$PROJECT_DIR$/View/css/user.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/css/news.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/css/public.css" />
-    <entry file="file://$PROJECT_DIR$/View/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="113" column="85" lean-forward="true" selection-start-line="113" selection-start-column="85" selection-end-line="113" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/page/admin/roleList.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="53" column="16" lean-forward="true" selection-start-line="53" selection-start-column="16" selection-end-line="53" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/View/Media/Js/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
@@ -659,13 +634,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/View/json/navs.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="36" column="9" lean-forward="true" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/View/page/news/newsList.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5595">
@@ -701,38 +669,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Control/NewsControl.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="13" column="26" lean-forward="true" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/page/news/newsAdd.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="52" lean-forward="true" selection-start-line="2" selection-start-column="52" selection-end-line="2" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/page/news/newsAdd.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="13" selection-start-line="13" selection-end-line="31" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/View/page/news/newsEdit.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-836">
           <caret line="1" column="5" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/page/news/newsEdit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="108" column="13" lean-forward="true" selection-start-line="108" selection-start-column="13" selection-end-line="108" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -743,34 +683,82 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataBaseHandle/ScenicServer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="21" column="12" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/View/json/scenicList.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Control/ScenicControl.php">
+    <entry file="file://$PROJECT_DIR$/DataBaseHandle/DBHelper.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="46" column="269" selection-start-line="46" selection-start-column="269" selection-end-line="46" selection-end-column="269" />
+        <state relative-caret-position="322">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Control/NewsControl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/css/scenic.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/css/news.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/page/news/scenicList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="473">
+          <caret line="35" column="22" lean-forward="true" selection-start-line="35" selection-start-column="22" selection-end-line="35" selection-end-column="22" />
+          <folding>
+            <element signature="n#style#0;n#th#1;n#tr#0;n#thead#0;n#table#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/page/news/newsAdd.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="52" lean-forward="true" selection-start-line="2" selection-start-column="52" selection-end-line="2" selection-end-column="60" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Model/Scenic.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+        <state relative-caret-position="161">
+          <caret line="7" column="23" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataBaseHandle/ScenicServer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="47" column="13" lean-forward="true" selection-start-line="47" selection-start-column="13" selection-end-line="47" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/page/news/newsAdd.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="95" column="14" lean-forward="true" selection-start-line="95" selection-start-column="14" selection-end-line="95" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Control/ScenicControl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="112" column="76" selection-start-line="112" selection-start-column="76" selection-end-line="112" selection-end-column="76" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/View/page/news/scenicList.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="13" column="8" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="42" />
+        <state relative-caret-position="281">
+          <caret line="242" column="33" selection-start-line="242" selection-start-column="23" selection-end-line="242" selection-end-column="33" />
           <folding>
             <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
@@ -778,10 +766,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/View/page/news/scenicList.html">
+    <entry file="file://$PROJECT_DIR$/View/page/news/newsEdit.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="31" column="14" selection-start-line="31" selection-start-column="14" selection-end-line="31" selection-end-column="14" />
+        <state relative-caret-position="249">
+          <caret line="61" column="8" lean-forward="true" selection-start-line="61" selection-start-column="8" selection-end-line="61" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/page/news/scenicEdit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="598">
+          <caret line="26" column="47" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/page/news/scenicAdd.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="51" column="84" selection-start-line="51" selection-start-column="84" selection-end-line="51" selection-end-column="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/page/news/scenicAdd.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="33" column="53" lean-forward="true" selection-start-line="25" selection-start-column="8" selection-end-line="33" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/page/news/scenicEdit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="46" column="14" lean-forward="true" selection-start-line="46" selection-start-column="14" selection-end-line="46" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/json/navs.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="436">
+          <caret line="43" column="27" selection-start-line="43" selection-start-column="27" selection-end-line="43" selection-end-column="27" />
         </state>
       </provider>
     </entry>

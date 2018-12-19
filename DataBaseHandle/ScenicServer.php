@@ -36,8 +36,8 @@
             return $result;
         }
 
-		public function InsertScenic($Scenic){
-            $sql = "insert into ".$this->db_table."(type,title,content,isshow,top,updated_at,created_at,operator,see,keyword,abstract,pic) values('$Scenic->type','$Scenic->title','$Scenic->content','$Scenic->show','$Scenic->top','$Scenic->updated_at','$Scenic->created_at','$Scenic->operator','$Scenic->see','$Scenic->keyword','$Scenic->abstract','$Scenic->pic')";
+		public function InsertScenic($scenic){
+            $sql = "insert into ".$this->db_table."(name,recommend,brief,intro,isshow,top,updated_at,created_at,see) values('$scenic->name','$scenic->recommend','$scenic->brief','$scenic->intro','$scenic->isshow','$scenic->top','$scenic->updated_at','$scenic->created_at','$scenic->see')";
             try{
                 $this->db->ExeSql($sql,$this->conn);
                 return true;
@@ -49,16 +49,16 @@
             return false;
 		}
 
-		public function UpdateScenic($Scenic,$field){
+		public function UpdateScenic($scenic,$field){
             $sql = "";
             if($field=="top"){
-                $sql = "update " . $this->db_table . " set ".$field." = '$Scenic->top' where id = '$Scenic->id'";
+                $sql = "update " . $this->db_table . " set ".$field." = '$scenic->top' where id = '$scenic->id'";
             }
             else if($field=="isshow"){
-                $sql = "update " . $this->db_table . " set ".$field." = '$Scenic->show' where id = '$Scenic->id'";
+                $sql = "update " . $this->db_table . " set ".$field." = '$scenic->show' where id = '$scenic->id'";
 			}
 			else if($field=="all"){
-                $sql = "update " . $this->db_table . " set title = '$Scenic->title',operator = '$Scenic->operator',created_at = '$Scenic->created_at',type = '$Scenic->type',keyword = '$Scenic->keyword',abstract = '$Scenic->abstract',content = '$Scenic->content',pic = '$Scenic->pic' where id = '$Scenic->id'";
+                $sql = "update " . $this->db_table . " set title = '$scenic->title',operator = '$scenic->operator',created_at = '$scenic->created_at',type = '$scenic->type',keyword = '$scenic->keyword',abstract = '$scenic->abstract',content = '$scenic->content',pic = '$scenic->pic' where id = '$scenic->id'";
             }
             try{
                 $this->db->ExeSql($sql,$this->conn);

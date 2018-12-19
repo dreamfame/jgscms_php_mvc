@@ -39,6 +39,12 @@
 			"icon" : "icon-text",
 			"href" : "page/news/scenicList.html",
 			"spread" : false
+		},
+		{
+			"title" : "景点图库",
+			"icon" : "icon-text",
+			"href" : "page/news/scenicList.html",
+			"spread" : false
 		}
 	]
 },{

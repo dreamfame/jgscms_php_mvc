@@ -1,5 +1,5 @@
 <?php
-	Class News{
+	Class Scenic{
 		private $id;
 		private $name;
 		private $intro;
