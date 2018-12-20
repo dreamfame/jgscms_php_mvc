@@ -37,13 +37,32 @@
 		{
 			"title" : "景区介绍",
 			"icon" : "icon-text",
+			"href" : "page/news/areaList.html",
+			"spread" : false
+		}
+	]
+},{
+	"title" : "参考指南管理",
+	"icon" : "&#xe613;",
+	"href" : "",
+	"spread" : false,
+	"children" : [
+		{
+			"title" : "景区路线",
+			"icon" : "icon-text",
+			"href" : "page/news/newsList.html",
+			"spread" : false
+		},
+		{
+			"title" : "景区活动",
+			"icon" : "icon-text",
 			"href" : "page/news/scenicList.html",
 			"spread" : false
 		},
 		{
-			"title" : "景点图库",
+			"title" : "景点介绍",
 			"icon" : "icon-text",
-			"href" : "page/news/scenicList.html",
+			"href" : "page/activity/scenicList.html",
 			"spread" : false
 		}
 	]

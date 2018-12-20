@@ -15,11 +15,14 @@ layui.config({
         }
     });
 
+    var pic_src = "";
+
     layui.upload({
         url: '/index.php/picture/JudgeOperate/uploadImg'
         ,success: function(res){
             if(res.code==0){
                 $("#pic").attr("src",res.data.src);
+                pic_src = res.data.src;
             }
             console.log(res); //上传成功返回值，必须为json格式
         }
@@ -49,7 +52,7 @@ layui.config({
  		var show = data.field.show=="on" ? 1 : 0,
  			topstr = data.field.top=="on" ? 1 : 0;
         var content = layedit.getContent(editIndex);
-        var pic = $("#pic")[0].src;
+        pic_src == ""?"/images/default.png":pic_src;
  		addNews = '{"title":"'+data.field.title+'",';  //文章名称
  		addNews += '"type":"'+$(".newsLook option:selected").val()+'",'; //文章分类
  		addNews += '"created_at":"'+data.field.created_at+'",'; //发布时间
@@ -59,7 +62,7 @@ layui.config({
         addNews += '"keyword":"'+ data.field.keyword +'",'; //关键字
         addNews += '"abstract":"'+ data.field.abstract +'",'; //摘要
         addNews += '"see":"'+ 0 +'",';
-        addNews += '"pic":"'+ pic +'",';
+        addNews += '"pic":"'+ pic_src +'",';
 		content = content.replace(/\"/g,"'");
         addNews += '"content":"'+ content +'"}'; //内容
  		//弹出loading

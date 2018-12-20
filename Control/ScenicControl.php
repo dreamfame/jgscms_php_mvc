@@ -133,14 +133,11 @@
 		{
             $scenic = new Scenic();
             $scenic->id = $_REQUEST['id'];
-            $scenic->title = $_REQUEST['title'];
-            $scenic->operator = $_REQUEST['operator'];
+            $scenic->name = $_REQUEST['name'];
             $scenic->created_at = $_REQUEST['created_at'];
-            $scenic->type = $_REQUEST['type'];
-            $scenic->keyword = $_REQUEST['keyword'];
-            $scenic->abstract = $_REQUEST['abstract'];
-            $scenic->pic = $_REQUEST['pic'];
-            $scenic->content = $str = str_replace('\'', '\"', $_REQUEST['content']);
+            $scenic->brief = $_REQUEST['brief'];
+            $scenic->recommend = $_REQUEST['recommend'];
+            $scenic->intro = $str = str_replace('\'', '\"', $_REQUEST['intro']);
 			$re = array('state'=>'0','content'=>'修改失败');
 			$ss = new ScenicServer();
 			$result = $ss->UpdateScenic($scenic,"all");

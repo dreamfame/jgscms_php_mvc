@@ -6,22 +6,43 @@ layui.config({
         layer = parent.layer === undefined ? layui.layer : parent.layer,
         $ = layui.jquery;
 
+    function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+        var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+        if (r != null) return unescape(r[2]); return null; //返回参数值
+    }
+
+
+    var scenic_id = getUrlParam("id");
+    var imagesData;
+
     //流加载图片
     var imgNums = 15;  //单页显示图片数量
     flow.load({
         elem: '#Images', //流加载容器
         done: function(page, next){ //加载下一页
-            $.get("../../json/images.json",function(data){
+            $.get("/index.php/img/JudgeOperate/pic/?scenic_id="+scenic_id,function(data){
                 //模拟插入
                 var imgList = [];
-                var maxPage = imgNums*page < data.length ? imgNums*page : data.length;
-                setTimeout(function(){
-                    for(var i=imgNums*(page-1); i<maxPage; i++){
-                        imgList.push('<li><img src="'+ data[i].imgSrc +'"><div class="operate"><div class="check"><input type="checkbox" name="belle" lay-filter="choose" lay-skin="primary" title="'+data[i].imgTitle+'"></div><i class="layui-icon img_del">&#xe640;</i></div></li>')
-                    }
-                    next(imgList.join(''), page < (data.length/imgNums));
-                    form.render();
-                }, 500);
+                var data = eval('(' + data + ')');
+                if(data.state=="0"){
+                    setTimeout(function () {
+                        next(imgList.join(''), page < (1 / imgNums));
+                        form.render();
+                    }, 500);
+                }
+                else {
+                    imagesData = data.content;
+                    var images = data.content;
+                    var maxPage = imgNums*page < images.length ? imgNums*page : images.length;
+                    setTimeout(function () {
+                        for (var i = imgNums * (page - 1); i < maxPage; i++) {
+                            imgList.push('<li><img src="' + images[i].src + '"><div class="operate"><div class="check"><input type="checkbox" name="belle" lay-filter="choose" lay-skin="primary" title="' + images[i].name + '"></div><i data-id="'+images[i].id+'" class="layui-icon img_del">&#xe640;</i></div></li>')
+                        }
+                        next(imgList.join(''), page < (images.length / imgNums));
+                        form.render();
+                    }, 500);
+                }
             }); 
         }
     });
@@ -30,8 +51,21 @@ layui.config({
     $("body").on("click",".img_del",function(){
         var _this = $(this);
         layer.confirm('确定删除图片"'+_this.siblings().find("input").attr("title")+'"吗？',{icon:3, title:'提示信息'},function(index){
-            _this.parents("li").hide(1000);
-            setTimeout(function(){_this.parents("li").remove();},950);
+            $.ajax({
+                data: {"id":_this.attr("data-id")},
+                type: "POST",
+                dataType: "JSON",
+                url: "/index.php/img/JudgeOperate/del",
+                success: function (result) {
+                    if(result.state=="1"){
+                        _this.parents("li").hide(400);
+                        setTimeout(function(){_this.parents("li").remove();},350);
+                    }
+                },
+                error:function(data){
+                    console.log(data.responseText);
+                }
+            })
             layer.close(index);
         });
     })
@@ -45,7 +79,7 @@ layui.config({
         form.render('checkbox');
     });
 
-    //通过判断文章是否全部选中来确定全选按钮是否选中
+    //通过判断是否全部选中来确定全选按钮是否选中
     form.on("checkbox(choose)",function(data){
         var child = $(data.elem).parents('#Images').find('li input[type="checkbox"]');
         var childChecked = $(data.elem).parents('#Images').find('li input[type="checkbox"]:checked');
@@ -56,6 +90,25 @@ layui.config({
         }
         form.render('checkbox');
     })
+
+    $(".uploadPic").click(function(){
+        var index = layui.layer.open({
+            title : "上传图片",
+            type : 2,
+            content : "uploader/index.html?id="+scenic_id,
+            area:['800px','400px'],
+            offset: '0px',
+            move:false,
+            success : function(layero, index){
+                setTimeout(function(){
+                    layui.layer.tips('点击此处返回信息列表', '.layui-layer-setwin .layui-layer-close', {
+                        tips: 3
+                    });
+                },500)
+            }
+        })
+        //layui.layer.full(index);
+    });
 
     //批量删除
     $(".batchDel").click(function(){

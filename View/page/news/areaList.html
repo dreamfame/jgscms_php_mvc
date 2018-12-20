@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>文章列表--layui后台管理模板</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="../../layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="//at.alicdn.com/t/font_tnyc012u2rlwstt9.css" media="all" />
+	<link rel="stylesheet" href="../../css/area.css" media="all" />
+</head>
+<body class="childrenBody">
+	<blockquote class="layui-elem-quote area_search">
+		<div class="layui-inline">
+		    <div class="layui-input-inline">
+		    	<input type="text" value="" placeholder="请输入关键字" class="layui-input search_input">
+		    </div>
+		    <a class="layui-btn search_btn">查询</a>
+		</div>
+		<div class="layui-inline">
+			<a class="layui-btn layui-btn-warm showAll_btn">显示全部</a>
+		</div>
+		<div class="layui-inline">
+			<a class="layui-btn layui-btn-normal areaAdd_btn">添加景点</a>
+		</div>
+		<div class="layui-inline">
+			<a class="layui-btn layui-btn-danger batchDel">批量删除</a>
+		</div>
+	</blockquote>
+	<div class="layui-form area_list">
+		<form id="uploadForm" action="/index.php/area/JudgeOperate/map" method="post" target="myiframe" enctype="multipart/form-data" style="width:auto;display:none;">
+			<input id="areaid" name="areaid" type="hidden" />
+			<input type="file" accept="image/gif, image/jpeg,image/png" name="uploadfile" id="uploadfile" onchange="fileSelected();" style="display:none;">
+		</form>
+		<iframe id="myiframe" name="myiframe" style="display:none;"></iframe>
+	  	<table class="layui-table" lay-data="{initSort:{field:'time', type:'desc'}}">
+		    <colgroup>
+				<col width="2%">
+				<col>
+				<col width="25%">
+				<col width="7%">
+				<col width="10%">
+				<col width="10%">
+				<col width="10%">
+				<col width="8%">
+				<col width="15%">
+		    </colgroup>
+		    <thead>
+				<tr>
+					<th><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose" id="allChoose"></th>
+					<th style="text-align:left;">景区</th>
+					<th>景区地图</th>
+					<th>浏览量</th>
+					<th>是否展示</th>
+					<th>是否置顶</th>
+					<th>发布时间</th>
+					<th>推荐星级</th>
+					<th>操作</th>
+				</tr> 
+		    </thead>
+		    <tbody class="area_content"></tbody>
+		</table>
+	</div>
+	<div id="page"></div>
+	<script type="text/javascript" src="../../layui/layui.js"></script>
+	<script type="text/javascript" src="areaList.js"></script>
+	<script type="text/javascript" src="areaMap.js"></script>
+</body>
+</html>

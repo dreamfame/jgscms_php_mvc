@@ -6,8 +6,8 @@
 	</table>
 	<table name="news"></table>
 	<table name="scenic"></table>
-	<table name="sports"></table>
-	<table name="recommend"></table>
+	<table name="images"></table>
+	<table name="area"></table>
 	<table name="video"></table>
 	<table name="headimg"></table>
 	<table name="plan"></table>

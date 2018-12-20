@@ -2,20 +2,89 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c7749a1-70c7-404f-906e-a59d4ff055e3" name="默认的" comment="">
-      <change afterPath="$PROJECT_DIR$/View/css/scenic.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/View/page/news/scenicAdd.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/View/page/news/scenicAdd.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/View/page/news/scenicEdit.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/View/page/news/scenicEdit.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Control/AreaControl.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Control/ImgControl.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DataBaseHandle/AreaServer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DataBaseHandle/ImgServer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Model/Area.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Model/Images.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/View/css/area.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/View/json/areaList.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/View/page/img/uploadImg.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/View/page/img/uploader/js/jquery-1.10.2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/View/page/news/areaAdd.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/View/page/news/areaAdd.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/View/page/news/areaEdit.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/View/page/news/areaEdit.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/View/page/news/areaList.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/View/page/news/areaList.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/View/page/news/areaMap.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Control/ScenicControl.php" beforeDir="false" afterPath="$PROJECT_DIR$/Control/ScenicControl.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataBaseHandle/DBHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/DataBaseHandle/DBHelper.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataBaseHandle/ScenicServer.php" beforeDir="false" afterPath="$PROJECT_DIR$/DataBaseHandle/ScenicServer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/Scenic.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Scenic.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectConfig/DBase.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectConfig/DBase.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/1/Love.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/1/Love_files/default.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/1/Love_files/functions.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/1/Love_files/jquery.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/1/Love_files/jscex-async-powerpack.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/1/Love_files/jscex-async.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/1/Love_files/jscex-builderbase.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/1/Love_files/jscex-jit.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/1/Love_files/jscex-parser.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/1/Love_files/jscex.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/1/Love_files/love.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/1/README.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/1/config.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/1/index.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/css/scenic.css" beforeDir="false" afterPath="$PROJECT_DIR$/View/css/scenic.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/images/15451293560A1FF9794DAE94F9862CE30F77B6824F.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/images/15451294680A1FF9794DAE94F9862CE30F77B6824F.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/images/15451295600E4D6406CA2DE5E7683E9C3925A186C1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/images/15451296950A5F556E2D37D603373B309B1EF67B29.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/images/15451298000A1FF9794DAE94F9862CE30F77B6824F.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/images/15451299170E7733B1395E13A9DECD2602D3C3AAD3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/images/154513000209887F9E60CDA5A820C009FD46D4BF4D.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/images/15451302750DF8A52306C4D7D12EE983EBD71DCC8F.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/images/15451303640E4D6406CA2DE5E7683E9C3925A186C1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/images/15451304540E4D6406CA2DE5E7683E9C3925A186C1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/images/15451304930E7733B1395E13A9DECD2602D3C3AAD3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/images/15451305440DF8A52306C4D7D12EE983EBD71DCC8F.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/images/154513078270EF9F294F231BEDF667827D150166C4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/images/1545130987629D229CB7ED50530F2F465AC1570C41.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/images/1545131059AE2FE166B0D2CC0AAB911CCBBA231A24.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/images/154513147404D3B36D1D6ED6504E9E99B1E7AFEB4E.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/images/15451328600DF8A52306C4D7D12EE983EBD71DCC8F.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/images/1545133260EB5C6931A2FB3D7A0764358B8D28F81E.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/images/15451334090A1FF9794DAE94F9862CE30F77B6824F.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/images/1545133593FFBD7957F01FF12F49F8EC9F17CAD968.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/images/15451989250E4D6406CA2DE5E7683E9C3925A186C1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/images/154520137200E56B718F11286EC5737051234F7621.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/images/15452043860E4D6406CA2DE5E7683E9C3925A186C1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/images/154520464300E56B718F11286EC5737051234F7621.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/images/154520482400D683030FED87E5372858AA3545DDDB.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/images/154520488400E56B718F11286EC5737051234F7621.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/images/154520490600D683030FED87E5372858AA3545DDDB.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/images/154520493000D683030FED87E5372858AA3545DDDB.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/images/154520497900D683030FED87E5372858AA3545DDDB.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/images/154520500700D683030FED87E5372858AA3545DDDB.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/images/154520506000D683030FED87E5372858AA3545DDDB.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/images/15452059900A8A77494B990E0345BD1AD97B9A3A2B.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/images/1545215952default.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/json/images.json" beforeDir="false" afterPath="$PROJECT_DIR$/View/json/images.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/View/json/navs.json" beforeDir="false" afterPath="$PROJECT_DIR$/View/json/navs.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/View/json/scenicList.json" beforeDir="false" afterPath="$PROJECT_DIR$/View/json/scenicList.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/news/scenicList.html" beforeDir="false" afterPath="$PROJECT_DIR$/View/page/news/scenicList.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/news/scenicList.js" beforeDir="false" afterPath="$PROJECT_DIR$/View/page/news/scenicList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/page/img/images.html" beforeDir="false" afterPath="$PROJECT_DIR$/View/page/img/images.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/page/img/images.js" beforeDir="false" afterPath="$PROJECT_DIR$/View/page/img/images.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/page/news/newsAdd.js" beforeDir="false" afterPath="$PROJECT_DIR$/View/page/news/newsAdd.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/page/news/newsList.html" beforeDir="false" afterPath="$PROJECT_DIR$/View/page/news/newsList.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/page/news/scenicAdd.html" beforeDir="false" afterPath="$PROJECT_DIR$/View/page/activity/scenicAdd.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/page/news/scenicAdd.js" beforeDir="false" afterPath="$PROJECT_DIR$/View/page/activity/scenicAdd.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/page/news/scenicEdit.html" beforeDir="false" afterPath="$PROJECT_DIR$/View/page/activity/scenicEdit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/page/news/scenicEdit.js" beforeDir="false" afterPath="$PROJECT_DIR$/View/page/activity/scenicEdit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/page/news/scenicList.html" beforeDir="false" afterPath="$PROJECT_DIR$/View/page/activity/scenicList.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/page/news/scenicList.js" beforeDir="false" afterPath="$PROJECT_DIR$/View/page/activity/scenicList.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -110,52 +179,55 @@
     <session id="569187798">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
+          <entry key="project.closed" value="6" />
           <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.20" value="1" />
           <entry key="project.open.time.21" value="1" />
+          <entry key="project.open.time.22" value="1" />
+          <entry key="project.open.time.257" value="1" />
           <entry key="project.open.time.34" value="1" />
-          <entry key="project.opened" value="4" />
+          <entry key="project.open.time.40" value="1" />
+          <entry key="project.opened" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="css" value="7" />
-          <entry key="html" value="25" />
-          <entry key="js" value="51" />
-          <entry key="json" value="31" />
-          <entry key="php" value="57" />
-          <entry key="xml" value="5" />
+          <entry key="css" value="14" />
+          <entry key="html" value="41" />
+          <entry key="js" value="81" />
+          <entry key="json" value="38" />
+          <entry key="php" value="81" />
+          <entry key="xml" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSS" value="7" />
-          <entry key="HTML" value="25" />
-          <entry key="JSON" value="31" />
-          <entry key="JavaScript" value="51" />
-          <entry key="PHP" value="57" />
-          <entry key="XML" value="5" />
+          <entry key="CSS" value="14" />
+          <entry key="HTML" value="41" />
+          <entry key="JSON" value="38" />
+          <entry key="JavaScript" value="81" />
+          <entry key="PHP" value="81" />
+          <entry key="XML" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="4" />
-          <entry key="html" value="810" />
-          <entry key="js" value="3667" />
-          <entry key="json" value="119" />
-          <entry key="php" value="4600" />
-          <entry key="xml" value="11" />
+          <entry key="css" value="31" />
+          <entry key="html" value="933" />
+          <entry key="js" value="4884" />
+          <entry key="json" value="146" />
+          <entry key="php" value="5804" />
+          <entry key="xml" value="23" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="4" />
-          <entry key="HTML" value="810" />
-          <entry key="JSON" value="119" />
-          <entry key="JavaScript" value="3667" />
-          <entry key="PHP" value="4600" />
-          <entry key="XML" value="11" />
+          <entry key="CSS" value="31" />
+          <entry key="HTML" value="934" />
+          <entry key="JSON" value="146" />
+          <entry key="JavaScript" value="4884" />
+          <entry key="PHP" value="5803" />
+          <entry key="XML" value="23" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.php.new.class">
@@ -171,55 +243,71 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/View/page/news/scenicEdit.html">
+        <entry file="file://$PROJECT_DIR$/View/page/activity/scenicAdd.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="46" column="14" lean-forward="true" selection-start-line="46" selection-start-column="14" selection-end-line="46" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/View/json/navs.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="436">
-              <caret line="43" column="27" selection-start-line="43" selection-start-column="27" selection-end-line="43" selection-end-column="27" />
+            <state relative-caret-position="-846">
+              <caret line="15" column="23" lean-forward="true" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/View/page/news/scenicEdit.js">
+        <entry file="file://$PROJECT_DIR$/View/page/activity/scenicEdit.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="598">
-              <caret line="26" column="47" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="47" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/View/page/news/scenicAdd.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="33" column="53" lean-forward="true" selection-start-line="25" selection-start-column="8" selection-end-line="33" selection-end-column="53" />
-            </state>
+            <state relative-caret-position="-979" />
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Control/ScenicControl.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="112" column="76" selection-start-line="112" selection-start-column="76" selection-end-line="112" selection-end-column="76" />
+            <state relative-caret-position="148">
+              <caret line="138" column="56" selection-start-line="138" selection-start-column="56" selection-end-line="138" selection-end-column="56" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/DataBaseHandle/ScenicServer.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="60" column="226" selection-start-line="60" selection-start-column="226" selection-end-line="60" selection-end-column="226" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DataBaseHandle/ScenicServer.php">
+        <entry file="file://$PROJECT_DIR$/View/page/activity/scenicAdd.js">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/View/page/activity/scenicList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="47" column="13" lean-forward="true" selection-start-line="47" selection-start-column="13" selection-end-line="47" selection-end-column="13" />
+            <state relative-caret-position="59">
+              <caret line="233" column="1" lean-forward="true" selection-start-line="233" selection-start-column="1" selection-end-line="233" selection-end-column="1" />
+              <folding>
+                <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/View/page/activity/scenicEdit.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="142">
+              <caret line="35" column="18" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/View/page/activity/scenicList.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-257">
+              <caret line="27" column="62" selection-start-line="27" selection-start-column="49" selection-end-line="27" selection-end-column="62" />
             </state>
           </provider>
         </entry>
@@ -229,9 +317,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="package.json" />
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -248,11 +336,19 @@
       <find>scenic_intro</find>
       <find>news_content</find>
       <find>News</find>
+      <find>Admin</find>
+      <find>Scenic</find>
+      <find>scenic</find>
+      <find>scenicAdd_btn</find>
+      <find>area</find>
     </findStrings>
     <replaceStrings>
       <replace>ss</replace>
-      <replace>scenic</replace>
       <replace>Scenic</replace>
+      <replace>Img</replace>
+      <replace>Area</replace>
+      <replace>area</replace>
+      <replace>scenic</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -261,57 +357,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/View/Media/Js/verifycode.js" />
-        <option value="$PROJECT_DIR$/Control/Hello.php" />
-        <option value="$PROJECT_DIR$/Control/HelloControl.php" />
-        <option value="$PROJECT_DIR$/View/page/login/login.html" />
-        <option value="$PROJECT_DIR$/View/index.php" />
-        <option value="$PROJECT_DIR$/View/page/login/login.js" />
-        <option value="$PROJECT_DIR$/View/Media/Js/index.js" />
-        <option value="$PROJECT_DIR$/View/js/index.js" />
-        <option value="$PROJECT_DIR$/View/page/main.html" />
-        <option value="$PROJECT_DIR$/View/layui/css/layui.css" />
-        <option value="$PROJECT_DIR$/View/json/package.json" />
-        <option value="$PROJECT_DIR$/View/page/admin/adminList.html" />
-        <option value="$PROJECT_DIR$/View/json/adminList.json" />
-        <option value="$PROJECT_DIR$/View/page/admin/adminAdd.html" />
-        <option value="$PROJECT_DIR$/Control/TestControl.php" />
-        <option value="$PROJECT_DIR$/View/page/admin/adminEdit.html" />
-        <option value="$PROJECT_DIR$/DataBaseHandle/AdminServer.php" />
-        <option value="$PROJECT_DIR$/View/layui/treetable-lay/treetable.js" />
-        <option value="$PROJECT_DIR$/View/index.html" />
-        <option value="$PROJECT_DIR$/View/page/admin/roleList.html" />
-        <option value="$PROJECT_DIR$/Model/Admin.php" />
-        <option value="$PROJECT_DIR$/View/page/test.html" />
-        <option value="$PROJECT_DIR$/View/page/admin/adminEdit.js" />
-        <option value="$PROJECT_DIR$/View/page/admin/adminAdd.js" />
-        <option value="$PROJECT_DIR$/View/page/admin/adminList.js" />
-        <option value="$PROJECT_DIR$/View/page/admin/roleList.js" />
-        <option value="$PROJECT_DIR$/Control/AdminControl.php" />
-        <option value="$PROJECT_DIR$/View/page/news/newsList.html" />
-        <option value="$PROJECT_DIR$/View/page/news/newsList.js" />
         <option value="$PROJECT_DIR$/Control/PictureControl.php" />
         <option value="$PROJECT_DIR$/View/page/news/newstypeList.html" />
         <option value="$PROJECT_DIR$/View/page/news/newsAdd.html" />
         <option value="$PROJECT_DIR$/Control/NewsControl.php" />
         <option value="$PROJECT_DIR$/DataBaseHandle/NewsServer.php" />
         <option value="$PROJECT_DIR$/Model/News.php" />
-        <option value="$PROJECT_DIR$/View/page/news/newsAdd.js" />
         <option value="$PROJECT_DIR$/View/page/news/newsEdit.html" />
         <option value="$PROJECT_DIR$/View/page/news/newsEdit.js" />
-        <option value="$PROJECT_DIR$/ProjectConfig/DBase.xml" />
-        <option value="$PROJECT_DIR$/DataBaseHandle/DBHelper.php" />
         <option value="$PROJECT_DIR$/View/css/news.css" />
         <option value="$PROJECT_DIR$/Model/Scenic.php" />
-        <option value="$PROJECT_DIR$/View/page/news/scenicList.html" />
-        <option value="$PROJECT_DIR$/DataBaseHandle/ScenicServer.php" />
-        <option value="$PROJECT_DIR$/Control/ScenicControl.php" />
         <option value="$PROJECT_DIR$/View/page/news/scenicAdd.js" />
-        <option value="$PROJECT_DIR$/View/page/news/scenicList.js" />
         <option value="$PROJECT_DIR$/View/page/news/scenicEdit.js" />
         <option value="$PROJECT_DIR$/View/page/news/scenicEdit.html" />
         <option value="$PROJECT_DIR$/View/page/news/scenicAdd.html" />
+        <option value="$PROJECT_DIR$/DataBaseHandle/DBHelper.php" />
+        <option value="$PROJECT_DIR$/View/page/news/scenicList.html" />
+        <option value="$PROJECT_DIR$/View/page/news/newsList.html" />
+        <option value="$PROJECT_DIR$/View/page/news/newsList.js" />
+        <option value="$PROJECT_DIR$/View/page/admin/adminList.js" />
+        <option value="$PROJECT_DIR$/View/js/main.js" />
+        <option value="$PROJECT_DIR$/View/js/index.js" />
+        <option value="$PROJECT_DIR$/View/js/bodyTab.js" />
+        <option value="$PROJECT_DIR$/View/page/img/images.html" />
+        <option value="$PROJECT_DIR$/Model/Images.php" />
+        <option value="$PROJECT_DIR$/Control/ImgControl.php" />
+        <option value="$PROJECT_DIR$/DataBaseHandle/ImgServer.php" />
+        <option value="$PROJECT_DIR$/View/page/news/scenicList.js" />
+        <option value="$PROJECT_DIR$/View/page/img/uploadImg.html" />
+        <option value="$PROJECT_DIR$/View/page/img/uploader/js/jquery-1.10.2.js" />
+        <option value="$PROJECT_DIR$/View/page/img/images.js" />
+        <option value="$PROJECT_DIR$/View/page/img/uploader/index.html" />
+        <option value="$PROJECT_DIR$/View/page/img/uploader/css/style.css" />
         <option value="$PROJECT_DIR$/View/json/navs.json" />
+        <option value="$PROJECT_DIR$/Model/Area.php" />
+        <option value="$PROJECT_DIR$/ProjectConfig/DBase.xml" />
+        <option value="$PROJECT_DIR$/View/page/news/areaMap.js" />
+        <option value="$PROJECT_DIR$/View/page/news/areaList.js" />
+        <option value="$PROJECT_DIR$/View/page/news/areaList.html" />
+        <option value="$PROJECT_DIR$/View/css/scenic.css" />
+        <option value="$PROJECT_DIR$/View/css/area.css" />
+        <option value="$PROJECT_DIR$/View/page/news/areaEdit.html" />
+        <option value="$PROJECT_DIR$/View/page/news/areaEdit.js" />
+        <option value="$PROJECT_DIR$/View/page/news/areaAdd.html" />
+        <option value="$PROJECT_DIR$/Control/AreaControl.php" />
+        <option value="$PROJECT_DIR$/View/page/news/areaAdd.js" />
+        <option value="$PROJECT_DIR$/DataBaseHandle/AreaServer.php" />
+        <option value="$PROJECT_DIR$/View/page/news/newsAdd.js" />
+        <option value="$PROJECT_DIR$/View/page/activity/scenicList.js" />
+        <option value="$PROJECT_DIR$/View/page/activity/scenicEdit.js" />
+        <option value="$PROJECT_DIR$/Control/ScenicControl.php" />
+        <option value="$PROJECT_DIR$/DataBaseHandle/ScenicServer.php" />
       </list>
     </option>
   </component>
@@ -324,8 +420,8 @@
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="260" />
     <option name="y" value="20" />
-    <option name="width" value="1400" />
-    <option name="height" value="992" />
+    <option name="width" value="1386" />
+    <option name="height" value="788" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="添加" />
@@ -345,13 +441,12 @@
             <path>
               <item name="JGSCMS" type="b2602c69:ProjectViewProjectNode" />
               <item name="JGSCMS" type="462c0819:PsiDirectoryNode" />
-              <item name="View" type="462c0819:PsiDirectoryNode" />
+              <item name="Control" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="JGSCMS" type="b2602c69:ProjectViewProjectNode" />
               <item name="JGSCMS" type="462c0819:PsiDirectoryNode" />
               <item name="View" type="462c0819:PsiDirectoryNode" />
-              <item name="json" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -370,15 +465,16 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\xampp\www\JGSCMS\View\page\img" />
+      <recent name="G:\xampp\www\JGSCMS\View" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="G:\xampp\www\JGSCMS\View\page\news" />
-      <recent name="G:\xampp\www\JGSCMS\View\css" />
+      <recent name="D:\xampp\www\JGSCMS\View\css" />
       <recent name="D:\xampp\www\JGSCMS\View\json" />
+      <recent name="D:\xampp\www\JGSCMS\Model" />
       <recent name="D:\xampp\www\JGSCMS\DataBaseHandle" />
       <recent name="D:\xampp\www\JGSCMS\Control" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="G:\xampp\www\JGSCMS\View" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -425,17 +521,20 @@
       <workItem from="1545027704075" duration="2112000" />
       <workItem from="1545180845881" duration="25163000" />
       <workItem from="1545215730230" duration="7764000" />
+      <workItem from="1545288901639" duration="82000" />
+      <workItem from="1545291428994" duration="4963000" />
+      <workItem from="1545299106088" duration="13734000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="142360000" />
+    <option name="totallyTimeSpent" value="173788000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49886876" visible="true" weight="0.14967811" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49886876" visible="true" weight="0.21860817" />
       <window_info id="Structure" order="1" sideWeight="0.50113124" side_tool="true" weight="0.25751072" />
       <window_info id="Favorites" order="2" sideWeight="0.50113124" side_tool="true" weight="0.25751072" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -452,7 +551,7 @@
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="运行" order="12" />
       <window_info anchor="bottom" id="调试" order="13" />
-      <window_info anchor="bottom" id="找到" order="14" weight="0.32918552" />
+      <window_info anchor="bottom" id="找到" order="14" weight="0.32786885" />
       <window_info anchor="right" id="层次结构" order="0" weight="0.32980332" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
@@ -468,141 +567,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/View/Media/Js/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="2" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/Media/Js/verifycode.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="3" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Model/Admin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataBaseHandle/HeadImgServer.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/page/admin/adminList.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="23" column="4" selection-start-line="23" selection-start-column="4" selection-end-line="25" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/layui/layui.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" column="469" selection-start-line="1" selection-start-column="469" selection-end-line="1" selection-end-column="469" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/layui/lay/modules/layedit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" column="489" selection-start-line="1" selection-start-column="489" selection-end-line="1" selection-end-column="489" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ajax.PHP/ajax.GetBill.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ajax.PHP/ajax.EditBarImage.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ajax.PHP/ajax.AddComboData.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Control/TestControl.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/page/test.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="33" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/page/admin/adminAdd.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1121">
-          <caret line="59" column="14" selection-start-line="59" selection-start-column="14" selection-end-line="59" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/layui/lay/modules/form.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" column="73" selection-start-line="1" selection-start-column="73" selection-end-line="1" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/layui/lay/modules/laypage.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataBaseHandle/AdminServer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="78" column="12" selection-start-line="78" selection-start-column="12" selection-end-line="80" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/page/admin/adminEdit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="44" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/page/admin/adminAdd.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="30" column="48" selection-start-line="30" selection-start-column="48" selection-end-line="30" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/page/admin/roleList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="10" column="32" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="32" />
-          <folding>
-            <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Control/AdminControl.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-380">
-          <caret line="10" column="9" lean-forward="true" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/page/admin/adminList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3424">
-          <caret line="276" column="52" selection-start-line="276" selection-start-column="40" selection-end-line="276" selection-end-column="52" />
-          <folding>
-            <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/View/json/newsList.json">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -610,201 +574,338 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataBaseHandle/CustomerServer.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataBaseHandle/InfoServer.php">
+    <entry file="file://$PROJECT_DIR$/Model/Images.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="60" column="224" selection-start-line="60" selection-start-column="12" selection-end-line="60" selection-end-column="224" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataBaseHandle/PictureServer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2945">
-          <caret line="155" column="31" lean-forward="true" selection-start-line="155" selection-start-column="31" selection-end-line="155" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Control/PictureControl.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
+        <state relative-caret-position="19">
+          <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/View/page/news/newsList.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5595">
-          <caret line="342" column="17" selection-start-line="342" selection-start-column="17" selection-end-line="342" selection-end-column="17" />
+        <state relative-caret-position="228">
+          <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/json/images.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="68" selection-start-column="47" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/page/admin/adminList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="301" column="14" lean-forward="true" selection-start-line="277" selection-start-column="12" selection-end-line="301" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/page/img/uploadImg.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="16" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/page/img/uploader/css/demo.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-912" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/page/img/uploader/js/jquery-1.10.2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="28906" selection-start-line="5" selection-start-column="28906" selection-end-line="5" selection-end-column="28906" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/page/img/uploader/css/bootstrap.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/page/img/uploader/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.382.1877/HZ$D.382.1878/fex-team-webuploader-94ccdbd/server/fileupload.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataBaseHandle/ImgServer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1140">
+          <caret line="60" column="24" selection-start-line="60" selection-start-column="24" selection-end-line="60" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/page/img/uploader/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="43" column="10" lean-forward="true" selection-start-line="43" selection-start-column="10" selection-end-line="43" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/View/page/news/newsList.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-19">
-          <caret line="35" column="64" selection-start-line="35" selection-start-column="64" selection-end-line="35" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/css/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="44" column="180" lean-forward="true" selection-start-line="44" selection-start-column="12" selection-end-line="44" selection-end-column="180" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataBaseHandle/NewsServer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="603">
-          <caret line="74" column="39" lean-forward="true" selection-start-line="74" selection-start-column="39" selection-end-line="74" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Model/News.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" column="15" lean-forward="true" selection-start-line="1" selection-start-column="15" selection-end-line="1" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/page/news/newsEdit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-836">
-          <caret line="1" column="5" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ProjectConfig/DBase.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/json/scenicList.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataBaseHandle/DBHelper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Control/NewsControl.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/css/scenic.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/css/news.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/page/news/scenicList.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="473">
-          <caret line="35" column="22" lean-forward="true" selection-start-line="35" selection-start-column="22" selection-end-line="35" selection-end-column="22" />
-          <folding>
-            <element signature="n#style#0;n#th#1;n#tr#0;n#thead#0;n#table#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/page/news/newsAdd.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="52" lean-forward="true" selection-start-line="2" selection-start-column="52" selection-end-line="2" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Model/Scenic.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="7" column="23" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataBaseHandle/ScenicServer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="47" column="13" lean-forward="true" selection-start-line="47" selection-start-column="13" selection-end-line="47" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/page/news/newsAdd.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="95" column="14" lean-forward="true" selection-start-line="95" selection-start-column="14" selection-end-line="95" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Control/ScenicControl.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="112" column="76" selection-start-line="112" selection-start-column="76" selection-end-line="112" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/page/news/scenicList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="242" column="33" selection-start-line="242" selection-start-column="23" selection-end-line="242" selection-end-column="33" />
-          <folding>
-            <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/page/news/newsEdit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="61" column="8" lean-forward="true" selection-start-line="61" selection-start-column="8" selection-end-line="61" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/page/news/scenicEdit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="598">
-          <caret line="26" column="47" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/page/news/scenicAdd.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="51" column="84" selection-start-line="51" selection-start-column="84" selection-end-line="51" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/page/news/scenicAdd.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="33" column="53" lean-forward="true" selection-start-line="25" selection-start-column="8" selection-end-line="33" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/page/news/scenicEdit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="46" column="14" lean-forward="true" selection-start-line="46" selection-start-column="14" selection-end-line="46" selection-end-column="14" />
+        <state relative-caret-position="522">
+          <caret line="63" column="28" selection-start-line="63" selection-start-column="24" selection-end-line="63" selection-end-column="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/View/json/navs.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="436">
-          <caret line="43" column="27" selection-start-line="43" selection-start-column="27" selection-end-line="43" selection-end-column="27" />
+        <state relative-caret-position="418">
+          <caret line="64" column="35" selection-start-line="64" selection-start-column="27" selection-end-line="64" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/page/img/images.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="98" column="28" selection-start-line="98" selection-start-column="28" selection-end-line="98" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/page/img/images.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="21" column="46" selection-start-line="21" selection-start-column="46" selection-end-line="21" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/json/areaList.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataBaseHandle/HeadImgServer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-29" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Control/ImgControl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1316">
+          <caret line="92" column="24" selection-start-line="92" selection-start-column="24" selection-end-line="92" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ajax.PHP/ajax.UpdateUserData.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ajax.PHP/ajax.EditBarImage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="50" lean-forward="true" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ajax.PHP/ajax.UpdateApp.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Control/HeadImgControl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-342" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/css/scenic.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="12" selection-start-column="12" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/css/area.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="26" lean-forward="true" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjectConfig/DBase.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/page/news/areaMap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="15" column="18" lean-forward="true" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/page/news/areaList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="69" column="46" lean-forward="true" selection-start-line="69" selection-start-column="46" selection-end-line="69" selection-end-column="46" />
+          <folding>
+            <element signature="n#style#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#1;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#iframe#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#1;n#tr#0;n#thead#0;n#table#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/page/news/areaEdit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="37" column="64" selection-start-line="37" selection-start-column="64" selection-end-line="37" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/page/news/areaEdit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-29">
+          <caret line="29" column="17" lean-forward="true" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/page/news/newsAdd.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="69" column="8" selection-start-line="69" selection-start-column="8" selection-end-line="77" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Control/NewsControl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="376">
+          <caret line="121" column="11" lean-forward="true" selection-start-line="121" selection-start-column="11" selection-end-line="121" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/page/news/areaAdd.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="38" column="51" selection-start-line="38" selection-start-column="51" selection-end-line="38" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataBaseHandle/AreaServer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="76" column="34" selection-start-line="76" selection-start-column="24" selection-end-line="76" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/page/news/areaList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-133">
+          <caret line="254" column="35" selection-start-line="254" selection-start-column="27" selection-end-line="254" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/page/news/areaAdd.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="14">
+          <caret line="65" column="45" selection-start-line="65" selection-start-column="45" selection-end-line="65" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Control/AreaControl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="111" column="24" selection-start-line="111" selection-start-column="24" selection-end-line="111" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/Area.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="12" column="25" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/page/news/newsEdit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="36" column="46" lean-forward="true" selection-start-line="36" selection-start-column="46" selection-end-line="36" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/page/news/newsAdd.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="64" column="44" lean-forward="true" selection-start-line="64" selection-start-column="44" selection-end-line="64" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Control/PictureControl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="26" column="24" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/page/activity/scenicList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-257">
+          <caret line="27" column="62" selection-start-line="27" selection-start-column="49" selection-end-line="27" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/page/activity/scenicAdd.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-846">
+          <caret line="15" column="23" lean-forward="true" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/page/activity/scenicEdit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-979" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/page/activity/scenicAdd.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/Scenic.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="1" column="10" selection-start-line="1" selection-start-column="10" selection-end-line="1" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/page/activity/scenicEdit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="35" column="18" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/page/activity/scenicList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="59">
+          <caret line="233" column="1" lean-forward="true" selection-start-line="233" selection-start-column="1" selection-end-line="233" selection-end-column="1" />
+          <folding>
+            <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Control/ScenicControl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="138" column="56" selection-start-line="138" selection-start-column="56" selection-end-line="138" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataBaseHandle/ScenicServer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="60" column="226" selection-start-line="60" selection-start-column="226" selection-end-line="60" selection-end-column="226" />
         </state>
       </provider>
     </entry>

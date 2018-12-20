@@ -10,7 +10,7 @@
 		{
 			$this->serverName = "localhost";
 			$this->username = "root";
-			$this->password = "";
+			$this->password = "root";
 		}
 
 		public function DBaseConnection()

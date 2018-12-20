@@ -58,8 +58,8 @@
                 $sql = "update " . $this->db_table . " set ".$field." = '$scenic->show' where id = '$scenic->id'";
 			}
 			else if($field=="all"){
-                $sql = "update " . $this->db_table . " set title = '$scenic->title',operator = '$scenic->operator',created_at = '$scenic->created_at',type = '$scenic->type',keyword = '$scenic->keyword',abstract = '$scenic->abstract',content = '$scenic->content',pic = '$scenic->pic' where id = '$scenic->id'";
-            }
+                $sql = "update " . $this->db_table . " set name = '$scenic->name',created_at = '$scenic->created_at',brief = '$scenic->brief',intro = '$scenic->intro',recommend = '$scenic->recommend' where id = '$scenic->id'";
+			}
             try{
                 $this->db->ExeSql($sql,$this->conn);
                 return true;
