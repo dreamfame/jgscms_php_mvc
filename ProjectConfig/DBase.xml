@@ -8,9 +8,9 @@
 	<table name="scenic"></table>
 	<table name="images"></table>
 	<table name="area"></table>
-	<table name="video"></table>
-	<table name="headimg"></table>
-	<table name="plan"></table>
+	<table name="route"></table>
+	<table name="activity"></table>
+	<table name="activity_person"></table>
 	<table name="integral"></table>
 	<table name="picture"></table>
 	<table name="message"></table>

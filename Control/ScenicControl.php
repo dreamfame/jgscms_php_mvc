@@ -24,14 +24,14 @@
 				case "query":
                     ScenicControl::GetScenic();
 					break;
-				case "gettype":
-					ScenicControl::GetType();
-					break;
                 case "top":
                     ScenicControl::GoTop();
                     break;
                 case "show":
                     ScenicControl::ChangeShow();
+                    break;
+                case "name":
+                    ScenicControl::GetName();
                     break;
 			}
 		}
@@ -58,10 +58,10 @@
             return;
 		}
 
-        public function GetType()
+        public function GetName()
         {
             $ss = new ScenicServer();
-            $result = $ss->GetType();
+            $result = $ss->GetName();
             $re = array('state'=>'0','content'=>null);
             while ($n = mysqli_fetch_array($result))
             {

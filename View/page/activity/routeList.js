@@ -7,23 +7,23 @@ layui.config({
 		$ = layui.jquery;
 
 	//加载页面数据
-	var areaData = '';
+	var routeData = '';
 
-	$.get("/index.php/area/JudgeOperate/list", function(data){
+	$.get("/index.php/route/JudgeOperate/list", function(data){
 		var newArray = [];
         var data = eval('(' + data + ')');
         if(data.state=="0")
         {
-            var dataHtml = '<tr><td colspan="9">暂无数据</td></tr>';
-            $(".area_content").html(dataHtml);
-            $('.area_list thead input[type="checkbox"]').prop("checked",false);
+            var dataHtml = '<tr><td colspan="8">暂无数据</td></tr>';
+            $(".route_content").html(dataHtml);
+            $('.route_list thead input[type="checkbox"]').prop("checked",false);
             form.render();
         }
         else{
             var newArray = [];
-            areaData = data.content;
+            routeData = data.content;
             //执行加载数据的方法
-            areaList();
+            routeList();
         }
 	})
 
@@ -34,13 +34,13 @@ layui.config({
 			var index = layer.msg('查询中，请稍候',{icon: 16,time:false,shade:0.8});
             setTimeout(function(){
             	$.ajax({
-					url : "../../json/areaList.json",
+					url : "../../json/routeList.json",
 					type : "get",
 					dataType : "json",
 					success : function(data){
-						areaData = data;
-						for(var i=0;i<areaData.length;i++){
-							var areaStr = areaData[i];
+						routeData = data;
+						for(var i=0;i<routeData.length;i++){
+							var routeStr = routeData[i];
 							var selectStr = $(".search_input").val();
 		            		function changeStr(data){
 		            			var dataStr = '';
@@ -57,27 +57,27 @@ layui.config({
 		            			}
 		            		}
 		            		//景点
-		            		if(areaStr.name.indexOf(selectStr) > -1){
-			            		areaStr["name"] = changeStr(areaStr.name);
+		            		if(routeStr.name.indexOf(selectStr) > -1){
+			            		routeStr["name"] = changeStr(routeStr.name);
 		            		}
 		            		//推荐星级
-		            		if(areaStr.recommend.indexOf(selectStr) > -1){
-			            		areaStr["recommend"] = changeStr(areaStr.recommend);
+		            		if(routeStr.recommend.indexOf(selectStr) > -1){
+			            		routeStr["recommend"] = changeStr(routeStr.recommend);
 		            		}
 		            		//浏览量
-		            		if(areaStr.see.indexOf(selectStr) > -1){
-			            		areaStr["see"] = changeStr(areaStr.see);
+		            		if(routeStr.see.indexOf(selectStr) > -1){
+			            		routeStr["see"] = changeStr(routeStr.see);
 		            		}
 		            		//发布时间
-		            		if(areaStr.created_at.indexOf(selectStr) > -1){
-			            		areaStr["created_at"] = changeStr(areaStr.created_at);
+		            		if(routeStr.created_at.indexOf(selectStr) > -1){
+			            		routeStr["created_at"] = changeStr(routeStr.created_at);
 		            		}
-		            		if(areaStr.name.indexOf(selectStr)>-1 || areaStr.recommend.indexOf(selectStr)>-1 ||  areaStr.see.indexOf(selectStr)>-1 || areaStr.created_at.indexOf(selectStr)>-1){
-		            			newArray.push(areaStr);
+		            		if(routeStr.name.indexOf(selectStr)>-1 || routeStr.recommend.indexOf(selectStr)>-1 ||  routeStr.see.indexOf(selectStr)>-1 || routeStr.created_at.indexOf(selectStr)>-1){
+		            			newArray.push(routeStr);
 		            		}
 		            	}
-		            	areaData = newArray;
-		            	areaList(areaData);
+		            	routeData = newArray;
+		            	routeList(routeData);
 					}
 				})
             	
@@ -93,12 +93,12 @@ layui.config({
         var index = layer.msg('加载中，请稍候',{icon: 16,time:false,shade:0.8});
         setTimeout(function(){
             $.ajax({
-                url : "../../json/areaList.json",
+                url : "../../json/routeList.json",
                 type : "get",
                 dataType : "json",
                 success : function(data){
-                	areaData = data;
-                    areaList(areaData);
+                	routeData = data;
+                    routeList(routeData);
                 }
             })
             layer.close(index);
@@ -108,11 +108,11 @@ layui.config({
 	//添加文章
 	//改变窗口大小时，重置弹窗的高度，防止超出可视区域（如F12调出debug的操作）
 	$(window).one("resize",function(){
-		$(".areaAdd_btn").click(function(){
+		$(".routeAdd_btn").click(function(){
 			var index = layui.layer.open({
 				title : "添加景点",
 				type : 2,
-				content : "activityAdd.html",
+				content : "routeAdd.html",
 				success : function(layero, index){
 					setTimeout(function(){
 						layui.layer.tips('点击此处返回文章列表', '.layui-layer-setwin .layui-layer-close', {
@@ -127,22 +127,22 @@ layui.config({
 
 	//批量删除
 	$(".batchDel").click(function(){
-		var $checkbox = $('.area_list tbody input[type="checkbox"][name="checked"]');
-		var $checked = $('.area_list tbody input[type="checkbox"][name="checked"]:checked');
+		var $checkbox = $('.route_list tbody input[type="checkbox"][name="checked"]');
+		var $checked = $('.route_list tbody input[type="checkbox"][name="checked"]:checked');
 		if($checkbox.is(":checked")){
 			layer.confirm('确定删除选中的信息？',{icon:3, title:'提示信息'},function(index){
 				var index = layer.msg('删除中，请稍候',{icon: 16,time:false,shade:0.8});
 	            setTimeout(function(){
 	            	//删除数据
 	            	for(var j=0;j<$checked.length;j++){
-	            		for(var i=0;i<areaData.length;i++){
-							if(areaData[i].areaId == $checked.eq(j).parents("tr").find(".area_del").attr("data-id")){
-								areaData.splice(i,1);
-								areaList(areaData);
+	            		for(var i=0;i<routeData.length;i++){
+							if(routeData[i].routeId == $checked.eq(j).parents("tr").find(".route_del").attr("data-id")){
+								routeData.splice(i,1);
+								routeList(routeData);
 							}
 						}
 	            	}
-	            	$('.area_list thead input[type="checkbox"]').prop("checked",false);
+	            	$('.route_list thead input[type="checkbox"]').prop("checked",false);
 	            	form.render();
 	                layer.close(index);
 					layer.msg("删除成功");
@@ -177,7 +177,7 @@ layui.config({
 	//是否展示
 	form.on('switch(isShow)', function(data){
         var index = layer.msg('修改中，请稍候',{icon: 16,time:false,shade:0.8});
-        var url = "/index.php/area/JudgeOperate/show";
+        var url = "/index.php/route/JudgeOperate/show";
         var show = this.checked?1:0;
         var _this = $(this);
         $.ajax({
@@ -206,7 +206,7 @@ layui.config({
     //是否置顶
     form.on('switch(isTop)', function(data){
         var index = layer.msg('修改中，请稍候',{icon: 16,time:false,shade:0.8});
-        var url = "/index.php/area/JudgeOperate/top";
+        var url = "/index.php/route/JudgeOperate/top";
         var top = this.checked?1:0;
         var _this = $(this);
         $.ajax({
@@ -233,14 +233,14 @@ layui.config({
     })
  
 	//操作
-	$("body").on("click",".area_edit",function(e){  //编辑
+	$("body").on("click",".route_edit",function(e){  //编辑
         var no = $(e.currentTarget).data('id');
-        var str = JSON.stringify(areaData[no]);
-        window.sessionStorage.setItem("edit_area",str);
+        var str = JSON.stringify(routeData[no]);
+        window.sessionStorage.setItem("edit_route",str);
         var index = layui.layer.open({
 			title : "编辑文章",
 			type : 2,
-			content : "activityEdit.html",
+			content : "routeEdit.html",
 			success : function(layero, index){
 				setTimeout(function(){
 					layui.layer.tips('点击此处返回信息列表', '.layui-layer-setwin .layui-layer-close', {
@@ -252,11 +252,28 @@ layui.config({
 		layui.layer.full(index);
 	})
 
-    $("body").on("click",".area_del",function(){  //删除
+    $("body").on("click",".route_pic",function(e){  //景区图库
+        var no = $(e.currentTarget).data('id');
+        var index = layui.layer.open({
+            title : "图库",
+            type : 2,
+            content : "../img/images.html?id="+no,
+            success : function(layero, index){
+                setTimeout(function(){
+                    layui.layer.tips('点击此处返回信息列表', '.layui-layer-setwin .layui-layer-close', {
+                        tips: 3
+                    });
+                },500)
+            }
+        })
+        layui.layer.full(index);
+    })
+
+    $("body").on("click",".route_del",function(){  //删除
         var _this = $(this);
         layer.confirm('确定删除此信息？',{icon:3, title:'提示信息'},function(index){
             //_this.parents("tr").remove();
-            var url = "/index.php/area/JudgeOperate/del";
+            var url = "/index.php/route/JudgeOperate/del";
             $.ajax({
                 data: {"id":_this.attr("data-id")},
                 type: "POST",
@@ -270,10 +287,10 @@ layui.config({
                 },
                 success: function (result) {
                     if(result.state=="1"){
-                        for(var i=0;i<areaData.length;i++){
-                            if(areaData[i].id == _this.attr("data-id")){
-                                areaData.splice(i,1);
-                                areaList(areaData);
+                        for(var i=0;i<routeData.length;i++){
+                            if(routeData[i].id == _this.attr("data-id")){
+                                routeData.splice(i,1);
+                                routeList(routeData);
                             }
                         }
                     }
@@ -286,41 +303,39 @@ layui.config({
         });
     })
 
-	function areaList(that){
+	function routeList(that){
 		//渲染数据
 		function renderDate(data,curr){
 			var dataHtml = '';
 			if(!that){
-				currData = areaData.concat().splice(curr*nums-nums, nums);
+				currData = routeData.concat().splice(curr*nums-nums, nums);
 			}else{
 				currData = that.concat().splice(curr*nums-nums, nums);
 			}
 			if(currData.length != 0){
 				for(var i=0;i<currData.length;i++){
-					var area_map = currData[i].area_map==''?'-':currData[i].area_map;
+					var scenic_name = currData[i].scenic_name==''?'-':currData[i].scenic_name;
                     var name = currData[i].name==''?'-':currData[i].name;
-                    var see = currData[i].see==''?'-':currData[i].see;
-                    var top = currData[i].top==1?"checked":"";
-                    var show = currData[i].show==1?"checked":"";
-                    var time = currData[i].created_at==''?'-':currData[i].created_at;
-                    var recommend = currData[i].recommend==''?'-':currData[i].recommend;
+                    var route = currData[i].route==''?'-':currData[i].route;
+                    var type = currData[i].type==''?'-':currData[i].type;
+                    var time = currData[i].time==''?'-':currData[i].time;
+                    var created_at = currData[i].created_at==''?'-':currData[i].created_at;
 					dataHtml += '<tr>'
 			    	+'<td><input type="checkbox" name="checked" lay-skin="primary" lay-filter="choose"></td>'
-			    	+'<td align="left">'+name+'</td>'
-					+'<td><a href="#" onclick="fileSelect('+currData[i].id+')"><img id="am'+currData[i].id+'" src="'+area_map+'" height="200" /></a></td>'
-                    +'<td>'+see+'</td>'
-			    	+'<td><input type="checkbox" name="show" id="aa" lay-skin="switch" data-id="'+data[i].id+'" lay-text="是|否" lay-filter="isShow"'+show+'></td>'
-                    +'<td><input type="checkbox" name="top" lay-skin="switch" data-id="'+data[i].id+'" lay-text="是|否" lay-filter="isTop"'+top+'></td>'
+			    	+'<td align="left">'+scenic_name+'</td>'
+                    +'<td>'+name+'</td>'
+			    	+'<td>'+route+'</td>'
+                    +'<td>'+type+'</td>'
 			    	+'<td>'+time+'</td>'
-                    +'<td>'+recommend+'</td>'
+                    +'<td>'+created_at+'</td>'
 			    	+'<td>'
-					+  '<a class="layui-btn layui-btn-mini area_edit" data-id="'+i+'"><i class="iconfont icon-edit"></i> 编辑</a>'
-					+  '<a class="layui-btn layui-btn-danger layui-btn-mini area_del" data-id="'+data[i].id+'"><i class="layui-icon">&#xe640;</i> 删除</a>'
+					+  '<a class="layui-btn layui-btn-mini route_edit" data-id="'+i+'"><i class="iconfont icon-edit"></i> 编辑</a>'
+					+  '<a class="layui-btn layui-btn-danger layui-btn-mini route_del" data-id="'+data[i].id+'"><i class="layui-icon">&#xe640;</i> 删除</a>'
 			        +'</td>'
 			    	+'</tr>';
 				}
 			}else{
-				dataHtml = '<tr><td colspan="9">暂无数据</td></tr>';
+				dataHtml = '<tr><td colspan="8">暂无数据</td></tr>';
 			}
 		    return dataHtml;
 		}
@@ -328,14 +343,14 @@ layui.config({
 		//分页
 		var nums = 13; //每页出现的数据量
 		if(that){
-			areaData = that;
+			routeData = that;
 		}
 		laypage({
 			cont : "page",
-			pages : Math.ceil(areaData.length/nums),
+			pages : Math.ceil(routeData.length/nums),
 			jump : function(obj){
-				$(".area_content").html(renderDate(areaData,obj.curr));
-				$('.area_list thead input[type="checkbox"]').prop("checked",false);
+				$(".route_content").html(renderDate(routeData,obj.curr));
+				$('.route_list thead input[type="checkbox"]').prop("checked",false);
 		    	form.render();
 			}
 		})

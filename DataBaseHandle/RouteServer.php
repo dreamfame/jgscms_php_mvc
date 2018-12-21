@@ -3,41 +3,41 @@
 	require_once '../Extensions/Security.php';
 	require_once '../Extensions/LoadXmlData.php';
 	header("Content-Type: text/html;charset=utf-8");
-	Class ScenicServer
+	Class RouteServer
 	{
 		public $db;
 		public $conn;
 		public $dbase;
 		public $db_table;
-		public function ScenicServer()
+		public function RouteServer()
 		{
 			$this->db = new DBHelper();
 			$xc = new XmlControl();
 			$this->dbase = $xc->GetXmlAttribute("../ProjectConfig/DBase.xml","db",0,"name");
-			$this->db_table = $xc->GetXmlAttribute("../ProjectConfig/DBase.xml","table",2,"name");
+			$this->db_table = $xc->GetXmlAttribute("../ProjectConfig/DBase.xml","table",5,"name");
 			$this->conn = $this->db->Open($this->dbase);
 		}
 
 		public function GetAll(){
-			$sql = "select * from ".$this->db_table;
+			$sql = "select route.id,route.scenic_id,scenic.name as scenic_name,route.route,route.name,route.type,route.time,route.created_at from route left join scenic on route.scenic_id=scenic.id";
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
 		}
 
-        public function GetName(){
-            $sql = "select id,name from ".$this->db_table;
+        public function GetType(){
+            $sql = "select id,name from Route_type";
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
         }
 
-        public function GetScenicById($id){
+        public function GetRouteById($id){
             $sql = "select * from ".$this->db_table." where id = '$id'";
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
         }
 
-		public function InsertScenic($scenic){
-            $sql = "insert into ".$this->db_table."(name,recommend,brief,intro,isshow,top,updated_at,created_at,see) values('$scenic->name','$scenic->recommend','$scenic->brief','$scenic->intro','$scenic->isshow','$scenic->top','$scenic->updated_at','$scenic->created_at','$scenic->see')";
+		public function InsertRoute($route){
+            $sql = "insert into ".$this->db_table."(scenic_id,route,type,name,time,created_at) values('$route->scenic_id','$route->route','$route->type','$route->name','$route->time','$route->created_at')";
             try{
                 $this->db->ExeSql($sql,$this->conn);
                 return true;
@@ -49,16 +49,16 @@
             return false;
 		}
 
-		public function UpdateScenic($scenic,$field){
+		public function UpdateRoute($route,$field){
             $sql = "";
             if($field=="top"){
-                $sql = "update " . $this->db_table . " set ".$field." = '$scenic->top' where id = '$scenic->id'";
+                $sql = "update " . $this->db_table . " set ".$field." = '$route->top' where id = '$route->id'";
             }
             else if($field=="isshow"){
-                $sql = "update " . $this->db_table . " set ".$field." = '$scenic->show' where id = '$scenic->id'";
+                $sql = "update " . $this->db_table . " set ".$field." = '$route->show' where id = '$route->id'";
 			}
 			else if($field=="all"){
-                $sql = "update " . $this->db_table . " set name = '$scenic->name',created_at = '$scenic->created_at',brief = '$scenic->brief',intro = '$scenic->intro',recommend = '$scenic->recommend' where id = '$scenic->id'";
+                $sql = "update " . $this->db_table . " set name = '$route->name',route = '$route->route' where id = '$route->id' and scenic_id = '$route->scenic_id'";
 			}
             try{
                 $this->db->ExeSql($sql,$this->conn);
@@ -71,7 +71,7 @@
             return true;
 		}
 
-		public function DeleteScenic($id)
+		public function DeleteRoute($id)
         {
             $sql="delete from ".$this->db_table." where id= '$id'";
             try{

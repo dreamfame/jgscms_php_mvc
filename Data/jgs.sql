@@ -10,10 +10,55 @@ Target Server Type    : MYSQL
 Target Server Version : 50554
 File Encoding         : 65001
 
-Date: 2018-12-20 21:53:56
+Date: 2018-12-21 17:31:09
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for activity
+-- ----------------------------
+DROP TABLE IF EXISTS `activity`;
+CREATE TABLE `activity` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `pic` varchar(255) DEFAULT NULL,
+  `date` varchar(255) DEFAULT NULL,
+  `join` varchar(255) DEFAULT NULL,
+  `intro` varchar(255) DEFAULT NULL,
+  `prize_way` varchar(255) DEFAULT NULL,
+  `prize` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `enable` int(2) DEFAULT NULL,
+  `num` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of activity
+-- ----------------------------
+INSERT INTO `activity` VALUES ('1', '元旦', '/images/15453792651545308976default.png', '2018年12月22日-12月24日', '短视频', '庆祝元旦佳节', '转载30次，点赞100次', '井冈山门票1张', 'xxx-1234567', '1', '2');
+INSERT INTO `activity` VALUES ('2', '测试活动', '/images/15453807661545309744alipay.jpg', '2018年12月21日-12月29日', '测试', '测试', '测试', 'iphone一台', '13628635884', '1', '0');
+
+-- ----------------------------
+-- Table structure for activity_person
+-- ----------------------------
+DROP TABLE IF EXISTS `activity_person`;
+CREATE TABLE `activity_person` (
+  `id` int(11) NOT NULL,
+  `activity_id` int(11) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `nickname` varchar(255) DEFAULT NULL,
+  `time` varchar(255) DEFAULT NULL,
+  `prize` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of activity_person
+-- ----------------------------
+INSERT INTO `activity_person` VALUES ('1', '1', '13628635884', '夏日凉风', '0', '0');
+INSERT INTO `activity_person` VALUES ('2', '1', '15072558596', 'dreamfame', '0', '0');
 
 -- ----------------------------
 -- Table structure for admin
@@ -83,7 +128,6 @@ CREATE TABLE `images` (
 -- ----------------------------
 -- Records of images
 -- ----------------------------
-INSERT INTO `images` VALUES ('1', '1', '图片1', '../../images/1545131059AE2FE166B0D2CC0AAB911CCBBA231A24.png');
 
 -- ----------------------------
 -- Table structure for log
@@ -197,6 +241,26 @@ INSERT INTO `role` VALUES ('2', '内容管理员', null);
 INSERT INTO `role` VALUES ('3', '照片审核管理员', null);
 
 -- ----------------------------
+-- Table structure for route
+-- ----------------------------
+DROP TABLE IF EXISTS `route`;
+CREATE TABLE `route` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `scenic_id` int(11) DEFAULT NULL,
+  `route` varchar(255) DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `time` varchar(255) DEFAULT NULL,
+  `created_at` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of route
+-- ----------------------------
+INSERT INTO `route` VALUES ('1', '1', '黄洋界-大井', '一日游', '线路二', '上午', '2018-12-21');
+
+-- ----------------------------
 -- Table structure for scenic
 -- ----------------------------
 DROP TABLE IF EXISTS `scenic`;
@@ -217,7 +281,7 @@ CREATE TABLE `scenic` (
 -- ----------------------------
 -- Records of scenic
 -- ----------------------------
-INSERT INTO `scenic` VALUES ('1', '井冈山', '井冈山：地处湘东-赣西边界，万洋山（为罗霄山脉中段）的北支，据传在东汉年间就已经有人在井冈山居住了。秦朝设郡县制时，井冈山为九江郡庐陵县属地。', '', '4', '1', '1', '0', '2018-12-18', '2018-12-18');
+INSERT INTO `scenic` VALUES ('1', '井冈山', '井冈山：地处湘东-赣西边界，万洋山（为罗霄山脉中段）的北支，据传在东汉年间就已经有人在井冈山居住了。秦朝设郡县制时，井冈山为九江郡庐陵县属地。', '', '4', '0', '1', '0', '2018-12-18', '2018-12-18');
 INSERT INTO `scenic` VALUES ('3', '发送', '被第三方', 0xE58886E6898BE5A4A7E5B888, '3', '1', '1', '0', '2018-12-19', '2018-12-19');
 INSERT INTO `scenic` VALUES ('4', '井冈山景区', '工时费', 0xE585ACE58FB8, '4', '1', '1', '0', '2018-12-20', '2018-12-20');
 

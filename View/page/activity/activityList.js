@@ -7,23 +7,23 @@ layui.config({
 		$ = layui.jquery;
 
 	//加载页面数据
-	var areaData = '';
+	var activityData = '';
 
-	$.get("/index.php/area/JudgeOperate/list", function(data){
+	$.get("/index.php/activity/JudgeOperate/list", function(data){
 		var newArray = [];
         var data = eval('(' + data + ')');
         if(data.state=="0")
         {
             var dataHtml = '<tr><td colspan="9">暂无数据</td></tr>';
-            $(".area_content").html(dataHtml);
-            $('.area_list thead input[type="checkbox"]').prop("checked",false);
+            $(".activity_content").html(dataHtml);
+            $('.activity_list thead input[type="checkbox"]').prop("checked",false);
             form.render();
         }
         else{
             var newArray = [];
-            areaData = data.content;
+            activityData = data.content;
             //执行加载数据的方法
-            areaList();
+            activityList();
         }
 	})
 
@@ -34,13 +34,13 @@ layui.config({
 			var index = layer.msg('查询中，请稍候',{icon: 16,time:false,shade:0.8});
             setTimeout(function(){
             	$.ajax({
-					url : "../../json/areaList.json",
+					url : "../../json/activityList.json",
 					type : "get",
 					dataType : "json",
 					success : function(data){
-						areaData = data;
-						for(var i=0;i<areaData.length;i++){
-							var areaStr = areaData[i];
+						activityData = data;
+						for(var i=0;i<activityData.length;i++){
+							var activityStr = activityData[i];
 							var selectStr = $(".search_input").val();
 		            		function changeStr(data){
 		            			var dataStr = '';
@@ -57,27 +57,27 @@ layui.config({
 		            			}
 		            		}
 		            		//景点
-		            		if(areaStr.name.indexOf(selectStr) > -1){
-			            		areaStr["name"] = changeStr(areaStr.name);
+		            		if(activityStr.name.indexOf(selectStr) > -1){
+			            		activityStr["name"] = changeStr(activityStr.name);
 		            		}
 		            		//推荐星级
-		            		if(areaStr.recommend.indexOf(selectStr) > -1){
-			            		areaStr["recommend"] = changeStr(areaStr.recommend);
+		            		if(activityStr.recommend.indexOf(selectStr) > -1){
+			            		activityStr["recommend"] = changeStr(activityStr.recommend);
 		            		}
 		            		//浏览量
-		            		if(areaStr.see.indexOf(selectStr) > -1){
-			            		areaStr["see"] = changeStr(areaStr.see);
+		            		if(activityStr.see.indexOf(selectStr) > -1){
+			            		activityStr["see"] = changeStr(activityStr.see);
 		            		}
 		            		//发布时间
-		            		if(areaStr.created_at.indexOf(selectStr) > -1){
-			            		areaStr["created_at"] = changeStr(areaStr.created_at);
+		            		if(activityStr.created_at.indexOf(selectStr) > -1){
+			            		activityStr["created_at"] = changeStr(activityStr.created_at);
 		            		}
-		            		if(areaStr.name.indexOf(selectStr)>-1 || areaStr.recommend.indexOf(selectStr)>-1 ||  areaStr.see.indexOf(selectStr)>-1 || areaStr.created_at.indexOf(selectStr)>-1){
-		            			newArray.push(areaStr);
+		            		if(activityStr.name.indexOf(selectStr)>-1 || activityStr.recommend.indexOf(selectStr)>-1 ||  activityStr.see.indexOf(selectStr)>-1 || activityStr.created_at.indexOf(selectStr)>-1){
+		            			newArray.push(activityStr);
 		            		}
 		            	}
-		            	areaData = newArray;
-		            	areaList(areaData);
+		            	activityData = newArray;
+		            	activityList(activityData);
 					}
 				})
             	
@@ -93,12 +93,12 @@ layui.config({
         var index = layer.msg('加载中，请稍候',{icon: 16,time:false,shade:0.8});
         setTimeout(function(){
             $.ajax({
-                url : "../../json/areaList.json",
+                url : "../../json/activityList.json",
                 type : "get",
                 dataType : "json",
                 success : function(data){
-                	areaData = data;
-                    areaList(areaData);
+                	activityData = data;
+                    activityList(activityData);
                 }
             })
             layer.close(index);
@@ -108,9 +108,9 @@ layui.config({
 	//添加文章
 	//改变窗口大小时，重置弹窗的高度，防止超出可视区域（如F12调出debug的操作）
 	$(window).one("resize",function(){
-		$(".areaAdd_btn").click(function(){
+		$(".activityAdd_btn").click(function(){
 			var index = layui.layer.open({
-				title : "添加景点",
+				title : "添加活动",
 				type : 2,
 				content : "activityAdd.html",
 				success : function(layero, index){
@@ -127,22 +127,22 @@ layui.config({
 
 	//批量删除
 	$(".batchDel").click(function(){
-		var $checkbox = $('.area_list tbody input[type="checkbox"][name="checked"]');
-		var $checked = $('.area_list tbody input[type="checkbox"][name="checked"]:checked');
+		var $checkbox = $('.activity_list tbody input[type="checkbox"][name="checked"]');
+		var $checked = $('.activity_list tbody input[type="checkbox"][name="checked"]:checked');
 		if($checkbox.is(":checked")){
 			layer.confirm('确定删除选中的信息？',{icon:3, title:'提示信息'},function(index){
 				var index = layer.msg('删除中，请稍候',{icon: 16,time:false,shade:0.8});
 	            setTimeout(function(){
 	            	//删除数据
 	            	for(var j=0;j<$checked.length;j++){
-	            		for(var i=0;i<areaData.length;i++){
-							if(areaData[i].areaId == $checked.eq(j).parents("tr").find(".area_del").attr("data-id")){
-								areaData.splice(i,1);
-								areaList(areaData);
+	            		for(var i=0;i<activityData.length;i++){
+							if(activityData[i].activityId == $checked.eq(j).parents("tr").find(".activity_del").attr("data-id")){
+								activityData.splice(i,1);
+								activityList(activityData);
 							}
 						}
 	            	}
-	            	$('.area_list thead input[type="checkbox"]').prop("checked",false);
+	            	$('.activity_list thead input[type="checkbox"]').prop("checked",false);
 	            	form.render();
 	                layer.close(index);
 					layer.msg("删除成功");
@@ -174,14 +174,14 @@ layui.config({
 		form.render('checkbox');
 	})
 
-	//是否展示
-	form.on('switch(isShow)', function(data){
+    //是否可用
+    form.on('switch(isEnable)', function(data){
         var index = layer.msg('修改中，请稍候',{icon: 16,time:false,shade:0.8});
-        var url = "/index.php/area/JudgeOperate/show";
-        var show = this.checked?1:0;
+        var url = "/index.php/activity/JudgeOperate/enable";
+        var enable = this.checked?1:0;
         var _this = $(this);
         $.ajax({
-            data: {"id":_this.attr("data-id"),"show":show},
+            data: {"id":_this.attr("data-id"),"enable":enable},
             type: "POST",
             dataType: "JSON",
             url: url,
@@ -194,36 +194,7 @@ layui.config({
             success: function (result) {
                 if(result.state=="1"){
                     layer.close(index);
-                    layer.msg("展示状态修改成功！");
-                }
-            },
-            error:function(data){
-                console.log(data.responseText);
-            }
-        })
-	})
-
-    //是否置顶
-    form.on('switch(isTop)', function(data){
-        var index = layer.msg('修改中，请稍候',{icon: 16,time:false,shade:0.8});
-        var url = "/index.php/area/JudgeOperate/top";
-        var top = this.checked?1:0;
-        var _this = $(this);
-        $.ajax({
-            data: {"id":_this.attr("data-id"),"top":top},
-            type: "POST",
-            dataType: "JSON",
-            url: url,
-            beforeSend: function () {
-
-            },
-            complete: function () {
-
-            },
-            success: function (result) {
-                if(result.state=="1"){
-                    layer.close(index);
-                    layer.msg("置顶状态修改成功！");
+                    layer.msg("活动状态修改成功！");
                 }
             },
             error:function(data){
@@ -233,10 +204,10 @@ layui.config({
     })
  
 	//操作
-	$("body").on("click",".area_edit",function(e){  //编辑
+	$("body").on("click",".activity_edit",function(e){  //编辑
         var no = $(e.currentTarget).data('id');
-        var str = JSON.stringify(areaData[no]);
-        window.sessionStorage.setItem("edit_area",str);
+        var str = JSON.stringify(activityData[no]);
+        window.sessionStorage.setItem("edit_activity",str);
         var index = layui.layer.open({
 			title : "编辑文章",
 			type : 2,
@@ -252,11 +223,11 @@ layui.config({
 		layui.layer.full(index);
 	})
 
-    $("body").on("click",".area_del",function(){  //删除
+    $("body").on("click",".activity_del",function(){  //删除
         var _this = $(this);
         layer.confirm('确定删除此信息？',{icon:3, title:'提示信息'},function(index){
             //_this.parents("tr").remove();
-            var url = "/index.php/area/JudgeOperate/del";
+            var url = "/index.php/activity/JudgeOperate/del";
             $.ajax({
                 data: {"id":_this.attr("data-id")},
                 type: "POST",
@@ -270,10 +241,10 @@ layui.config({
                 },
                 success: function (result) {
                     if(result.state=="1"){
-                        for(var i=0;i<areaData.length;i++){
-                            if(areaData[i].id == _this.attr("data-id")){
-                                areaData.splice(i,1);
-                                areaList(areaData);
+                        for(var i=0;i<activityData.length;i++){
+                            if(activityData[i].id == _this.attr("data-id")){
+                                activityData.splice(i,1);
+                                activityList(activityData);
                             }
                         }
                     }
@@ -286,36 +257,37 @@ layui.config({
         });
     })
 
-	function areaList(that){
+	function activityList(that){
 		//渲染数据
 		function renderDate(data,curr){
 			var dataHtml = '';
 			if(!that){
-				currData = areaData.concat().splice(curr*nums-nums, nums);
+				currData = activityData.concat().splice(curr*nums-nums, nums);
 			}else{
 				currData = that.concat().splice(curr*nums-nums, nums);
 			}
 			if(currData.length != 0){
 				for(var i=0;i<currData.length;i++){
-					var area_map = currData[i].area_map==''?'-':currData[i].area_map;
+					var pic = currData[i].pic==''?'-':currData[i].pic;
                     var name = currData[i].name==''?'-':currData[i].name;
-                    var see = currData[i].see==''?'-':currData[i].see;
-                    var top = currData[i].top==1?"checked":"";
-                    var show = currData[i].show==1?"checked":"";
-                    var time = currData[i].created_at==''?'-':currData[i].created_at;
-                    var recommend = currData[i].recommend==''?'-':currData[i].recommend;
+                    var date = currData[i].date==''?'-':currData[i].date;
+                    var enable = currData[i].enable==1?"checked":"";
+                    var num = currData[i].num==''?'-':currData[i].num;
+                    var prize = currData[i].prize==''?'-':currData[i].prize;
+                    var phone = currData[i].phone==''?'-':currData[i].phone;
 					dataHtml += '<tr>'
 			    	+'<td><input type="checkbox" name="checked" lay-skin="primary" lay-filter="choose"></td>'
-			    	+'<td align="left">'+name+'</td>'
-					+'<td><a href="#" onclick="fileSelect('+currData[i].id+')"><img id="am'+currData[i].id+'" src="'+area_map+'" height="200" /></a></td>'
-                    +'<td>'+see+'</td>'
-			    	+'<td><input type="checkbox" name="show" id="aa" lay-skin="switch" data-id="'+data[i].id+'" lay-text="是|否" lay-filter="isShow"'+show+'></td>'
-                    +'<td><input type="checkbox" name="top" lay-skin="switch" data-id="'+data[i].id+'" lay-text="是|否" lay-filter="isTop"'+top+'></td>'
-			    	+'<td>'+time+'</td>'
-                    +'<td>'+recommend+'</td>'
+			    	+'<td>'+name+'</td>'
+					+'<td><a href="#" onclick="fileSelect('+currData[i].id+')"><img id="ap'+currData[i].id+'" src="'+pic+'" height="100" /></a></td>'
+                    +'<td>'+date+'</td>'
+                    +'<td>'+prize+'</td>'
+					+'<td>'+phone+'</td>'
+                    +'<td>'+num+'</td>'
+                    +'<td><input type="checkbox" name="enable" lay-skin="switch" data-id="'+data[i].id+'" lay-text="启用|禁用" lay-filter="isEnable"'+enable+'></td>'
 			    	+'<td>'
-					+  '<a class="layui-btn layui-btn-mini area_edit" data-id="'+i+'"><i class="iconfont icon-edit"></i> 编辑</a>'
-					+  '<a class="layui-btn layui-btn-danger layui-btn-mini area_del" data-id="'+data[i].id+'"><i class="layui-icon">&#xe640;</i> 删除</a>'
+                    +  '<a class="layui-btn layui-btn-warm layui-btn-mini activity_person" data-id="'+i+'"><i class="layui-icon">&#xe612;</i> 查看参与者</a>'
+					+  '<a class="layui-btn layui-btn-mini activity_edit" data-id="'+i+'"><i class="iconfont icon-edit"></i> 编辑</a>'
+					+  '<a class="layui-btn layui-btn-danger layui-btn-mini activity_del" data-id="'+data[i].id+'"><i class="layui-icon">&#xe640;</i> 删除</a>'
 			        +'</td>'
 			    	+'</tr>';
 				}
@@ -328,14 +300,14 @@ layui.config({
 		//分页
 		var nums = 13; //每页出现的数据量
 		if(that){
-			areaData = that;
+			activityData = that;
 		}
 		laypage({
 			cont : "page",
-			pages : Math.ceil(areaData.length/nums),
+			pages : Math.ceil(activityData.length/nums),
 			jump : function(obj){
-				$(".area_content").html(renderDate(areaData,obj.curr));
-				$('.area_list thead input[type="checkbox"]').prop("checked",false);
+				$(".activity_content").html(renderDate(activityData,obj.curr));
+				$('.activity_list thead input[type="checkbox"]').prop("checked",false);
 		    	form.render();
 			}
 		})

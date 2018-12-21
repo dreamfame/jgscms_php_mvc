@@ -50,13 +50,13 @@
 		{
 			"title" : "景区路线",
 			"icon" : "icon-text",
-			"href" : "page/news/newsList.html",
+			"href" : "page/activity/routeList.html",
 			"spread" : false
 		},
 		{
 			"title" : "景区活动",
 			"icon" : "icon-text",
-			"href" : "page/news/scenicList.html",
+			"href" : "page/activity/activityList.html",
 			"spread" : false
 		},
 		{
@@ -64,41 +64,6 @@
 			"icon" : "icon-text",
 			"href" : "page/activity/scenicList.html",
 			"spread" : false
-		}
-	]
-},{
-	"title" : "文章列表",
-	"icon" : "icon-text",
-	"href" : "page/news/newsList.html",
-	"spread" : false
-},{
-	"title" : "友情链接",
-	"icon" : "&#xe64c;",
-	"href" : "page/links/linksList.html",
-	"spread" : false
-},{
-	"title" : "系统基本参数",
-	"icon" : "&#xe631;",
-	"href" : "page/systemParameter/systemParameter.html",
-	"spread" : false
-},{
-	"title" : "其他页面",
-	"icon" : "&#xe630;",
-	"href" : "",
-	"spread" : false,
-	"children" : [
-		{
-			"title" : "404页面",
-			"icon" : "&#xe61c;",
-			"href" : "page/404.html",
-			"spread" : false
-		},
-		{
-			"title" : "登录",
-			"icon" : "&#xe609;",
-			"href" : "page/login/login.html",
-			"spread" : false,
-			"target" : "_blank"
 		}
 	]
 }]

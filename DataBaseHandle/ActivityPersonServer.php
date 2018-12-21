@@ -3,18 +3,18 @@
 	require_once '../Extensions/Security.php';
 	require_once '../Extensions/LoadXmlData.php';
 	header("Content-Type: text/html;charset=utf-8");
-	Class ScenicServer
+	Class ActivityPersonServer
 	{
 		public $db;
 		public $conn;
 		public $dbase;
 		public $db_table;
-		public function ScenicServer()
+		public function ActivityPersonServer()
 		{
 			$this->db = new DBHelper();
 			$xc = new XmlControl();
 			$this->dbase = $xc->GetXmlAttribute("../ProjectConfig/DBase.xml","db",0,"name");
-			$this->db_table = $xc->GetXmlAttribute("../ProjectConfig/DBase.xml","table",2,"name");
+			$this->db_table = $xc->GetXmlAttribute("../ProjectConfig/DBase.xml","table",7,"name");
 			$this->conn = $this->db->Open($this->dbase);
 		}
 
@@ -24,20 +24,20 @@
             return $result;
 		}
 
-        public function GetName(){
-            $sql = "select id,name from ".$this->db_table;
+        public function GetType(){
+            $sql = "select id,name from ActivityPerson_type";
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
         }
 
-        public function GetScenicById($id){
+        public function GetActivityPersonById($id){
             $sql = "select * from ".$this->db_table." where id = '$id'";
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
         }
 
-		public function InsertScenic($scenic){
-            $sql = "insert into ".$this->db_table."(name,recommend,brief,intro,isshow,top,updated_at,created_at,see) values('$scenic->name','$scenic->recommend','$scenic->brief','$scenic->intro','$scenic->isshow','$scenic->top','$scenic->updated_at','$scenic->created_at','$scenic->see')";
+		public function InsertActivityPerson($activity){
+            $sql = "insert into ".$this->db_table."(name,recommend,brief,intro,isshow,top,updated_at,created_at,see,activity_map) values('$activity->name','$activity->recommend','$activity->brief','$activity->intro','$activity->isshow','$activity->top','$activity->updated_at','$activity->created_at','$activity->see','$activity->activity_map')";
             try{
                 $this->db->ExeSql($sql,$this->conn);
                 return true;
@@ -49,17 +49,20 @@
             return false;
 		}
 
-		public function UpdateScenic($scenic,$field){
+		public function UpdateActivityPerson($activity,$field){
             $sql = "";
             if($field=="top"){
-                $sql = "update " . $this->db_table . " set ".$field." = '$scenic->top' where id = '$scenic->id'";
+                $sql = "update " . $this->db_table . " set ".$field." = '$activity->top' where id = '$activity->id'";
             }
             else if($field=="isshow"){
-                $sql = "update " . $this->db_table . " set ".$field." = '$scenic->show' where id = '$scenic->id'";
+                $sql = "update " . $this->db_table . " set ".$field." = '$activity->show' where id = '$activity->id'";
 			}
 			else if($field=="all"){
-                $sql = "update " . $this->db_table . " set name = '$scenic->name',created_at = '$scenic->created_at',brief = '$scenic->brief',intro = '$scenic->intro',recommend = '$scenic->recommend' where id = '$scenic->id'";
-			}
+                $sql = "update " . $this->db_table . " set name = '$activity->name',created_at = '$activity->created_at',brief = '$activity->brief',recommend = '$activity->recommend',intro = '$activity->intro' where id = '$activity->id'";
+            }
+            else if($field=="activity_map"){
+                $sql = "update " . $this->db_table . " set ".$field." = '$activity->activity_map' where id = '$activity->id'";
+            }
             try{
                 $this->db->ExeSql($sql,$this->conn);
                 return true;
@@ -71,7 +74,7 @@
             return true;
 		}
 
-		public function DeleteScenic($id)
+		public function DeleteActivityPerson($id)
         {
             $sql="delete from ".$this->db_table." where id= '$id'";
             try{

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>文章列表--layui后台管理模板</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="../../layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="//at.alicdn.com/t/font_tnyc012u2rlwstt9.css" media="all" />
+	<link rel="stylesheet" href="../../css/activity.css" media="all" />
+</head>
+<body class="childrenBody">
+	<blockquote class="layui-elem-quote activity_search">
+		<div class="layui-inline">
+		    <div class="layui-input-inline">
+		    	<input type="text" value="" placeholder="请输入关键字" class="layui-input search_input">
+		    </div>
+		    <a class="layui-btn search_btn">查询</a>
+		</div>
+		<div class="layui-inline">
+			<a class="layui-btn layui-btn-warm showAll_btn">显示全部</a>
+		</div>
+		<div class="layui-inline">
+			<a class="layui-btn layui-btn-normal activityAdd_btn">添加活动</a>
+		</div>
+		<div class="layui-inline">
+			<a class="layui-btn layui-btn-danger batchDel">批量删除</a>
+		</div>
+	</blockquote>
+	<div class="layui-form activity_list">
+		<form id="uploadForm" action="/index.php/activity/JudgeOperate/pic" method="post" target="myiframe" enctype="multipart/form-data" style="width:auto;display:none;">
+			<input id="activityid" name="activityid" type="hidden" />
+			<input type="file" accept="image/gif, image/jpeg,image/png" name="uploadfile" id="uploadfile" onchange="fileSelected();" style="display:none;">
+		</form>
+		<iframe id="myiframe" name="myiframe" style="display:none;"></iframe>
+	  	<table class="layui-table" lay-data="{initSort:{field:'time', type:'desc'}}">
+		    <colgroup>
+				<col width="2%">
+				<col width="10%">
+				<col width="20%">
+				<col>
+				<col width="10%">
+				<col width="10%">
+				<col width="10%">
+				<col width="5%">
+				<col width="15%">
+		    </colgroup>
+		    <thead>
+				<tr>
+					<th><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose" id="allChoose"></th>
+					<th>活动名</th>
+					<th>活动图</th>
+					<th>日期</th>
+					<th>奖品</th>
+					<th>咨询电话</th>
+					<th>参与人数</th>
+					<th>状态</th>
+					<th>操作</th>
+				</tr> 
+		    </thead>
+		    <tbody class="activity_content"></tbody>
+		</table>
+	</div>
+	<div id="page"></div>
+	<script type="text/javascript" src="../../layui/layui.js"></script>
+	<script type="text/javascript" src="activityList.js"></script>
+	<script type="text/javascript" src="activityMap.js"></script>
+</body>
+</html>
