@@ -66,4 +66,24 @@
 			"spread" : false
 		}
 	]
-}]
+},{
+	"title" : "分享内容管理",
+	"icon" : "&#xe613;",
+	"href" : "",
+	"spread" : false,
+	"children" : [
+		{
+			"title" : "照片信息",
+			"icon" : "icon-text",
+			"href" : "page/share/photoList.html",
+			"spread" : false
+		},
+		{
+			"title" : "明信片信息",
+			"icon" : "icon-text",
+			"href" : "page/news/areaList.html",
+			"spread" : false
+		}
+	]
+}
+]

@@ -15,7 +15,7 @@ layui.config({
 	
 	//登录按钮事件
 	form.on("submit(login)",function(data){
-		var url = "/index.php/admin/JugdeOperate/login";
+		var url = "/index.php/admin/JudgeOperate/login";
 		var formData = data.field;
 		var code = $("#verifycode").val().toLowerCase();
 		if(data.field.code.toLowerCase()!=code){
