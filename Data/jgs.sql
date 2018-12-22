@@ -162,7 +162,7 @@ INSERT INTO `menu` VALUES (2, '权限管理', NULL, '', 'false', '&#xe613;', NUL
 INSERT INTO `menu` VALUES (3, '管理员信息', 2, 'page/admin/adminList.html', 'false', '&#xe612;', NULL);
 INSERT INTO `menu` VALUES (4, '角色信息', 2, 'page/admin/roleList.html', 'false', '&#xe673;', NULL);
 INSERT INTO `menu` VALUES (5, '景区内容管理', NULL, '', 'false', '&#xe705;', NULL);
-INSERT INTO `menu` VALUES (6, '文章信息', 5, 'page/news/newsList.html', 'false', 'icon-text', NULL);
+INSERT INTO `menu` VALUES (6, '文章信息', 5, 'page/news/postcardList.html', 'false', 'icon-text', NULL);
 INSERT INTO `menu` VALUES (7, '文章分类', 5, 'page/news/newsType.html', 'false', '&#xe653;', NULL);
 INSERT INTO `menu` VALUES (8, '参考指南管理', NULL, NULL, 'false', '&#xe609;', NULL);
 INSERT INTO `menu` VALUES (9, '景区路线', 8, 'page/activity/routeList.html', 'false', '&#xe670;', NULL);

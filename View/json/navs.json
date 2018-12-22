@@ -81,7 +81,7 @@
 		{
 			"title" : "明信片信息",
 			"icon" : "icon-text",
-			"href" : "page/news/areaList.html",
+			"href" : "page/share/postcardList.html",
 			"spread" : false
 		}
 	]
