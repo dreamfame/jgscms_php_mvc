@@ -11,7 +11,7 @@
  Target Server Version : 100137
  File Encoding         : 65001
 
- Date: 22/12/2018 22:10:48
+ Date: 23/12/2018 09:26:46
 */
 
 SET NAMES utf8mb4;
@@ -162,7 +162,7 @@ INSERT INTO `menu` VALUES (2, '权限管理', NULL, '', 'false', '&#xe613;', NUL
 INSERT INTO `menu` VALUES (3, '管理员信息', 2, 'page/admin/adminList.html', 'false', '&#xe612;', NULL);
 INSERT INTO `menu` VALUES (4, '角色信息', 2, 'page/admin/roleList.html', 'false', '&#xe673;', NULL);
 INSERT INTO `menu` VALUES (5, '景区内容管理', NULL, '', 'false', '&#xe705;', NULL);
-INSERT INTO `menu` VALUES (6, '文章信息', 5, 'page/news/postcardList.html', 'false', 'icon-text', NULL);
+INSERT INTO `menu` VALUES (6, '文章信息', 5, 'page/news/newsList.html', 'false', 'icon-text', NULL);
 INSERT INTO `menu` VALUES (7, '文章分类', 5, 'page/news/newsType.html', 'false', '&#xe653;', NULL);
 INSERT INTO `menu` VALUES (8, '参考指南管理', NULL, NULL, 'false', '&#xe609;', NULL);
 INSERT INTO `menu` VALUES (9, '景区路线', 8, 'page/activity/routeList.html', 'false', '&#xe670;', NULL);
@@ -245,6 +245,26 @@ CREATE TABLE `photo`  (
 -- Records of photo
 -- ----------------------------
 INSERT INTO `photo` VALUES (1, 'dreamfame', '分享测试', '2018-12-21', 0, 0, '/images/default.jpg', '/images/default.jpg', '/images/default.jpg', '/images/default.jpg', '/images/default.jpg', '/images/default.jpg', '/images/default.jpg', '/images/default.jpg', '/images/default.jpg', 0, '-');
+
+-- ----------------------------
+-- Table structure for postcard
+-- ----------------------------
+DROP TABLE IF EXISTS `postcard`;
+CREATE TABLE `postcard`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `wx` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `pic` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `date` datetime(0) NOT NULL,
+  `wishes` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of postcard
+-- ----------------------------
+INSERT INTO `postcard` VALUES (1, 'dreamfame', '测试', '/images/default.png', '2018-12-22 22:48:56', '祝大家元旦快乐');
+INSERT INTO `postcard` VALUES (4, 'dreamfame', '测试2', '/images/default.png', '2018-12-22 23:31:05', '祝大家新年快乐');
 
 -- ----------------------------
 -- Table structure for role
