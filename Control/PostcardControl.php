@@ -19,24 +19,9 @@
 				case "del":
                     PostcardControl::DelPostcard();
 					break;
-				case "edit":
-                    PostcardControl::UpdatePostcard();
-					break;
 				case "query":
                     PostcardControl::GetPostcard();
 					break;
-				case "gettype":
-					PostcardControl::GetType();
-					break;
-                case "top":
-                    PostcardControl::GoTop();
-                    break;
-                case "show":
-                    PostcardControl::ChangeShow();
-                    break;
-                case "map":
-                    PostcardControl::UploadMap();
-                    break;
 			}
 		}
 
@@ -78,14 +63,29 @@
         }
 
         public function GetPostcard(){
-		    $id = $_REQUEST['id'];
+            $wherelist = array();
+            if(!empty($_POST['wx'])){
+                $wherelist[] = "wx like '%{$_POST['wx']}%'";
+            }
+            if(!empty($_POST['name'])){
+                $wherelist[] = "name like '%{$_POST['name']}%'";
+            }
+            if(!empty($_POST['timea'])&&!empty($_POST['timeb'])){
+                $wherelist[] = " date between '{$_POST['timea']}' and '{$_POST['timeb']}'";
+            }
+            //组装查询条件
+            if(count($wherelist) > 0){
+                $where = " where ".implode(' and ' , $wherelist);
+            }
+            //判断查询条件
+            $where = isset($where) ? $where : '';
 		    $ss = new PostcardServer();
-            $result = $ss->GetPostcardById($id);
+            $result = $ss->QueryPostcard($where);
             $re = array('state'=>'0','content'=>null);
             while ($n = mysqli_fetch_array($result))
             {
                 $re['state'] = '1';
-                $row[] = array('id' => $n['id'], 'name' => $n['name'], 'brief' => $n['brief'], 'intro' => $n['intro'], 'see' => $n['see'], 'top' => $n['top'],'show'=>$n['isshow'],'created_at'=>$n['created_at'],'updated_at'=>$n['updated_at'],'recommend'=>$n['recommend']);
+                $row[] = array('id' => $n['id'], 'wx' => $n['wx'], 'name' => $n['name'], 'date' => $n['date'], 'pic' => $n['pic'], 'wishes' => $n['wishes']);
                 $re['content'] = $row;
             }
             echo json_encode($re,JSON_UNESCAPED_UNICODE);
@@ -136,26 +136,6 @@
             return;
 		}
 
-		public function UpdatePostcard()
-		{
-            $Postcard = new Postcard();
-            $Postcard->id = $_REQUEST['id'];
-            $Postcard->name = $_REQUEST['name'];
-            $Postcard->created_at = $_REQUEST['created_at'];
-            $Postcard->brief = $_REQUEST['brief'];
-            $Postcard->recommend = $_REQUEST['recommend'];
-            $Postcard->intro = $str = str_replace('\'', '\"', $_REQUEST['intro']);
-			$re = array('state'=>'0','content'=>'修改失败');
-			$ss = new PostcardServer();
-			$result = $ss->UpdatePostcard($Postcard,"all");
-			if($result){
-				$re['state'] = '1';
-				$re['content'] = '修改成功';
-			}
-			echo json_encode($re,JSON_UNESCAPED_UNICODE);
-			return;
-		}
-
 		public function DelPostcard(){
 			$id = $_REQUEST['id'];
             $ss = new PostcardServer();
@@ -168,92 +148,5 @@
             }
             echo  json_encode($re,JSON_UNESCAPED_UNICODE);
 		}
-
-		public function GoTop(){
-		    $id = $_REQUEST['id'];
-            $top = $_REQUEST['top'];
-            $ss = new PostcardServer();
-            $Postcard = new Postcard();
-            $Postcard->id = $id;
-            $Postcard->top = $top;
-            $result = $ss->UpdatePostcard($Postcard,"top");
-            $re = array('state'=>'0','content'=>'修改失败');
-            if($result) {
-                PostcardControl::UpdatePostcardJson();
-                $re['state']='1';
-                $re['content']='修改成功';
-            }
-            echo  json_encode($re,JSON_UNESCAPED_UNICODE);
-        }
-
-        public function ChangeShow(){
-            $id = $_REQUEST['id'];
-            $show = $_REQUEST['show'];
-            $ss = new PostcardServer();
-            $Postcard = new Postcard();
-            $Postcard->id = $id;
-            $Postcard->show = $show;
-            $result = $ss->UpdatePostcard($Postcard,"isshow");
-            $re = array('state'=>'0','content'=>'修改失败');
-            if($result) {
-                PostcardControl::UpdatePostcardJson();
-                $re['state']='1';
-                $re['content']='修改成功';
-            }
-            echo  json_encode($re,JSON_UNESCAPED_UNICODE);
-        }
-
-        public function UploadMap(){
-            $re = array('state'=>'0','content'=>'');
-            $src = "";
-            $id = $_REQUEST['Postcardid'];
-            $allowedExts = array("gif", "jpeg", "jpg", "png");
-            $temp = explode(".", $_FILES["uploadfile"]["name"]);
-            $extension = end($temp);
-            if ((($_FILES["uploadfile"]["type"] == "image/gif")
-                    || ($_FILES["uploadfile"]["type"] == "image/jpeg")
-                    || ($_FILES["uploadfile"]["type"] == "image/jpg")
-                    || ($_FILES["uploadfile"]["type"] == "image/pjpeg")
-                    || ($_FILES["uploadfile"]["type"] == "image/x-png")
-                    || ($_FILES["uploadfile"]["type"] == "image/png"))
-                && in_array($extension, $allowedExts)){
-                if ($_FILES["uploadfile"]["error"] > 0)
-                {
-                    $re['state']='0';
-                    $re['content']='文件上传失败：'.$_FILES["uploadfile"]["error"];
-                }
-                else
-                {
-                    $filename ="../View/images/".time().$_FILES["uploadfile"]["name"];
-                    $src = "/images/".time().$_FILES["uploadfile"]["name"];
-                    $filename =iconv("UTF-8","gb2312",$filename);
-                    //检查文件或目录是否存在
-                    if(file_exists($filename))
-                    {
-                        $re['state']='0';
-                        $re['content']='文件已存在';
-                    }
-                    else{
-                        move_uploaded_file($_FILES["uploadfile"]["tmp_name"],$filename);
-                        $Postcard = new Postcard();
-                        $Postcard->id = $id;
-                        $Postcard->Postcard_map = $src;
-                        $as = new PostcardServer();
-                        $result = $as->UpdatePostcard($Postcard,"Postcard_map");
-                        if($result) {
-                            PostcardControl::UpdatePostcardJson();
-                            $re['state']='1';
-                            $re['content']='修改成功';
-                        }
-                    }
-                }
-            }
-            else{
-                $re['state']='0';
-                $re['content']='非法的文件格式';
-            }
-            echo "<script type='text/javascript'>if(".$re['state']."=='0'){alert('".$re['content']."')}else{window.parent.document.getElementById('am".$id."').src='".$src."'}</script>";
-            //echo "<script type='text/javascript'>callback('".$re['state']."','".$re['content']."','".$src."');</script>";
-        }
 	}
 ?>

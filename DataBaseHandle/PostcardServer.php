@@ -24,14 +24,8 @@
             return $result;
 		}
 
-        public function GetType(){
-            $sql = "select id,name from Postcard_type";
-            $result = $this->db->ExeSql($sql, $this->conn);
-            return $result;
-        }
-
-        public function GetPostcardById($id){
-            $sql = "select * from ".$this->db_table." where id = '$id'";
+        public function QueryPostcard($where){
+            $sql = "select * from ".$this->db_table.$where;
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
         }
@@ -47,31 +41,6 @@
                 return false;
             }
             return false;
-		}
-
-		public function UpdatePostcard($Postcard,$field){
-            $sql = "";
-            if($field=="top"){
-                $sql = "update " . $this->db_table . " set ".$field." = '$Postcard->top' where id = '$Postcard->id'";
-            }
-            else if($field=="isshow"){
-                $sql = "update " . $this->db_table . " set ".$field." = '$Postcard->show' where id = '$Postcard->id'";
-			}
-			else if($field=="all"){
-                $sql = "update " . $this->db_table . " set name = '$Postcard->name',created_at = '$Postcard->created_at',brief = '$Postcard->brief',recommend = '$Postcard->recommend',intro = '$Postcard->intro' where id = '$Postcard->id'";
-            }
-            else if($field=="Postcard_map"){
-                $sql = "update " . $this->db_table . " set ".$field." = '$Postcard->Postcard_map' where id = '$Postcard->id'";
-            }
-            try{
-                $this->db->ExeSql($sql,$this->conn);
-                return true;
-            }
-            catch(Exception $e)
-            {
-                return false;
-            }
-            return true;
 		}
 
 		public function DeletePostcard($id)

@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="1c7749a1-70c7-404f-906e-a59d4ff055e3" name="默认的" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Control/PictureControl.php" beforeDir="false" afterPath="$PROJECT_DIR$/Control/PictureControl.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Control/PostcardControl.php" beforeDir="false" afterPath="$PROJECT_DIR$/Control/PostcardControl.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataBaseHandle/PostcardServer.php" beforeDir="false" afterPath="$PROJECT_DIR$/DataBaseHandle/PostcardServer.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -169,22 +170,22 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="php" value="3" />
+          <entry key="php" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="PHP" value="3" />
+          <entry key="PHP" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="php" value="161" />
+          <entry key="php" value="372" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PHP" value="161" />
+          <entry key="PHP" value="372" />
         </counts>
       </usages-collector>
     </session>
@@ -194,29 +195,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/DataBaseHandle/PostcardServer.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="627">
-              <caret line="51" column="57" lean-forward="true" selection-start-line="51" selection-start-column="57" selection-end-line="51" selection-end-column="57" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Control/PostcardControl.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="494">
-              <caret line="128" column="39" selection-start-line="128" selection-start-column="39" selection-end-line="128" selection-end-column="39" />
+            <state relative-caret-position="359">
+              <caret line="27" column="59" selection-start-line="27" selection-start-column="59" selection-end-line="27" selection-end-column="59" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Control/PictureControl.php">
+        <entry file="file://$PROJECT_DIR$/Control/PostcardControl.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1007">
-              <caret line="53" column="38" selection-start-line="53" selection-start-column="24" selection-end-line="53" selection-end-column="38" />
+            <state>
+              <caret line="60" lean-forward="true" selection-start-line="60" selection-end-line="60" />
             </state>
           </provider>
         </entry>
@@ -329,9 +321,9 @@
         <option value="$PROJECT_DIR$/View/css/postcard.css" />
         <option value="$PROJECT_DIR$/View/page/share/postcardList.html" />
         <option value="$PROJECT_DIR$/View/page/share/postcardList.js" />
-        <option value="$PROJECT_DIR$/DataBaseHandle/PostcardServer.php" />
         <option value="$PROJECT_DIR$/Control/PictureControl.php" />
         <option value="$PROJECT_DIR$/Control/PostcardControl.php" />
+        <option value="$PROJECT_DIR$/DataBaseHandle/PostcardServer.php" />
       </list>
     </option>
   </component>
@@ -341,7 +333,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="260" />
     <option name="y" value="20" />
     <option name="width" value="1386" />
@@ -366,17 +358,6 @@
               <item name="JGSCMS" type="462c0819:PsiDirectoryNode" />
               <item name="Control" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="JGSCMS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JGSCMS" type="462c0819:PsiDirectoryNode" />
-              <item name="View" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="JGSCMS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JGSCMS" type="462c0819:PsiDirectoryNode" />
-              <item name="View" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -393,16 +374,16 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\xampp\www\JGSCMS\View\page\img" />
+      <recent name="G:\xampp\www\JGSCMS\View" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="G:\xampp\www\JGSCMS\View\css" />
       <recent name="G:\xampp\www\JGSCMS\View\json" />
       <recent name="G:\xampp\www\JGSCMS\Model" />
       <recent name="G:\xampp\www\JGSCMS\DataBaseHandle" />
       <recent name="G:\xampp\www\JGSCMS\Control" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\xampp\www\JGSCMS\View\page\img" />
-      <recent name="G:\xampp\www\JGSCMS\View" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -455,12 +436,12 @@
       <workItem from="1545353234296" duration="23761000" />
       <workItem from="1545395863097" duration="6028000" />
       <workItem from="1545489845094" duration="2554000" />
-      <workItem from="1545529253718" duration="2904000" />
+      <workItem from="1545529253718" duration="5243000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="209035000" />
+    <option name="totallyTimeSpent" value="211374000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -823,24 +804,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataBaseHandle/PostcardServer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="627">
-          <caret line="51" column="57" lean-forward="true" selection-start-line="51" selection-start-column="57" selection-end-line="51" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Control/PictureControl.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1007">
+        <state relative-caret-position="152">
           <caret line="53" column="38" selection-start-line="53" selection-start-column="24" selection-end-line="53" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Control/PostcardControl.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="128" column="39" selection-start-line="128" selection-start-column="39" selection-end-line="128" selection-end-column="39" />
+        <state>
+          <caret line="60" lean-forward="true" selection-start-line="60" selection-end-line="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataBaseHandle/PostcardServer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="27" column="59" selection-start-line="27" selection-start-column="59" selection-end-line="27" selection-end-column="59" />
         </state>
       </provider>
     </entry>
