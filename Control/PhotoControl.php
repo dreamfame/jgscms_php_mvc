@@ -33,6 +33,12 @@
                 case "name":
                     PhotoControl::GetName();
                     break;
+                case "json":
+                    PhotoControl::UpdatePhotoJson();
+                    break;
+                case "wait":
+                    PhotoControl::GetWaitPhoto();
+                    break;
 			}
 		}
 
@@ -74,16 +80,33 @@
         }
 
         public function GetPhoto(){
-		    $id = $_REQUEST['id'];
-		    $ss = new PhotoServer();
-            $result = $ss->GetPhotoById($id);
+            $wherelist = array();
+            if($_POST['verify']!=""||$_POST['verify']!=null){
+                $wherelist[] = "verify = '{$_POST['verify']}'";
+            }
+            //组装查询条件
+            if(count($wherelist) > 0){
+                $where = " where ".implode(' and ' , $wherelist);
+            }
+            //判断查询条件
+            $where = isset($where) ? $where : '';
+            $ss = new PhotoServer();
+            $result = $ss->QueryPhoto($where);
             $re = array('state'=>'0','content'=>null);
+            $jsonfile = fopen("../View/json/PhotoList.json", "w") or die("Unable to open file!");
             while ($n = mysqli_fetch_array($result))
             {
                 $re['state'] = '1';
-                $row[] = array('id' => $n['id'], 'name' => $n['name'], 'brief' => $n['brief'], 'intro' => $n['intro'], 'see' => $n['see'], 'top' => $n['top'],'show'=>$n['isshow'],'created_at'=>$n['created_at'],'updated_at'=>$n['updated_at'],'recommend'=>$n['recommend']);
+                $row[] = array('id' => $n['id'], 'uid' => $n['uid'], 'des' => $n['des'], 'praise' => $n['praise'], 'comment' => $n['comment'], 'img1' => $n['img1'],'img2'=>$n['img2'],'img3'=>$n['img3'],'img4'=>$n['img4'],'img5'=>$n['img5'],'img6'=>$n['img6'],'img7'=>$n['img7'],'img8'=>$n['img8'],'img9'=>$n['img9'],'created_at'=>$n['created_at'],'verify'=>$n['verify'],'operator'=>$n['operator']);
                 $re['content'] = $row;
+                if (flock($jsonfile, LOCK_EX)) {//加写锁 
+                    ftruncate($jsonfile, 0); // 将文件截断到给定的长度 
+                    rewind($jsonfile); // 倒回文件指针的位置 
+                    fwrite($jsonfile, json_encode($row, JSON_UNESCAPED_UNICODE));
+                    flock($jsonfile, LOCK_UN); //解锁 
+                }
             }
+            fclose($jsonfile);
             echo json_encode($re,JSON_UNESCAPED_UNICODE);
             return;
         }
@@ -94,7 +117,7 @@
             $jsonfile = fopen("../View/json/PhotoList.json", "w") or die("Unable to open file!");
             while ($n = mysqli_fetch_array($result)) {
                 $re['state'] = '1';
-                $row[] = array('id' => $n['id'], 'name' => $n['name'], 'brief' => $n['brief'], 'intro' => $n['intro'], 'see' => $n['see'], 'top' => $n['top'],'show'=>$n['isshow'],'created_at'=>$n['created_at'],'updated_at'=>$n['updated_at'],'recommend'=>$n['recommend']);
+                $row[] = array('id' => $n['id'], 'uid' => $n['uid'], 'des' => $n['des'], 'praise' => $n['praise'], 'comment' => $n['comment'], 'img1' => $n['img1'],'img2'=>$n['img2'],'img3'=>$n['img3'],'img4'=>$n['img4'],'img5'=>$n['img5'],'img6'=>$n['img6'],'img7'=>$n['img7'],'img8'=>$n['img8'],'img9'=>$n['img9'],'created_at'=>$n['created_at'],'verify'=>$n['verify'],'operator'=>$n['operator']);
                 $re['content'] = $row;
                 if (flock($jsonfile, LOCK_EX)) {//加写锁 
                     ftruncate($jsonfile, 0); // 将文件截断到给定的长度 

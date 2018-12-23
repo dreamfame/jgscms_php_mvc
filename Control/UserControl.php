@@ -1,290 +1,269 @@
 <?php
-	require_once '../Model/User.php';
-	require_once '../DataBaseHandle/UserServer.php';
-	header("Content-Type: text/html;charset=utf-8");
-	Class UserControl
-	{
-		private $destinationPath;
-		private $thumbdestinationPath;
-		private $thumbtempPath;
-		private $tempPath;
-		private $addName;
-		
-		public function JugdeOperate()
-		{
-			$operate = $_REQUEST["operate"];
-			switch($operate)
-			{
-				case "add":
-					$this->AddUser();
-					break;
-				case "del":
-					break;
-				case "edit":
-					$this->UpdateUser();
-					break;
-				case "query":
-					$this->GetUser();
-					break;
-				case "login":
-					$this->ValidateLogin();
-					break;
-				case "conditionQuery":
-					$this->queryCondition();
-					break;
-				case "uploadImg":
-					$this->changeImg();
-					break;
-				case "updateImage":
-					$this->UpdateImage();
-					break;
-				case "paging":
-				    $this->GetTotalRecord();
-				    break;
-				case "private":
-				    $this->GetSelfInfo();
-				    break;
-				case "changeCode":
-				    $this->ChangeCode();
-				    break;
-				case "reg":
-				    $this->Reg();
-				    break;
-				case "validatePhone":
-				    $this->validatePhone();
-				    break;
-			}
-		}
-		
-		public function GetTotalRecord(){
-		    $condition = $_REQUEST["condition"];
-		    $param1 = $_REQUEST["conditionText1"];
-		    $param2 = $_REQUEST["conditionText2"];
-		    $us = new UserServer();
-		    $result = $us->GetTotalRecord($condition,$param1,$param2);
-		    $re = array('state'=>'0','content'=>'null');
-		    while($r = mysqli_fetch_array($result))
-		    {
-		        $re['state'] = '1';
-		        $re['content'] = $r["total"];
-		    }
-		    echo json_encode($re,JSON_UNESCAPED_UNICODE);
-		}
-		
-		public function changeImg(){
-		    $uploadFile = $_FILES['avatar'];
-		    $this->addName = date("Y").date("m").date("j").date("H").date("i").date("s");
-		    $this->destinationPath = "../Resources/headimg"."\\".$this->addName.$uploadFile["name"];
-		    $this->tempPath = $uploadFile["tmp_name"];
-		    if(is_uploaded_file($uploadFile["tmp_name"]))
-		    {
-		        $src = "/Resources/headimg/".$this->addName.$uploadFile["name"];
-		        $this->UploadFileToServer();
-		        $showsrc = "..".$src;
-		        echo "<script type='text/javascript'>window.top.document.getElementById('previewImg').setAttribute('src','".$showsrc."');</script>";
-		    }
-		}
-		
-		public function UpdateImage(){
-		    session_start();
-		    $userid = $_SESSION['sid'];
-		    $pic = $_REQUEST['pic'];
-		    $us = new UserServer();
-		    $result = $us->ChangeImage($userid,$pic);
-		    if($result){
-		       echo '上传头像成功';
-		    }
-		    else{
-		       echo "上传头像失败";
-		    }
-		}
-		
-		public function UploadFileToServer()
-		{
-			move_uploaded_file ($this->tempPath,iconv ( "UTF-8", "gb2312", $this->destinationPath ) );
-		}
-		
-		
-		public function queryCondition(){
-			$page = $_REQUEST["page"];
-		    $pageSize = $_REQUEST["pageSize"];
-			$condition = $_REQUEST["condition"];
-			$conditionText = $_REQUEST["conditionText"];
-			$us = new UserServer();
-			$result = $us->GetUserByCondition($condition,$conditionText,$page,$pageSize);
-		    $result1 = $us->GetTotalPages($condition,$conditionText);
-			$re = array('state'=>'0','content'=>null,'totalPages'=>0);
-			while($r = mysqli_fetch_array($result1))
-			{
-			    $re['totalPages'] = $r["total"];
-			}
-			while ($u = mysqli_fetch_array($result))
-			{
-				$re['state'] = '1';
-				$row[]= array('userId'=>$u['userId'],'name'=>$u['name'],'birth'=>$u['birth'],'sex'=>$u['sex'], 'phone'=>$u['phone'],'headimg'=>$u['headImg']);
-				$re['content'] = $row;
-			}
-			echo json_encode($re,JSON_UNESCAPED_UNICODE);
-		}
+require_once '../Model/User.php';
+require_once '../DataBaseHandle/UserServer.php';
+header("Content-Type: text/html;charset=utf-8");
+//session_start();
+Class UserControl
+{
+    public function JudgeOperate($operate)
+    {
+        switch($operate)
+        {
+            case "list":
+                UserControl::GetAll();
+                break;
+            case "add":
+                UserControl::AddUser();
+                break;
+            case "del":
+                UserControl::DelUser();
+                break;
+            case "edit":
+                UserControl::UpdateUser();
+                break;
+            case "query":
+                UserControl::GetUser();
+                break;
+            case "login":
+                UserControl::ValidateLogin();
+                break;
+            case "role":
+                UserControl::ChangeRole();
+                break;
+            case "status":
+                UserControl::ChangeStatus();
+                break;
+            case "reset":
+                UserControl::ResetPwd();
+                break;
+			case "json":
+				UserControl::UpdateUserJson();
+				break;
+        }
+    }
 
-		public function AddUser()
-		{
-			$user = new User();
-			$user->userId = $user->phone = $_REQUEST['phone'];
-			$user->userName = $_REQUEST['username'];
-			$user->password = $_REQUEST['password'];
-			$user->sex = $_REQUEST['sex'];
-			$us = new UserServer();
-			$result = $us->GetUser($user->userId);
-			$re = array('state'=>'0','content'=>'已存在该手机号用户');
-			$temp = false;
-			while ($u = mysqli_fetch_array($result))
-			{
-				$temp = true;
-				$row[]= array('userId'=>$u['userId'],'userName'=>$u['userName'],'password'=>$u['password'],'sex'=>$u['sex'], 'phone'=>$u['phone'],'headimg'=>$u['headImg']);
-			}
-			if(!$temp){
-				$row = $us->InsertUser($user);
-				$re['state'] = '1';
-				$re['content'] = '注册成功';
-				echo json_encode($re,JSON_UNESCAPED_UNICODE);
-				return;
-			}
-			echo json_encode($re,JSON_UNESCAPED_UNICODE);
-			return;
-		}
+    public function GetAll()
+    {
+        $as = new UserServer();
+        $result = $as->GetAll();
+        $re = array('state'=>'0','content'=>null);
+        $jsonfile = fopen("../View/json/userList.json", "w") or die("Unable to open file!");
+        while ($u = mysqli_fetch_array($result)) {
+            $re['state'] = '1';
+            $row[] = array('id' => $u['id'],'openid' => $u['openid'],  'wx' => $u['wx'], 'nickname' => $u['nickname'], 'avatar' => $u['avatar'],'gender' => $u['gender'], 'city' => $u['city'], 'country' => $u['country'],'created_at'=>$u['created_at']);
+            $re['content'] = $row;
+            if (flock($jsonfile, LOCK_EX)) {//加写锁 
+                ftruncate($jsonfile, 0); // 将文件截断到给定的长度 
+                rewind($jsonfile); // 倒回文件指针的位置 
+                fwrite($jsonfile, json_encode($row, JSON_UNESCAPED_UNICODE));
+                flock($jsonfile, LOCK_UN); //解锁 
+            }
+        }
+        fclose($jsonfile);
+        echo json_encode($re,JSON_UNESCAPED_UNICODE);
+        return;
+    }
 
-		public function UpdateUser()
-		{
-			$us = new UserServer();
-			$user = new User();
-			session_start();
-			$user->userId = $_SESSION['sid'];
-			$user->sex = $_REQUEST['sex'];
-			$user->name = $_REQUEST['name'];
-			$user->phone = $_REQUEST["phone"];
-			$user->birth = $_REQUEST['birth'];
-			$re = array('state'=>'0','content'=>'保存失败');
-			$result = $us->UpdateUser($user);
-			if($result){
-				$re['state'] = '1';
-				$re['content'] = '保存成功';
-			}
-			echo json_encode($re,JSON_UNESCAPED_UNICODE);
-			return;
-		}
+    public function UpdateUserJson(){
+        $as = new UserServer();
+        $result = $as->GetAll();
+        $jsonfile = fopen("../View/json/userList.json", "w") or die("Unable to open file!");
+        while ($u = mysqli_fetch_array($result)) {
+            $re['state'] = '1';
+            $row[] = array('id' => $u['id'],'openid' => $u['openid'],  'wx' => $u['wx'], 'nickname' => $u['nickname'], 'avatar' => $u['avatar'],'gender' => $u['gender'], 'city' => $u['city'], 'country' => $u['country'],'created_at'=>$u['created_at']);
+            $re['content'] = $row;
+            if (flock($jsonfile, LOCK_EX)) {//加写锁 
+                ftruncate($jsonfile, 0); // 将文件截断到给定的长度 
+                rewind($jsonfile); // 倒回文件指针的位置 
+                fwrite($jsonfile, json_encode($row, JSON_UNESCAPED_UNICODE));
+                flock($jsonfile, LOCK_UN); //解锁 
+            }
+        }
+        fclose($jsonfile);
+    }
 
-		public function GetUser()
-		{
-			$userid = $_REQUEST['userid'];
-			$us = new UserServer();
-			if($userid==""){
-				$result = $us->GetUserList();
-			}
-			else{
-				$result = $us->GetUser($userid);
-			}
-			$re = array('state'=>'0','content'=>null);
-			while ($u = mysqli_fetch_array($result))
-			{
-				$re['state'] = '1';
-				$row[]= array('userId'=>$u['userId'],'userName'=>$u['userName'],'name'=>$u['name'],'birth'=>$u['birth'],'sex'=>$u['sex'], 'phone'=>$u['phone'],'headimg'=>$u['headImg']);
-				$re['content'] = $row;
-			}
-			echo json_encode($re,JSON_UNESCAPED_UNICODE);
-			return;
-		}
-		
-		public function GetSelfInfo(){
-		    session_start();
-		    $userid = $_SESSION['sid'];
-		    $us = new UserServer();
-		    $result = $us->GetUser($userid);
-		    $re = array('state'=>'0','content'=>null);
-		    while ($u = mysqli_fetch_array($result))
-		    {
-		        $re['state'] = '1';
-		        $row[]= array('userId'=>$u['userId'],'userName'=>$u['userName'],'name'=>$u['name'],'birth'=>$u['birth'],'sex'=>$u['sex'], 'phone'=>$u['phone'],'headimg'=>$u['headImg']);
-		        $re['content'] = $row;
-		    }
-		    echo json_encode($re,JSON_UNESCAPED_UNICODE);
-		    return;
-		}
-		
-		public function changeCode(){
-		    session_start();
-		    $userid = $_SESSION['sid'];
-		    $oldpwd = $_REQUEST['oldpwd'];
-		    $newpwd = $_REQUEST['newpwd'];
-		    $us = new UserServer();
-		    $result = $us->validateOldPwd($userid,$oldpwd);
-		    if($result){
-		        $r = $us->changeCode($userid,$newpwd);
-		        if($r){
-		            echo "修改密码成功";
-		        }else{
-		            echo "修改密码失败";
-		        }
-		    }
-		    else{
-		        echo "原密码错误";
-		    }
-		}
-		
-		public function ValidateLogin(){
-			$userid = $_REQUEST['userid'];
-			$password = $_REQUEST['pwd'];
-			$us = new UserServer();
-			$result = $us->GetUser($userid);
-			$re = array('state'=>'0','content'=>null);
-			$u = mysqli_fetch_row($result);
-			if($u[0]==""){
-				$re['content']="用户名不存在";
-			}
-			else{
-				$re['state'] = "1";
-				$re['content'] = "";
-				/*if($u[1] == $password){
-					$re['state'] = "1";
-					$re['content'] = "";
-				}
-				else{
-					$re['content'] = "密码错误";
-				}*/
-			}
-			echo json_encode($re,JSON_UNESCAPED_UNICODE);
-		}
-		
-		public function Reg(){
-		    $user = new User();
-		    $user->phone = $_REQUEST["phone"];
-		    $user->password = $_REQUEST["password"];
-		    $user->name = $_REQUEST["name"];
-		    $user->sex = $_REQUEST["sex"];
-		    $user->birth = $_REQUEST["birth"];
-		    $user->headImg = "default.jpg";
-		    $us = new UserServer();
-		    $result = $us->InsertUser($user);
-		    if($result){
-		        echo "1";
-		    }
-		    else{
-		        echo "0";
-		    }
-		}
-		
-		public function validatePhone(){
-		    $phone = $_REQUEST["phone"];
-		    $us = new UserServer();
-		    $u = $us->validatePhone($phone);
-		    if($u!=""||$u!=null){
-		        echo "手机号已被注册";   
-		    }
-		    else{
-		        echo "手机号可以使用";
-		    }
-		}
-	}
-	$uc = new UserControl();
-	$uc->JugdeOperate();
+    public function AddUser()
+    {
+        $user = new User();
+        $user->username = $_REQUEST['username'];
+        $user->password = password_hash("666666", PASSWORD_DEFAULT);
+        $user->nickname = $_REQUEST['nickname'];
+        $user->role = $_REQUEST['role'];
+        $user->age = 0;
+        $user->head_pic = "default.jpg";
+        $user->phone = $_REQUEST['phone'];
+        $user->email = $_REQUEST['email'];
+        $user->status = $_REQUEST['status'];
+        $user->updated_at = time();
+        $user->created_at = time();
+        $user->password_reset_token = md5($user->username.UserControl::key,false);
+        $as = new UserServer();
+        $result = $as->GetUser($user->username);
+        $temp = false;
+        $re = array('state'=>'0','content'=>'添加失败,');
+        while ($u = mysqli_fetch_array($result))//检查用户名
+        {
+            $temp = true;
+            $re['content'] = $re['content'].'已存在该用户!';
+            $row[]= array('username'=>$u['username'],'password'=>$u['password']);
+        }
+        $condition="nickname";
+        $content = $user->nickname;
+        $result1 = $as->GetUserByCondition($condition,$content);
+        while ($u = mysqli_fetch_array($result1))//检查昵称
+        {
+            $temp = true;
+            $re['content'] = $re['content'].'昵称已存在!';
+            $row[]= array('username'=>$u['username'],'password'=>$u['password']);
+        }
+        $condition="phone";
+        $content = $user->phone;
+        $result2 = $as->GetUserByCondition($condition,$content);
+        while ($u = mysqli_fetch_array($result2))//检查手机号
+        {
+            $temp = true;
+            $re['content'] = $re['content'].'手机号已被使用!';
+            $row[]= array('username'=>$u['username'],'password'=>$u['password']);
+        }
+        $condition="email";
+        $content = $user->email;
+        $result3 = $as->GetUserByCondition($condition,$content);
+        while ($u = mysqli_fetch_array($result3))//检查邮箱
+        {
+            $temp = true;
+            $re['content'] = $re['content'].'邮箱已被使用!';
+            $row[]= array('username'=>$u['username'],'password'=>$u['password']);
+        }
+        if(!$temp){
+            $row = $as->InsertUser($user);
+            $re['state'] = '1';
+            $re['content'] = '添加成功';
+            echo json_encode($re,JSON_UNESCAPED_UNICODE);
+        }
+        else{
+            echo json_encode($re,JSON_UNESCAPED_UNICODE);
+        }
+    }
+
+    public function UpdateUser()
+    {
+        $user = new User();
+        $user->userId = $_REQUEST['userid'];
+        $user->password = $_REQUEST['password'];
+        $re = array('state'=>'0','content'=>'修改失败');
+        $as = new UserServer();
+        $result = $as->UpdateUser($user);
+        if($result){
+            $re['state'] = '1';
+            $re['content'] = '修改成功';
+        }
+        echo json_encode($re,JSON_UNESCAPED_UNICODE);
+        return;
+    }
+
+    public function GetUser()
+    {
+        $userid = $_REQUEST['userid'];
+        $as = new UserServer();
+        $result = $as->GetUserById($userid);
+        $re = array('state'=>'0','content'=>null);
+        while ($u = mysqli_fetch_array($result))
+        {
+            $re['state'] = '1';
+            $row[]= array('username'=>$u['username'],'role'=>$u['role']);
+            $re['content'] = $row;
+        }
+        echo json_encode($re,JSON_UNESCAPED_UNICODE);
+        return;
+    }
+
+    public function DelUser(){
+        $id = $_REQUEST['id'];
+        $as = new UserServer();
+        $result=$as->DeleteUser($id);
+        $re = array('state'=>'0','content'=>'删除失败');
+        if($result) {
+            UserControl::UpdateUserJson();
+            $re['state']='1';
+            $re['content']='删除成功';
+        }
+        echo  json_encode($re,JSON_UNESCAPED_UNICODE);
+    }
+
+    public function ValidateLogin(){
+        $userid = $_REQUEST['username'];
+        $password = $_REQUEST['password'];
+        $as = new UserServer();
+        $result = $as->GetUser($userid);
+        $re = array('state'=>'0','content'=>null);
+        $a = mysqli_fetch_row($result);
+        if($a[1]==""){
+            $re['state'] = "0";
+            $re['content']="用户名不存在";
+        }
+        else{
+            if(password_verify($password, $a[2])){
+                $_SESSION["name"] = $userid;
+                $re['state'] = "1";
+                $re['content'] = $a[3];
+            }
+            else{
+                $re['state'] = "0";
+                $re['content'] = "密码错误";
+            }
+        }
+        echo json_encode($re,JSON_UNESCAPED_UNICODE);
+    }
+
+    public function ChangeRole(){
+        $username = $_REQUEST['username'];
+        $role = $_REQUEST['role'];
+        $as = new UserServer();
+        $user = new User();
+        $user->username = $username;
+        $user->role = $role;
+        $result = $as->UpdateUser($user,"role");
+        $re = array('state'=>'0','content'=>'修改失败');
+        if($result) {
+            UserControl::UpdateUserJson();
+            $re['state']='1';
+            $re['content']='修改成功';
+        }
+        echo  json_encode($re,JSON_UNESCAPED_UNICODE);
+    }
+
+    public function ChangeStatus(){
+        $username = $_REQUEST['username'];
+        $status = $_REQUEST['status'];
+        $as = new UserServer();
+        $user = new User();
+        $user->username = $username;
+        $user->role = $status;
+        $result = $as->UpdateUser($user,"status");
+        $re = array('state'=>'0','content'=>'修改失败');
+        if($result) {
+            UserControl::UpdateUserJson();
+            $re['state']='1';
+            $re['content']='修改成功';
+        }
+        echo  json_encode($re,JSON_UNESCAPED_UNICODE);
+    }
+
+    public function ResetPwd(){
+        $username = $_REQUEST['username'];
+        $password = password_hash("666666",PASSWORD_DEFAULT);
+        $as = new UserServer();
+        $user = new User();
+        $user->username = $username;
+        $user->password = $password;
+        $result = $as->UpdateUser($user,"password");
+        $re = array('state'=>'0','content'=>'修改失败');
+        if($result) {
+            UserControl::UpdateUserJson();
+            $re['state']='1';
+            $re['content']='修改成功';
+        }
+        echo  json_encode($re,JSON_UNESCAPED_UNICODE);
+    }
+}
 ?>

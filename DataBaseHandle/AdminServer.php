@@ -74,9 +74,9 @@
 			return true;
 		}
 
-		public function GetAdminById($userId)
+		public function QueryAdmin($where)
 		{
-            $sql = "select id,username,role from ".$this->db_table." where id = '$userId'";
+            $sql = "select * from ".$this->db_table.$where;
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
 		}

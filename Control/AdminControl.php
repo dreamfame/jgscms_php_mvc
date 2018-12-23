@@ -1,11 +1,14 @@
 <?php
 	require_once '../Model/Admin.php';
 	require_once '../DataBaseHandle/AdminServer.php';
+require_once '../Extensions/Security.php';
 	header("Content-Type: text/html;charset=utf-8");
 	//session_start();
 	Class AdminControl
 	{
         const key = "made with liuliu";
+
+        const salt = "_66ll_";
 
 		public function JudgeOperate($operate)
 		{
@@ -162,14 +165,24 @@
 
 		public function GetAdmin()
 		{
-			$userid = $_REQUEST['userid'];
+            $wherelist = array();
+            if(!empty($_REQUEST['username'])){
+            	$username = Security::decrypt($_REQUEST['username']);
+                $wherelist[] = "username = '{$username}'";
+            }
+            //组装查询条件
+            if(count($wherelist) > 0){
+                $where = " where ".implode(' and ' , $wherelist);
+            }
+            //判断查询条件
+            $where = isset($where) ? $where : '';
 			$as = new AdminServer();
-			$result = $as->GetAdminById($userid);
+			$result = $as->QueryAdmin($where);
 			$re = array('state'=>'0','content'=>null);
 			while ($u = mysqli_fetch_array($result))
 			{
 				$re['state'] = '1';
-				$row[]= array('username'=>$u['username'],'role'=>$u['role']);
+                $row[] = array('id' => $u['id'], 'username' => $u['username'], 'nickname' => $u['nickname'], 'age' => $u['age'], 'phone' => $u['phone'], 'email' => $u['email'], 'status' => $u['status'], 'role' => $u['role'],'head_pic'=>$u['head_pic']);
 				$re['content'] = $row;
 			}
 			echo json_encode($re,JSON_UNESCAPED_UNICODE);
@@ -202,9 +215,11 @@
 			}
 			else{
 				if(password_verify($password, $a[2])){
+                    $re = array('state'=>'0','nickname'=>null,'username'=>null);
 				    $_SESSION["name"] = $userid;
 					$re['state'] = "1";
-					$re['content'] = $a[3];
+					$re['nickname'] = $a[3];
+					$re['username'] = Security::encrypt($a[1]);
 				} 
 				else{
                     $re['state'] = "0";

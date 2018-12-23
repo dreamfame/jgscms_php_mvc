@@ -11,7 +11,7 @@
  Target Server Version : 100137
  File Encoding         : 65001
 
- Date: 23/12/2018 09:26:46
+ Date: 23/12/2018 16:18:39
 */
 
 SET NAMES utf8mb4;
@@ -87,7 +87,7 @@ CREATE TABLE `admin`  (
 -- ----------------------------
 -- Records of admin
 -- ----------------------------
-INSERT INTO `admin` VALUES (1, 'liuliu', '', '夏日凉风', '$2y$10$RWyn8DbyRKGhpf934ugYEexcSA1BDFtoL6WBs7Ui1R2709WL.zpyi', '', 0, '', '', '', 0, 0, 1, '系统管理员');
+INSERT INTO `admin` VALUES (1, 'liuliu', '/images/face.jpg', '夏日凉风', '$2y$10$RWyn8DbyRKGhpf934ugYEexcSA1BDFtoL6WBs7Ui1R2709WL.zpyi', '', 0, '', '', '', 0, 0, 1, '系统审核管理员');
 INSERT INTO `admin` VALUES (2, 'admin', 'default.jpg', '不合格的程序员66', '$2y$10$zfjXwiXE2Xvy8DZZHhXKZOoZZeMrWk6tt5InorkMCIPlam1982JNC', NULL, 0, '13628635884', 'f6efbbc7da7381c0f8e1644ca1b003d1', '406384958@qq.com', 1545095005, 1545095005, 1, '照片审核管理员');
 
 -- ----------------------------
@@ -244,7 +244,7 @@ CREATE TABLE `photo`  (
 -- ----------------------------
 -- Records of photo
 -- ----------------------------
-INSERT INTO `photo` VALUES (1, 'dreamfame', '分享测试', '2018-12-21', 0, 0, '/images/default.jpg', '/images/default.jpg', '/images/default.jpg', '/images/default.jpg', '/images/default.jpg', '/images/default.jpg', '/images/default.jpg', '/images/default.jpg', '/images/default.jpg', 0, '-');
+INSERT INTO `photo` VALUES (1, 'dreamfame', '分享测试', '2018-12-21', 0, 0, '/images/default.jpg', '/images/default.jpg', '/images/default.jpg', '/images/default.jpg', '/images/default.jpg', '/images/default.jpg', '/images/default.jpg', '/images/default.jpg', '/images/default.jpg', 1, '-');
 
 -- ----------------------------
 -- Table structure for postcard
@@ -258,12 +258,12 @@ CREATE TABLE `postcard`  (
   `date` datetime(0) NOT NULL,
   `wishes` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of postcard
 -- ----------------------------
-INSERT INTO `postcard` VALUES (1, 'dreamfame', '测试', '/images/default.png', '2018-12-22 22:48:56', '祝大家元旦快乐');
+INSERT INTO `postcard` VALUES (1, 'dreamfame', '测试', '/images/default.png', '2018-12-04 22:48:56', '祝大家元旦快乐');
 INSERT INTO `postcard` VALUES (4, 'dreamfame', '测试2', '/images/default.png', '2018-12-22 23:31:05', '祝大家新年快乐');
 
 -- ----------------------------
@@ -342,7 +342,13 @@ CREATE TABLE `user`  (
   `city` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `country` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `gender` int(11) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`, `openid`, `avatar`) USING BTREE
+  `created_at` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`, `openid`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of user
+-- ----------------------------
+INSERT INTO `user` VALUES (1, '1', 'double_fame', 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJSvOhfrsWluVbVZZgUxAdotuPgDibwPxCBhggX1azjO2Z9uAHnfWMHUicYibMNYo02mv0FBmEXZJhQg/132', '夏日凉风', '', 'Bermuda', 1, '2018-12-23');
 
 SET FOREIGN_KEY_CHECKS = 1;

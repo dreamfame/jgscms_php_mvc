@@ -4,6 +4,25 @@
 	"href" : "page/main.html",
 	"spread" : false
 },{
+	"title" : "用户系统",
+	"icon" : "&#xe613;",
+	"href" : "",
+	"spread" : false,
+	"children" : [
+		{
+			"title" : "用户信息",
+			"icon" : "&#xe612;",
+			"href" : "page/user/userlist.html",
+			"spread" : false
+		},
+		{
+			"title" : "系统消息",
+			"icon" : "&#xe673;",
+			"href" : "page/admin/roleList.html",
+			"spread" : false
+		}
+	]
+},{
 	"title" : "权限管理",
 	"icon" : "&#xe613;",
 	"href" : "",

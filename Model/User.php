@@ -1,13 +1,13 @@
 <?php
 	Class User{//user info
-		private $userId;//for login
-		private $userName;//nickname
-		private $password;
-		private $name;
-		private $birth;
-		private $sex;
-		private $phone;
-		private $headImg;
+		private $id;//for login
+		private $openid;//nickname
+		private $wx;
+		private $nickname;
+		private $avatar;
+		private $city;
+		private $country;
+		private $gender;
 		function __set($name,$value)
 		{
 			$this->$name = $value ;

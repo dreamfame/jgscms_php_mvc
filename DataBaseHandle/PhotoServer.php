@@ -30,8 +30,8 @@
             return $result;
         }
 
-        public function GetPhotoById($id){
-            $sql = "select * from ".$this->db_table." where id = '$id'";
+        public function QueryPhoto($where){
+            $sql = "select * from ".$this->db_table.$where;
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
         }

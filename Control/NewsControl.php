@@ -33,6 +33,9 @@
                 case "show":
                     NewsControl::ChangeShow();
                     break;
+                case "json":
+                    NewsControl::UpdateNewsJson();
+                    break;
 			}
 		}
 

@@ -10,17 +10,40 @@ layui.config({
 		$ = layui.jquery;
 		$form = $('form');
 		laydate = layui.laydate;
-        loadProvince(); //加载省信息
 
-    layui.upload({
-    	url : "../../json/userface.json",
-    	success: function(res){
-    		var num = parseInt(4*Math.random());  //生成0-4的随机数
-    		//随机显示一个头像信息
-	    	userFace.src = res.data[num].src;
-	    	window.sessionStorage.setItem('userFace',res.data[num].src);
-	    }
-    });
+		var id = window.sessionStorage.getItem("username");
+
+		var info;
+
+    $.ajax({
+        data:{"username":id},
+        type: "POST",
+        dataType: "text",
+        url: "/index.php/admin/JudgeOperate/query",
+        beforeSend: function () {
+
+        },
+        complete: function () {
+
+        },
+        success: function (result) {
+            var data = eval('(' + result + ')');
+            if(data.state == "1"){
+                info = data.content[0];
+                $("#username").val(info.username);
+                $("#role").val(info.role);
+                $(".nickname").val(info.nickname);
+                $(".phone").val(info.phone);
+                $(".age").val(info.age);
+                $(".email").val(info.email);
+                $("#adminFace").attr("src",info.head_pic);
+            }
+        },
+        error:function(data){
+            console.log(data.responseText);
+        }
+    })
+
 
     //添加验证规则
     form.verify({

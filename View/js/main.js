@@ -10,43 +10,100 @@ layui.config({
 		window.parent.addTab($(this));
 	})
 
-	//动态获取文章总数和待审核文章数量,最新文章
-	$.get("../json/newsList.json",
-		function(data){
-			var waitNews = [];
-			$(".allNews span").text(data.length);  //文章总数
-			for(var i=0;i<data.length;i++){
-				var newsStr = data[i];
-				if(newsStr["newsStatus"] == "待审核"){
-					waitNews.push(newsStr);
-				}
-			}
-			$(".waitNews span").text(waitNews.length);  //待审核文章
-			//加载最新文章
-			var hotNewsHtml = '';
-			for(var i=0;i<5;i++){
-				hotNewsHtml += '<tr>'
-		    	+'<td align="left">'+data[i].newsName+'</td>'
-		    	+'<td>'+data[i].newsTime+'</td>'
-		    	+'</tr>';
-			}
-			$(".hot_news").html(hotNewsHtml);
-		}
-	)
+    $.ajax({
+        type: "POST",
+        dataType: "text",
+        url: "/index.php/news/JudgeOperate/json",
+        beforeSend: function () {
 
-	//图片总数
-	$.get("../json/images.json",
-		function(data){
-			$(".imgAll span").text(data.length);
-		}
-	)
+        },
+        complete: function () {
 
-	//用户数
-	$.get("../json/usersList.json",
-		function(data){
-			$(".userAll span").text(data.length);
-		}
-	)
+        },
+        success: function (result) {
+                //动态获取文章总数和待审核文章数量,最新文章
+                $.get("../json/newsList.json",
+                    function(data){
+                        $(".allNews span").text(data.length);  //文章总数
+                        //加载最新文章
+                        var hotNewsHtml = '';
+                        var n = data.length<10?data.length:10;
+                        for(var i=0;i<n;i++){
+                            hotNewsHtml += '<tr>'
+                                +'<td align="left">'+data[i].title+'</td>'
+                                +'<td>'+data[i].created_at+'</td>'
+                                +'</tr>';
+                        }
+                        $(".hot_news").html(hotNewsHtml);
+                    }
+                )
+        },
+        error:function(data){
+            console.log(data.responseText);
+        }
+    })
+
+    $.ajax({
+        type: "POST",
+        dataType: "text",
+        url: "/index.php/photo/JudgeOperate/json",
+        beforeSend: function () {
+
+        },
+        complete: function () {
+
+        },
+        success: function (result) {
+            //图片总数
+            $.get("../json/PhotoList.json",
+                function(data){
+                    $(".imgAll span").text(data.length);
+                    var waitPhotos = [];
+                    for(var i=0;i<data.length;i++){
+                        var photoStr = data[i];
+                        if(photoStr["verify"] == "0"){
+                            waitPhotos.push(photoStr);
+                        }
+                    }
+                    $(".waitPhotos span").text(waitPhotos.length);  //待审核文章
+                }
+            )
+        },
+        error:function(data){
+            console.log(data.responseText);
+        }
+    })
+
+    $.ajax({
+        type: "POST",
+        dataType: "text",
+        url: "/index.php/user/JudgeOperate/json",
+        beforeSend: function () {
+
+        },
+        complete: function () {
+
+        },
+        success: function (result) {
+            $.get("../json/UserList.json",
+                function(data){
+                    $(".userAll span").text(data.length);
+                    var newUsers = [];
+                    for(var i=0;i<data.length;i++){
+                        var userStr = data[i];
+                        var today = getNowFormatDate();
+                        if(userStr["created_at"] == today){
+                            newUsers.push(userStr);
+                        }
+                    }
+                    $(".userNew span").text(newUsers.length);
+                }
+            )
+        },
+        error:function(data){
+            console.log(data.responseText);
+        }
+    })
 
 	//新消息
 	$.get("../json/message.json",
@@ -94,5 +151,21 @@ layui.config({
 		$(".maxUpload").text(nullData(data.maxUpload));    //最大上传限制
 		$(".userRights").text(nullData(data.userRights));//当前用户权限
  	}
+
+    function getNowFormatDate() {
+        var date = new Date();
+        var seperator1 = "-";
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        var strDate = date.getDate();
+        if (month >= 1 && month <= 9) {
+            month = "0" + month;
+        }
+        if (strDate >= 0 && strDate <= 9) {
+            strDate = "0" + strDate;
+        }
+        var currentdate = year + seperator1 + month + seperator1 + strDate;
+        return currentdate;
+    }
 
 })

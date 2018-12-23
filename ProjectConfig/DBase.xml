@@ -13,6 +13,6 @@
 	<table name="activity_person"></table>
 	<table name="photo"></table>
 	<table name="postcard"></table>
-	<table name="message"></table>
+	<table name="user"></table>
 	<table name="store"></table>
 </db>

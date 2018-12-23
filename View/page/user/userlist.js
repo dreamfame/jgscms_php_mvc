@@ -6,17 +6,28 @@ layui.config({
 		laypage = layui.laypage,
 		$ = layui.jquery;
 
+
+
 	//加载页面数据
 	var usersData = '';
-	$.get("../../json/usersList.json", function(data){
-		usersData = data;
-		if(window.sessionStorage.getItem("addUser")){
-			var addUser = window.sessionStorage.getItem("addUser");
-			usersData = JSON.parse(addUser).concat(usersData);
-		}
-		//执行加载数据的方法
-		usersList();
-	})
+
+    $.get("/index.php/user/JudgeOperate/list", function(data){
+        var newArray = [];
+        var data = eval('(' + data + ')');
+        if(data.state=="0")
+        {
+            var dataHtml = '<tr><td colspan="8">暂无数据</td></tr>';
+            $(".users_content").html(dataHtml);
+            $('.users_list thead input[type="checkbox"]').prop("checked",false);
+            form.render();
+        }
+        else{
+            var newArray = [];
+            usersData = data.content;
+            //执行加载数据的方法
+            usersList();
+        }
+    })
 
 	//查询
 	$(".search_btn").click(function(){
@@ -180,18 +191,17 @@ layui.config({
 			currData = usersData.concat().splice(curr*nums-nums, nums);
 			if(currData.length != 0){
 				for(var i=0;i<currData.length;i++){
+                    var gender = currData[i].gender == 0?"女":"男";
 					dataHtml += '<tr>'
 			    	+  '<td><input type="checkbox" name="checked" lay-skin="primary" lay-filter="choose"></td>'
-			    	+  '<td>'+currData[i].userName+'</td>'
-			    	+  '<td>'+currData[i].userEmail+'</td>'
-			    	+  '<td>'+currData[i].userSex+'</td>'
-			    	+  '<td>'+currData[i].userGrade+'</td>'
-			    	+  '<td>'+currData[i].userStatus+'</td>'
-			    	+  '<td>'+currData[i].userEndTime+'</td>'
-			    	+  '<td>'
-					+    '<a class="layui-btn layui-btn-mini users_edit"><i class="iconfont icon-edit"></i> 编辑</a>'
-					+    '<a class="layui-btn layui-btn-danger layui-btn-mini users_del" data-id="'+data[i].usersId+'"><i class="layui-icon">&#xe640;</i> 删除</a>'
-			        +  '</td>'
+                    +  '<td><img id="am'+currData[i].id+'" src="'+currData[i].avatar+'" height="132" /></td>'
+                    +  '<td>'+currData[i].openid+'</td>'
+					+  '<td>'+currData[i].wx+'</td>'
+			    	+  '<td>'+gender+'</td>'
+			    	+  '<td>'+currData[i].nickname+'</td>'
+			    	+  '<td>'+currData[i].city+'</td>'
+			    	+  '<td>'+currData[i].country+'</td>'
+                    +  '<td>'+currData[i].created_at+'</td>'
 			    	+'</tr>';
 				}
 			}else{

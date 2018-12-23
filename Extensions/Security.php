@@ -1,69 +1,48 @@
 <?php
+    header('Content-Type: text/plain;charset=utf-8');
 	Class Security
 	{
-		public $salt = "";
-		public $key="930108";
+		const salt = "";
+
+        const hex_iv = '00000000000000000000000000000000';
+
+        const key = '397e2eb61307109f6e68006ebcb62f98';
 
 		//不可逆MD5加密
 		static function MD5EnCode($stringHandler)
 		{
-			$stringHandler = $stringHandler.$salt;
-			$stringResult = md5($stringResult);
+			$stringHandler = $stringHandler.Security::salt;
+            $stringResult = md5($stringHandler);
 			return $stringResult;
 		}
 
-		//可逆加密
-		static function encrypt($data)
-		{
-		 	$key = md5($key);
-		    $x  = 0;
-		    $len = strlen($data);
-		    $l  = strlen($key);
-		    for ($i = 0; $i < $len; $i++)
-		    {
-		        if ($x == $l) 
-		        {
-		         $x = 0;
-		        }
-		        $char .= $key{$x};
-		        $x++;
-		    }
-		    for ($i = 0; $i < $len; $i++)
-		    {
-		        $str .= chr(ord($data{$i}) + (ord($char{$i})) % 256);
-		    }
-		    return base64_encode($str);
-		}
+        static public function encrypt($input)
+        {
+            $data = openssl_encrypt($input, 'AES-256-CBC', Security::key, OPENSSL_RAW_DATA, Security::hexToStr(Security::hex_iv));
+            $data = base64_encode($data);
+            return $data;
+        }
 
-		//解密
-		static function decrypt($data)
-		{
-		 	$key = md5($key);
-		    $x = 0;
-		    $data = base64_decode($data);
-		    $len = strlen($data);
-		    $l = strlen($key);
-		    for ($i = 0; $i < $len; $i++)
-		    {
-		        if ($x == $l) 
-		        {
-		         $x = 0;
-		        }
-		        $char .= substr($key, $x, 1);
-		        $x++;
-		    }
-		    for ($i = 0; $i < $len; $i++)
-		    {
-		        if (ord(substr($data, $i, 1)) < ord(substr($char, $i, 1)))
-		        {
-		            $str .= chr((ord(substr($data, $i, 1)) + 256) - ord(substr($char, $i, 1)));
-		        }
-		        else
-		        {
-		            $str .= chr(ord(substr($data, $i, 1)) - ord(substr($char, $i, 1)));
-		        }
-		    }
-		    return $str;
-		}
-	}
-?>
+        static public function decrypt($input)
+        {
+            $decrypted = openssl_decrypt(base64_decode($input), 'AES-256-CBC', Security::key, OPENSSL_RAW_DATA, Security::hexToStr(Security::hex_iv));
+            return $decrypted;
+        }
+
+        static function hexToStr($hex)
+        {
+
+            $string='';
+
+            for ($i=0; $i < strlen($hex)-1; $i+=2)
+
+            {
+
+                $string .= chr(hexdec($hex[$i].$hex[$i+1]));
+
+            }
+
+            return $string;
+        }
+}
+
