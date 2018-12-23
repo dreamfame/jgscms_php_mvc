@@ -63,6 +63,14 @@
             else if($field=="password"){
                 $sql = "update " . $this->db_table . " set ".$field." = '$admin->password' where username = '$admin->username'";
             }
+            else if($field=="all"){
+            	if($admin->head_pic==""){
+                    $sql = "update " . $this->db_table . " set nickname = '$admin->nickname',age = '$admin->age',phone = '$admin->phone',email = '$admin->email' where username = '$admin->username'";
+				}
+				else{
+                    $sql = "update " . $this->db_table . " set nickname = '$admin->nickname',age = '$admin->age',phone = '$admin->phone',email = '$admin->email',head_pic = '$admin->head_pic' where username = '$admin->username'";
+                }
+			}
 			try{
 				$this->db->ExeSql($sql,$this->conn);
 				return true;

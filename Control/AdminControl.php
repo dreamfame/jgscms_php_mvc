@@ -41,6 +41,9 @@ require_once '../Extensions/Security.php';
 				case "reset":
 					AdminControl::ResetPwd();
 					break;
+				case "pwd":
+					AdminControl::UpdatePwd();
+					break;
 			}
 		}
 
@@ -150,11 +153,15 @@ require_once '../Extensions/Security.php';
 		public function UpdateAdmin()
 		{
 			$admin = new Admin();
-			$admin->userId = $_REQUEST['userid'];
-			$admin->password = $_REQUEST['password'];
+			$admin->username = $_REQUEST['username'];
+			$admin->nickname = $_REQUEST['nickname'];
+			$admin->age = $_REQUEST['age'];
+			$admin->phone = $_REQUEST['phone'];
+			$admin->email = $_REQUEST['email'];
+			$admin->head_pic = $_REQUEST['head_pic'];
 			$re = array('state'=>'0','content'=>'修改失败');
 			$as = new AdminServer();
-			$result = $as->UpdateAdmin($admin);
+			$result = $as->UpdateAdmin($admin,"all");
 			if($result){
 				$re['state'] = '1';
 				$re['content'] = '修改成功';
@@ -279,5 +286,38 @@ require_once '../Extensions/Security.php';
             }
             echo  json_encode($re,JSON_UNESCAPED_UNICODE);
 		}
+
+        public function ValidatePwd($username,$password){
+            $as = new AdminServer();
+            $result = $as->GetAdmin($username);
+            $a = mysqli_fetch_row($result);
+            if(password_verify($password, $a[2])){
+                return true;
+            }
+            else return false;
+        }
+
+        public function UpdatePwd(){
+            $username = Security::decrypt($_REQUEST['username']);
+            $oldpwd = $_REQUEST['oldpwd'];
+            $newpwd = $_REQUEST['newpwd'];
+            $re = array('state'=>'0','content'=>'修改失败');
+            if(AdminControl::ValidatePwd($username,$oldpwd)){
+            	$admin = new Admin();
+            	$admin->username = $username;
+            	$admin->password = password_hash($newpwd,PASSWORD_DEFAULT);
+                $as = new AdminServer();
+                $result = $as->UpdateAdmin($admin,"password");
+                if($result) {
+                    AdminControl::UpdateAdminJson();
+                    $re['state']='1';
+                    $re['content']='修改成功';
+                }
+			}
+			else{
+                $re['content']='原密码输入错误';
+			}
+            echo  json_encode($re,JSON_UNESCAPED_UNICODE);
+        }
 	}
 ?>

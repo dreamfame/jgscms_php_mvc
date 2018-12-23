@@ -42,30 +42,28 @@
 			<div class="layui-form-item">
 			    <label class="layui-form-label">年龄</label>
 				<div class="layui-input-block">
-					<input type="tel" value="" placeholder="请输入年龄" lay-verify="required" class="layui-input age">
+					<input type="tel" value="" placeholder="请输入年龄" lay-verify="number" class="layui-input age">
 				</div>
 			</div>
 			<div class="layui-form-item">
 			    <label class="layui-form-label">邮箱</label>
 			    <div class="layui-input-block">
-			    	<input type="text" value="" placeholder="请输入邮箱" lay-verify="required|email" class="layui-input email">
+			    	<input type="text" value="" placeholder="请输入邮箱" lay-verify="email" class="layui-input email">
 			    </div>
 			</div>
 		</div>
 		<div class="user_right">
-			<input type="file" name="userFace" class="layui-upload-file" lay-title="掐指一算，我要换一个头像了">
+			<input type="file" name="file" class="layui-upload-file" lay-title="掐指一算，我要换一个头像了">
 			<p></p>
 			<img src="" class="layui-circle" id="adminFace">
 		</div>
 		<div class="layui-form-item" style="margin-left: 5%;">
 		    <div class="layui-input-block">
-		    	<button class="layui-btn" lay-submit="" lay-filter="changeUser">立即提交</button>
-				<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+		    	<button class="layui-btn" lay-submit="" lay-filter="changeAdmin">立即提交</button>
 		    </div>
 		</div>
 	</form>
 	<script type="text/javascript" src="../../layui/layui.js"></script>
-	<script type="text/javascript" src="../user/address.js"></script>
 	<script type="text/javascript" src="admin.js"></script>
 </body>
 </html>
