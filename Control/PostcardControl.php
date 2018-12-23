@@ -1,4 +1,5 @@
 <?php
+    error_reporting(0);
 	require_once '../Model/Postcard.php';
 	require_once '../DataBaseHandle/PostcardServer.php';
 	header("Content-Type: text/html;charset=utf-8");
@@ -111,14 +112,21 @@
 
 		public function AddPostcard()
 		{
+            $re = array('state'=>'0','content'=>'添加失败');
+            if(empty($_REQUEST['wx'])||empty($_REQUEST['name'])||empty($_REQUEST['wishes'])||empty($_REQUEST['date'])||empty($_REQUEST['pic']))
+            {
+                $re['state'] = '0';
+                $re['content'] = '数据有误';
+                echo json_encode($re,JSON_UNESCAPED_UNICODE);
+                return;
+            }
 			$Postcard = new Postcard();
             $Postcard->wx = $_REQUEST['wx'];
             $Postcard->name = $_REQUEST['name'];
             $Postcard->wishes = $_REQUEST['wishes'];
             $Postcard->date = $_REQUEST['date'];
             $Postcard->pic = $_REQUEST['pic'];
-			$ss = new PostcardServer();
-            $re = array('state'=>'0','content'=>'添加失败');
+            $ss = new PostcardServer();
             $result = $ss->InsertPostcard($Postcard);
             if($result){
 				$re['state'] = '1';
