@@ -30,8 +30,8 @@
             return $result;
         }
 
-        public function GetAreaById($id){
-            $sql = "select * from ".$this->db_table." where id = '$id'";
+        public function QueryArea($where){
+            $sql = "select * from ".$this->db_table.$where;
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
         }

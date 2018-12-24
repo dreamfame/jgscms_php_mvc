@@ -3,6 +3,7 @@
 	require_once '../DataBaseHandle/AreaServer.php';
 	header("Content-Type: text/html;charset=utf-8");
 	//session_start();
+    error_reporting(0);
 	Class AreaControl
 	{
 		public function JudgeOperate($operate)
@@ -77,9 +78,21 @@
         }
 
         public function GetArea(){
-		    $id = $_REQUEST['id'];
+            $wherelist = array();
+            if($_REQUEST['id']!=""||$_REQUEST['id']!=null){
+                $wherelist[] = "id = '{$_REQUEST['id']}'";
+            }
+            if($_REQUEST['name']!=""||$_REQUEST['name']!=null){
+                $wherelist[] = "name = '{$_REQUEST['name']}'";
+            }
+            //组装查询条件
+            if(count($wherelist) > 0){
+                $where = " where ".implode(' and ' , $wherelist);
+            }
+            //判断查询条件
+            $where = isset($where) ? $where : '';
 		    $ss = new AreaServer();
-            $result = $ss->GetAreaById($id);
+            $result = $ss->QueryArea($where);
             $re = array('state'=>'0','content'=>null);
             while ($n = mysqli_fetch_array($result))
             {
