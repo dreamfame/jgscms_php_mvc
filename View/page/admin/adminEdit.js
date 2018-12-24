@@ -27,7 +27,7 @@ layui.config({
                     $("input[name=role][value='照片审核管理员']").attr("checked","true");
                 }
                 else{
-                    $("input[name=role][value='系统审核管理员']").attr("checked","true");
+                    $("input[name=role][value='内容管理员']").attr("checked","true");
                 }
                 form.render();
             }

@@ -14,29 +14,14 @@
 	<link rel="stylesheet" href="../../css/user.css" media="all" />
 </head>
 <body class="childrenBody">
-	<div class="layui-form">
 	<blockquote class="layui-elem-quote news_search">
 		<div class="layui-inline">
-			<div class="layui-input-inline">
-				<input type="radio" lay-filter="sex" name="sex" value="-1" title="全部" checked=""><div class="layui-unselect layui-form-radio layui-form-radioed"><i class="layui-anim layui-icon"></i><div>男</div></div>
-				<input type="radio" lay-filter="sex" name="sex" value="1" title="男"><div class="layui-unselect layui-form-radio layui-form-radioed"><i class="layui-anim layui-icon"></i><div>男</div></div>
-				<input type="radio" lay-filter="sex" name="sex" value="0" title="女"><div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i><div>女</div></div>
-			</div>
-			<div class="layui-inline">
-			<div class="layui-input-inline">
-				<input readonly type="text" class="layui-input" id="start" placeholder="时间" lay-key="1">
-			</div>
-			</div>
 		    <div class="layui-input-inline">
 		    	<input type="text" value="" placeholder="请输入关键字" class="layui-input search_input">
 		    </div>
 		    <a class="layui-btn search_btn">查询</a>
-			<div class="layui-inline">
-				<a class="layui-btn layui-btn-warm showAll_btn">显示全部</a>
-			</div>
 		</div>
 	</blockquote>
-	</div>
 	<div class="layui-form users_list">
 	  	<table class="layui-table">
 		    <colgroup>
@@ -67,8 +52,7 @@
 		</table>
 	</div>
 	<div id="page"></div>
-	<script type="text/javascript" src="../../laydate/laydate.js"></script>
 	<script type="text/javascript" src="../../layui/layui.js"></script>
-	<script type="text/javascript" src="userlist.js"></script>
+	<script type="text/javascript" src="newuserlist.js"></script>
 </body>
 </html>

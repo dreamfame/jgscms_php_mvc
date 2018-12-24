@@ -2,106 +2,139 @@
 	"title" : "后台首页",
 	"icon" : "icon-computer",
 	"href" : "page/main.html",
-	"spread" : false
+	"spread" : false,
+	"role":"系统管理员,内容管理员,照片审核管理员"
 },{
 	"title" : "用户系统",
 	"icon" : "&#xe613;",
 	"href" : "",
 	"spread" : false,
-	"children" : [
-		{
-			"title" : "用户信息",
-			"icon" : "&#xe612;",
-			"href" : "page/user/userlist.html",
-			"spread" : false
-		},
-		{
-			"title" : "系统消息",
-			"icon" : "&#xe673;",
-			"href" : "page/admin/roleList.html",
-			"spread" : false
-		}
-	]
-},{
-	"title" : "权限管理",
-	"icon" : "&#xe613;",
-	"href" : "",
-	"spread" : false,
+	"role":"系统管理员,内容管理员,照片审核管理员",
 	"children" : [
 		{
 			"title" : "管理员信息",
 			"icon" : "&#xe612;",
 			"href" : "page/admin/adminList.html",
-			"spread" : false
+			"spread" : false,
+			"role":"系统管理员"
 		},
 		{
-			"title" : "角色管理",
-			"icon" : "&#xe673;",
-			"href" : "page/admin/roleList.html",
-			"spread" : false
+			"title" : "用户信息",
+			"icon" : "&#xe770;",
+			"href" : "page/user/userlist.html",
+			"spread" : false,
+			"role":"系统管理员,内容管理员,照片审核管理员"
+		},
+		{
+			"title" : "系统消息",
+			"icon" : "&#xe667;",
+			"href" : "page/message/message.html",
+			"spread" : false,
+			"role":"系统管理员,内容管理员,照片审核管理员"
 		}
 	]
-},{
+},
+	{
 	"title" : "景区内容管理",
-	"icon" : "&#xe613;",
+	"icon" : "&#xe634;",
 	"href" : "",
 	"spread" : false,
+	"role":"内容管理员,系统管理员",
 	"children" : [
 		{
 			"title" : "景区新闻",
 			"icon" : "icon-text",
 			"href" : "page/news/newsList.html",
-			"spread" : false
+			"spread" : false,
+			"role":"系统管理员,内容管理员"
 		},
 		{
 			"title" : "景区介绍",
-			"icon" : "icon-text",
+			"icon" : "icon-wenben",
 			"href" : "page/news/areaList.html",
-			"spread" : false
+			"spread" : false,
+			"role":"系统管理员,内容管理员"
 		}
 	]
 },{
 	"title" : "参考指南管理",
-	"icon" : "&#xe613;",
+	"icon" : "&#xe670;",
 	"href" : "",
 	"spread" : false,
+	"role":"内容管理员,系统管理员",
 	"children" : [
 		{
 			"title" : "景区路线",
-			"icon" : "icon-text",
+			"icon" : "&#xe609;",
 			"href" : "page/activity/routeList.html",
-			"spread" : false
+			"spread" : false,
+			"role":"系统管理员,内容管理员"
 		},
 		{
 			"title" : "景区活动",
-			"icon" : "icon-text",
+			"icon" : "&#xe705;",
 			"href" : "page/activity/activityList.html",
-			"spread" : false
+			"spread" : false,
+			"role":"系统管理员,内容管理员"
 		},
 		{
 			"title" : "景点介绍",
-			"icon" : "icon-text",
+			"icon" : "icon-wenben",
 			"href" : "page/activity/scenicList.html",
-			"spread" : false
+			"spread" : false,
+			"role":"系统管理员,内容管理员"
 		}
 	]
 },{
 	"title" : "分享内容管理",
-	"icon" : "&#xe613;",
+	"icon" : "&#xe641;",
 	"href" : "",
 	"spread" : false,
+	"role":"照片审核管理员,系统管理员",
 	"children" : [
 		{
 			"title" : "照片信息",
-			"icon" : "icon-text",
+			"icon" : "&#xe64a;",
 			"href" : "page/share/photoList.html",
-			"spread" : false
+			"spread" : false,
+			"role":"系统管理员,照片审核管理员"
 		},
 		{
 			"title" : "明信片信息",
-			"icon" : "icon-text",
+			"icon" : "&#xe60d;",
 			"href" : "page/share/postcardList.html",
-			"spread" : false
+			"spread" : false,
+			"role":"系统管理员,照片审核管理员"
+		}
+	]
+}
+,{
+	"title" : "系统设置",
+	"icon" : "&#xe620;",
+	"href" : "",
+	"spread" : false,
+	"role":"内容管理员,照片审核管理员,系统管理员",
+	"children" : [
+		{
+			"title" : "系统公告",
+			"icon" : "&#xe645;",
+			"href" : "page/share/photoList.html",
+			"spread" : false,
+			"role":"系统管理员"
+		},
+		{
+			"title" : "区域设置",
+			"icon" : "&#xe715;",
+			"href" : "page/share/postcardList.html",
+			"spread" : false,
+			"role":"系统管理员"
+		},
+		{
+			"title" : "系统信息",
+			"icon" : "&#xe66e;",
+			"href" : "page/share/postcardList.html",
+			"spread" : false,
+			"role":"系统管理员,照片审核管理员,内容管理员"
 		}
 	]
 }

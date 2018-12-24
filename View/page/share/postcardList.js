@@ -6,6 +6,38 @@ layui.config({
 		laypage = layui.laypage,
 		$ = layui.jquery;
 
+    var start="";
+    var end = "";
+
+    laydate.render({
+        elem: '#start', //指定元素
+        range:true,
+        done: function(value, date, endDate){
+            if(value!="") {
+                start = date.year + "-" + date.month + "-" + date.date;
+                end = endDate.year + "-" + endDate.month + "-" + endDate.date;
+                Search(start,end);
+            }
+            else{
+                start = "";
+                end = "";
+                Search(start,end);
+            }
+            //Search("-1");
+        }
+    });
+
+    function DateUtil(date0,date1,date2){
+        var oDate0 = new Date(date0);
+        var oDate1 = new Date(date1);
+        var oDate2 = new Date(date2);
+        if(oDate0.getTime() >= oDate1.getTime()&&oDate0.getTime() <=oDate2.getTime()){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 	//加载页面数据
 	var postcardData = '';
 
@@ -27,62 +59,66 @@ layui.config({
         }
 	})
 
+	function Search(start,end){
+        var newArray = [];
+        var index = layer.msg('查询中，请稍候',{icon: 16,time:false,shade:0.8});
+            $.ajax({
+                url : "../../json/postcardList.json",
+                type : "get",
+                dataType : "json",
+                success : function(data){
+                    postcardData = data;
+                    for(var i=0;i<postcardData.length;i++){
+                        var postcardStr = postcardData[i];
+                        if(start!=""&&end!=""){
+                            if(!DateUtil(postcardStr.date,start,end)){
+                                continue;
+                            }
+                        }
+                        var selectStr = $(".search_input").val();
+                        function changeStr(data){
+                            var dataStr = '';
+                            var showNum = data.split(eval("/"+selectStr+"/ig")).length - 1;
+                            if(showNum > 1){
+                                for (var j=0;j<showNum;j++) {
+                                    dataStr += data.split(eval("/"+selectStr+"/ig"))[j] + "<i style='color:#03c339;font-weight:bold;'>" + selectStr + "</i>";
+                                }
+                                dataStr += data.split(eval("/"+selectStr+"/ig"))[showNum];
+                                return dataStr;
+                            }else{
+                                dataStr = data.split(eval("/"+selectStr+"/ig"))[0] + "<i style='color:#03c339;font-weight:bold;'>" + selectStr + "</i>" + data.split(eval("/"+selectStr+"/ig"))[1];
+                                return dataStr;
+                            }
+                        }
+                        if(selectStr!="") {
+                            //文章标题
+                            if (postcardStr.name.indexOf(selectStr) > -1) {
+                                postcardStr["name"] = changeStr(postcardStr.name);
+                            }
+                            //发布人
+                            if (postcardStr.wx.indexOf(selectStr) > -1) {
+                                postcardStr["wx"] = changeStr(postcardStr.wx);
+                            }
+                            //浏览量
+                            if (postcardStr.wishes.indexOf(selectStr) > -1) {
+                                postcardStr["wishes"] = changeStr(postcardStr.wishes);
+                            }
+                        }
+                        if(postcardStr.name.indexOf(selectStr)>-1 || postcardStr.wx.indexOf(selectStr)>-1 ||  postcardStr.wishes.indexOf(selectStr)>-1 ){
+                            newArray.push(postcardStr);
+                        }
+                    }
+                    postcardData = newArray;
+                    postcardList(postcardData);
+                }
+            })
+            layer.close(index);
+	}
+
 	//查询
 	$(".search_btn").click(function(){
-		var newArray = [];
 		if($(".search_input").val() != ''){
-			var index = layer.msg('查询中，请稍候',{icon: 16,time:false,shade:0.8});
-            setTimeout(function(){
-            	$.ajax({
-					url : "../../json/postcardList.json",
-					type : "get",
-					dataType : "json",
-					success : function(data){
-						postcardData = data;
-						for(var i=0;i<postcardData.length;i++){
-							var postcardStr = postcardData[i];
-							var selectStr = $(".search_input").val();
-		            		function changeStr(data){
-		            			var dataStr = '';
-		            			var showNum = data.split(eval("/"+selectStr+"/ig")).length - 1;
-		            			if(showNum > 1){
-									for (var j=0;j<showNum;j++) {
-		            					dataStr += data.split(eval("/"+selectStr+"/ig"))[j] + "<i style='color:#03c339;font-weight:bold;'>" + selectStr + "</i>";
-		            				}
-		            				dataStr += data.split(eval("/"+selectStr+"/ig"))[showNum];
-		            				return dataStr;
-		            			}else{
-		            				dataStr = data.split(eval("/"+selectStr+"/ig"))[0] + "<i style='color:#03c339;font-weight:bold;'>" + selectStr + "</i>" + data.split(eval("/"+selectStr+"/ig"))[1];
-		            				return dataStr;
-		            			}
-		            		}
-		            		//文章标题
-		            		if(postcardStr.title.indexOf(selectStr) > -1){
-			            		postcardStr["title"] = changeStr(postcardStr.title);
-		            		}
-		            		//发布人
-		            		if(postcardStr.operator.indexOf(selectStr) > -1){
-			            		postcardStr["operator"] = changeStr(postcardStr.operator);
-		            		}
-		            		//浏览量
-		            		if(postcardStr.see.indexOf(selectStr) > -1){
-			            		postcardStr["see"] = changeStr(postcardStr.see);
-		            		}
-		            		//发布时间
-		            		if(postcardStr.created_at.indexOf(selectStr) > -1){
-			            		postcardStr["created_at"] = changeStr(postcardStr.created_at);
-		            		}
-		            		if(postcardStr.title.indexOf(selectStr)>-1 || postcardStr.operator.indexOf(selectStr)>-1 ||  postcardStr.see.indexOf(selectStr)>-1 || postcardStr.created_at.indexOf(selectStr)>-1){
-		            			newArray.push(postcardStr);
-		            		}
-		            	}
-		            	postcardData = newArray;
-		            	postcardList(postcardData);
-					}
-				})
-            	
-                layer.close(index);
-            },2000);
+			Search(start,end);
 		}else{
 			layer.msg("请输入需要查询的内容");
 		}
@@ -91,7 +127,8 @@ layui.config({
     //显示全部
     $(".showAll_btn").click(function(){
         var index = layer.msg('加载中，请稍候',{icon: 16,time:false,shade:0.8});
-        setTimeout(function(){
+        $(".search_input").val("");
+        $("#start").val("");
             $.ajax({
                 url : "../../json/postcardList.json",
                 type : "get",
@@ -102,7 +139,6 @@ layui.config({
                 }
             })
             layer.close(index);
-        },2000);
     })
 
 	//批量删除

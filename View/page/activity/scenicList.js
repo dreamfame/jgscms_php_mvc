@@ -6,6 +6,38 @@ layui.config({
 		laypage = layui.laypage,
 		$ = layui.jquery;
 
+    var start="";
+    var end = "";
+
+    laydate.render({
+        elem: '#start', //指定元素
+        range:true,
+        done: function(value, date, endDate){
+            if(value!="") {
+                start = date.year + "-" + date.month + "-" + date.date;
+                end = endDate.year + "-" + endDate.month + "-" + endDate.date;
+                Search(start,end);
+            }
+            else{
+                start = "";
+                end = "";
+                Search(start,end);
+            }
+            //Search("-1");
+        }
+    });
+
+    function DateUtil(date0,date1,date2){
+        var oDate0 = new Date(date0);
+        var oDate1 = new Date(date1);
+        var oDate2 = new Date(date2);
+        if(oDate0.getTime() >= oDate1.getTime()&&oDate0.getTime() <=oDate2.getTime()){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 	//加载页面数据
 	var scenicData = '';
 
@@ -27,62 +59,63 @@ layui.config({
         }
 	})
 
+	function Search(start,end){
+        var newArray = [];
+        var index = layer.msg('查询中，请稍候',{icon: 16,time:false,shade:0.8});
+            $.ajax({
+                url : "../../json/scenicList.json",
+                type : "get",
+                dataType : "json",
+                success : function(data){
+                    scenicData = data;
+                    for(var i=0;i<scenicData.length;i++){
+                        var scenicStr = scenicData[i];
+                        if(start!=""&&end!=""){
+                            if(!DateUtil(scenicStr.created_at,start,end)){
+                                continue;
+                            }
+                        }
+                        var selectStr = $(".search_input").val();
+                        function changeStr(data){
+                            var dataStr = '';
+                            var showNum = data.split(eval("/"+selectStr+"/ig")).length - 1;
+                            if(showNum > 1){
+                                for (var j=0;j<showNum;j++) {
+                                    dataStr += data.split(eval("/"+selectStr+"/ig"))[j] + "<i style='color:#03c339;font-weight:bold;'>" + selectStr + "</i>";
+                                }
+                                dataStr += data.split(eval("/"+selectStr+"/ig"))[showNum];
+                                return dataStr;
+                            }else{
+                                dataStr = data.split(eval("/"+selectStr+"/ig"))[0] + "<i style='color:#03c339;font-weight:bold;'>" + selectStr + "</i>" + data.split(eval("/"+selectStr+"/ig"))[1];
+                                return dataStr;
+                            }
+                        }
+                        if(selectStr!="") {
+                            //景点
+                            if (scenicStr.name.indexOf(selectStr) > -1) {
+                                scenicStr["name"] = changeStr(scenicStr.name);
+                            }
+                            //推荐星级
+                            if (scenicStr.recommend.indexOf(selectStr) > -1) {
+                                scenicStr["recommend"] = changeStr(scenicStr.recommend);
+                            }
+                        }
+                        if(scenicStr.name.indexOf(selectStr)>-1 || scenicStr.recommend.indexOf(selectStr)>-1 ){
+                            newArray.push(scenicStr);
+                        }
+                    }
+                    scenicData = newArray;
+                    scenicList(scenicData);
+                }
+            })
+
+            layer.close(index);
+	}
+
 	//查询
 	$(".search_btn").click(function(){
-		var newArray = [];
 		if($(".search_input").val() != ''){
-			var index = layer.msg('查询中，请稍候',{icon: 16,time:false,shade:0.8});
-            setTimeout(function(){
-            	$.ajax({
-					url : "../../json/scenicList.json",
-					type : "get",
-					dataType : "json",
-					success : function(data){
-						scenicData = data;
-						for(var i=0;i<scenicData.length;i++){
-							var scenicStr = scenicData[i];
-							var selectStr = $(".search_input").val();
-		            		function changeStr(data){
-		            			var dataStr = '';
-		            			var showNum = data.split(eval("/"+selectStr+"/ig")).length - 1;
-		            			if(showNum > 1){
-									for (var j=0;j<showNum;j++) {
-		            					dataStr += data.split(eval("/"+selectStr+"/ig"))[j] + "<i style='color:#03c339;font-weight:bold;'>" + selectStr + "</i>";
-		            				}
-		            				dataStr += data.split(eval("/"+selectStr+"/ig"))[showNum];
-		            				return dataStr;
-		            			}else{
-		            				dataStr = data.split(eval("/"+selectStr+"/ig"))[0] + "<i style='color:#03c339;font-weight:bold;'>" + selectStr + "</i>" + data.split(eval("/"+selectStr+"/ig"))[1];
-		            				return dataStr;
-		            			}
-		            		}
-		            		//景点
-		            		if(scenicStr.name.indexOf(selectStr) > -1){
-			            		scenicStr["name"] = changeStr(scenicStr.name);
-		            		}
-		            		//推荐星级
-		            		if(scenicStr.recommend.indexOf(selectStr) > -1){
-			            		scenicStr["recommend"] = changeStr(scenicStr.recommend);
-		            		}
-		            		//浏览量
-		            		if(scenicStr.see.indexOf(selectStr) > -1){
-			            		scenicStr["see"] = changeStr(scenicStr.see);
-		            		}
-		            		//发布时间
-		            		if(scenicStr.created_at.indexOf(selectStr) > -1){
-			            		scenicStr["created_at"] = changeStr(scenicStr.created_at);
-		            		}
-		            		if(scenicStr.name.indexOf(selectStr)>-1 || scenicStr.recommend.indexOf(selectStr)>-1 ||  scenicStr.see.indexOf(selectStr)>-1 || scenicStr.created_at.indexOf(selectStr)>-1){
-		            			newArray.push(scenicStr);
-		            		}
-		            	}
-		            	scenicData = newArray;
-		            	scenicList(scenicData);
-					}
-				})
-            	
-                layer.close(index);
-            },2000);
+			Search(start,end);
 		}else{
 			layer.msg("请输入需要查询的内容");
 		}
@@ -91,7 +124,8 @@ layui.config({
     //显示全部
     $(".showAll_btn").click(function(){
         var index = layer.msg('加载中，请稍候',{icon: 16,time:false,shade:0.8});
-        setTimeout(function(){
+        $(".search_input").val("");
+        $("#start").val("");
             $.ajax({
                 url : "../../json/scenicList.json",
                 type : "get",
@@ -102,7 +136,6 @@ layui.config({
                 }
             })
             layer.close(index);
-        },2000);
     })
 
 	//添加文章

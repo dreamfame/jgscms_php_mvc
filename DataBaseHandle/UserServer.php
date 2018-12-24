@@ -101,6 +101,12 @@ Class UserServer
         return $result;
     }
 
+    public function QueryUser($where){
+        $sql = "select id,openid,wx,nickname,avatar,gender,city,country,created_at from ".$this->db_table.$where;
+        $result = $this->db->ExeSql($sql, $this->conn);
+        return $result;
+    }
+
     public function DeleteUser($id){
         $sql="delete from ".$this->db_table." where id= '$id'";
         try{

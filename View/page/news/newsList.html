@@ -14,35 +14,30 @@
 	<link rel="stylesheet" href="../../css/news.css" media="all" />
 </head>
 <body class="childrenBody">
-	<blockquote class="layui-elem-quote news_search">
-		<div class="layui-inline">
-		    <div class="layui-input-inline">
-		    	<input type="text" value="" placeholder="请输入关键字" class="layui-input search_input">
-		    </div>
-		    <a class="layui-btn search_btn">查询</a>
-		</div>
-		<div class="layui-inline">
-			<a class="layui-btn layui-btn-warm showAll_btn">显示全部</a>
-		</div>
-		<div class="layui-inline">
-			<a class="layui-btn layui-btn-normal newsAdd_btn">添加文章</a>
-		</div>
-		<div class="layui-inline">
-			<a class="layui-btn layui-btn-danger batchDel">批量删除</a>
-		</div>
-		<form class="layui-form">
-			<div class="layui-form-item">
-				<div class="layui-inline">
-					<label class="layui-form-label">文章分类</label>
-					<div class="layui-input-inline">
-						<select name="type" class="type">
-							<option value="0">-请选择-</option>
-						</select>
-					</div>
+	<form class="layui-form">
+		<blockquote class="layui-elem-quote news_search">
+			<div class="layui-inline">
+				<div class="layui-input-inline">
+					<input readonly type="text" class="layui-input" id="start" placeholder="时间" lay-key="1">
 				</div>
 			</div>
-		</form>
-	</blockquote>
+			<div class="layui-inline">
+				<div class="layui-input-inline">
+					<input type="text" value="" placeholder="请输入关键字" class="layui-input search_input">
+				</div>
+				<a class="layui-btn search_btn">查询</a>
+			</div>
+			<div class="layui-inline">
+				<a class="layui-btn layui-btn-warm showAll_btn">显示全部</a>
+			</div>
+			<div class="layui-inline">
+				<a class="layui-btn layui-btn-normal newsAdd_btn">添加文章</a>
+			</div>
+			<div class="layui-inline">
+				<a class="layui-btn layui-btn-danger batchDel">批量删除</a>
+			</div>
+		</blockquote>
+	</form>
 	<table id="newsList" lay-filter="newsList"></table>
 	<div class="layui-form news_list">
 	  	<table class="layui-table" lay-data="{initSort:{field:'time', type:'desc'}}">
@@ -74,6 +69,7 @@
 		</table>
 	</div>
 	<div id="page"></div>
+	<script type="text/javascript" src="../../laydate/laydate.js"></script>
 	<script type="text/javascript" src="../../layui/layui.js"></script>
 	<script type="text/javascript" src="newsList.js"></script>
 </body>

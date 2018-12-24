@@ -18,12 +18,10 @@
 		<blockquote class="layui-elem-quote news_search">
 			<div class="layui-inline selectMsg">
 				<select name="msgColl" lay-filter="selectMsg">
-					<option value="0">全部</option>
-			        <option value="1">已收藏</option>
+					<option value="-1">全部</option>
+					<option value="0">未回复</option>
+			        <option value="1">已回复</option>
 			    </select>
-			</div>
-			<div class="layui-inline">
-				<div class="layui-form-mid layui-word-aux">本页所有数据均为静态，刷新后所有操作无效</div>
 			</div>
 		</blockquote>
 		<table class="layui-table msg_box" lay-skin="line">

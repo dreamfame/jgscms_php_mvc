@@ -1,12 +1,13 @@
 <?php
 	Class Message{
 		private $id;
-		private $customerid;
-		private $specialid;
-		private $message;
+		private $uid;
+		private $aid;
+		private $msg;
 		private $reply;
-		private $sendtime;
-		private $replytime;
+		private $msg_time;
+		private $reply_time;
+		private $status;
 		
 		function __set($name,$value)
 		{

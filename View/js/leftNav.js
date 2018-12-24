@@ -1,4 +1,5 @@
 function navBar(strData){
+	var role = window.sessionStorage.getItem("role");
 	var data;
 	if(typeof(strData) == "string"){
 		var data = JSON.parse(strData); //部分用户解析出来的是字符串，转换一下
@@ -7,6 +8,9 @@ function navBar(strData){
 	}	
 	var ulHtml = '<ul class="layui-nav layui-nav-tree">';
 	for(var i=0;i<data.length;i++){
+		if(data[i].role.indexOf(role) == -1){
+			continue;
+		}
 		if(data[i].spread){
 			ulHtml += '<li class="layui-nav-item layui-nav-itemed">';
 		}else{
@@ -26,6 +30,9 @@ function navBar(strData){
 			ulHtml += '</a>';
 			ulHtml += '<dl class="layui-nav-child">';
 			for(var j=0;j<data[i].children.length;j++){
+                if(data[i].children[j].role.indexOf(role) == -1){
+                    continue;
+                }
 				if(data[i].children[j].target == "_blank"){
 					ulHtml += '<dd><a href="javascript:;" data-url="'+data[i].children[j].href+'" target="'+data[i].children[j].target+'">';
 				}else{

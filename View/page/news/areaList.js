@@ -6,6 +6,38 @@ layui.config({
 		laypage = layui.laypage,
 		$ = layui.jquery;
 
+    var start="";
+    var end = "";
+
+    laydate.render({
+        elem: '#start', //指定元素
+        range:true,
+        done: function(value, date, endDate){
+            if(value!="") {
+                start = date.year + "-" + date.month + "-" + date.date;
+                end = endDate.year + "-" + endDate.month + "-" + endDate.date;
+                Search(start,end);
+            }
+            else{
+                start = "";
+                end = "";
+                Search(start,end);
+            }
+            //Search("-1");
+        }
+    });
+
+    function DateUtil(date0,date1,date2){
+        var oDate0 = new Date(date0);
+        var oDate1 = new Date(date1);
+        var oDate2 = new Date(date2);
+        if(oDate0.getTime() >= oDate1.getTime()&&oDate0.getTime() <=oDate2.getTime()){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 	//加载页面数据
 	var areaData = '';
 
@@ -27,72 +59,79 @@ layui.config({
         }
 	})
 
+    function Search(start,end){
+        var userArray = [];
+        var index = layer.msg('查询中，请稍候',{icon: 16,time:false,shade:0.8});
+        $.ajax({
+                url : "../../json/areaList.json",
+                type : "get",
+                dataType : "json",
+                success : function(data){
+                    if(window.sessionStorage.getItem("addArea")){
+                        var addArea = window.sessionStorage.getItem("addArea");
+                        areaData = JSON.parse(addArea).concat(data);
+                    }else{
+                        areaData = data;
+                    }
+                    for(var i=0;i<areaData.length;i++){
+                        var areaStr = areaData[i];
+                        if(start!=""&&end!=""){
+                            if(!DateUtil(areaStr.created_at,start,end)){
+                                continue;
+                            }
+                        }
+                        var selectStr = $(".search_input").val();
+                        function changeStr(data){
+                            var dataStr = '';
+                            var showNum = data.split(eval("/"+selectStr+"/ig")).length - 1;
+                            if(showNum > 1){
+                                for (var j=0;j<showNum;j++) {
+                                    dataStr += data.split(eval("/"+selectStr+"/ig"))[j] + "<i style='color:#03c339;font-weight:bold;'>" + selectStr + "</i>";
+                                }
+                                dataStr += data.split(eval("/"+selectStr+"/ig"))[showNum];
+                                return dataStr;
+                            }else{
+                                dataStr = data.split(eval("/"+selectStr+"/ig"))[0] + "<i style='color:#03c339;font-weight:bold;'>" + selectStr + "</i>" + data.split(eval("/"+selectStr+"/ig"))[1];
+                                return dataStr;
+                            }
+                        }
+
+                        if(selectStr!="") {
+                            if (areaStr.name.indexOf(selectStr) > -1) {
+                                areaStr["name"] = changeStr(areaStr.name);
+                            }
+
+                            if (areaStr.recommend.indexOf(selectStr) > -1) {
+                                areaStr["recommend"] = changeStr(areaStr.recommend);
+                            }
+                        }
+                        if (areaStr.name.indexOf(selectStr) > -1 || areaStr.recommend.indexOf(selectStr) > -1 ) {
+                            userArray.push(areaStr);
+                        }
+                    }
+                    areaData = userArray;
+                    areaList(areaData);
+                }
+            })
+		layer.close(index);
+    }
+
 	//查询
 	$(".search_btn").click(function(){
-		var newArray = [];
-		if($(".search_input").val() != ''){
-			var index = layer.msg('查询中，请稍候',{icon: 16,time:false,shade:0.8});
-            setTimeout(function(){
-            	$.ajax({
-					url : "../../json/areaList.json",
-					type : "get",
-					dataType : "json",
-					success : function(data){
-						areaData = data;
-						for(var i=0;i<areaData.length;i++){
-							var areaStr = areaData[i];
-							var selectStr = $(".search_input").val();
-		            		function changeStr(data){
-		            			var dataStr = '';
-		            			var showNum = data.split(eval("/"+selectStr+"/ig")).length - 1;
-		            			if(showNum > 1){
-									for (var j=0;j<showNum;j++) {
-		            					dataStr += data.split(eval("/"+selectStr+"/ig"))[j] + "<i style='color:#03c339;font-weight:bold;'>" + selectStr + "</i>";
-		            				}
-		            				dataStr += data.split(eval("/"+selectStr+"/ig"))[showNum];
-		            				return dataStr;
-		            			}else{
-		            				dataStr = data.split(eval("/"+selectStr+"/ig"))[0] + "<i style='color:#03c339;font-weight:bold;'>" + selectStr + "</i>" + data.split(eval("/"+selectStr+"/ig"))[1];
-		            				return dataStr;
-		            			}
-		            		}
-		            		//景点
-		            		if(areaStr.name.indexOf(selectStr) > -1){
-			            		areaStr["name"] = changeStr(areaStr.name);
-		            		}
-		            		//推荐星级
-		            		if(areaStr.recommend.indexOf(selectStr) > -1){
-			            		areaStr["recommend"] = changeStr(areaStr.recommend);
-		            		}
-		            		//浏览量
-		            		if(areaStr.see.indexOf(selectStr) > -1){
-			            		areaStr["see"] = changeStr(areaStr.see);
-		            		}
-		            		//发布时间
-		            		if(areaStr.created_at.indexOf(selectStr) > -1){
-			            		areaStr["created_at"] = changeStr(areaStr.created_at);
-		            		}
-		            		if(areaStr.name.indexOf(selectStr)>-1 || areaStr.recommend.indexOf(selectStr)>-1 ||  areaStr.see.indexOf(selectStr)>-1 || areaStr.created_at.indexOf(selectStr)>-1){
-		            			newArray.push(areaStr);
-		            		}
-		            	}
-		            	areaData = newArray;
-		            	areaList(areaData);
-					}
-				})
-            	
-                layer.close(index);
-            },2000);
-		}else{
-			layer.msg("请输入需要查询的内容");
-		}
+        var newArray = [];
+        if($(".search_input").val() != ''){
+            Search(start,end);
+        }else{
+            layer.msg("请输入需要查询的内容");
+        }
 	})
 
     //显示全部
     $(".showAll_btn").click(function(){
         var index = layer.msg('加载中，请稍候',{icon: 16,time:false,shade:0.8});
-        setTimeout(function(){
-            $.ajax({
+        $(".search_input").val("");
+        $("#start").val("");
+        $.ajax({
                 url : "../../json/areaList.json",
                 type : "get",
                 dataType : "json",
@@ -100,9 +139,8 @@ layui.config({
                 	areaData = data;
                     areaList(areaData);
                 }
-            })
-            layer.close(index);
-        },2000);
+        	})
+		layer.close(index);
     })
 
 	//添加文章

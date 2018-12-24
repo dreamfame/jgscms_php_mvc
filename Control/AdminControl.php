@@ -177,6 +177,10 @@ require_once '../Extensions/Security.php';
             	$username = Security::decrypt($_REQUEST['username']);
                 $wherelist[] = "username = '{$username}'";
             }
+            if($_REQUEST['userid']!=""||$_REQUEST['userid']!=null){
+                $id = $_REQUEST['userid'];
+                $wherelist[] = "id = '{$id}'";
+            }
             //组装查询条件
             if(count($wherelist) > 0){
                 $where = " where ".implode(' and ' , $wherelist);
@@ -227,6 +231,8 @@ require_once '../Extensions/Security.php';
 					$re['state'] = "1";
 					$re['nickname'] = $a[3];
 					$re['username'] = Security::encrypt($a[1]);
+					$re['head_pic'] = $a[6];
+					$re['role'] = $a[7];
 				} 
 				else{
                     $re['state'] = "0";

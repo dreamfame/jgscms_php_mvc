@@ -6,6 +6,38 @@ layui.config({
 		laypage = layui.laypage,
 		$ = layui.jquery;
 
+    var start="";
+    var end = "";
+
+    laydate.render({
+        elem: '#start', //指定元素
+        range:true,
+        done: function(value, date, endDate){
+            if(value!="") {
+                start = date.year + "-" + date.month + "-" + date.date;
+                end = endDate.year + "-" + endDate.month + "-" + endDate.date;
+                Search(start,end);
+            }
+            else{
+                start = "";
+                end = "";
+                Search(start,end);
+            }
+            //Search("-1");
+        }
+    });
+
+    function DateUtil(date0,date1,date2){
+        var oDate0 = new Date(date0);
+        var oDate1 = new Date(date1);
+        var oDate2 = new Date(date2);
+        if(oDate0.getTime() >= oDate1.getTime()&&oDate0.getTime() <=oDate2.getTime()){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 	//加载页面数据
 	var newsData = '';
 	var typeData = '';
@@ -38,62 +70,69 @@ layui.config({
         }
 	})
 
+    function Search(start,end){
+        var userArray = [];
+        var index = layer.msg('查询中，请稍候',{icon: 16,time:false,shade:0.8});
+            $.ajax({
+                url : "../../json/newsList.json",
+                type : "get",
+                dataType : "json",
+                success : function(data){
+                    if(window.sessionStorage.getItem("addNews")){
+                        var addNews = window.sessionStorage.getItem("addNews");
+                        newsData = JSON.parse(addNews).concat(data);
+                    }else{
+                        newsData = data;
+                    }
+                    for(var i=0;i<newsData.length;i++){
+                        var newsStr = newsData[i];
+                        if(start!=""&&end!=""){
+                            if(!DateUtil(newsStr.created_at,start,end)){
+                                continue;
+                            }
+                        }
+                        var selectStr = $(".search_input").val();
+                        function changeStr(data){
+                            var dataStr = '';
+                            var showNum = data.split(eval("/"+selectStr+"/ig")).length - 1;
+                            if(showNum > 1){
+                                for (var j=0;j<showNum;j++) {
+                                    dataStr += data.split(eval("/"+selectStr+"/ig"))[j] + "<i style='color:#03c339;font-weight:bold;'>" + selectStr + "</i>";
+                                }
+                                dataStr += data.split(eval("/"+selectStr+"/ig"))[showNum];
+                                return dataStr;
+                            }else{
+                                dataStr = data.split(eval("/"+selectStr+"/ig"))[0] + "<i style='color:#03c339;font-weight:bold;'>" + selectStr + "</i>" + data.split(eval("/"+selectStr+"/ig"))[1];
+                                return dataStr;
+                            }
+                        }
+
+                        if(selectStr!="") {
+                            if (newsStr.title.indexOf(selectStr) > -1) {
+                                newsStr["title"] = changeStr(newsStr.title);
+                            }
+
+                            if (newsStr.operator.indexOf(selectStr) > -1) {
+                                newsStr["operator"] = changeStr(newsStr.operator);
+                            }
+                        }
+                        if (newsStr.title.indexOf(selectStr) > -1 || newsStr.operator.indexOf(selectStr) > -1 ) {
+                            userArray.push(newsStr);
+                        }
+                    }
+                    newsData = userArray;
+                    newsList(newsData);
+                }
+            })
+
+            layer.close(index);
+    }
+
 	//查询
 	$(".search_btn").click(function(){
 		var newArray = [];
 		if($(".search_input").val() != ''){
-			var index = layer.msg('查询中，请稍候',{icon: 16,time:false,shade:0.8});
-            setTimeout(function(){
-            	$.ajax({
-					url : "../../json/newsList.json",
-					type : "get",
-					dataType : "json",
-					success : function(data){
-						newsData = data;
-						for(var i=0;i<newsData.length;i++){
-							var newsStr = newsData[i];
-							var selectStr = $(".search_input").val();
-		            		function changeStr(data){
-		            			var dataStr = '';
-		            			var showNum = data.split(eval("/"+selectStr+"/ig")).length - 1;
-		            			if(showNum > 1){
-									for (var j=0;j<showNum;j++) {
-		            					dataStr += data.split(eval("/"+selectStr+"/ig"))[j] + "<i style='color:#03c339;font-weight:bold;'>" + selectStr + "</i>";
-		            				}
-		            				dataStr += data.split(eval("/"+selectStr+"/ig"))[showNum];
-		            				return dataStr;
-		            			}else{
-		            				dataStr = data.split(eval("/"+selectStr+"/ig"))[0] + "<i style='color:#03c339;font-weight:bold;'>" + selectStr + "</i>" + data.split(eval("/"+selectStr+"/ig"))[1];
-		            				return dataStr;
-		            			}
-		            		}
-		            		//文章标题
-		            		if(newsStr.title.indexOf(selectStr) > -1){
-			            		newsStr["title"] = changeStr(newsStr.title);
-		            		}
-		            		//发布人
-		            		if(newsStr.operator.indexOf(selectStr) > -1){
-			            		newsStr["operator"] = changeStr(newsStr.operator);
-		            		}
-		            		//浏览量
-		            		if(newsStr.see.indexOf(selectStr) > -1){
-			            		newsStr["see"] = changeStr(newsStr.see);
-		            		}
-		            		//发布时间
-		            		if(newsStr.created_at.indexOf(selectStr) > -1){
-			            		newsStr["created_at"] = changeStr(newsStr.created_at);
-		            		}
-		            		if(newsStr.title.indexOf(selectStr)>-1 || newsStr.operator.indexOf(selectStr)>-1 ||  newsStr.see.indexOf(selectStr)>-1 || newsStr.created_at.indexOf(selectStr)>-1){
-		            			newArray.push(newsStr);
-		            		}
-		            	}
-		            	newsData = newArray;
-		            	newsList(newsData);
-					}
-				})
-            	
-                layer.close(index);
-            },2000);
+            Search(start,end);
 		}else{
 			layer.msg("请输入需要查询的内容");
 		}
@@ -102,7 +141,8 @@ layui.config({
     //显示全部
     $(".showAll_btn").click(function(){
         var index = layer.msg('加载中，请稍候',{icon: 16,time:false,shade:0.8});
-        setTimeout(function(){
+        $(".search_input").val("");
+        $("#start").val("");
             $.ajax({
                 url : "../../json/newsList.json",
                 type : "get",
@@ -113,7 +153,6 @@ layui.config({
                 }
             })
             layer.close(index);
-        },2000);
     })
 
 	//添加文章

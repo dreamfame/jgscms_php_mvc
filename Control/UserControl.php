@@ -39,6 +39,9 @@ Class UserControl
 			case "json":
 				UserControl::UpdateUserJson();
 				break;
+            case "new":
+                UserControl::GetNewUser();
+                break;
         }
     }
 
@@ -46,6 +49,37 @@ Class UserControl
     {
         $as = new UserServer();
         $result = $as->GetAll();
+        $re = array('state'=>'0','content'=>null);
+        $jsonfile = fopen("../View/json/userList.json", "w") or die("Unable to open file!");
+        while ($u = mysqli_fetch_array($result)) {
+            $re['state'] = '1';
+            $row[] = array('id' => $u['id'],'openid' => $u['openid'],  'wx' => $u['wx'], 'nickname' => $u['nickname'], 'avatar' => $u['avatar'],'gender' => $u['gender'], 'city' => $u['city'], 'country' => $u['country'],'created_at'=>$u['created_at']);
+            $re['content'] = $row;
+            if (flock($jsonfile, LOCK_EX)) {//加写锁 
+                ftruncate($jsonfile, 0); // 将文件截断到给定的长度 
+                rewind($jsonfile); // 倒回文件指针的位置 
+                fwrite($jsonfile, json_encode($row, JSON_UNESCAPED_UNICODE));
+                flock($jsonfile, LOCK_UN); //解锁 
+            }
+        }
+        fclose($jsonfile);
+        echo json_encode($re,JSON_UNESCAPED_UNICODE);
+        return;
+    }
+
+    public function GetNewUser(){
+        $as = new UserServer();
+        $wherelist = array();
+        if($_GET['time']!=""||$_GET['time']!=null){
+            $wherelist[] = "created_at between '{$_GET['time']}' and '{$_GET['time']}'";
+        }
+        //组装查询条件
+        if(count($wherelist) > 0){
+            $where = " where ".implode(' and ' , $wherelist);
+        }
+        //判断查询条件
+        $where = isset($where) ? $where : '';
+        $result = $as->QueryUser($where);
         $re = array('state'=>'0','content'=>null);
         $jsonfile = fopen("../View/json/userList.json", "w") or die("Unable to open file!");
         while ($u = mysqli_fetch_array($result)) {

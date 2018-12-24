@@ -7,8 +7,29 @@ layui.config({
 		$ = layui.jquery;
 
 	$(".panel a").on("click",function(){
-		window.parent.addTab($(this));
+        var id = $(this).attr("id");
+        if(id=="picall"||id=="picwait"){
+            if(role=="内容管理员"){
+                layer.msg("对不起，您没有内容权限");
+            }
+            else{
+                window.parent.addTab($(this));
+            }
+        }
+        else if(id=="newsall"){
+            if(role=="照片审核管理员"){
+                layer.msg("对不起，您没有内容权限");
+            }
+            else{
+                window.parent.addTab($(this));
+            }
+        }
+        else{
+		    window.parent.addTab($(this));
+        }
 	})
+
+    var role = window.sessionStorage.getItem("role");
 
     $.ajax({
         type: "POST",

@@ -37,6 +37,8 @@ layui.config({
                     if(result.state=="1"){
                         window.localStorage.setItem("nickname",result.nickname);
                         window.sessionStorage.setItem("username",result.username);
+                        window.sessionStorage.setItem("head_pic",result.head_pic);
+                        window.sessionStorage.setItem("role",result.role);
                         window.location.href = "../../index.html";
                     }
                 },

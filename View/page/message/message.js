@@ -32,32 +32,41 @@ layui.config({
         }
     })
 
+    var userData;
+
     //加载数据
-    $.get("../../json/message.json",function(data){
-        var msgHtml = '',msgReply;
-        for(var i=0; i<data.length; i++){
-            if(data[i].msgReply && data[i].msgReply.length != 0){
-                msgReply = "已回复";
-            }else{
-                msgReply = "";
+    $.get("/index.php/message/JudgeOperate/list",function(data){
+        var data = eval('(' + data + ')');
+        if(data.state=="1"){
+            userData = data.content;
+            var content = data.content;
+            var msgHtml = '',msgReply;
+            for(var i=0; i<content.length; i++){
+                if(content[i].status=="1"){
+                    msgReply = "已回复";
+                }else{
+                    msgReply = "";
+                }
+                msgHtml += '<tr>';
+                msgHtml += '  <td class="msg_info">';
+                msgHtml += '    <img src="'+content[i].user_head+'" width="50" height="50"><input type="hidden" value="'+content[i].id+'">';
+                msgHtml += '    <div class="user_info">';
+                msgHtml += '        <h2>'+content[i].user_nickname+'</h2>';
+                msgHtml += '        <p>'+content[i].msg+'</p>';
+                msgHtml += '    </div>';
+                msgHtml += '  </td>';
+                msgHtml += '  <td class="msg_time">'+content[i].msg_time+'</td>';
+                msgHtml += '  <td class="msg_reply">'+msgReply+'</td>';
+                msgHtml += '  <td class="msg_opr">';
+                msgHtml += '    <a class="layui-btn layui-btn-mini reply_msg"><i class="layui-icon">&#xe611;</i> 回复</a>';
+                msgHtml += '  </td>';
+                msgHtml += '</tr>';
             }
-            msgHtml += '<tr>';
-            msgHtml += '  <td class="msg_info">';
-            msgHtml += '    <img src="'+data[i].userface+'" width="50" height="50"><input type="hidden" value="'+data[i].msgId+'">';
-            msgHtml += '    <div class="user_info">';
-            msgHtml += '        <h2>'+data[i].userName+'</h2>';
-            msgHtml += '        <p>'+data[i].userAsk+'</p>';
-            msgHtml += '    </div>';
-            msgHtml += '  </td>';
-            msgHtml += '  <td class="msg_time">'+data[i].askTime+'</td>';
-            msgHtml += '  <td class="msg_reply">'+msgReply+'</td>';
-            msgHtml += '  <td class="msg_opr">';
-            msgHtml += '    <a class="layui-btn layui-btn-mini layui-btn-normal msg_collect"><i class="layui-icon">&#xe600;</i> 收藏</a>';
-            msgHtml += '    <a class="layui-btn layui-btn-mini reply_msg"><i class="layui-icon">&#xe611;</i> 回复</a>';
-            msgHtml += '  </td>';
-            msgHtml += '</tr>';
+            $(".msgHtml").html(msgHtml);
         }
-        $(".msgHtml").html(msgHtml);
+       else{
+            $(".msgHtml").append("<tr class='no_msg' align='center'><td colspan='4'>暂无消息</td></tr>")
+        }
     })
 
     //操作
@@ -74,7 +83,18 @@ layui.config({
     //回复
     $("body").on("click",".reply_msg,.msgHtml .user_info h2,.msgHtml .msg_info>img",function(){
         var id = $(this).parents("tr").find("input[type=hidden]").val();
+        window.sessionStorage.setItem("msg_id",id);
         var userName = $(this).parents("tr").find(".user_info h2").text();
+        var status = "";
+        var user;
+        for (var i = 0; i < userData.length; i++)
+        {
+            if (userData[i].id == id) {
+                status = userData[i].status;
+                user = userData[i];
+            }
+        }
+        window.sessionStorage.setItem("status",status);
         var index = layui.layer.open({
             title : "与 "+userName+" 的聊天",
             type : 2,
@@ -87,45 +107,63 @@ layui.config({
                 },500)
                 var body = layui.layer.getChildFrame('body', index);
                 //加载回复信息
-                $.get("../../json/message.json",function(data){
-                    var msgReplyHtml = '',msgReply;
-                    for(var i=0; i<data.length; i++){
-                        if(data[i].msgReply && data[i].msgReply.length != 0){
+                $.get("/index.php/message/JudgeOperate/msg/",{"id":id,"status":status},function(data){
+                    var data = eval('(' + data + ')');
+                    if(data.state=="1") {
+                        var reply = data.content[0];
+                        var msgReplyHtml = '', msgReply;
+                        if (user.status=="1") {
                             msgReply = "已回复";
-                        }else{
+                        } else {
                             msgReply = "";
                         }
-                        if(data[i].msgId == id){
-                            if(data[i].msgReply && data[i].msgReply.length != 0){
-                                for(var j=0;j<data[i].msgReply.length;j++){
-                                    msgReplyHtml += '<tr>';
-                                    msgReplyHtml += '  <td class="msg_info">';
-                                    msgReplyHtml += '    <img src="'+data[i].msgReply[j].userface+'" width="50" height="50">';
-                                    msgReplyHtml += '    <div class="user_info">';
-                                    msgReplyHtml += '        <h2>'+data[i].msgReply[j].userName+'</h2>';
-                                    msgReplyHtml += '        <p>'+data[i].msgReply[j].userAsk+'</p>';
-                                    msgReplyHtml += '    </div>';
-                                    msgReplyHtml += '  </td>';
-                                    msgReplyHtml += '  <td class="msg_time">'+data[i].msgReply[j].askTime+'</td>';
-                                    msgReplyHtml += '  <td class="msg_reply"></td>';
-                                    msgReplyHtml += '</tr>';
-                                }
-                            }
-                            msgReplyHtml += '<tr>';
-                            msgReplyHtml += '  <td class="msg_info">';
-                            msgReplyHtml += '    <img src="'+data[i].userface+'" width="50" height="50">';
-                            msgReplyHtml += '    <div class="user_info">';
-                            msgReplyHtml += '        <h2>'+data[i].userName+'</h2>';
-                            msgReplyHtml += '        <p>'+data[i].userAsk+'</p>';
-                            msgReplyHtml += '    </div>';
-                            msgReplyHtml += '  </td>';
-                            msgReplyHtml += '  <td class="msg_time">'+data[i].askTime+'</td>';
-                            msgReplyHtml += '  <td class="msg_reply">'+msgReply+'</td>';
-                            msgReplyHtml += '</tr>';
+                        msgReplyHtml += '<tr>';
+                        msgReplyHtml += '  <td class="msg_info">';
+                        msgReplyHtml += '    <img src="' + reply.admin_head + '" width="50" height="50">';
+                        msgReplyHtml += '    <div class="user_info">';
+                        msgReplyHtml += '        <h2>' + reply.admin_username + '</h2>';
+                        msgReplyHtml += '        <p>' + reply.reply + '</p>';
+                        msgReplyHtml += '    </div>';
+                        msgReplyHtml += '  </td>';
+                        msgReplyHtml += '  <td class="msg_time">' + reply.reply_time + '</td>';
+                        msgReplyHtml += '  <td class="msg_reply"></td>';
+                        msgReplyHtml += '</tr>';
+                        msgReplyHtml += '<tr>';
+                        msgReplyHtml += '  <td class="msg_info">';
+                        msgReplyHtml += '    <img src="' + user.user_head + '" width="50" height="50">';
+                        msgReplyHtml += '    <div class="user_info">';
+                        msgReplyHtml += '        <h2>' + user.user_nickname + '</h2>';
+                        msgReplyHtml += '        <p>' + user.msg + '</p>';
+                        msgReplyHtml += '    </div>';
+                        msgReplyHtml += '  </td>';
+                        msgReplyHtml += '  <td class="msg_time">' + user.msg_time + '</td>';
+                        msgReplyHtml += '  <td id="msg_info" class="msg_reply">' + msgReply + '</td>';
+                        msgReplyHtml += '</tr>';
+                    }
+                    else{
+                        var msgReplyHtml = '', msgReply;
+                        if (user.status=="1") {
+                            msgReply = "已回复";
+                        } else {
+                            msgReply = "";
                         }
+                        msgReplyHtml += '<tr>';
+                        msgReplyHtml += '  <td class="msg_info">';
+                        msgReplyHtml += '    <img src="' + user.user_head + '" width="50" height="50">';
+                        msgReplyHtml += '    <div class="user_info">';
+                        msgReplyHtml += '        <h2>' + user.user_nickname + '</h2>';
+                        msgReplyHtml += '        <p>' + user.msg + '</p>';
+                        msgReplyHtml += '    </div>';
+                        msgReplyHtml += '  </td>';
+                        msgReplyHtml += '  <td class="msg_time">' + user.msg_time + '</td>';
+                        msgReplyHtml += '  <td id="msg_info" class="msg_reply">' + msgReply + '</td>';
+                        msgReplyHtml += '</tr>';
                     }
                     body.find(".msgReplyHtml").html(msgReplyHtml);
                 })
+            },
+            cancel: function(){
+                window.location.reload();
             }
         })
         //改变窗口大小时，重置弹窗的高度，防止超出可视区域（如F12调出debug的操作）
@@ -138,34 +176,57 @@ layui.config({
     //提交回复
     var message = [];
     $(".send_msg").click(function(){
-        if(layedit.getContent(editIndex) != ''){
-            var replyHtml = '',msgStr;
-            replyHtml += '<tr>';
-            replyHtml += '  <td class="msg_info">';
-            replyHtml += '    <img src="../../images/face.jpg" width="50" height="50">';
-            replyHtml += '    <div class="user_info">';
-            replyHtml += '        <h2>请叫我马哥</h2>';
-            replyHtml += '        <p>'+layedit.getContent(editIndex)+'</p>';
-            replyHtml += '    </div>';
-            replyHtml += '  </td>';
-            replyHtml += '  <td class="msg_time">'+formatTime(new Date())+'</td>';
-            replyHtml += '  <td class="msg_reply"></td>';
-            replyHtml += '</tr>';
-            $(".msgReplyHtml").prepend(replyHtml);
-            $("#LAY_layedit_1").contents().find("body").html('');
-        }else{
+        var status = window.sessionStorage.getItem("status");
+        if(layedit.getContent(editIndex) != '') {
+            if(status=="0")
+            {
+                var content = layedit.getContent(editIndex);
+                var username = window.sessionStorage.getItem("username");
+                var id = window.sessionStorage.getItem("msg_id");
+                $.ajax({
+                    data:{"reply":content,"id":id,"username":username},
+                    url: "/index.php/message/JudgeOperate/reply",
+                    type: "post",
+                    dataType: "json",
+                    success: function (data) {
+                        if(data.state=="1"){
+                            layer.msg("回复成功");
+                            var replyData = data.content[0];
+                            var replyHtml = '', msgStr;
+                            replyHtml += '<tr>';
+                            replyHtml += '  <td class="msg_info">';
+                            replyHtml += '    <img src="'+replyData.admin_head+'" width="50" height="50">';
+                            replyHtml += '    <div class="user_info">';
+                            replyHtml += '        <h2>' + replyData.admin_username + '</h2>';
+                            replyHtml += '        <p>' + replyData.reply + '</p>';
+                            replyHtml += '    </div>';
+                            replyHtml += '  </td>';
+                            replyHtml += '  <td class="msg_time">' + replyData.reply_time + '</td>';
+                            replyHtml += '  <td class="msg_reply"></td>';
+                            replyHtml += '</tr>';
+                            $(".msgReplyHtml").prepend(replyHtml);
+                            $("#LAY_layedit_1").contents().find("body").html('');
+                            $("#msg_info").text("已回复");
+                            window.sessionStorage.setItem("status","1");
+                        }
+                        else{
+                            layer.msg("回复失败");
+                        }
+                    },
+                    error:function(data){
+                        console.log(data.responseText);
+                        layer.msg(data.responseText);
+                    }
+                })
+            }
+            else{
+                layer.msg("此消息已回复");
+            }
+        }
+        else{
             layer.msg("请输入回复信息");
         }
+        return false;
     })
 })
-
-
-function formatTime(_time){
-    var year = _time.getFullYear();
-    var month = _time.getMonth()+1<10 ? "0"+(_time.getMonth()+1) : _time.getMonth()+1;
-    var day = _time.getDate()<10 ? "0"+_time.getDate() : _time.getDate();
-    var hour = _time.getHours()<10 ? "0"+_time.getHours() : _time.getHours();
-    var minute = _time.getMinutes()<10 ? "0"+_time.getMinutes() : _time.getMinutes();
-    return year+"-"+month+"-"+day+" "+hour+":"+minute;
-}
 

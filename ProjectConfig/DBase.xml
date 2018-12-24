@@ -14,5 +14,5 @@
 	<table name="photo"></table>
 	<table name="postcard"></table>
 	<table name="user"></table>
-	<table name="store"></table>
+	<table name="message"></table>
 </db>
