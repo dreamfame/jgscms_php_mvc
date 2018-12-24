@@ -15,6 +15,8 @@ layui.config({
         }
     });
 
+    var sys = window.sessionStorage.getItem("system");
+    $("#pic").attr("src",sys.defaultPic);
     var pic_src = "";
 
     layui.upload({
@@ -32,7 +34,7 @@ layui.config({
  	var addActivity;
  	form.on("submit(addActivity)",function(data){
  		var enable = data.field.enable=="on" ? 1 : 0;
-        pic_src ==""?"/images/default.png":pic_src;
+        pic_src == ""?sys.defaultPic:pic_src;
  		addActivity = '{"name":"'+data.field.aname+'",';
  		addActivity += '"date":"'+data.field.date+'",';
  		addActivity += '"enable":"'+ enable +'",';

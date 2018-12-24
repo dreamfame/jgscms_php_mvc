@@ -150,7 +150,7 @@ layui.config({
 			var index = layui.layer.open({
 				title : "添加景点",
 				type : 2,
-				content : "activityAdd.html",
+				content : "areaAdd.html",
 				success : function(layero, index){
 					setTimeout(function(){
 						layui.layer.tips('点击此处返回文章列表', '.layui-layer-setwin .layui-layer-close', {

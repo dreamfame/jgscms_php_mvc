@@ -83,7 +83,7 @@
                 $wherelist[] = "id = '{$_REQUEST['id']}'";
             }
             if($_REQUEST['name']!=""||$_REQUEST['name']!=null){
-                $wherelist[] = "name = '{$_REQUEST['name']}'";
+                $wherelist[] = "name like '%{$_REQUEST['name']}%'";
             }
             //组装查询条件
             if(count($wherelist) > 0){

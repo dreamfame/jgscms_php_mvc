@@ -1,9 +1,10 @@
 <?php
 	require_once '../Model/Admin.php';
 	require_once '../DataBaseHandle/AdminServer.php';
-require_once '../Extensions/Security.php';
+	require_once '../Extensions/Security.php';
 	header("Content-Type: text/html;charset=utf-8");
 	//session_start();
+	error_reporting(0);
 	Class AdminControl
 	{
         const key = "made with liuliu";
@@ -95,7 +96,7 @@ require_once '../Extensions/Security.php';
 			$admin->nickname = $_REQUEST['nickname'];
 			$admin->role = $_REQUEST['role'];
 			$admin->age = 0;
-			$admin->head_pic = "default.jpg";
+			$admin->head_pic = $_REQUEST['head_pic'];
 			$admin->phone = $_REQUEST['phone'];
 			$admin->email = $_REQUEST['email'];
 			$admin->status = $_REQUEST['status'];

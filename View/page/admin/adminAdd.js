@@ -15,17 +15,17 @@ layui.config({
 	 	if(window.sessionStorage.getItem("addAdmin")){
 	 		addAdminArray = JSON.parse(window.sessionStorage.getItem("addAdmin"));
 	 	}
+	 	var sys = JSON.parse(window.sessionStorage.getItem("system"));
 	 	//显示、审核状态
  		var status = data.field.status=="on" ? 1 : 0,
 
  		addAdmin = '{"username":"'+data.field.username+'",';  //用户名
         addAdmin += '"nickname":"'+data.field.nickname+'",';	 //昵称
+        addAdmin += '"head_pic":"'+sys.defaultHeadPic+'",';	 //默认头像
         addAdmin += '"phone":"'+data.field.phone+'",'; //手机
         addAdmin += '"email":"'+data.field.email+'",'; //邮箱
         addAdmin += '"role":"'+data.field.role+'",'; //角色
         addAdmin += '"status":"'+ status +'"}'; //状态
- 		addAdminArray.unshift(JSON.parse(addAdmin));
- 		window.sessionStorage.setItem("addAdmin",JSON.stringify(addAdminArray));
  		//弹出loading
  		var index = top.layer.msg('数据提交中，请稍候',{icon: 16,time:false,shade:0.8});
  		var url = "/index.php/admin/JudgeOperate/add";

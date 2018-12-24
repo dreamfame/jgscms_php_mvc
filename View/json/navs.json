@@ -132,7 +132,7 @@
 		{
 			"title" : "系统信息",
 			"icon" : "&#xe66e;",
-			"href" : "page/share/postcardList.html",
+			"href" : "page/system/systeminfo.html",
 			"spread" : false,
 			"role":"系统管理员,照片审核管理员,内容管理员"
 		}
