@@ -57,6 +57,9 @@
             else if($field=="isshow"){
                 $sql = "update " . $this->db_table . " set ".$field." = '$Photo->show' where id = '$Photo->id'";
 			}
+			else if($field=="verify"){
+                $sql = "update " . $this->db_table . " set ".$field." = '$Photo->verify',operator = '$Photo->operator' where id = '$Photo->id'";
+            }
 			else if($field=="all"){
                 $sql = "update " . $this->db_table . " set name = '$Photo->name',created_at = '$Photo->created_at',brief = '$Photo->brief',intro = '$Photo->intro',recommend = '$Photo->recommend' where id = '$Photo->id'";
 			}

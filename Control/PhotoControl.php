@@ -1,6 +1,7 @@
 <?php
 	require_once '../Model/Photo.php';
 	require_once '../DataBaseHandle/PhotoServer.php';
+	require_once '../Extensions/Security.php';
 	header("Content-Type: text/html;charset=utf-8");
 	//session_start();
 	Class PhotoControl
@@ -27,9 +28,6 @@
                 case "top":
                     PhotoControl::GoTop();
                     break;
-                case "show":
-                    PhotoControl::ChangeShow();
-                    break;
                 case "name":
                     PhotoControl::GetName();
                     break;
@@ -38,6 +36,9 @@
                     break;
                 case "wait":
                     PhotoControl::GetWaitPhoto();
+                    break;
+                case "verify":
+                    PhotoControl::VerifyPhoto();
                     break;
 			}
 		}
@@ -50,7 +51,7 @@
             $jsonfile = fopen("../View/json/PhotoList.json", "w") or die("Unable to open file!");
             while ($n = mysqli_fetch_array($result)) {
                 $re['state'] = '1';
-                $row[] = array('id' => $n['id'], 'uid' => $n['uid'], 'des' => $n['des'], 'praise' => $n['praise'], 'comment' => $n['comment'], 'img1' => $n['img1'],'img2'=>$n['img2'],'img3'=>$n['img3'],'img4'=>$n['img4'],'img5'=>$n['img5'],'img6'=>$n['img6'],'img7'=>$n['img7'],'img8'=>$n['img8'],'img9'=>$n['img9'],'created_at'=>$n['created_at'],'verify'=>$n['verify'],'operator'=>$n['operator']);
+                $row[] = array('id' => $n['id'],'top'=>$n['top'] ,'uid' => $n['uid'], 'des' => $n['des'], 'praise' => $n['praise'], 'comment' => $n['comment'], 'img1' => $n['img1'],'img2'=>$n['img2'],'img3'=>$n['img3'],'img4'=>$n['img4'],'img5'=>$n['img5'],'img6'=>$n['img6'],'img7'=>$n['img7'],'img8'=>$n['img8'],'img9'=>$n['img9'],'created_at'=>$n['created_at'],'verify'=>$n['verify'],'operator'=>$n['operator']);
                 $re['content'] = $row;
                 if (flock($jsonfile, LOCK_EX)) {//加写锁 
                     ftruncate($jsonfile, 0); // 将文件截断到给定的长度 
@@ -97,7 +98,7 @@
             while ($n = mysqli_fetch_array($result))
             {
                 $re['state'] = '1';
-                $row[] = array('id' => $n['id'], 'uid' => $n['uid'], 'des' => $n['des'], 'praise' => $n['praise'], 'comment' => $n['comment'], 'img1' => $n['img1'],'img2'=>$n['img2'],'img3'=>$n['img3'],'img4'=>$n['img4'],'img5'=>$n['img5'],'img6'=>$n['img6'],'img7'=>$n['img7'],'img8'=>$n['img8'],'img9'=>$n['img9'],'created_at'=>$n['created_at'],'verify'=>$n['verify'],'operator'=>$n['operator']);
+                $row[] = array('id' => $n['id'],'top'=>$n['top'] ,'uid' => $n['uid'], 'des' => $n['des'], 'praise' => $n['praise'], 'comment' => $n['comment'], 'img1' => $n['img1'],'img2'=>$n['img2'],'img3'=>$n['img3'],'img4'=>$n['img4'],'img5'=>$n['img5'],'img6'=>$n['img6'],'img7'=>$n['img7'],'img8'=>$n['img8'],'img9'=>$n['img9'],'created_at'=>$n['created_at'],'verify'=>$n['verify'],'operator'=>$n['operator']);
                 $re['content'] = $row;
                 if (flock($jsonfile, LOCK_EX)) {//加写锁 
                     ftruncate($jsonfile, 0); // 将文件截断到给定的长度 
@@ -117,7 +118,7 @@
             $jsonfile = fopen("../View/json/PhotoList.json", "w") or die("Unable to open file!");
             while ($n = mysqli_fetch_array($result)) {
                 $re['state'] = '1';
-                $row[] = array('id' => $n['id'], 'uid' => $n['uid'], 'des' => $n['des'], 'praise' => $n['praise'], 'comment' => $n['comment'], 'img1' => $n['img1'],'img2'=>$n['img2'],'img3'=>$n['img3'],'img4'=>$n['img4'],'img5'=>$n['img5'],'img6'=>$n['img6'],'img7'=>$n['img7'],'img8'=>$n['img8'],'img9'=>$n['img9'],'created_at'=>$n['created_at'],'verify'=>$n['verify'],'operator'=>$n['operator']);
+                $row[] = array('id' => $n['id'],'top'=>$n['top'] ,'uid' => $n['uid'], 'des' => $n['des'], 'praise' => $n['praise'], 'comment' => $n['comment'], 'img1' => $n['img1'],'img2'=>$n['img2'],'img3'=>$n['img3'],'img4'=>$n['img4'],'img5'=>$n['img5'],'img6'=>$n['img6'],'img7'=>$n['img7'],'img8'=>$n['img8'],'img9'=>$n['img9'],'created_at'=>$n['created_at'],'verify'=>$n['verify'],'operator'=>$n['operator']);
                 $re['content'] = $row;
                 if (flock($jsonfile, LOCK_EX)) {//加写锁 
                     ftruncate($jsonfile, 0); // 将文件截断到给定的长度 
@@ -210,6 +211,25 @@
             $Photo->id = $id;
             $Photo->show = $show;
             $result = $ss->UpdatePhoto($Photo,"isshow");
+            $re = array('state'=>'0','content'=>'修改失败');
+            if($result) {
+                PhotoControl::UpdatePhotoJson();
+                $re['state']='1';
+                $re['content']='修改成功';
+            }
+            echo  json_encode($re,JSON_UNESCAPED_UNICODE);
+        }
+
+        public function VerifyPhoto(){
+            $id = $_REQUEST['id'];
+            $verify = $_REQUEST['verify'];
+            $operator = Security::decrypt($_REQUEST['operator']);
+            $ss = new PhotoServer();
+            $Photo = new Photo();
+            $Photo->id = $id;
+            $Photo->verify = $verify;
+            $Photo->operator = $operator;
+            $result = $ss->UpdatePhoto($Photo,"verify");
             $re = array('state'=>'0','content'=>'修改失败');
             if($result) {
                 PhotoControl::UpdatePhotoJson();

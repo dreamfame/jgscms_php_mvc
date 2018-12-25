@@ -141,26 +141,6 @@ layui.config({
             layer.close(index);
     })
 
-	//添加文章
-	//改变窗口大小时，重置弹窗的高度，防止超出可视区域（如F12调出debug的操作）
-	$(window).one("resize",function(){
-		$(".photoAdd_btn").click(function(){
-			var index = layui.layer.open({
-				title : "添加景点",
-				type : 2,
-				content : "photoAdd.html",
-				success : function(layero, index){
-					setTimeout(function(){
-						layui.layer.tips('点击此处返回文章列表', '.layui-layer-setwin .layui-layer-close', {
-							tips: 3
-						});
-					},500)
-				}
-			})			
-			layui.layer.full(index);
-		})
-	}).resize();
-
 	//批量删除
 	$(".batchDel").click(function(){
 		var $checkbox = $('.photo_list tbody input[type="checkbox"][name="checked"]');
@@ -208,35 +188,6 @@ layui.config({
 			$(data.elem).parents('table').find('thead input#allChoose').get(0).checked = false;
 		}
 		form.render('checkbox');
-	})
-
-	//是否展示
-	form.on('switch(isShow)', function(data){
-        var index = layer.msg('修改中，请稍候',{icon: 16,time:false,shade:0.8});
-        var url = "/index.php/photo/JudgeOperate/show";
-        var show = this.checked?1:0;
-        var _this = $(this);
-        $.ajax({
-            data: {"id":_this.attr("data-id"),"show":show},
-            type: "POST",
-            dataType: "JSON",
-            url: url,
-            beforeSend: function () {
-
-            },
-            complete: function () {
-
-            },
-            success: function (result) {
-                if(result.state=="1"){
-                    layer.close(index);
-                    layer.msg("展示状态修改成功！");
-                }
-            },
-            error:function(data){
-                console.log(data.responseText);
-            }
-        })
 	})
 
     //是否置顶
@@ -291,9 +242,9 @@ layui.config({
     $("body").on("click",".photo_pic",function(e){  //景区图库
         var no = $(e.currentTarget).data('id');
         var index = layui.layer.open({
-            title : "图库",
+            title : "分享图库",
             type : 2,
-            content : "../img/images.html?id="+no,
+            content : "photos.html?id="+no,
             success : function(layero, index){
                 setTimeout(function(){
                     layui.layer.tips('点击此处返回信息列表', '.layui-layer-setwin .layui-layer-close', {
@@ -303,6 +254,87 @@ layui.config({
             }
         })
         layui.layer.full(index);
+    })
+
+    $("body").on("click",".photo_verify",function(e){  //景区图库
+        var no = $(e.currentTarget).data('id');
+        var id = photoData[no].id;
+        var curVerify = photoData[no].verify;
+        var operator = window.sessionStorage.getItem("username");
+        var verify_layer = layui.layer.open({
+            title : "图片审核",
+            area : ["400px","160px"],
+            type : "1",
+            content : '<div class="skins_box">'+
+                        '<form class="layui-form">'+
+                            '<div class="layui-form-item">'+
+                                '<input type="radio" name="verify" value="0" title="待审核" lay-filter="default">'+
+                                '<input type="radio" name="verify" value="1" title="审核通过" lay-filter="pass">'+
+                                '<input type="radio" name="verify" value="2" title="审核未通过" lay-filter="deny">'+
+                            '</div>'+
+                        '<div class="layui-form-item skinBtn">'+
+                            '<a href="javascript:;" class="layui-btn layui-btn-small layui-btn-normal" lay-submit="" lay-filter="changeVerify">确定</a>'+
+                            '<a href="javascript:;" class="layui-btn layui-btn-small layui-btn-primary" lay-submit="" lay-filter="noChangeVerify">取消</a>'+
+                        '</div>'+
+                        '</form>'+
+                        '</div>',
+            success : function(index, layero){
+                $("[name='verify'][value='"+curVerify+"']").prop("checked", "checked");
+                form.render();
+                var verify_status = $('input:radio[name="verify"]:checked').val();
+                $(".skins_box").removeClass("layui-hide");
+                $(".skins_box .layui-form-radio").on("click",function(){
+                    verify_status = $('input:radio[name="verify"]:checked').val();
+                });
+                form.on("submit(changeVerify)",function(data){
+                    var param = '{"id":"'+id+'",';  //网站名称
+                    param += '"operator":"'+operator+'",';
+                    param += '"verify":"'+verify_status+'"}'; //网站备案号
+                    var title = $('input:radio[name="verify"]:checked').attr("title");
+                    layui.layer.close(verify_layer);
+                    var load = layer.msg('数据提交中，请稍候',{icon: 16,time:false,shade:0.8});
+                    $.ajax({
+                        data:JSON.parse(param),
+                        url : "/index.php/photo/JudgeOperate/verify",
+                        type : "post",
+                        dataType : "json",
+                        success : function(data){
+                            if(data.state=="1"){
+                                var color = "";
+                                if(title=="待审核")
+                                {
+                                    color = "red";
+                                }
+                                else if(title=="审核通过"){
+                                    color = "green";
+                                }
+                                else{
+                                    color = "grey";
+                                }
+                                $("#photo_verify"+no).css("color",color);
+                                $("#photo_verify"+no).text(title);
+                                photoData[no].verify = verify_status;
+                                layer.msg("审核完成！");
+                                layer.close(load);
+                                form.render();
+                            }
+                            else{
+                                layer.msg("审核出错！");
+                                layer.close(load);
+                            }
+                        },
+                        error:function(data){
+                            layer.close(load);
+                            layer.msg(data.responseText);
+                        }
+                    })
+                    //layui.layer.close(verify_layer);
+                });
+                form.on("submit(noChangeVerify)",function(){
+                    layui.layer.close(verify_layer);
+                });
+            }
+        })
     })
 
     $("body").on("click",".photo_del",function(){  //删除
@@ -352,19 +384,21 @@ layui.config({
 				for(var i=0;i<currData.length;i++){
                     var wx = currData[i].uid==''?'-':currData[i].uid;
                     var des = currData[i].des==''?'-':currData[i].des;
-                    var verify = currData[i].verify==1?"checked":"";
+                    var verify = currData[i].verify==0?"<span id='photo_verify"+i+"' style='color:red'>待审核</span>":currData[i].verify==1?"<span id='photo_verify"+i+"' style='color:green'>审核通过</span>":"<span id='photo_verify"+i+"' style='color:grey'>审核未通过</span>";
                     var time = currData[i].created_at==''?'-':currData[i].created_at;
                     var operator = currData[i].operator==''?'-':currData[i].operator;
+                    var top = currData[i].top==1?"checked":"";
 					dataHtml += '<tr>'
 			    	+'<td><input type="checkbox" name="checked" lay-skin="primary" lay-filter="choose"></td>'
 			    	+'<td align="left">'+wx+'</td>'
                     +'<td>'+des+'</td>'
                     +'<td>'+time+'</td>'
-			    	+'<td><input type="checkbox" name="verify" lay-skin="switch" data-id="'+data[i].id+'" lay-text="通过|拒绝" lay-filter="isVerify"'+verify+'></td>'
+			    	+'<td>'+verify+'</td>'
                     +'<td>'+operator+'</td>'
+                    +'<td><input type="checkbox" name="top" lay-skin="switch" data-id="'+data[i].id+'" lay-text="是|否" lay-filter="isTop"'+top+'></td>'
 			    	+'<td>'
-                    +  '<a class="layui-btn layui-btn-warm layui-btn-mini photo_pic" data-id="'+data[i].id+'"><i class="layui-icon">&#xe65d;</i>分享图库</a>'
-					+  '<a class="layui-btn layui-btn-mini photo_edit" data-id="'+i+'"><i class="iconfont icon-edit"></i> 编辑</a>'
+                    +  '<a class="layui-btn layui-btn-warm layui-btn-mini photo_pic" data-id="'+data[i].id+'"><i class="layui-icon">&#xe65d;</i> 分享图库</a>'
+                    +  '<a class="layui-btn layui-btn-normal layui-btn-mini photo_verify" data-id="'+i+'"><i class="layui-icon">&#xe6b2;</i> 审核</a>'
 					+  '<a class="layui-btn layui-btn-danger layui-btn-mini photo_del" data-id="'+data[i].id+'"><i class="layui-icon">&#xe640;</i> 删除</a>'
 			        +'</td>'
 			    	+'</tr>';
