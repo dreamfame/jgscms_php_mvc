@@ -23,6 +23,39 @@ layui.config({
     }
 
 
+    var start="";
+    var end = "";
+
+    laydate.render({
+        elem: '#start', //指定元素
+        range:true,
+        done: function(value, date, endDate){
+            var sex = $('input:radio[name="sex"]:checked').val();
+            if(value!="") {
+                start = date.year + "-" + date.month + "-" + date.date;
+                end = endDate.year + "-" + endDate.month + "-" + endDate.date;
+                Search(sex,start,end);
+            }
+            else{
+                start = "";
+                end = "";
+                Search(sex,start,end);
+            }
+            //Search("-1");
+        }
+    });
+
+    function DateUtil(date0,date1,date2){
+        var oDate0 = new Date(date0);
+        var oDate1 = new Date(date1);
+        var oDate2 = new Date(date2);
+        if(oDate0.getTime() >= oDate1.getTime()&&oDate0.getTime() <=oDate2.getTime()){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 	//加载页面数据
 	var usersData = '';
 	var today = getNowFormatDate();
@@ -44,70 +77,95 @@ layui.config({
         }
     })
 
+    //性别查询
+    form.on('radio(sex)', function(data){
+        Search(data.value,start,end);
+    });
+
+    function Search(sex,start,end){
+        var userArray = [];
+        var index = layer.msg('查询中，请稍候',{icon: 16,time:false,shade:0.8});
+        $.ajax({
+            url : "../../json/userList.json",
+            type : "get",
+            dataType : "json",
+            success : function(data){
+                if(window.sessionStorage.getItem("addUser")){
+                    var addUser = window.sessionStorage.getItem("addUser");
+                    usersData = JSON.parse(addUser).concat(data);
+                }else{
+                    usersData = data;
+                }
+                for(var i=0;i<usersData.length;i++){
+                    var usersStr = usersData[i];
+                    if(sex!="-1"){
+                        if(usersStr.gender!=sex){
+                            continue;
+                        }
+                    }
+                    if(start!=""&&end!=""){
+                        if(!DateUtil(usersStr.created_at,start,end)){
+                            continue;
+                        }
+                    }
+                    var selectStr = $(".search_input").val();
+                    function changeStr(data){
+                        var dataStr = '';
+                        var showNum = data.split(eval("/"+selectStr+"/ig")).length - 1;
+                        if(showNum > 1){
+                            for (var j=0;j<showNum;j++) {
+                                dataStr += data.split(eval("/"+selectStr+"/ig"))[j] + "<i style='color:#03c339;font-weight:bold;'>" + selectStr + "</i>";
+                            }
+                            dataStr += data.split(eval("/"+selectStr+"/ig"))[showNum];
+                            return dataStr;
+                        }else{
+                            dataStr = data.split(eval("/"+selectStr+"/ig"))[0] + "<i style='color:#03c339;font-weight:bold;'>" + selectStr + "</i>" + data.split(eval("/"+selectStr+"/ig"))[1];
+                            return dataStr;
+                        }
+                    }
+
+                    if(selectStr!="") {
+                        if (usersStr.openid.indexOf(selectStr) > -1) {
+                            usersStr["openid"] = changeStr(usersStr.openid);
+                        }
+
+                        if (usersStr.wx.indexOf(selectStr) > -1) {
+                            usersStr["wx"] = changeStr(usersStr.wx);
+                        }
+
+                        if (usersStr.nickname.indexOf(selectStr) > -1) {
+                            usersStr["nickname"] = changeStr(usersStr.nickname);
+                        }
+
+                        if (usersStr.city.indexOf(selectStr) > -1) {
+                            usersStr["city"] = changeStr(usersStr.city);
+                        }
+                        if (usersStr.country.indexOf(selectStr) > -1) {
+                            usersStr["country"] = changeStr(usersStr.country);
+                        }
+                    }
+                    if (usersStr.openid.indexOf(selectStr) > -1 || usersStr.wx.indexOf(selectStr) > -1 || usersStr.nickname.indexOf(selectStr) > -1 || usersStr.city.indexOf(selectStr) > -1 || usersStr.country.indexOf(selectStr) > -1) {
+                        userArray.push(usersStr);
+                    }
+                }
+                usersData = userArray;
+                usersList(usersData);
+            }
+        })
+
+        layer.close(index);
+    }
+
 	//查询
 	$(".search_btn").click(function(){
-		var userArray = [];
-		if($(".search_input").val() != ''){
-			var index = layer.msg('查询中，请稍候',{icon: 16,time:false,shade:0.8});
-            setTimeout(function(){
-            	$.ajax({
-					url : "../../json/usersList.json",
-					type : "get",
-					dataType : "json",
-					success : function(data){
-						if(window.sessionStorage.getItem("addUser")){
-							var addUser = window.sessionStorage.getItem("addUser");
-							usersData = JSON.parse(addUser).concat(data);
-						}else{
-							usersData = data;
-						}
-						for(var i=0;i<usersData.length;i++){
-							var usersStr = usersData[i];
-							var selectStr = $(".search_input").val();
-		            		function changeStr(data){
-		            			var dataStr = '';
-		            			var showNum = data.split(eval("/"+selectStr+"/ig")).length - 1;
-		            			if(showNum > 1){
-									for (var j=0;j<showNum;j++) {
-		            					dataStr += data.split(eval("/"+selectStr+"/ig"))[j] + "<i style='color:#03c339;font-weight:bold;'>" + selectStr + "</i>";
-		            				}
-		            				dataStr += data.split(eval("/"+selectStr+"/ig"))[showNum];
-		            				return dataStr;
-		            			}else{
-		            				dataStr = data.split(eval("/"+selectStr+"/ig"))[0] + "<i style='color:#03c339;font-weight:bold;'>" + selectStr + "</i>" + data.split(eval("/"+selectStr+"/ig"))[1];
-		            				return dataStr;
-		            			}
-		            		}
-		            		//用户名
-		            		if(usersStr.userName.indexOf(selectStr) > -1){
-			            		usersStr["userName"] = changeStr(usersStr.userName);
-		            		}
-		            		//用户邮箱
-		            		if(usersStr.userEmail.indexOf(selectStr) > -1){
-			            		usersStr["userEmail"] = changeStr(usersStr.userEmail);
-		            		}
-		            		//性别
-		            		if(usersStr.userSex.indexOf(selectStr) > -1){
-			            		usersStr["userSex"] = changeStr(usersStr.userSex);
-		            		}
-		            		//会员等级
-		            		if(usersStr.userGrade.indexOf(selectStr) > -1){
-			            		usersStr["userGrade"] = changeStr(usersStr.userGrade);
-		            		}
-		            		if(usersStr.userName.indexOf(selectStr)>-1 || usersStr.userEmail.indexOf(selectStr)>-1 || usersStr.userSex.indexOf(selectStr)>-1 || usersStr.userGrade.indexOf(selectStr)>-1){
-		            			userArray.push(usersStr);
-		            		}
-		            	}
-		            	usersData = userArray;
-		            	usersList(usersData);
-					}
-				})
-            	
-                layer.close(index);
-            },2000);
-		}else{
-			layer.msg("请输入需要查询的内容");
-		}
+        if($(".search_input").val() != '') {
+            var sex = $('input:radio[name="sex"]:checked').val();
+            Search(sex,start,end);
+        }
+        else
+        {
+            layer.msg("请输入需要查询的内容");
+        }
 	})
 
 	//添加会员

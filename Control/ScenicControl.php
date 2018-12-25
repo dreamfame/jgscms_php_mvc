@@ -18,6 +18,9 @@
 				case "del":
                     ScenicControl::DelScenic();
 					break;
+                case "batchDel":
+                    ScenicControl::BatchDelScenic();
+                    break;
 				case "edit":
                     ScenicControl::UpdateScenic();
 					break;
@@ -179,6 +182,21 @@
             }
             echo  json_encode($re,JSON_UNESCAPED_UNICODE);
 		}
+
+        public function BatchDelScenic(){
+            $id = $_REQUEST['del_id'];
+            $str = implode("','",$id);
+            $str = "('{$str}')";
+            $as = new ScenicServer();
+            $result=$as->BatchDeleteScenic($str);
+            $re = array('state'=>'0','content'=>'删除失败');
+            if($result) {
+                NewsControl::UpdateScenicJson();
+                $re['state']='1';
+                $re['content']='删除成功';
+            }
+            echo  json_encode($re,JSON_UNESCAPED_UNICODE);
+        }
 
 		public function GoTop(){
 		    $id = $_REQUEST['id'];

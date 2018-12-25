@@ -84,5 +84,18 @@
             }
             return false;
         }
+
+        public function BatchDeleteRoute($str){
+            $sql="delete from ".$this->db_table." where id in {$str}";
+            try{
+                $this->db->ExeSql($sql,$this->conn);
+                return true;
+            }
+            catch(Exception $e)
+            {
+                return false;
+            }
+            return false;
+        }
 	}
 ?>

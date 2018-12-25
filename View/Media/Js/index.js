@@ -1,4 +1,8 @@
 $(function(){
+    if(sessionStorage.getItem("username")==null||sessionStorage.getItem("username")==""||sessionStorage.getItem("username")==undefined){
+        window.location.href = "page/login/login.html";
+    }
+
     var nickname = localStorage.getItem("nickname");
     if(nickname==""){
         $("#nickname").html("请登录");

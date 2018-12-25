@@ -11,5 +11,13 @@ $(function(){
             $(".logo").text(sys.webName);
             $(".layui-footer p").text(sys.powerby);
         }
+    });
+    $.ajax({
+        url : "/json/systemnotice.json",
+        type : "get",
+        dataType : "json",
+        success : function(data){
+            window.sessionStorage.setItem("notice",data.systemNotice);
+        }
     })
 })

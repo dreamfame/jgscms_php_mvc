@@ -19,6 +19,9 @@
 				case "del":
                     PhotoControl::DelPhoto();
 					break;
+                case "batchDel":
+                    PhotoControl::BatchDelPhoto();
+                    break;
 				case "edit":
                     PhotoControl::UpdatePhoto();
 					break;
@@ -186,6 +189,21 @@
             echo  json_encode($re,JSON_UNESCAPED_UNICODE);
 		}
 
+        public function BatchDelPhoto(){
+            $id = $_REQUEST['del_id'];
+            $str = implode("','",$id);
+            $str = "('{$str}')";
+            $as = new PhotoServer();
+            $result=$as->BatchDeletePhoto($str);
+            $re = array('state'=>'0','content'=>'删除失败');
+            if($result) {
+                NewsControl::UpdatePhotoJson();
+                $re['state']='1';
+                $re['content']='删除成功';
+            }
+            echo  json_encode($re,JSON_UNESCAPED_UNICODE);
+        }
+
 		public function GoTop(){
 		    $id = $_REQUEST['id'];
             $top = $_REQUEST['top'];
@@ -234,7 +252,7 @@
             if($result) {
                 PhotoControl::UpdatePhotoJson();
                 $re['state']='1';
-                $re['content']='修改成功';
+                $re['content']= $operator;
             }
             echo  json_encode($re,JSON_UNESCAPED_UNICODE);
         }

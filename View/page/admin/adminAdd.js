@@ -21,7 +21,7 @@ layui.config({
 
  		addAdmin = '{"username":"'+data.field.username+'",';  //用户名
         addAdmin += '"nickname":"'+data.field.nickname+'",';	 //昵称
-        addAdmin += '"head_pic":"'+sys.defaultHeadPic+'",';	 //默认头像
+        addAdmin += '"head_pic":"'+JSON.parse(sys).defaultHeadPic+'",';	 //默认头像
         addAdmin += '"phone":"'+data.field.phone+'",'; //手机
         addAdmin += '"email":"'+data.field.email+'",'; //邮箱
         addAdmin += '"role":"'+data.field.role+'",'; //角色

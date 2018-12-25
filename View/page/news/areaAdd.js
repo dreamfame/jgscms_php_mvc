@@ -16,7 +16,7 @@ layui.config({
     });
 
     var sys = window.sessionStorage.getItem("system");
-    $("#pic").attr("src",sys.defaultPic);
+    $("#pic").attr("src",JSON.parse(sys).defaultPic);
 
     var pic_src = "";
 
@@ -39,7 +39,9 @@ layui.config({
  		var show = data.field.show=="on" ? 1 : 0,
  			topstr = data.field.top=="on" ? 1 : 0;
         var content = layedit.getContent(editIndex);
-        pic_src == ""?sys.defaultPic:pic_src;
+        if(pic_src==""){
+            pic_src = JSON.parse(sys).defaultPic;
+        }
  		addArea = '{"name":"'+data.field.aname+'",';  //文章名称
  		addArea += '"created_at":"'+data.field.created_at+'",'; //发布时间
  		addArea += '"show":"'+ show +'",';  //是否展示

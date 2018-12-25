@@ -18,6 +18,9 @@
 				case "del":
                     NewsControl::DelNews();
 					break;
+                case "batchDel":
+                    NewsControl::BatchDelNews();
+                    break;
 				case "edit":
                     NewsControl::UpdateNews();
 					break;
@@ -170,6 +173,21 @@
             }
             echo  json_encode($re,JSON_UNESCAPED_UNICODE);
 		}
+
+        public function BatchDelNews(){
+            $id = $_REQUEST['del_id'];
+            $str = implode("','",$id);
+            $str = "('{$str}')";
+            $as = new NewsServer();
+            $result=$as->BatchDeleteNews($str);
+            $re = array('state'=>'0','content'=>'删除失败');
+            if($result) {
+                NewsControl::UpdateNewsJson();
+                $re['state']='1';
+                $re['content']='删除成功';
+            }
+            echo  json_encode($re,JSON_UNESCAPED_UNICODE);
+        }
 
 		public function GoTop(){
 		    $id = $_REQUEST['id'];

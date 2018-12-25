@@ -19,6 +19,9 @@
 				case "del":
                     PostcardControl::DelPostcard();
 					break;
+                case "batchDel":
+                    PostcardControl::BatchDelPostcard();
+                    break;
 				case "query":
                     PostcardControl::GetPostcard();
 					break;
@@ -148,5 +151,20 @@
             }
             echo  json_encode($re,JSON_UNESCAPED_UNICODE);
 		}
+
+        public function BatchDelPostcard(){
+            $id = $_REQUEST['del_id'];
+            $str = implode("','",$id);
+            $str = "('{$str}')";
+            $as = new PostcardServer();
+            $result=$as->BatchDeletePostcard($str);
+            $re = array('state'=>'0','content'=>'删除失败');
+            if($result) {
+                NewsControl::UpdatePostcardJson();
+                $re['state']='1';
+                $re['content']='删除成功';
+            }
+            echo  json_encode($re,JSON_UNESCAPED_UNICODE);
+        }
 	}
 ?>

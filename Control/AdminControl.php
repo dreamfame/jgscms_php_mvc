@@ -24,6 +24,9 @@
 				case "del":
 					AdminControl::DelAdmin();
 					break;
+                case "batchDel":
+                    AdminControl::BatchDelAdmin();
+                    break;
 				case "edit":
                     AdminControl::UpdateAdmin();
 					break;
@@ -213,6 +216,21 @@
             }
             echo  json_encode($re,JSON_UNESCAPED_UNICODE);
 		}
+
+        public function BatchDelAdmin(){
+            $id = $_REQUEST['del_id'];
+            $str = implode("','",$id);
+            $str = "('{$str}')";
+            $as = new AdminServer();
+            $result=$as->BatchDeleteAdmin($str);
+            $re = array('state'=>'0','content'=>'删除失败');
+            if($result) {
+                AdminControl::UpdateAdminJson();
+                $re['state']='1';
+                $re['content']='删除成功';
+            }
+            echo  json_encode($re,JSON_UNESCAPED_UNICODE);
+        }
 		
 		public function ValidateLogin(){
 			$userid = $_REQUEST['username'];

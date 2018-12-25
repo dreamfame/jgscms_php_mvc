@@ -147,26 +147,39 @@ layui.config({
 
 	//批量删除
 	$(".batchDel").click(function(){
-		var $checkbox = $('.news_list tbody input[type="checkbox"][name="checked"]');
-		var $checked = $('.news_list tbody input[type="checkbox"][name="checked"]:checked');
+		var $checkbox = $('.admin_list tbody input[type="checkbox"][name="checked"]');
+		var $checked = $('.admin_list tbody input[type="checkbox"][name="checked"]:checked');
 		if($checkbox.is(":checked")){
 			layer.confirm('确定删除选中的信息？',{icon:3, title:'提示信息'},function(index){
 				var index = layer.msg('删除中，请稍候',{icon: 16,time:false,shade:0.8});
-	            setTimeout(function(){
 	            	//删除数据
+                	var delinfo = [];
 	            	for(var j=0;j<$checked.length;j++){
-	            		for(var i=0;i<newsData.length;i++){
-							if(newsData[i].newsId == $checked.eq(j).parents("tr").find(".news_del").attr("data-id")){
-								newsData.splice(i,1);
-								newsList(newsData);
+	            		for(var i=0;i<adminData.length;i++){
+							if(adminData[i].id == $checked.eq(j).parents("tr").find(".admin_del").attr("data-id")){
+								delinfo.push(adminData[i].id);
+								adminData.splice(i,1);
+                                adminList(adminData);
 							}
 						}
 	            	}
-	            	$('.news_list thead input[type="checkbox"]').prop("checked",false);
-	            	form.render();
-	                layer.close(index);
-					layer.msg("删除成功");
-	            },2000);
+					$.ajax({
+						data: {"del_id":delinfo},
+						type: "POST",
+						dataType: "JSON",
+						url: "/index.php/admin/JudgeOperate/batchDel",
+						success: function (result) {
+							if(result.state=="1"){
+                                $('.admin_list thead input[type="checkbox"]').prop("checked",false);
+                                form.render();
+                                layer.close(index);
+                                layer.msg("删除成功");
+							}
+						},
+						error:function(data){
+							console.log(data.responseText);
+						}
+					})
 	        })
 		}else{
 			layer.msg("请选择需要删除的文章");

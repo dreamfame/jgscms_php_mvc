@@ -19,6 +19,9 @@
 				case "del":
                     AreaControl::DelArea();
 					break;
+                case "batchDel":
+                    AreaControl::BatchDelArea();
+                    break;
 				case "edit":
                     AreaControl::UpdateArea();
 					break;
@@ -195,6 +198,21 @@
             }
             echo  json_encode($re,JSON_UNESCAPED_UNICODE);
 		}
+
+        public function BatchDelArea(){
+            $id = $_REQUEST['del_id'];
+            $str = implode("','",$id);
+            $str = "('{$str}')";
+            $as = new AreaServer();
+            $result=$as->BatchDeleteArea($str);
+            $re = array('state'=>'0','content'=>'删除失败');
+            if($result) {
+                NewsControl::UpdateAreaJson();
+                $re['state']='1';
+                $re['content']='删除成功';
+            }
+            echo  json_encode($re,JSON_UNESCAPED_UNICODE);
+        }
 
 		public function GoTop(){
 		    $id = $_REQUEST['id'];

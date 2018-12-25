@@ -17,7 +17,7 @@ layui.config({
 
 
     var sys = window.sessionStorage.getItem("system");
-    $("#pic").attr("src",sys.defaultPic);
+    $("#pic").attr("src",JSON.parse(sys).defaultPic);
     var pic_src = "";
 
     layui.upload({
@@ -55,7 +55,9 @@ layui.config({
  		var show = data.field.show=="on" ? 1 : 0,
  			topstr = data.field.top=="on" ? 1 : 0;
         var content = layedit.getContent(editIndex);
-        pic_src == ""?sys.defaultPic:pic_src;
+        if(pic_src==""){
+            pic_src = JSON.parse(sys).defaultPic;
+        }
  		addNews = '{"title":"'+data.field.title+'",';  //文章名称
  		addNews += '"type":"'+$(".newsLook option:selected").val()+'",'; //文章分类
  		addNews += '"created_at":"'+data.field.created_at+'",'; //发布时间

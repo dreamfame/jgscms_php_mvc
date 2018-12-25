@@ -65,7 +65,8 @@ layui.config({
                     var images = imgList;
                     var maxPage = imgNums*page < images.length ? imgNums*page : images.length;
                         for (var j = imgNums * (page - 1); j < maxPage; j++) {
-                            picList.push('<li><img src="' + images[j] + '"><div class="operate"></li>')
+                            var n = j+1;
+                            picList.push('<li><img src="' + images[j] + '"><div class="operate"><div class="check">图片'+n+'</div></li>')
                         }
                         next(picList.join(''), page < (images.length / imgNums));
                         form.render();
@@ -73,25 +74,4 @@ layui.config({
             });
         }
     });
-
-    //全选
-    form.on('checkbox(selectAll)', function(data){
-        var child = $("#Images li input[type='checkbox']");
-        child.each(function(index, item){
-            item.checked = data.elem.checked;
-        });
-        form.render('checkbox');
-    });
-
-    //通过判断是否全部选中来确定全选按钮是否选中
-    form.on("checkbox(choose)",function(data){
-        var child = $(data.elem).parents('#Images').find('li input[type="checkbox"]');
-        var childChecked = $(data.elem).parents('#Images').find('li input[type="checkbox"]:checked');
-        if(childChecked.length == child.length){
-            $(data.elem).parents('#Images').siblings("blockquote").find('input#selectAll').get(0).checked = true;
-        }else{
-            $(data.elem).parents('#Images').siblings("blockquote").find('input#selectAll').get(0).checked = false;
-        }
-        form.render('checkbox');
-    })
 })

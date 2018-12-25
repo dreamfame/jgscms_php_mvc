@@ -18,6 +18,9 @@
 				case "del":
                     RouteControl::DelRoute();
 					break;
+                case "batchDel":
+                    RouteControl::BatchDelRoute();
+                    break;
 				case "edit":
                     RouteControl::UpdateRoute();
 					break;
@@ -147,5 +150,20 @@
             }
             echo  json_encode($re,JSON_UNESCAPED_UNICODE);
 		}
+
+        public function BatchDelRoute(){
+            $id = $_REQUEST['del_id'];
+            $str = implode("','",$id);
+            $str = "('{$str}')";
+            $as = new RouteServer();
+            $result=$as->BatchDeleteRoute($str);
+            $re = array('state'=>'0','content'=>'删除失败');
+            if($result) {
+                NewsControl::UpdateRouteJson();
+                $re['state']='1';
+                $re['content']='删除成功';
+            }
+            echo  json_encode($re,JSON_UNESCAPED_UNICODE);
+        }
 	}
 ?>

@@ -175,21 +175,34 @@ layui.config({
 		if($checkbox.is(":checked")){
 			layer.confirm('确定删除选中的信息？',{icon:3, title:'提示信息'},function(index){
 				var index = layer.msg('删除中，请稍候',{icon: 16,time:false,shade:0.8});
-	            setTimeout(function(){
 	            	//删除数据
+                    var delinfo = [];
 	            	for(var j=0;j<$checked.length;j++){
 	            		for(var i=0;i<scenicData.length;i++){
-							if(scenicData[i].scenicId == $checked.eq(j).parents("tr").find(".scenic_del").attr("data-id")){
-								scenicData.splice(i,1);
+							if(scenicData[i].id == $checked.eq(j).parents("tr").find(".scenic_del").attr("data-id")){
+                                delinfo.push(scenicData[i].id);
+							    scenicData.splice(i,1);
 								scenicList(scenicData);
 							}
 						}
 	            	}
-	            	$('.scenic_list thead input[type="checkbox"]').prop("checked",false);
-	            	form.render();
-	                layer.close(index);
-					layer.msg("删除成功");
-	            },2000);
+                $.ajax({
+                    data: {"del_id":delinfo},
+                    type: "POST",
+                    dataType: "JSON",
+                    url: "/index.php/scenic/JudgeOperate/batchDel",
+                    success: function (result) {
+                        if(result.state=="1"){
+                            $('.news_list thead input[type="checkbox"]').prop("checked",false);
+                            form.render();
+                            layer.close(index);
+                            layer.msg("删除成功");
+                        }
+                    },
+                    error:function(data){
+                        console.log(data.responseText);
+                    }
+                })
 	        })
 		}else{
 			layer.msg("请选择需要删除的文章");
