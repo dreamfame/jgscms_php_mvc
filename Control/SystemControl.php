@@ -9,6 +9,12 @@
                 case "update":
                     SystemControl::UpdateSystemJson();
                     break;
+                case "notice":
+                    SystemControl::UpdateNoticeJson();
+                    break;
+                case "area":
+                    SystemControl::UpdateAreaJson();
+                    break;
             }
         }
 
@@ -26,6 +32,30 @@
             $system->description = $_REQUEST['description'];
             $system->record = $_REQUEST['record'];
             $jsonarray = array('webName'=>$system->webName,'webTitle'=>$system->webTitle,'version'=>$system->version,'defaultHeadPic'=>$system->defaultHeadPic,'defaultPic'=>$system->defaultPic,'server'=>$system->server,'dataBase'=>$system->dataBase,'powerby'=>$system->powerby,'description'=>$system->description,'record'=>$system->record);
+            if (flock($jsonfile, LOCK_EX)) {//加写锁 
+                ftruncate($jsonfile, 0); // 将文件截断到给定的长度 
+                rewind($jsonfile); // 倒回文件指针的位置 
+                fwrite($jsonfile, json_encode($jsonarray,JSON_UNESCAPED_UNICODE));
+                flock($jsonfile, LOCK_UN); //解锁 
+            }
+            fclose($jsonfile);
+        }
+
+        public function UpdateNoticeJson(){
+            $jsonfile = fopen("../View/json/systemnotice.json", "w") or die("Unable to open file!");
+            $jsonarray = array('systemNotice'=>$_REQUEST['content']);
+            if (flock($jsonfile, LOCK_EX)) {//加写锁 
+                ftruncate($jsonfile, 0); // 将文件截断到给定的长度 
+                rewind($jsonfile); // 倒回文件指针的位置 
+                fwrite($jsonfile, json_encode($jsonarray,JSON_UNESCAPED_UNICODE));
+                flock($jsonfile, LOCK_UN); //解锁 
+            }
+            fclose($jsonfile);
+        }
+
+        public function UpdateAreaJson(){
+            $jsonfile = fopen("../View/json/area.json", "w") or die("Unable to open file!");
+            $jsonarray = array('area'=>$_REQUEST['area']);
             if (flock($jsonfile, LOCK_EX)) {//加写锁 
                 ftruncate($jsonfile, 0); // 将文件截断到给定的长度 
                 rewind($jsonfile); // 倒回文件指针的位置 

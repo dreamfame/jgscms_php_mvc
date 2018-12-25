@@ -1,6 +1,7 @@
 <?php
 	Class Scenic{
 		private $id;
+		private $area_id;
 		private $name;
 		private $intro;
 		private $brief;

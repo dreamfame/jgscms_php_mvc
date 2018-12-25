@@ -118,14 +118,14 @@
 		{
 			"title" : "系统公告",
 			"icon" : "&#xe645;",
-			"href" : "page/share/photoList.html",
+			"href" : "page/system/systemnotice.html",
 			"spread" : false,
 			"role":"系统管理员"
 		},
 		{
 			"title" : "区域设置",
 			"icon" : "&#xe715;",
-			"href" : "page/share/postcardList.html",
+			"href" : "page/system/areasetting.html",
 			"spread" : false,
 			"role":"系统管理员"
 		},

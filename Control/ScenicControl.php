@@ -33,6 +33,9 @@
                 case "name":
                     ScenicControl::GetName();
                     break;
+                case "id_name":
+                    ScenicControl::GetIdAndName();
+                    break;
 			}
 		}
 
@@ -44,7 +47,7 @@
             $jsonfile = fopen("../View/json/scenicList.json", "w") or die("Unable to open file!");
             while ($n = mysqli_fetch_array($result)) {
                 $re['state'] = '1';
-                $row[] = array('id' => $n['id'], 'name' => $n['name'], 'brief' => $n['brief'], 'intro' => $n['intro'], 'see' => $n['see'], 'top' => $n['top'],'show'=>$n['isshow'],'created_at'=>$n['created_at'],'updated_at'=>$n['updated_at'],'recommend'=>$n['recommend']);
+                $row[] = array('id' => $n['id'],'area_id'=>$n['area_id'],'area_name'=>$n['area_name'] ,'name' => $n['name'], 'brief' => $n['brief'], 'intro' => $n['intro'], 'see' => $n['see'], 'top' => $n['top'],'show'=>$n['isshow'],'created_at'=>$n['created_at'],'updated_at'=>$n['updated_at'],'recommend'=>$n['recommend']);
                 $re['content'] = $row;
                 if (flock($jsonfile, LOCK_EX)) {//加写锁 
                     ftruncate($jsonfile, 0); // 将文件截断到给定的长度 
@@ -57,6 +60,20 @@
             echo json_encode($re,JSON_UNESCAPED_UNICODE);
             return;
 		}
+
+        public function GetIdAndName()
+        {
+            $ss = new ScenicServer();
+            $result = $ss->GetAll();
+            $re = array('state'=>'0','content'=>null);
+            while ($n = mysqli_fetch_array($result)) {
+                $re['state'] = '1';
+                $row[] = array('id' => $n['id'], 'area_id' => $n['area_id'],'name' => $n['name']);
+                $re['content'] = $row;
+            }
+            echo json_encode($re,JSON_UNESCAPED_UNICODE);
+            return;
+        }
 
         public function GetName()
         {
@@ -81,7 +98,7 @@
             while ($n = mysqli_fetch_array($result))
             {
                 $re['state'] = '1';
-                $row[] = array('id' => $n['id'], 'name' => $n['name'], 'brief' => $n['brief'], 'intro' => $n['intro'], 'see' => $n['see'], 'top' => $n['top'],'show'=>$n['isshow'],'created_at'=>$n['created_at'],'updated_at'=>$n['updated_at'],'recommend'=>$n['recommend']);
+                $row[] = array('id' => $n['id'],'area_name'=>$n['area_name'] ,'name' => $n['name'], 'brief' => $n['brief'], 'intro' => $n['intro'], 'see' => $n['see'], 'top' => $n['top'],'show'=>$n['isshow'],'created_at'=>$n['created_at'],'updated_at'=>$n['updated_at'],'recommend'=>$n['recommend']);
                 $re['content'] = $row;
             }
             echo json_encode($re,JSON_UNESCAPED_UNICODE);
@@ -94,7 +111,7 @@
             $jsonfile = fopen("../View/json/scenicList.json", "w") or die("Unable to open file!");
             while ($n = mysqli_fetch_array($result)) {
                 $re['state'] = '1';
-                $row[] = array('id' => $n['id'], 'name' => $n['name'], 'brief' => $n['brief'], 'intro' => $n['intro'], 'see' => $n['see'], 'top' => $n['top'],'show'=>$n['isshow'],'created_at'=>$n['created_at'],'updated_at'=>$n['updated_at'],'recommend'=>$n['recommend']);
+                $row[] = array('id' => $n['id'],'area_name'=>$n['area_name'] ,'name' => $n['name'], 'brief' => $n['brief'], 'intro' => $n['intro'], 'see' => $n['see'], 'top' => $n['top'],'show'=>$n['isshow'],'created_at'=>$n['created_at'],'updated_at'=>$n['updated_at'],'recommend'=>$n['recommend']);
                 $re['content'] = $row;
                 if (flock($jsonfile, LOCK_EX)) {//加写锁 
                     ftruncate($jsonfile, 0); // 将文件截断到给定的长度 
@@ -110,6 +127,7 @@
 		{
 			$scenic = new Scenic();
             $scenic->name = $_REQUEST['name'];
+            $scenic->area_id = $_REQUEST['area_id'];
             $scenic->intro = $str = str_replace('\'', '\"', $_REQUEST['intro']);
             $scenic->isshow = $_REQUEST['show'];
             $scenic->top = $_REQUEST['top'];

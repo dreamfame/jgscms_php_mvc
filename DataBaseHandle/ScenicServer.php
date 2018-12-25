@@ -19,7 +19,7 @@
 		}
 
 		public function GetAll(){
-			$sql = "select * from ".$this->db_table;
+			$sql = "select scenic.id,scenic.area_id,area.name as area_name,scenic.see,scenic.name,scenic.brief,scenic.intro,scenic.recommend,scenic.isshow,scenic.top,scenic.created_at,scenic.updated_at from scenic LEFT JOIN area on scenic.area_id = area.id";
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
 		}
@@ -37,7 +37,7 @@
         }
 
 		public function InsertScenic($scenic){
-            $sql = "insert into ".$this->db_table."(name,recommend,brief,intro,isshow,top,updated_at,created_at,see) values('$scenic->name','$scenic->recommend','$scenic->brief','$scenic->intro','$scenic->isshow','$scenic->top','$scenic->updated_at','$scenic->created_at','$scenic->see')";
+            $sql = "insert into ".$this->db_table."(area_id,name,recommend,brief,intro,isshow,top,updated_at,created_at,see) values('$scenic->area_id','$scenic->name','$scenic->recommend','$scenic->brief','$scenic->intro','$scenic->isshow','$scenic->top','$scenic->updated_at','$scenic->created_at','$scenic->see')";
             try{
                 $this->db->ExeSql($sql,$this->conn);
                 return true;

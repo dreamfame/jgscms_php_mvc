@@ -38,6 +38,13 @@ layui.config({
         }
     }
 
+    $.get("/index.php/area/JudgeOperate/id_name", function(data){
+        var data = eval('(' + data + ')');
+        if(data.state=="1"){
+            window.sessionStorage.setItem("area_id_name",JSON.stringify(data.content));
+        }
+    })
+
 	//加载页面数据
 	var scenicData = '';
 
@@ -46,7 +53,7 @@ layui.config({
         var data = eval('(' + data + ')');
         if(data.state=="0")
         {
-            var dataHtml = '<tr><td colspan="8">暂无数据</td></tr>';
+            var dataHtml = '<tr><td colspan="9">暂无数据</td></tr>';
             $(".scenic_content").html(dataHtml);
             $('.scenic_list thead input[type="checkbox"]').prop("checked",false);
             form.render();
@@ -99,8 +106,11 @@ layui.config({
                             if (scenicStr.recommend.indexOf(selectStr) > -1) {
                                 scenicStr["recommend"] = changeStr(scenicStr.recommend);
                             }
+                            if (scenicStr.area_name.indexOf(selectStr) > -1) {
+                                scenicStr["area_name"] = changeStr(scenicStr.area_name);
+                            }
                         }
-                        if(scenicStr.name.indexOf(selectStr)>-1 || scenicStr.recommend.indexOf(selectStr)>-1 ){
+                        if(scenicStr.name.indexOf(selectStr)>-1 || scenicStr.recommend.indexOf(selectStr)>-1 ||scenicStr.area_name.indexOf(selectStr) > -1){
                             newArray.push(scenicStr);
                         }
                     }
@@ -348,6 +358,7 @@ layui.config({
 			if(currData.length != 0){
 				for(var i=0;i<currData.length;i++){
                     var name = currData[i].name==''?'-':currData[i].name;
+                    var area_name = currData[i].area_name==''?'-':currData[i].area_name;
                     var see = currData[i].see==''?'-':currData[i].see;
                     var top = currData[i].top==1?"checked":"";
                     var show = currData[i].show==1?"checked":"";
@@ -356,6 +367,7 @@ layui.config({
 					dataHtml += '<tr>'
 			    	+'<td><input type="checkbox" name="checked" lay-skin="primary" lay-filter="choose"></td>'
 			    	+'<td align="left">'+name+'</td>'
+                    +'<td>'+area_name+'</td>'
                     +'<td>'+see+'</td>'
 			    	+'<td><input type="checkbox" name="show" lay-skin="switch" data-id="'+data[i].id+'" lay-text="是|否" lay-filter="isShow"'+show+'></td>'
                     +'<td><input type="checkbox" name="top" lay-skin="switch" data-id="'+data[i].id+'" lay-text="是|否" lay-filter="isTop"'+top+'></td>'
@@ -369,7 +381,7 @@ layui.config({
 			    	+'</tr>';
 				}
 			}else{
-				dataHtml = '<tr><td colspan="8">暂无数据</td></tr>';
+				dataHtml = '<tr><td colspan="9">暂无数据</td></tr>';
 			}
 		    return dataHtml;
 		}

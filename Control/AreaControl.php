@@ -37,6 +37,9 @@
                 case "map":
                     AreaControl::UploadMap();
                     break;
+                case "id_name":
+                    AreaControl::GetIdAndName();
+                    break;
 			}
 		}
 
@@ -61,6 +64,20 @@
             echo json_encode($re,JSON_UNESCAPED_UNICODE);
             return;
 		}
+
+        public function GetIdAndName()
+        {
+            $ss = new AreaServer();
+            $result = $ss->GetAll();
+            $re = array('state'=>'0','content'=>null);
+            while ($n = mysqli_fetch_array($result)) {
+                $re['state'] = '1';
+                $row[] = array('id' => $n['id'], 'name' => $n['name']);
+                $re['content'] = $row;
+            }
+            echo json_encode($re,JSON_UNESCAPED_UNICODE);
+            return;
+        }
 
         public function GetType()
         {

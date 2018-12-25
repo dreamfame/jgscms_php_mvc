@@ -1,11 +1,10 @@
 layui.config({
 	base : "js/"
-}).use(['form','layer','jquery','layedit','laydate','upload'],function(){
+}).use(['form','layer','jquery','layedit','upload'],function(){
 		var form = layui.form(),
 		layer = parent.layer === undefined ? layui.layer : parent.layer,
 		laypage = layui.laypage,
 		layedit = layui.layedit,
-		laydate = layui.laydate,
 		$ = layui.jquery;
 
     layedit.set({
@@ -14,6 +13,12 @@ layui.config({
             type: 'post' //默认post
         }
     });
+
+    var area = JSON.parse(window.sessionStorage.getItem("area_id_name"));
+    for(var i= 0;i<area.length;i++){
+        $(".newsLook").append("<option value='"+area[i].id+"'>"+area[i].name+"</option>");
+    }
+    form.render('select');
 
 	//创建一个编辑器
  	var editIndex = layedit.build('scenic_intro');
@@ -24,6 +29,7 @@ layui.config({
  			topstr = data.field.top=="on" ? 1 : 0;
         var content = layedit.getContent(editIndex);
  		addScenic = '{"name":"'+data.field.sname+'",';  //文章名称
+        addScenic += '"area_id":"'+$(".newsLook option:selected").val()+'",';
  		addScenic += '"created_at":"'+data.field.created_at+'",'; //发布时间
  		addScenic += '"show":"'+ show +'",';  //是否展示
  		addScenic += '"top":"'+ topstr +'",'; //是否置顶
