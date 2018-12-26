@@ -1,17 +1,81 @@
 layui.config({
 	base : "js/"
-}).use(['form','layer','jquery','layedit','laydate','upload'],function(){
+}).use(['form','layer','jquery','layedit','upload'],function(){
 		var form = layui.form(),
 		layer = parent.layer === undefined ? layui.layer : parent.layer,
 		laypage = layui.laypage,
 		layedit = layui.layedit,
-		laydate = layui.laydate,
 		$ = layui.jquery;
 
     layedit.set({
         uploadImage: {
             url: '/index.php/picture/JudgeOperate/uploadImg', //接口url
             type: 'post' //默认post
+        }
+    });
+
+    laydate.render({
+        elem: '#start', //指定元素
+        done: function(value, date){
+
+        }
+    });
+
+    form.verify({
+       title:function(value,item){
+           if(!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)){
+               return '文章标题不能有特殊字符';
+           }
+           if(/(^\_)|(\__)|(\_+$)/.test(value)){
+               return '文章标题首尾不能出现下划线\'_\'';
+           }
+           if(/^\d+\d+\d$/.test(value)){
+               return '文章标题不能全为数字';
+           }
+           if(value.length>50){
+               return '文章标题不得超过50个字';
+           }
+           if(value.length<4){
+               return '文章标题不得少于4个字';
+           }
+       } ,
+        author:function(value,item){
+            if(!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)){
+                return '文章作者不能有特殊字符';
+            }
+            if(/(^\_)|(\__)|(\_+$)/.test(value)){
+                return '文章作者首尾不能出现下划线\'_\'';
+            }
+            if(value.length>10){
+                return '文章作者不得超过10个字';
+            }
+        },
+        keyword:function(value,item){
+            if(!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)){
+                return '关键字不能有特殊字符';
+            }
+            if(/(^\_)|(\__)|(\_+$)/.test(value)){
+                return '关键字首尾不能出现下划线\'_\'';
+            }
+            if(value.length>20){
+                return '关键字不得超过20个字';
+            }
+        },
+        abstract:function(value,item){
+            if(!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)){
+                return '文章概要不能有特殊字符';
+            }
+            if(/(^\_)|(\__)|(\_+$)/.test(value)){
+                return '文章概要首尾不能出现下划线\'_\'';
+            }
+            if(value.length>10){
+                return '文章概要不得超过150个字';
+            }
+        },
+        newsType:function(value,item){
+           if(value=="-请选择-"){
+               return "请选择文章分类";
+           }
         }
     });
 
@@ -42,6 +106,7 @@ layui.config({
                     $(".newsLook").append("<option value='"+result.content[i].id+"'>"+result.content[i].name+"</option>");
 				}
                 form.render('select');
+                $(".layui-unselect").attr("lay-verify","newsType");
 			}
 
         },

@@ -34,7 +34,6 @@ layui.config({
 		var newArray = [];
 		if($(".search_input").val() != ''){
 			var index = layer.msg('查询中，请稍候',{icon: 16,time:false,shade:0.8});
-            setTimeout(function(){
             	$.ajax({
 					url : "../../json/adminList.json",
 					type : "get",
@@ -97,7 +96,6 @@ layui.config({
 				})
             	
                 layer.close(index);
-            },2000);
 		}else{
 			layer.msg("请输入需要查询的内容");
 		}
@@ -106,7 +104,6 @@ layui.config({
     //显示全部
     $(".showAll_btn").click(function(){
         var index = layer.msg('加载中，请稍候',{icon: 16,time:false,shade:0.8});
-        setTimeout(function(){
             $.ajax({
                 url : "../../json/adminList.json",
                 type : "get",
@@ -122,7 +119,6 @@ layui.config({
                 }
             })
             layer.close(index);
-        },2000);
     })
 
 	//添加管理员

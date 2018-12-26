@@ -7,6 +7,34 @@ layui.config({
 		layedit = layui.layedit,
 		$ = layui.jquery;
 
+	form.verify({
+        username:function(value,item){
+            if(!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)){
+                return '用户名不能有特殊字符';
+            }
+            if(/(^\_)|(\__)|(\_+$)/.test(value)){
+                return '用户名首尾不能出现下划线\'_\'';
+            }
+            if(/^\d+\d+\d$/.test(value)){
+                return '用户名不能全为数字';
+            }
+            if(value.length>10){
+                return '用户名不得超过10个字';
+            }
+            if(value.length<4){
+                return '用户名不得少于4个字';
+            }
+        },
+        nickname:function(value,item) {
+            if(!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)){
+                return '昵称不能有特殊字符';
+            }
+            if(value.length>8){
+                return '昵称不得超过8个字';
+            }
+        }
+    });
+
 	//创建一个编辑器
  	var editIndex = layedit.build('admin_content');
  	var addAdminArray = [],addAdmin;
@@ -21,7 +49,7 @@ layui.config({
 
  		addAdmin = '{"username":"'+data.field.username+'",';  //用户名
         addAdmin += '"nickname":"'+data.field.nickname+'",';	 //昵称
-        addAdmin += '"head_pic":"'+JSON.parse(sys).defaultHeadPic+'",';	 //默认头像
+        addAdmin += '"head_pic":"'+sys.defaultHeadPic+'",';	 //默认头像
         addAdmin += '"phone":"'+data.field.phone+'",'; //手机
         addAdmin += '"email":"'+data.field.email+'",'; //邮箱
         addAdmin += '"role":"'+data.field.role+'",'; //角色

@@ -15,21 +15,40 @@ layui.config({
         
     form.on('select(selectMsg)',function(data){
         var len = $(".msgHtml tr").length;
-        for(var i=0;i<len;i++){
-            if(data.value == "0"){
-                $(".msgHtml tr").eq(i).show();
-                $(".msgHtml tr.no_msg").remove();
-            }else{
-                if($(".msgHtml tr").eq(i).find(".msg_collect i").hasClass("icon-star")){
+        if(len==0){
+            $(".msgHtml").append("<tr class='no_msg' align='center'><td colspan='4'>暂无消息</td></tr>");
+        }
+        else {
+            var n = 0;
+            for (var i = 0; i < len; i++) {
+                if (data.value == "-1") {
+                    n++;
                     $(".msgHtml tr").eq(i).show();
-                }else{
-                    $(".msgHtml tr").eq(i).hide();
+                    $(".msgHtml tr.no_msg").remove();
+                } else if (data.value == "1") {
+                    if ($(".msgHtml tr").eq(i).find("td.msg_reply").text() == "已回复") {
+                        $(".msgHtml tr").eq(i).show();
+                        n++;
+                    } else {
+                        $(".msgHtml tr").eq(i).hide();
+                    }
+                }
+                else {
+                    if ($(".msgHtml tr").eq(i).find("td.msg_reply").text() == "已回复") {
+                        $(".msgHtml tr").eq(i).hide();
+                    } else {
+                        n++;
+                        $(".msgHtml tr").eq(i).show();
+                    }
                 }
             }
+            if(n==0){
+                $(".msgHtml").append("<tr class='no_msg' align='center'><td colspan='4'>暂无消息</td></tr>")
+            }
         }
-        if(data.value=="1" && $(".msgHtml tr").find(".msg_collect i.icon-star").length=="0"){
+        /*if(data.value=="1" && $(".msgHtml tr").find(".msg_collect i.icon-star").length=="0"){
             $(".msgHtml").append("<tr class='no_msg' align='center'><td colspan='4'>暂无收藏消息</td></tr>")
-        }
+        }*/
     })
 
     var userData;
