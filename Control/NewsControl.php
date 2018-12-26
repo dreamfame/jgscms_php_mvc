@@ -86,6 +86,18 @@ error_reporting(0);
                 $id = $_REQUEST['id'];
                 $wherelist[] = "id = '{$id}'";
             }
+            if($_REQUEST['title']!=""||$_REQUEST['title']!=null){
+                $title = $_REQUEST['title'];
+                $wherelist[] = "title like '%{$title}%'";
+            }
+            if($_REQUEST['operator']!=""||$_REQUEST['operator']!=null){
+                $operator = $_REQUEST['operator'];
+                $wherelist[] = "operator like '%{$operator}%'";
+            }
+            if($_REQUEST['keyword']!=""||$_REQUEST['keyword']!=null){
+                $keyword = $_REQUEST['keyword'];
+                $wherelist[] = "keyword like '%{$keyword}%'";
+            }
             //组装查询条件
             if(count($wherelist) > 0){
                 $where = " where ".implode(' and ' , $wherelist);
