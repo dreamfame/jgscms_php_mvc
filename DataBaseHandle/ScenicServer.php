@@ -19,10 +19,16 @@
 		}
 
 		public function GetAll(){
-			$sql = "select scenic.id,scenic.area_id,area.name as area_name,scenic.see,scenic.name,scenic.brief,scenic.intro,scenic.recommend,scenic.isshow,scenic.top,scenic.created_at,scenic.updated_at from scenic LEFT JOIN area on scenic.area_id = area.id";
+			$sql = "select scenic.id,scenic.area_id,area.name as area_name,scenic.see,scenic.name,scenic.brief,scenic.intro,scenic.recommend,scenic.isshow,scenic.top,scenic.created_at,scenic.updated_at from scenic LEFT JOIN area on scenic.area_id = area.id order by created_at desc";
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
 		}
+
+        public function GetShow(){
+            $sql = "select scenic.id,scenic.area_id,area.name as area_name,scenic.see,scenic.name,scenic.brief,scenic.intro,scenic.recommend,scenic.isshow,scenic.top,scenic.created_at,scenic.updated_at from scenic LEFT JOIN area on scenic.area_id = area.id where isshow = 1 order by created_at desc";
+            $result = $this->db->ExeSql($sql, $this->conn);
+            return $result;
+        }
 
         public function GetName(){
             $sql = "select id,name from ".$this->db_table;
@@ -30,8 +36,8 @@
             return $result;
         }
 
-        public function GetScenicById($id){
-            $sql = "select * from ".$this->db_table." where id = '$id'";
+        public function QueryScenic($where){
+            $sql = "select * from ".$this->db_table.$where." order by created_at desc";
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
         }

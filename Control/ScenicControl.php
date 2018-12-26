@@ -10,8 +10,11 @@
 			switch($operate)
 			{
 				case "list":
-                    ScenicControl::GetAll();
+                    ScenicControl::GetList();
 					break;
+                case "all":
+                    ScenicControl::GetAll();
+                    break;
 				case "add":
                     ScenicControl::AddScenic();
 					break;
@@ -42,11 +45,11 @@
 			}
 		}
 
-		public function GetAll()
+		public function GetList()
 		{
             $ss = new ScenicServer();
             $result = $ss->GetAll();
-            $re = array('state'=>'0','content'=>null);
+            $re = array('state'=>'0','content'=>"未获取数据");
             $jsonfile = fopen("../View/json/scenicList.json", "w") or die("Unable to open file!");
             while ($n = mysqli_fetch_array($result)) {
                 $re['state'] = '1';
@@ -63,6 +66,20 @@
             echo json_encode($re,JSON_UNESCAPED_UNICODE);
             return;
 		}
+
+        public function GetAll()
+        {
+            $ss = new ScenicServer();
+            $result = $ss->GetShow();
+            $re = array('state'=>'0','content'=>"未获取数据");
+            while ($n = mysqli_fetch_array($result)) {
+                $re['state'] = '1';
+                $row[] = array('id' => $n['id'],'area_id'=>$n['area_id'],'area_name'=>$n['area_name'] ,'name' => $n['name'], 'brief' => $n['brief'], 'intro' => $n['intro'], 'see' => $n['see'], 'top' => $n['top'],'show'=>$n['isshow'],'created_at'=>$n['created_at'],'updated_at'=>$n['updated_at'],'recommend'=>$n['recommend']);
+                $re['content'] = $row;
+            }
+            echo json_encode($re,JSON_UNESCAPED_UNICODE);
+            return;
+        }
 
         public function GetIdAndName()
         {
@@ -94,9 +111,21 @@
         }
 
         public function GetScenic(){
-		    $id = $_REQUEST['id'];
+            $wherelist = array();
+            if($_REQUEST['id']!=""||$_REQUEST['id']!=null){
+                $wherelist[] = "id = '{$_REQUEST['id']}'";
+            }
+            if($_REQUEST['name']!=""||$_REQUEST['name']!=null){
+                $wherelist[] = "name like '%{$_REQUEST['name']}%'";
+            }
+            //组装查询条件
+            if(count($wherelist) > 0){
+                $where = " where ".implode(' and ' , $wherelist);
+            }
+            //判断查询条件
+            $where = isset($where) ? $where : '';
 		    $ss = new ScenicServer();
-            $result = $ss->GetScenicById($id);
+            $result = $ss->QueryScenic($where);
             $re = array('state'=>'0','content'=>null);
             while ($n = mysqli_fetch_array($result))
             {
