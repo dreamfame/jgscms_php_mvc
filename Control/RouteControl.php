@@ -85,9 +85,24 @@
         }
 
         public function GetRoute(){
-		    $id = $_REQUEST['id'];
+            $wherelist = array();
+            if($_REQUEST['id']!=""||$_REQUEST['id']!=null){
+                $wherelist[] = "id = '{$_REQUEST['id']}'";
+            }
+            if($_REQUEST['name']!=""||$_REQUEST['name']!=null){
+                $wherelist[] = "name like '%{$_REQUEST['name']}%'";
+            }
+            if($_REQUEST['area_id']!=""||$_REQUEST['area_id']!=null){
+                $wherelist[] = "area_id = '{$_REQUEST['area_id']}'";
+            }
+            //组装查询条件
+            if(count($wherelist) > 0){
+                $where = " where ".implode(' and ' , $wherelist);
+            }
+            //判断查询条件
+            $where = isset($where) ? $where : '';
 		    $ss = new RouteServer();
-            $result = $ss->GetRouteById($id);
+            $result = $ss->QueryRoute($where);
             $re = array('state'=>'0','content'=>null);
             while ($n = mysqli_fetch_array($result))
             {

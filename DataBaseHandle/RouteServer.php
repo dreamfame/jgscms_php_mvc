@@ -19,7 +19,7 @@
 		}
 
 		public function GetAll(){
-			$sql = "select route.id,route.area_id,area.name as area_name,route.route,route.name,route.type,route.time,route.created_at from route left join area on route.area_id=area.id";
+			$sql = "select route.id,route.area_id,area.name as area_name,route.route,route.name,route.type,route.time,route.created_at from route left join area on route.area_id=area.id order by created_at desc";
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
 		}
@@ -30,8 +30,8 @@
             return $result;
         }
 
-        public function GetRouteById($id){
-            $sql = "select * from ".$this->db_table." where id = '$id'";
+        public function QueryRoute($where){
+            $sql = "select * from ".$this->db_table.$where." order by created_at desc";
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
         }
