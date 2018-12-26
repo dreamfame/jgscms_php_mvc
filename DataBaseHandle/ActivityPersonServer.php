@@ -39,8 +39,8 @@
 		public function InsertActivityPerson($activityperson){
             $sql = "insert into ".$this->db_table."(activity_id,phone,nickname,time,prize) values('$activityperson->activity_id','$activityperson->phone','$activityperson->nickname','$activityperson->time','$activityperson->prize')";
             try{
-                $this->db->ExeSql($sql,$this->conn);
-                return true;
+                $result = $this->db->ExeSql($sql,$this->conn);
+                return $result;
             }
             catch(Exception $e)
             {

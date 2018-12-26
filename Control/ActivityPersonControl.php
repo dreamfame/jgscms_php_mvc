@@ -91,10 +91,13 @@
 			$ss = new ActivityPersonServer();
             $re = array('state'=>'0','content'=>'添加失败');
             $result = $ss->InsertActivityPerson($activityperson);
-            if($result){
+            if($result==""){
 				$re['state'] = '1';
 				$re['content'] = '添加成功';
 			}
+			else{
+                $re['content'] = '添加失败,错误信息：'.$result;
+            }
 			echo json_encode($re,JSON_UNESCAPED_UNICODE);
             return;
 		}
