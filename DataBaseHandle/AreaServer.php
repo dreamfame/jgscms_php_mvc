@@ -24,6 +24,12 @@
             return $result;
 		}
 
+        public function GetShow(){
+            $sql = "select * from ".$this->db_table." where isshow = 1 order by created_at desc";
+            $result = $this->db->ExeSql($sql, $this->conn);
+            return $result;
+        }
+
         public function GetType(){
             $sql = "select id,name from Area_type";
             $result = $this->db->ExeSql($sql, $this->conn);

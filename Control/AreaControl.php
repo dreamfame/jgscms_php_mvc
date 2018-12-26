@@ -11,8 +11,11 @@
 			switch($operate)
 			{
 				case "list":
-                    AreaControl::GetAll();
+                    AreaControl::GetList();
 					break;
+                case "all":
+                    AreaControl::GetAll();
+                    break;
 				case "add":
                     AreaControl::AddArea();
 					break;
@@ -46,11 +49,11 @@
 			}
 		}
 
-		public function GetAll()
+		public function GetList()
 		{
             $ss = new AreaServer();
             $result = $ss->GetAll();
-            $re = array('state'=>'0','content'=>null);
+            $re = array('state'=>'0','content'=>"未获取数据");
             $jsonfile = fopen("../View/json/areaList.json", "w") or die("Unable to open file!");
             while ($n = mysqli_fetch_array($result)) {
                 $re['state'] = '1';
@@ -67,6 +70,20 @@
             echo json_encode($re,JSON_UNESCAPED_UNICODE);
             return;
 		}
+
+        public function GetAll()
+        {
+            $ss = new AreaServer();
+            $result = $ss->GetShow();
+            $re = array('state'=>'0','content'=>"未获取数据");
+            while ($n = mysqli_fetch_array($result)) {
+                $re['state'] = '1';
+                $row[] = array('id' => $n['id'], 'name' => $n['name'],'area_map'=>$n['area_map'],'brief' => $n['brief'], 'intro' => $n['intro'], 'see' => $n['see'], 'top' => $n['top'],'show'=>$n['isshow'],'created_at'=>$n['created_at'],'updated_at'=>$n['updated_at'],'recommend'=>$n['recommend']);
+                $re['content'] = $row;
+            }
+            echo json_encode($re,JSON_UNESCAPED_UNICODE);
+            return;
+        }
 
         public function GetIdAndName()
         {
@@ -113,7 +130,7 @@
             $where = isset($where) ? $where : '';
 		    $ss = new AreaServer();
             $result = $ss->QueryArea($where);
-            $re = array('state'=>'0','content'=>null);
+            $re = array('state'=>'0','content'=>"未获取数据");
             while ($n = mysqli_fetch_array($result))
             {
                 $re['state'] = '1';

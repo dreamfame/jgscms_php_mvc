@@ -25,6 +25,12 @@
             return $result;
 		}
 
+        public function GetShow(){
+            $sql = "select news.id,news_type.name as type,news.title,news.content,news.isshow,news.top,news.created_at,news.operator,news.see,news.updated_at,abstract,keyword,pic from news left join news_type on news.type=news_type.id where isshow = 1 order by created_at desc";
+            $result = $this->db->ExeSql($sql, $this->conn);
+            return $result;
+        }
+
         public function GetType(){
             $sql = "select id,name from news_type";
             $result = $this->db->ExeSql($sql, $this->conn);

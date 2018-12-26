@@ -11,8 +11,11 @@ error_reporting(0);
 			switch($operate)
 			{
 				case "list":
-                    NewsControl::GetAll();
+                    NewsControl::GetList();
 					break;
+                case "all":
+                    NewsControl::GetAll();
+                    break;
 				case "add":
                     NewsControl::AddNews();
 					break;
@@ -43,11 +46,11 @@ error_reporting(0);
 			}
 		}
 
-		public function GetAll()
+		public function GetList()
 		{
             $ns = new NewsServer();
             $result = $ns->GetAll();
-            $re = array('state'=>'0','content'=>null);
+            $re = array('state'=>'0','content'=>"未获取数据");
             $jsonfile = fopen("../View/json/newsList.json", "w") or die("Unable to open file!");
             while ($n = mysqli_fetch_array($result)) {
                 $re['state'] = '1';
@@ -64,6 +67,20 @@ error_reporting(0);
             echo json_encode($re,JSON_UNESCAPED_UNICODE);
             return;
 		}
+
+        public function GetAll()
+        {
+            $ns = new NewsServer();
+            $result = $ns->GetShow();
+            $re = array('state'=>'0','content'=>"未获取数据");
+            while ($n = mysqli_fetch_array($result)) {
+                $re['state'] = '1';
+                $row[] = array('id' => $n['id'], 'title' => $n['title'], 'content' => $n['content'], 'type' => $n['type'], 'see' => $n['see'], 'top' => $n['top'],'show'=>$n['isshow'],'operator'=>$n['operator'],'created_at'=>$n['created_at'],'updated_at'=>$n['updated_at'],'abstract'=>$n['abstract'],'keyword'=>$n['keyword'],'pic'=>$n['pic']);
+                $re['content'] = $row;
+            }
+            echo json_encode($re,JSON_UNESCAPED_UNICODE);
+            return;
+        }
 
         public function GetType()
         {
@@ -106,7 +123,7 @@ error_reporting(0);
             $where = isset($where) ? $where : '';
 		    $ns = new NewsServer();
             $result = $ns->QueryNews($where);
-            $re = array('state'=>'0','content'=>"未获取到数据");
+            $re = array('state'=>'0','content'=>"未获取数据");
             while ($n = mysqli_fetch_array($result))
             {
                 $re['state'] = '1';
