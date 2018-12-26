@@ -36,8 +36,8 @@
             return $result;
         }
 
-		public function InsertActivityPerson($activity){
-            $sql = "insert into ".$this->db_table."(name,recommend,brief,intro,isshow,top,updated_at,created_at,see,activity_map) values('$activity->name','$activity->recommend','$activity->brief','$activity->intro','$activity->isshow','$activity->top','$activity->updated_at','$activity->created_at','$activity->see','$activity->activity_map')";
+		public function InsertActivityPerson($activityperson){
+            $sql = "insert into ".$this->db_table."(activity_id,phone,nickname,time,prize) values('$activityperson->activity_id','$activityperson->phone','$activityperson->nickname','$activityperson->time','$activityperson->prize')";
             try{
                 $this->db->ExeSql($sql,$this->conn);
                 return true;

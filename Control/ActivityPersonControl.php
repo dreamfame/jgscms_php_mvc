@@ -12,7 +12,7 @@
 				case "list":
                     ActivityPersonControl::GetAll();
 					break;
-				case "add":
+				case "join":
                     ActivityPersonControl::AddActivityPerson();
 					break;
 				case "del":
@@ -81,20 +81,16 @@
 
 		public function AddActivityPerson()
 		{
-			$activity = new ActivityPerson();
-            $activity->name = $_REQUEST['name'];
-            $activity->intro = $str = str_replace('\'', '\"', $_REQUEST['intro']);
-            $activity->isshow = $_REQUEST['show'];
-            $activity->top = $_REQUEST['top'];
-            $activity->created_at = $_REQUEST['created_at'];
-            $activity->updated_at = $_REQUEST['created_at'];
-            $activity->brief = $_REQUEST['brief'];
-            $activity->recommend = $_REQUEST['recommend'];
-            $activity->see = 0;
-            $activity->activity_map = $_REQUEST['pic'];
+			$activityperson = new ActivityPerson();
+            $activityperson->activity_id = $_REQUEST['activity_id'];
+            $activityperson->phone = $_REQUEST['phone'];
+            $activityperson->nickname = $_REQUEST['nickname'];
+            $activityperson->prize = 0;
+            date_default_timezone_set('PRC');
+            $activityperson->time = date('Y-m-d H:i:s', time());
 			$ss = new ActivityPersonServer();
             $re = array('state'=>'0','content'=>'添加失败');
-            $result = $ss->InsertActivityPerson($activity);
+            $result = $ss->InsertActivityPerson($activityperson);
             if($result){
 				$re['state'] = '1';
 				$re['content'] = '添加成功';
