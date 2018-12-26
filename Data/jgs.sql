@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50554
 File Encoding         : 65001
 
-Date: 2018-12-26 12:30:58
+Date: 2018-12-26 18:59:16
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -45,20 +45,21 @@ INSERT INTO `activity` VALUES ('2', '测试活动', '/images/1545380766154530974
 -- ----------------------------
 DROP TABLE IF EXISTS `activity_person`;
 CREATE TABLE `activity_person` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `activity_id` int(11) DEFAULT NULL,
   `phone` varchar(255) DEFAULT NULL,
   `nickname` varchar(255) DEFAULT NULL,
-  `time` varchar(255) DEFAULT NULL,
+  `time` datetime DEFAULT NULL,
   `prize` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE KEY `enrollverify` (`activity_id`,`phone`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of activity_person
 -- ----------------------------
-INSERT INTO `activity_person` VALUES ('1', '1', '13628635884', '夏日凉风', '0', '0');
-INSERT INTO `activity_person` VALUES ('2', '1', '15072558596', 'dreamfame', '0', '0');
+INSERT INTO `activity_person` VALUES ('1', '1', '13628635884', '夏日凉风', '2018-12-12 00:00:00', '0');
+INSERT INTO `activity_person` VALUES ('2', '1', '15072558596', 'dreamfame', '2018-12-12 00:00:00', '0');
 
 -- ----------------------------
 -- Table structure for admin
@@ -119,16 +120,32 @@ INSERT INTO `area` VALUES ('2', '黄洋界景区', 0xE5958A4756E79A84E6A2B5E8B0B
 -- ----------------------------
 DROP TABLE IF EXISTS `images`;
 CREATE TABLE `images` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `scenic_id` int(11) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
-  `picStr` varchar(255) DEFAULT NULL,
+  `picSrc` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of images
 -- ----------------------------
+INSERT INTO `images` VALUES ('1', '1', '1545308976default.png', '/images/scenicImgs/15458166321545308976default.png');
+INSERT INTO `images` VALUES ('2', '1', '1545309259default.png', '/images/scenicImgs/15458166321545309259default.png');
+INSERT INTO `images` VALUES ('3', '1', '1545309416default.png', '/images/scenicImgs/15458166321545309416default.png');
+INSERT INTO `images` VALUES ('5', '1', '1545308976default.png', '/images/scenicImgs/15458187361545308976default.png');
+INSERT INTO `images` VALUES ('6', '1', '1545308976default.png', '/images/scenicImgs/15458187861545308976default.png');
+INSERT INTO `images` VALUES ('7', '1', '1545308976default.png', '/images/scenicImgs/15458189431545308976default.png');
+INSERT INTO `images` VALUES ('8', '1', '1545308976default.png', '/images/scenicImgs/15458190531545308976default.png');
+INSERT INTO `images` VALUES ('9', '1', '1545308976default.png', '/images/scenicImgs/15458190981545308976default.png');
+INSERT INTO `images` VALUES ('22', '1', '1545308976default.png', '/images/scenicImgs/15458212311545308976default.png');
+INSERT INTO `images` VALUES ('23', '1', '1545308976default.png', '/images/scenicImgs/15458213331545308976default.png');
+INSERT INTO `images` VALUES ('24', '5', '1545308976default.png', '/images/scenicImgs/15458213581545308976default.png');
+INSERT INTO `images` VALUES ('25', '1', '1545308976default.png', '/images/scenicImgs/15458214141545308976default.png');
+INSERT INTO `images` VALUES ('26', '1', '1545309259default.png', '/images/scenicImgs/15458214141545309259default.png');
+INSERT INTO `images` VALUES ('27', '1', '1545309416default.png', '/images/scenicImgs/15458214141545309416default.png');
+INSERT INTO `images` VALUES ('28', '1', '1545308976default.png', '/images/scenicImgs/15458214341545308976default.png');
+INSERT INTO `images` VALUES ('29', '1', '1545570217default.png', '/images/scenicImgs/15458214501545570217default.png');
 
 -- ----------------------------
 -- Table structure for log
@@ -267,13 +284,14 @@ CREATE TABLE `photo` (
   `img9` varchar(255) DEFAULT NULL,
   `verify` int(4) DEFAULT NULL,
   `operator` varchar(255) DEFAULT NULL,
+  `top` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of photo
 -- ----------------------------
-INSERT INTO `photo` VALUES ('1', 'dreamfame', '分享测试', '2018-12-21', '0', '0', '/images/default.jpg', '/images/default.jpg', '/images/default.jpg', '/images/default.jpg', '/images/default.jpg', '/images/default.jpg', '/images/default.jpg', '/images/default.jpg', '/images/default.jpg', '1', '-');
+INSERT INTO `photo` VALUES ('1', 'dreamfame', '分享测试', '2018-12-21', '0', '0', '/images/default.jpg', '/images/default.jpg', '/images/default.jpg', '/images/default.jpg', '/images/default.jpg', '/images/default.jpg', '/images/default.jpg', '/images/default.jpg', '/images/default.jpg', '1', '-', '1');
 
 -- ----------------------------
 -- Table structure for postcard
@@ -381,3 +399,13 @@ CREATE TABLE `user` (
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES ('1', '1', 'double_fame', 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJSvOhfrsWluVbVZZgUxAdotuPgDibwPxCBhggX1azjO2Z9uAHnfWMHUicYibMNYo02mv0FBmEXZJhQg/132', '夏日凉风', '', 'Bermuda', '1', '2018-12-23');
+DROP TRIGGER IF EXISTS `join`;
+DELIMITER ;;
+CREATE TRIGGER `join` AFTER INSERT ON `activity_person` FOR EACH ROW update activity set num = num+1 where new.activity_id = activity.id
+;;
+DELIMITER ;
+DROP TRIGGER IF EXISTS `exit`;
+DELIMITER ;;
+CREATE TRIGGER `exit` AFTER DELETE ON `activity_person` FOR EACH ROW update activity set num = num-1 where old.activity_id = activity.id
+;;
+DELIMITER ;
