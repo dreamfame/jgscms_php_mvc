@@ -3,41 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1c7749a1-70c7-404f-906e-a59d4ff055e3" name="默认的" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Control/ImgControl.php" beforeDir="false" afterPath="$PROJECT_DIR$/Control/ImgControl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/jgs.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Data/jgs.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataBaseHandle/DBHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/DataBaseHandle/DBHelper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataBaseHandle/ImgServer.php" beforeDir="false" afterPath="$PROJECT_DIR$/DataBaseHandle/ImgServer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/json/ImgList.json" beforeDir="false" afterPath="$PROJECT_DIR$/View/json/ImgList.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/View/json/PhotoList.json" beforeDir="false" afterPath="$PROJECT_DIR$/View/json/PhotoList.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/json/activityPersonList.json" beforeDir="false" afterPath="$PROJECT_DIR$/View/json/activityPersonList.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/json/scenicList.json" beforeDir="false" afterPath="$PROJECT_DIR$/View/json/scenicList.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/img/images.html" beforeDir="false" afterPath="$PROJECT_DIR$/View/page/img/images.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/img/images.js" beforeDir="false" afterPath="$PROJECT_DIR$/View/page/img/images.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/img/uploadImg.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/img/uploader/css/bootstrap-theme.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/img/uploader/css/bootstrap.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/img/uploader/css/demo.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/img/uploader/css/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/img/uploader/images/bg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/img/uploader/images/icons.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/img/uploader/images/image.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/img/uploader/images/progress.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/img/uploader/images/success.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/img/uploader/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/img/uploader/js/bootstrap.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/img/uploader/js/jquery-1.10.2.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/img/uploader/js/jquery.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/img/uploader/webuploader-0.1.5/Uploader.swf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/img/uploader/webuploader-0.1.5/extend-webuploader.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/img/uploader/webuploader-0.1.5/webuploader.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/img/uploader/webuploader-0.1.5/webuploader.custom.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/img/uploader/webuploader-0.1.5/webuploader.fis.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/img/uploader/webuploader-0.1.5/webuploader.flashonly.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/img/uploader/webuploader-0.1.5/webuploader.html5only.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/img/uploader/webuploader-0.1.5/webuploader.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/img/uploader/webuploader-0.1.5/webuploader.noimage.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/img/uploader/webuploader-0.1.5/webuploader.nolog.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/img/uploader/webuploader-0.1.5/webuploader.withoutimage.min.js" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -136,7 +102,7 @@
     <session id="569187798">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="6" />
+          <entry key="project.closed" value="7" />
           <entry key="project.open.time.14" value="2" />
           <entry key="project.open.time.17" value="1" />
           <entry key="project.open.time.20" value="1" />
@@ -153,9 +119,9 @@
         <counts>
           <entry key="css" value="22" />
           <entry key="html" value="111" />
-          <entry key="js" value="187" />
+          <entry key="js" value="188" />
           <entry key="json" value="79" />
-          <entry key="php" value="191" />
+          <entry key="php" value="193" />
           <entry key="rnc" value="1" />
           <entry key="xml" value="12" />
         </counts>
@@ -165,8 +131,8 @@
           <entry key="CSS" value="22" />
           <entry key="HTML" value="111" />
           <entry key="JSON" value="79" />
-          <entry key="JavaScript" value="187" />
-          <entry key="PHP" value="191" />
+          <entry key="JavaScript" value="188" />
+          <entry key="PHP" value="193" />
           <entry key="RNG Compact" value="1" />
           <entry key="XML" value="12" />
         </counts>
@@ -175,9 +141,9 @@
         <counts>
           <entry key="css" value="34" />
           <entry key="html" value="2674" />
-          <entry key="js" value="12824" />
+          <entry key="js" value="12835" />
           <entry key="json" value="527" />
-          <entry key="php" value="12390" />
+          <entry key="php" value="12511" />
           <entry key="xml" value="51" />
         </counts>
       </usages-collector>
@@ -186,8 +152,8 @@
           <entry key="CSS" value="34" />
           <entry key="HTML" value="2675" />
           <entry key="JSON" value="527" />
-          <entry key="JavaScript" value="12824" />
-          <entry key="PHP" value="12389" />
+          <entry key="JavaScript" value="12835" />
+          <entry key="PHP" value="12510" />
           <entry key="XML" value="51" />
         </counts>
       </usages-collector>
@@ -252,33 +218,41 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/View/page/img/images.js">
+        <entry file="file://$PROJECT_DIR$/Control/ImgControl.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="85" column="28" selection-start-line="85" selection-start-column="28" selection-end-line="85" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/View/page/img/images.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-233">
-              <caret line="19" column="35" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
-              <folding>
-                <element signature="n#style#0;n#input#1;n#form#0;n#form#0;n#div#1;n#blockquote#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#div#1;n#blockquote#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#1;n#div#1;n#blockquote#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="243">
+              <caret line="61" column="41" selection-start-line="61" selection-start-column="32" selection-end-line="61" selection-end-column="41" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Control/ImgControl.php">
+        <entry file="file://$PROJECT_DIR$/Control/PostcardControl.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="63" column="61" selection-start-line="63" selection-start-column="61" selection-end-line="63" selection-end-column="61" />
+            <state relative-caret-position="256">
+              <caret line="93" column="84" selection-start-line="93" selection-start-column="84" selection-end-line="93" selection-end-column="84" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Control/PhotoControl.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="186">
+              <caret line="135" column="24" selection-start-line="135" selection-start-column="24" selection-end-line="135" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/View/page/share/photowaitList.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="209">
+              <caret line="11" column="46" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="46" />
+              <folding>
+                <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -418,12 +392,9 @@
         <option value="$PROJECT_DIR$/View/page/activity/activityList.js" />
         <option value="$PROJECT_DIR$/View/page/activity/scenicList.js" />
         <option value="$PROJECT_DIR$/View/page/share/photoList.js" />
-        <option value="$PROJECT_DIR$/Control/PhotoControl.php" />
         <option value="$PROJECT_DIR$/DataBaseHandle/PhotoServer.php" />
         <option value="$PROJECT_DIR$/View/page/share/postcardList.js" />
-        <option value="$PROJECT_DIR$/Control/PostcardControl.php" />
         <option value="$PROJECT_DIR$/DataBaseHandle/PostcardServer.php" />
-        <option value="$PROJECT_DIR$/View/page/share/photowaitList.js" />
         <option value="$PROJECT_DIR$/Control/AreaControl.php" />
         <option value="$PROJECT_DIR$/Control/NewsControl.php" />
         <option value="$PROJECT_DIR$/DataBaseHandle/AreaServer.php" />
@@ -448,6 +419,9 @@
         <option value="$PROJECT_DIR$/View/page/img/images.js" />
         <option value="$PROJECT_DIR$/View/page/img/images.html" />
         <option value="$PROJECT_DIR$/Control/ImgControl.php" />
+        <option value="$PROJECT_DIR$/View/page/share/photowaitList.js" />
+        <option value="$PROJECT_DIR$/Control/PhotoControl.php" />
+        <option value="$PROJECT_DIR$/Control/PostcardControl.php" />
       </list>
     </option>
   </component>
@@ -480,6 +454,11 @@
               <item name="JGSCMS" type="b2602c69:ProjectViewProjectNode" />
               <item name="JGSCMS" type="462c0819:PsiDirectoryNode" />
               <item name="Control" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="JGSCMS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="JGSCMS" type="462c0819:PsiDirectoryNode" />
+              <item name="View" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -566,12 +545,12 @@
       <workItem from="1545612855531" duration="30812000" />
       <workItem from="1545700275002" duration="27094000" />
       <workItem from="1545739620887" duration="7161000" />
-      <workItem from="1545785059975" duration="29857000" />
+      <workItem from="1545785059975" duration="32605000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="342918000" />
+    <option name="totallyTimeSpent" value="345666000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -653,17 +632,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1725">
           <caret line="75" column="7" selection-start-line="75" selection-start-column="7" selection-end-line="75" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/page/share/photowaitList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1606">
-          <caret line="146" column="6" lean-forward="true" selection-start-line="146" selection-start-column="6" selection-end-line="146" selection-end-column="6" />
-          <folding>
-            <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -767,13 +735,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Model/ActivityPerson.php">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Control/PostcardControl.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2769">
-          <caret line="158" column="32" selection-start-line="158" selection-start-column="32" selection-end-line="158" selection-end-column="32" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Control/UserControl.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -885,13 +846,6 @@
     <entry file="file://$PROJECT_DIR$/View/json/images.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Control/PhotoControl.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="48" column="24" selection-start-line="48" selection-start-column="24" selection-end-line="48" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/View/layui/layui.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -909,10 +863,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/View/page/img/images.js">
+    <entry file="file://$PROJECT_DIR$/DataBaseHandle/ImgServer.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="85" column="28" selection-start-line="85" selection-start-column="28" selection-end-line="85" selection-end-column="28" />
+        <state relative-caret-position="186">
+          <caret line="72" column="24" selection-start-line="72" selection-start-column="24" selection-end-line="72" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -928,17 +882,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataBaseHandle/ImgServer.php">
+    <entry file="file://$PROJECT_DIR$/View/page/img/images.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="85" column="28" selection-start-line="85" selection-start-column="28" selection-end-line="85" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/page/share/photowaitList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" column="46" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="46" />
+          <folding>
+            <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Control/PhotoControl.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="186">
-          <caret line="72" column="24" selection-start-line="72" selection-start-column="24" selection-end-line="72" selection-end-column="24" />
+          <caret line="135" column="24" selection-start-line="135" selection-start-column="24" selection-end-line="135" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Control/ImgControl.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="63" column="61" selection-start-line="63" selection-start-column="61" selection-end-line="63" selection-end-column="61" />
+        <state relative-caret-position="243">
+          <caret line="61" column="41" selection-start-line="61" selection-start-column="32" selection-end-line="61" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Control/PostcardControl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="93" column="84" selection-start-line="93" selection-start-column="84" selection-end-line="93" selection-end-column="84" />
         </state>
       </provider>
     </entry>
