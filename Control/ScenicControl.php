@@ -126,7 +126,7 @@
             $where = isset($where) ? $where : '';
 		    $ss = new ScenicServer();
             $result = $ss->QueryScenic($where);
-            $re = array('state'=>'0','content'=>null);
+            $re = array('state'=>'0','content'=>"未获取数据");
             while ($n = mysqli_fetch_array($result))
             {
                 $re['state'] = '1';
