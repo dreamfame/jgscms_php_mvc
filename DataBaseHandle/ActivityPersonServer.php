@@ -19,7 +19,7 @@
 		}
 
 		public function GetAll($activity_id){
-			$sql = "select * from ".$this->db_table." where activity_id = '$activity_id'";
+			$sql = "select * from ".$this->db_table." where activity_id = '$activity_id' order by time desc";
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
 		}
