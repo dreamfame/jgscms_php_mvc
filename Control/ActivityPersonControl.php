@@ -2,6 +2,7 @@
 	require_once '../Model/ActivityPerson.php';
 	require_once '../DataBaseHandle/ActivityPersonServer.php';
 	header("Content-Type: text/html;charset=utf-8");
+	error_reporting(0);
 	//session_start();
 	Class ActivityPersonControl
 	{
@@ -10,8 +11,11 @@
 			switch($operate)
 			{
 				case "list":
-                    ActivityPersonControl::GetAll();
+                    ActivityPersonControl::GetList();
 					break;
+                case "all":
+                    ActivityPersonControl::GetAll();
+                    break;
 				case "join":
                     ActivityPersonControl::AddActivityPerson();
 					break;
@@ -24,11 +28,11 @@
 			}
 		}
 
-		public function GetAll()
+		public function GetList()
 		{
             $ss = new ActivityPersonServer();
             $result = $ss->GetAll();
-            $re = array('state'=>'0','content'=>null);
+            $re = array('state'=>'0','content'=>"未获取数据");
             $jsonfile = fopen("../View/json/activityPersonList.json", "w") or die("Unable to open file!");
             while ($n = mysqli_fetch_array($result)) {
                 $re['state'] = '1';
@@ -45,6 +49,26 @@
             echo json_encode($re,JSON_UNESCAPED_UNICODE);
             return;
 		}
+
+        public function GetAll()
+        {
+            $activity_id = $_REQUEST['activity_id'];
+            $re = array('state'=>'0','content'=>"未获取数据");
+            if(empty($activity_id)){
+                $re['content'] = "参数有误";
+                echo json_encode($re,JSON_UNESCAPED_UNICODE);
+                return;
+            }
+            $ss = new ActivityPersonServer();
+            $result = $ss->GetAll($activity_id);
+            while ($n = mysqli_fetch_array($result)) {
+                $re['state'] = '1';
+                $row[] = array('id' => $n['id'], 'activity_id' => $n['activity_id'],'phone'=>$n['phone'],'nickname' => $n['nickname'], 'time' => $n['time'], 'prize' => $n['prize']);
+                $re['content'] = $row;
+            }
+            echo json_encode($re,JSON_UNESCAPED_UNICODE);
+            return;
+        }
 
         public function GetActivityPerson(){
 		    $id = $_REQUEST['id'];
