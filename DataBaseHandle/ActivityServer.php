@@ -24,14 +24,20 @@
             return $result;
 		}
 
+        public function GetShow(){
+            $sql = "select activity.id,num,activity.name,activity.pic,activity.date,activity.join,activity.intro,activity.prize,activity.prize_way,activity.phone,activity.`enable` from activity where activity.enable = 1";
+            $result = $this->db->ExeSql($sql, $this->conn);
+            return $result;
+        }
+
         public function GetType(){
             $sql = "select id,name from Activity_type";
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
         }
 
-        public function GetActivityById($id){
-            $sql = "select * from ".$this->db_table." where id = '$id'";
+        public function QueryActivity($where){
+            $sql = "select * from ".$this->db_table.$where;
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
         }

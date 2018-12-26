@@ -2,6 +2,7 @@
 	require_once '../Model/Activity.php';
 	require_once '../DataBaseHandle/ActivityServer.php';
 	header("Content-Type: text/html;charset=utf-8");
+	error_reporting(0);
 	//session_start();
 	Class ActivityControl
 	{
@@ -10,8 +11,11 @@
 			switch($operate)
 			{
 				case "list":
-                    ActivityControl::GetAll();
+                    ActivityControl::GetList();
 					break;
+                case "all":
+                    ActivityControl::GetAll();
+                    break;
 				case "add":
                     ActivityControl::AddActivity();
 					break;
@@ -39,11 +43,11 @@
 			}
 		}
 
-		public function GetAll()
+		public function GetList()
 		{
             $ss = new ActivityServer();
             $result = $ss->GetAll();
-            $re = array('state'=>'0','content'=>null);
+            $re = array('state'=>'0','content'=>"未获取数据");
             $jsonfile = fopen("../View/json/activityList.json", "w") or die("Unable to open file!");
             while ($n = mysqli_fetch_array($result)) {
                 $re['state'] = '1';
@@ -61,6 +65,20 @@
             return;
 		}
 
+        public function GetAll()
+        {
+            $ss = new ActivityServer();
+            $result = $ss->GetShow();
+            $re = array('state'=>'0','content'=>"未获取数据");
+            while ($n = mysqli_fetch_array($result)) {
+                $re['state'] = '1';
+                $row[] = array('id' => $n['id'], 'name' => $n['name'],'pic'=>$n['pic'],'date' => $n['date'], 'join' => $n['join'], 'intro' => $n['intro'], 'prize_way' => $n['prize_way'],'prize'=>$n['prize'],'phone'=>$n['phone'],'enable'=>$n['enable'],'num'=>$n['num']);
+                $re['content'] = $row;
+            }
+            echo json_encode($re,JSON_UNESCAPED_UNICODE);
+            return;
+        }
+
         public function GetType()
         {
             $ss = new ActivityServer();
@@ -77,14 +95,26 @@
         }
 
         public function GetActivity(){
-		    $id = $_REQUEST['id'];
+            $wherelist = array();
+            if($_REQUEST['id']!=""||$_REQUEST['id']!=null){
+                $wherelist[] = "id = '{$_REQUEST['id']}'";
+            }
+            if($_REQUEST['name']!=""||$_REQUEST['name']!=null){
+                $wherelist[] = "name like '%{$_REQUEST['name']}%'";
+            }
+            //组装查询条件
+            if(count($wherelist) > 0){
+                $where = " where ".implode(' and ' , $wherelist);
+            }
+            //判断查询条件
+            $where = isset($where) ? $where : '';
 		    $ss = new ActivityServer();
-            $result = $ss->GetActivityById($id);
-            $re = array('state'=>'0','content'=>null);
+            $result = $ss->QueryActivity($where);
+            $re = array('state'=>'0','content'=>"未获取数据");
             while ($n = mysqli_fetch_array($result))
             {
                 $re['state'] = '1';
-                $row[] = array('id' => $n['id'], 'name' => $n['name'], 'brief' => $n['brief'], 'intro' => $n['intro'], 'see' => $n['see'], 'top' => $n['top'],'show'=>$n['isshow'],'created_at'=>$n['created_at'],'updated_at'=>$n['updated_at'],'recommend'=>$n['recommend']);
+                $row[] = array('id' => $n['id'], 'name' => $n['name'],'pic'=>$n['pic'],'date' => $n['date'], 'join' => $n['join'], 'intro' => $n['intro'], 'prize_way' => $n['prize_way'],'prize'=>$n['prize'],'phone'=>$n['phone'],'enable'=>$n['enable'],'num'=>$n['num']);
                 $re['content'] = $row;
             }
             echo json_encode($re,JSON_UNESCAPED_UNICODE);
