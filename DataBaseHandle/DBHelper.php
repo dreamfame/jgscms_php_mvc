@@ -35,6 +35,13 @@
 			mysqli_close($conn);
 		}
 
+        public function ExeSqlTest($sql,$conn)
+        {
+            mysqli_query($conn, "set Names UTF8");
+            $result = mysqli_query($conn,$sql) or die("SQL错误：".mysqli_error($conn));
+            return $result;
+        }
+
         public function ExeSql($sql,$conn)
         {
             mysqli_query($conn, "set Names UTF8");

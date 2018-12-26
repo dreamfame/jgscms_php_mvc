@@ -12,7 +12,6 @@ layui.config({
         if (r != null) return unescape(r[2]); return null; //返回参数值
     }
 
-
     var scenic_id = getUrlParam("id");
     var imagesData;
 
@@ -26,22 +25,18 @@ layui.config({
                 var imgList = [];
                 var data = eval('(' + data + ')');
                 if(data.state=="0"){
-                    setTimeout(function () {
-                        next(imgList.join(''), page < (1 / imgNums));
-                        form.render();
-                    }, 500);
+                    next(imgList.join(''), page < (1 / imgNums));
+                    form.render();
                 }
                 else {
                     imagesData = data.content;
                     var images = data.content;
                     var maxPage = imgNums*page < images.length ? imgNums*page : images.length;
-                    setTimeout(function () {
-                        for (var i = imgNums * (page - 1); i < maxPage; i++) {
-                            imgList.push('<li><img src="' + images[i].src + '"><div class="operate"><div class="check"><input type="checkbox" name="belle" lay-filter="choose" lay-skin="primary" title="' + images[i].name + '"></div><i data-id="'+images[i].id+'" class="layui-icon img_del">&#xe640;</i></div></li>')
-                        }
-                        next(imgList.join(''), page < (images.length / imgNums));
-                        form.render();
-                    }, 500);
+                    for (var i = imgNums * (page - 1); i < maxPage; i++) {
+                        imgList.push('<li><img src="' + images[i].src + '"><div class="operate"><div class="check"><input type="checkbox" name="belle" lay-filter="choose" lay-skin="primary" title="' + images[i].name + '"></div><i data-id="'+images[i].id+'" class="layui-icon img_del">&#xe640;</i></div></li>')
+                    }
+                    next(imgList.join(''), page < (images.length / imgNums));
+                    form.render();
                 }
             }); 
         }
@@ -59,7 +54,7 @@ layui.config({
                 success: function (result) {
                     if(result.state=="1"){
                         _this.parents("li").hide(400);
-                        setTimeout(function(){_this.parents("li").remove();},350);
+                        _this.parents("li").remove();;
                     }
                 },
                 error:function(data){
@@ -79,6 +74,20 @@ layui.config({
         form.render('checkbox');
     });
 
+    var loading;
+    form.on("submit(uploadPic)",function(data){
+       loading = top.layer.msg('图片上传中，请稍候',{icon: 16,time:false,shade:0.8});
+       $("#uploadForm").submit();
+       return false;
+    });
+
+    form.on("submit(closeMark)",function(result){
+        top.layer.close(loading);
+        console.log(result);
+        layer.msg("共上传图片"+result.field.total+"张，成功"+result.field.success+"张，失败"+result.field.fail+"张");
+        return false;
+    });
+
     //通过判断是否全部选中来确定全选按钮是否选中
     form.on("checkbox(choose)",function(data){
         var child = $(data.elem).parents('#Images').find('li input[type="checkbox"]');
@@ -92,22 +101,8 @@ layui.config({
     })
 
     $(".uploadPic").click(function(){
-        var index = layui.layer.open({
-            title : "上传图片",
-            type : 2,
-            content : "uploader/index.html?id="+scenic_id,
-            area:['800px','400px'],
-            offset: '0px',
-            move:false,
-            success : function(layero, index){
-                setTimeout(function(){
-                    layui.layer.tips('点击此处返回信息列表', '.layui-layer-setwin .layui-layer-close', {
-                        tips: 3
-                    });
-                },500)
-            }
-        })
-        //layui.layer.full(index);
+        $(".layui-upload-file").click();
+        $("#scenic_id").val(scenic_id);
     });
 
     //批量删除
@@ -133,5 +128,4 @@ layui.config({
             layer.msg("请选择需要删除的图片");
         }
     })
-
 })

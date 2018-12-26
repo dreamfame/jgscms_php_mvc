@@ -18,18 +18,36 @@
 			$this->conn = $this->db->Open($this->dbase);
 		}
 
-		public function InsertImg($Img)
-		{
-			$sql = "insert into ".$this->db_table."(username,head_pic,nickname,password,age,phone,password_reset_token,email,updated_at,created_at,role,status) values('$Img->username','$Img->head_pic','$Img->nickname','$Img->password','$Img->age','$Img->phone','$Img->password_reset_token','$Img->email','$Img->updated_at','$Img->created_at','$Img->role','$Img->status')";
-			try{
-				$this->db->ExeSql($sql,$this->conn);
-				return true;
+		public function InsertImg($img){
+            $sql = "insert into ".$this->db_table."(scenic_id,name,picSrc) values";
+			$num = count($img);
+			if($num==0) {
+                return false;
+            }
+            else if($num==1){
+                $scenic_id = $img[0]['scenic_id'];
+                $name =  $img[0]['name'];
+                $src = $img[0]['src'];
+                $sql = $sql."('$scenic_id','$name','$src')";
+            }
+			else{
+				foreach($img as $k => $imgs){
+                    $scenic_id = $img[$k]['scenic_id'];
+                    $name =  $img[$k]['name'];
+                    $src = $img[$k]['src'];
+                    $sql = $sql."('$scenic_id','$name','$src'),";
+				}
+				$sql = substr($sql, 0, -1);
 			}
-			catch(Exception $e)
-			{
-				return false;
-			}
-			return false;
+            try{
+                $this->db->ExeSql($sql,$this->conn);
+                return true;
+            }
+            catch(Exception $e)
+            {
+                return false;
+            }
+            return true;
 		}
 
 		public function GetImgById($userId)

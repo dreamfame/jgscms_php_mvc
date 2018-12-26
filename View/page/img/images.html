@@ -13,13 +13,21 @@
 	<link rel="stylesheet" href="../../css/images.css" media="all" />
 </head>
 <body class="childrenBody">
-	<form class="layui-form">
+	<form class="layui-form" id="uploadForm" action="/index.php/img/JudgeOperate/upload" method="post" target="myiframe" enctype="multipart/form-data">
+		<input id="scenic_id" name="scenic_id" type="hidden" />
+		<input id="total" name="total" type="hidden" />
+		<input id="success" name="success" type="hidden" />
+		<input id="fail" name="fail" type="hidden" />
 		<blockquote class="layui-elem-quote news_search">
 			<div class="layui-inline">
 				<input type="checkbox" name="selectAll" id="selectAll" lay-filter="selectAll" lay-skin="primary" title="全选">
 			</div>
 			<div class="layui-inline">
-				<a class="layui-btn uploadPic">上传图片</a>
+					<input class="layui-upload-file" type="file" accept="image/gif, image/jpeg,image/png" name="uploadfile[]" id="uploadfile" onchange="fileSelected();" multiple="" style="display:none;">
+				<iframe id="myiframe" name="myiframe" style="display:none;"></iframe>
+				<a class="layui-btn uploadPic">上传新图片</a>
+				<button class="layui-btn layui-btn-fluid upload-btn" id="upload-btn" lay-submit lay-filter="uploadPic" style="display: none"></button>
+				<button class="layui-btn layui-btn-fluid close-btn" id="close-btn" lay-submit lay-filter="closeMark" style="display: none"></button>
 			</div>
 			<div class="layui-inline">
 				<a class="layui-btn layui-btn-danger batchDel">批量删除</a>
@@ -29,5 +37,22 @@
 	</form>
 	<script type="text/javascript" src="../../layui/layui.js"></script>
 	<script type="text/javascript" src="images.js"></script>
+	<script>
+        	function fileSelected() {
+				var fileName = document.getElementById("uploadfile").value;
+				if(fileName=="")
+				{
+					return ;
+				}
+				document.getElementById("upload-btn").click();
+				//document.getElementById("uploadForm").submit();
+        	}
+        	function closeMark(obj,total,success,fail){
+                document.getElementById("total").value = total;
+                document.getElementById("success").value = success;
+                document.getElementById("fail").value = fail;
+                document.getElementById("close-btn").click();
+			}
+	</script>
 </body>
 </html>
