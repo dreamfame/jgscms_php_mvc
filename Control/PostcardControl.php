@@ -84,14 +84,14 @@
 
         public function GetPostcard(){
             $wherelist = array();
-            if(!empty($_POST['wx'])){
-                $wherelist[] = "wx like '%{$_POST['wx']}%'";
+            if(!empty($_REQUEST['wx'])){
+                $wherelist[] = "wx like '%{$_REQUEST['wx']}%'";
             }
-            if(!empty($_POST['name'])){
-                $wherelist[] = "name like '%{$_POST['name']}%'";
+            if(!empty($_REQUEST['name'])){
+                $wherelist[] = "name like '%{$_REQUEST['name']}%'";
             }
-            if(!empty($_POST['timea'])&&!empty($_POST['timeb'])){
-                $wherelist[] = " date between '{$_POST['timea']}' and '{$_POST['timeb']}'";
+            if(!empty($_REQUEST['timea'])&&!empty($_REQUEST['timeb'])){
+                $wherelist[] = " date between '{$_REQUEST['timea']}' and '{$_REQUEST['timeb']}'";
             }
             //组装查询条件
             if(count($wherelist) > 0){
