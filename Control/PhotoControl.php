@@ -3,6 +3,7 @@
 	require_once '../DataBaseHandle/PhotoServer.php';
 	require_once '../Extensions/Security.php';
 	header("Content-Type: text/html;charset=utf-8");
+	error_reporting(0);
 	//session_start();
 	Class PhotoControl
 	{
@@ -11,8 +12,11 @@
 			switch($operate)
 			{
 				case "list":
-                    PhotoControl::GetAll();
+                    PhotoControl::GetList();
 					break;
+                case "all":
+                    PhotoControl::GetAll();
+                    break;
 				case "add":
                     PhotoControl::AddPhoto();
 					break;
@@ -46,11 +50,11 @@
 			}
 		}
 
-		public function GetAll()
+		public function GetList()
 		{
             $ss = new PhotoServer();
             $result = $ss->GetAll();
-            $re = array('state'=>'0','content'=>null);
+            $re = array('state'=>'0','content'=>"未获取数据");
             $jsonfile = fopen("../View/json/PhotoList.json", "w") or die("Unable to open file!");
             while ($n = mysqli_fetch_array($result)) {
                 $re['state'] = '1';
@@ -68,6 +72,20 @@
             return;
 		}
 
+        public function GetAll()
+        {
+            $ss = new PhotoServer();
+            $result = $ss->GetAll();
+            $re = array('state'=>'0','content'=>"未获取数据");
+            while ($n = mysqli_fetch_array($result)) {
+                $re['state'] = '1';
+                $row[] = array('id' => $n['id'],'top'=>$n['top'] ,'uid' => $n['uid'], 'des' => $n['des'], 'praise' => $n['praise'], 'comment' => $n['comment'], 'img1' => $n['img1'],'img2'=>$n['img2'],'img3'=>$n['img3'],'img4'=>$n['img4'],'img5'=>$n['img5'],'img6'=>$n['img6'],'img7'=>$n['img7'],'img8'=>$n['img8'],'img9'=>$n['img9'],'created_at'=>$n['created_at'],'verify'=>$n['verify'],'operator'=>$n['operator']);
+                $re['content'] = $row;
+            }
+            echo json_encode($re,JSON_UNESCAPED_UNICODE);
+            return;
+        }
+
         public function GetName()
         {
             $ss = new PhotoServer();
@@ -83,7 +101,7 @@
             return;
         }
 
-        public function GetPhoto(){
+        public function GetWaitPhoto(){
             $wherelist = array();
             if($_POST['verify']!=""||$_POST['verify']!=null){
                 $wherelist[] = "verify = '{$_POST['verify']}'";
@@ -111,6 +129,36 @@
                 }
             }
             fclose($jsonfile);
+            echo json_encode($re,JSON_UNESCAPED_UNICODE);
+            return;
+        }
+
+        public function GetPhoto(){
+            $wherelist = array();
+            if($_REQUEST['verify']!=""||$_REQUEST['verify']!=null){
+                $wherelist[] = "verify = '{$_REQUEST['verify']}'";
+            }
+            if($_REQUEST['id']!=""||$_REQUEST['id']!=null){
+                $wherelist[] = "id = '{$_REQUEST['id']}'";
+            }
+            if($_REQUEST['uid']!=""||$_REQUEST['uid']!=null){
+                $wherelist[] = "uid = '{$_REQUEST['uid']}'";
+            }
+            //组装查询条件
+            if(count($wherelist) > 0){
+                $where = " where ".implode(' and ' , $wherelist);
+            }
+            //判断查询条件
+            $where = isset($where) ? $where : '';
+            $ss = new PhotoServer();
+            $result = $ss->QueryPhoto($where);
+            $re = array('state'=>'0','content'=>"未获取数据");
+            while ($n = mysqli_fetch_array($result))
+            {
+                $re['state'] = '1';
+                $row[] = array('id' => $n['id'],'top'=>$n['top'] ,'uid' => $n['uid'], 'des' => $n['des'], 'praise' => $n['praise'], 'comment' => $n['comment'], 'img1' => $n['img1'],'img2'=>$n['img2'],'img3'=>$n['img3'],'img4'=>$n['img4'],'img5'=>$n['img5'],'img6'=>$n['img6'],'img7'=>$n['img7'],'img8'=>$n['img8'],'img9'=>$n['img9'],'created_at'=>$n['created_at'],'verify'=>$n['verify'],'operator'=>$n['operator']);
+                $re['content'] = $row;
+            }
             echo json_encode($re,JSON_UNESCAPED_UNICODE);
             return;
         }

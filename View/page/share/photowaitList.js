@@ -9,7 +9,7 @@ layui.config({
 	//加载页面数据
 	var photoData = '';
 
-	$.post("/index.php/photo/JudgeOperate/query",{"verify":0}, function(data){
+	$.post("/index.php/photo/JudgeOperate/wait",{"verify":0}, function(data){
 		var newArray = [];
         var data = eval('(' + data + ')');
         if(data.state=="0")
