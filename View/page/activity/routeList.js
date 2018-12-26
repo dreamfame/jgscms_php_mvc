@@ -371,7 +371,7 @@ layui.config({
 			}
 			if(currData.length != 0){
 				for(var i=0;i<currData.length;i++){
-					var scenic_name = currData[i].scenic_name==''?'-':currData[i].scenic_name;
+					var area_name = currData[i].area_name==''?'-':currData[i].area_name;
                     var name = currData[i].name==''?'-':currData[i].name;
                     var route = currData[i].route==''?'-':currData[i].route;
                     var type = currData[i].type==''?'-':currData[i].type;
@@ -379,7 +379,7 @@ layui.config({
                     var created_at = currData[i].created_at==''?'-':currData[i].created_at;
 					dataHtml += '<tr>'
 			    	+'<td><input type="checkbox" name="checked" lay-skin="primary" lay-filter="choose"></td>'
-			    	+'<td align="left">'+scenic_name+'</td>'
+			    	+'<td align="left">'+area_name+'</td>'
                     +'<td>'+name+'</td>'
 			    	+'<td>'+route+'</td>'
                     +'<td>'+type+'</td>'

@@ -16,14 +16,14 @@ layui.config({
     });
 
     var json_data = JSON.parse( window.sessionStorage.getItem("edit_route"));
-    $(".sname").val(json_data['scenic_name']);
+    $(".aname").val(json_data['area_name']);
     $(".rname").val(json_data['name']);
     $("textarea[name^='route']").val(json_data['route']);
 
  	var editRoute;
  	form.on("submit(editRoute)",function(data){
         editRoute = '{"id":"'+json_data['id']+'",';
-        editRoute += '"scenic_id":"'+json_data['scenic_id']+'",';
+        editRoute += '"area_id":"'+json_data['area_id']+'",';
         editRoute += '"name":"'+data.field.rname+'",';
         editRoute += '"route":"'+ data.field.route +'"}';
  		//弹出loading

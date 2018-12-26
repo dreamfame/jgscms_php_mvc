@@ -10,8 +10,11 @@
 			switch($operate)
 			{
 				case "list":
-                    RouteControl::GetAll();
+                    RouteControl::GetList();
 					break;
+                case "all":
+                    RouteControl::GetAll();
+                    break;
 				case "add":
                     RouteControl::AddRoute();
 					break;
@@ -30,15 +33,15 @@
 			}
 		}
 
-		public function GetAll()
+		public function GetList()
 		{
             $ss = new RouteServer();
             $result = $ss->GetAll();
-            $re = array('state'=>'0','content'=>null);
+            $re = array('state'=>'0','content'=>"未获取数据");
             $jsonfile = fopen("../View/json/routeList.json", "w") or die("Unable to open file!");
             while ($n = mysqli_fetch_array($result)) {
                 $re['state'] = '1';
-                $row[] = array('id' => $n['id'], 'scenic_id'=>$n['scenic_id'],'scenic_name' => $n['scenic_name'], 'route' => $n['route'], 'type' => $n['type'], 'name' => $n['name'], 'time' => $n['time'],'created_at'=>$n['created_at']);
+                $row[] = array('id' => $n['id'], 'area_id'=>$n['area_id'],'area_name' => $n['area_name'], 'route' => $n['route'], 'type' => $n['type'], 'name' => $n['name'], 'time' => $n['time'],'created_at'=>$n['created_at']);
                 $re['content'] = $row;
                 if (flock($jsonfile, LOCK_EX)) {//加写锁 
                     ftruncate($jsonfile, 0); // 将文件截断到给定的长度 
@@ -51,6 +54,20 @@
             echo json_encode($re,JSON_UNESCAPED_UNICODE);
             return;
 		}
+
+        public function GetAll()
+        {
+            $ss = new RouteServer();
+            $result = $ss->GetAll();
+            $re = array('state'=>'0','content'=>"未获取数据");
+            while ($n = mysqli_fetch_array($result)) {
+                $re['state'] = '1';
+                $row[] = array('id' => $n['id'], 'area_id'=>$n['area_id'],'area_name' => $n['area_name'], 'route' => $n['route'], 'type' => $n['type'], 'name' => $n['name'], 'time' => $n['time'],'created_at'=>$n['created_at']);
+                $re['content'] = $row;
+            }
+            echo json_encode($re,JSON_UNESCAPED_UNICODE);
+            return;
+        }
 
         public function GetType()
         {
@@ -103,7 +120,7 @@
 		public function AddRoute()
 		{
 			$route = new Route();
-			$route->scenic_id = $_REQUEST['scenic_id'];
+			$route->area_id = $_REQUEST['area_id'];
             $route->name = $_REQUEST['name'];
             $route->type = $_REQUEST['type'];
             $route->time = $_REQUEST['time'];
@@ -124,7 +141,7 @@
 		{
             $route = new Route();
             $route->id = $_REQUEST['id'];
-            $route->scenic_id = $_REQUEST['scenic_id'];
+            $route->area_id = $_REQUEST['area_id'];
             $route->name = $_REQUEST['name'];
             $route->route = $_REQUEST['route'];
 			$re = array('state'=>'0','content'=>'修改失败');

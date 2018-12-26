@@ -19,7 +19,7 @@
 		}
 
 		public function GetAll(){
-			$sql = "select route.id,route.scenic_id,scenic.name as scenic_name,route.route,route.name,route.type,route.time,route.created_at from route left join scenic on route.scenic_id=scenic.id";
+			$sql = "select route.id,route.area_id,area.name as area_name,route.route,route.name,route.type,route.time,route.created_at from route left join area on route.area_id=area.id";
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
 		}
@@ -37,7 +37,7 @@
         }
 
 		public function InsertRoute($route){
-            $sql = "insert into ".$this->db_table."(scenic_id,route,type,name,time,created_at) values('$route->scenic_id','$route->route','$route->type','$route->name','$route->time','$route->created_at')";
+            $sql = "insert into ".$this->db_table."(area_id,route,type,name,time,created_at) values('$route->area_id','$route->route','$route->type','$route->name','$route->time','$route->created_at')";
             try{
                 $this->db->ExeSql($sql,$this->conn);
                 return true;
@@ -58,7 +58,7 @@
                 $sql = "update " . $this->db_table . " set ".$field." = '$route->show' where id = '$route->id'";
 			}
 			else if($field=="all"){
-                $sql = "update " . $this->db_table . " set name = '$route->name',route = '$route->route' where id = '$route->id' and scenic_id = '$route->scenic_id'";
+                $sql = "update " . $this->db_table . " set name = '$route->name',route = '$route->route' where id = '$route->id' and scenic_id = '$route->area_id'";
 			}
             try{
                 $this->db->ExeSql($sql,$this->conn);

@@ -8,27 +8,32 @@ layui.config({
 		laydate = layui.laydate,
 		$ = layui.jquery;
 
+		var loading;
+
     $.ajax({
         type: "POST",
         dataType: "JSON",
-        url: "/index.php/scenic/JudgeOperate/name",
+        url: "/index.php/area/JudgeOperate/id_name",
+        beforeSend:function(){
+            loading = top.layer.msg('数据加载中，请稍候',{icon: 16,time:false,shade:0.8});
+        },
         success: function (result) {
             if(result.state=="1")
             {
                 for(var i= 0;i<result.content.length;i++){
-                    $(".sname").append("<option value='"+result.content[i].id+"'>"+result.content[i].name+"</option>");
+                    $(".aname").append("<option value='"+result.content[i].id+"'>"+result.content[i].name+"</option>");
                 }
                 form.render('select');
             }
-
+            top.layer.close(loading);
         },
     })
 
 	//创建一个编辑器
  	var addRoute;
  	form.on("submit(addRoute)",function(data){
-        var scenic_id = $(".sname option:selected").val();
-        addRoute = '{"scenic_id":"'+scenic_id+'",';
+        var area_id = $(".aname option:selected").val();
+        addRoute = '{"area_id":"'+area_id+'",';
  		addRoute += '"name":"'+data.field.rname+'",';
  		addRoute += '"created_at":"'+data.field.created_at+'",';
         addRoute += '"route":"'+ data.field.route +'",';

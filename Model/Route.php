@@ -1,7 +1,7 @@
 <?php
 	Class Route{
 		private $id;
-		private $scenic_id;
+		private $area_id;
 		private $name;
 		private $type;
 		private $route;
