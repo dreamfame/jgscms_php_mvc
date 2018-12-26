@@ -19,7 +19,7 @@
 		}
 
 		public function GetAll(){
-			$sql = "select news.id,news_type.name as type,news.title,news.content,news.isshow,news.top,news.created_at,news.operator,news.see,news.updated_at,abstract,keyword,pic from news left join news_type on news.type=news_type.id";
+			$sql = "select news.id,news_type.name as type,news.title,news.content,news.isshow,news.top,news.created_at,news.operator,news.see,news.updated_at,abstract,keyword,pic from news left join news_type on news.type=news_type.id order by created_at desc";
             //$sql = "select * from ".$this->db_table;
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
@@ -32,7 +32,7 @@
         }
 
         public function QueryNews($where){
-            $sql = "select * from ".$this->db_table.$where;
+            $sql = "select * from ".$this->db_table.$where."order by created_at desc";
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
         }
