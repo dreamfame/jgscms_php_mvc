@@ -11,8 +11,11 @@
 			switch($operate)
 			{
 				case "list":
-                    PostcardControl::GetAll();
+                    PostcardControl::GetList();
 					break;
+                case "all":
+                    PostcardControl::GetAll();
+                    break;
 				case "add":
                     PostcardControl::AddPostcard();
 					break;
@@ -28,11 +31,11 @@
 			}
 		}
 
-		public function GetAll()
+		public function GetList()
 		{
             $ss = new PostcardServer();
             $result = $ss->GetAll();
-            $re = array('state'=>'0','content'=>null);
+            $re = array('state'=>'0','content'=>"未获取数据");
             $jsonfile = fopen("../View/json/PostcardList.json", "w") or die("Unable to open file!");
             while ($n = mysqli_fetch_array($result)) {
                 $re['state'] = '1';
@@ -49,6 +52,20 @@
             echo json_encode($re,JSON_UNESCAPED_UNICODE);
             return;
 		}
+
+        public function GetAll()
+        {
+            $ss = new PostcardServer();
+            $result = $ss->GetAll();
+            $re = array('state'=>'0','content'=>"未获取数据");
+            while ($n = mysqli_fetch_array($result)) {
+                $re['state'] = '1';
+                $row[] = array('id' => $n['id'], 'name' => $n['name'],'wx'=>$n['wx'],'pic' => $n['pic'], 'date' => $n['date'], 'wishes' => $n['wishes']);
+                $re['content'] = $row;
+            }
+            echo json_encode($re,JSON_UNESCAPED_UNICODE);
+            return;
+        }
 
         public function GetType()
         {
@@ -84,7 +101,7 @@
             $where = isset($where) ? $where : '';
 		    $ss = new PostcardServer();
             $result = $ss->QueryPostcard($where);
-            $re = array('state'=>'0','content'=>null);
+            $re = array('state'=>'0','content'=>"未获取数据");
             while ($n = mysqli_fetch_array($result))
             {
                 $re['state'] = '1';
