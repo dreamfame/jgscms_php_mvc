@@ -10,7 +10,7 @@
 		{
 			$this->serverName = "localhost";
 			$this->username = "root";
-			$this->password = "liuliu";
+			$this->password = "root";
 		}
 
 		public function DBaseConnection()
@@ -35,7 +35,14 @@
 			mysqli_close($conn);
 		}
 
-		public function ExeSql($sql,$conn)
+        public function ExeSql($sql,$conn)
+        {
+            mysqli_query($conn, "set Names UTF8");
+            $result = mysqli_query($conn,$sql);
+            return $result;
+        }
+
+		public function ExecSql($sql,$conn)
 		{
 			mysqli_query($conn, "set Names UTF8");
 			$result = "";

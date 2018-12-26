@@ -18,8 +18,8 @@
 			$this->conn = $this->db->Open($this->dbase);
 		}
 
-		public function GetAll(){
-			$sql = "select * from ".$this->db_table;
+		public function GetAll($activity_id){
+			$sql = "select * from ".$this->db_table." where activity_id = '$activity_id'";
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
 		}
@@ -39,7 +39,7 @@
 		public function InsertActivityPerson($activityperson){
             $sql = "insert into ".$this->db_table."(activity_id,phone,nickname,time,prize) values('$activityperson->activity_id','$activityperson->phone','$activityperson->nickname','$activityperson->time','$activityperson->prize')";
             try{
-                $result = $this->db->ExeSql($sql,$this->conn);
+                $result = $this->db->ExecSql($sql,$this->conn);
                 return $result;
             }
             catch(Exception $e)
