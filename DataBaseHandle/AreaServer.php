@@ -19,7 +19,7 @@
 		}
 
 		public function GetAll(){
-			$sql = "select * from ".$this->db_table;
+			$sql = "select * from ".$this->db_table." order by created_at desc";
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
 		}
@@ -31,7 +31,7 @@
         }
 
         public function QueryArea($where){
-            $sql = "select * from ".$this->db_table.$where;
+            $sql = "select * from ".$this->db_table.$where." order by created_at desc";
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
         }
