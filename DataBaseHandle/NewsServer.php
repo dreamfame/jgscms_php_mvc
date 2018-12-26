@@ -31,8 +31,8 @@
             return $result;
         }
 
-        public function GetNewsById($id){
-            $sql = "select * from ".$this->db_table." where id = '$id'";
+        public function QueryNews($where){
+            $sql = "select * from ".$this->db_table.$where;
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
         }

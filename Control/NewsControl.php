@@ -3,6 +3,7 @@
 	require_once '../DataBaseHandle/NewsServer.php';
 	header("Content-Type: text/html;charset=utf-8");
 	//session_start();
+error_reporting(0);
 	Class NewsControl
 	{
 		public function JudgeOperate($operate)
@@ -80,10 +81,20 @@
         }
 
         public function GetNews(){
-		    $id = $_REQUEST['id'];
+            $wherelist = array();
+            if($_REQUEST['id']!=""||$_REQUEST['id']!=null){
+                $id = $_REQUEST['id'];
+                $wherelist[] = "id = '{$id}'";
+            }
+            //组装查询条件
+            if(count($wherelist) > 0){
+                $where = " where ".implode(' and ' , $wherelist);
+            }
+            //判断查询条件
+            $where = isset($where) ? $where : '';
 		    $ns = new NewsServer();
-            $result = $ns->GetNewsById($id);
-            $re = array('state'=>'0','content'=>null);
+            $result = $ns->QueryNews($where);
+            $re = array('state'=>'0','content'=>"未获取到数据");
             while ($n = mysqli_fetch_array($result))
             {
                 $re['state'] = '1';
