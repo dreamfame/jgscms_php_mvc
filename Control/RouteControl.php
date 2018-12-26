@@ -2,6 +2,7 @@
 	require_once '../Model/Route.php';
 	require_once '../DataBaseHandle/RouteServer.php';
 	header("Content-Type: text/html;charset=utf-8");
+    error_reporting(0);
 	//session_start();
 	Class RouteControl
 	{
@@ -103,11 +104,11 @@
             $where = isset($where) ? $where : '';
 		    $ss = new RouteServer();
             $result = $ss->QueryRoute($where);
-            $re = array('state'=>'0','content'=>null);
+            $re = array('state'=>'0','content'=>"未获取数据");
             while ($n = mysqli_fetch_array($result))
             {
                 $re['state'] = '1';
-                $row[] = array('id' => $n['id'], 'name' => $n['name'], 'brief' => $n['brief'], 'intro' => $n['intro'], 'see' => $n['see'], 'top' => $n['top'],'show'=>$n['isshow'],'created_at'=>$n['created_at'],'updated_at'=>$n['updated_at'],'recommend'=>$n['recommend']);
+                $row[] = array('id' => $n['id'], 'area_id'=>$n['area_id'],'area_name' => $n['area_name'], 'route' => $n['route'], 'type' => $n['type'], 'name' => $n['name'], 'time' => $n['time'],'created_at'=>$n['created_at']);
                 $re['content'] = $row;
             }
             echo json_encode($re,JSON_UNESCAPED_UNICODE);
