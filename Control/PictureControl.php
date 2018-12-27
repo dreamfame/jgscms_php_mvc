@@ -1,6 +1,7 @@
  <?php
 	header('Access-Control-Allow-Origin：*');
 	header("Content-Type: text/html;charset=utf-8");
+	error_reporting(0);
 	Class PictureControl
     {
         public function JudgeOperate($operate)
@@ -60,7 +61,7 @@
                 $result['msg'] = $_FILES["file"]["error"];
             }
             else{
-                if(($_FILES["file"]["type"]=="image/png"||$_FILES["file"]["type"]=="image/jpeg")&&$_FILES["file"]["size"]<1024000)
+                if(($_FILES["file"]["type"]=="image/png"||$_FILES["file"]["type"]=="image/jpeg"||$_FILES["file"]["type"]=="image/pjpeg")&&$_FILES["file"]["size"]<1024000)
                 {
                     $filename ="../View/images/postcard/".time().$_FILES["file"]["name"];
                     $src = "/images/postcard/".time().$_FILES["file"]["name"];
@@ -81,7 +82,7 @@
                     }
                 }
                 else{
-                    $result['msg'] = "文件类型错误";
+                    $result['msg'] = "文件类型错误".$_FILES["file"]["error"].$_FILES["file"]["name"]."。文件类型为：".$_FILES["file"]["type"];
                 }
             }
             echo json_encode($result,JSON_UNESCAPED_UNICODE);
