@@ -35,7 +35,7 @@
 		<div class="layui-form-item">
 			<label class="layui-form-label">景点</label>
 			<div class="layui-input-block">
-				<input type="text" name="sname" class="layui-input sname" lay-verify="required" placeholder="请输入景点名称">
+				<input type="text" name="sname" class="layui-input sname" lay-verify="required|scenicname" placeholder="请输入景点名称">
 			</div>
 		</div>
 		<div class="layui-form-item">
@@ -49,13 +49,13 @@
 			<div class="layui-inline">
 				<label class="layui-form-label">推荐星级</label>
 				<div class="layui-input-inline">
-					<input type="text" name="recommend" class="layui-input recommend" lay-verify="required" placeholder="请输入推荐星级">
+					<input type="text" name="recommend" class="layui-input recommend" lay-verify="required|number" placeholder="请输入推荐星级">
 				</div>
 			</div>
 			<div class="layui-inline">
 				<label class="layui-form-label">发布时间</label>
 				<div class="layui-input-block">
-					<input type="text" name="created_at" class="layui-input created_at" lay-verify="required|date" onclick="layui.laydate({elem:this})">
+					<input type="text" readonly id="start" name="created_at" class="layui-input created_at" lay-verify="required|date" lay-key="1">
 				</div>
 			</div>
 		</div>
@@ -70,7 +70,7 @@
 		<div class="layui-form-item">
 			<label class="layui-form-label">简介</label>
 			<div class="layui-input-block">
-				<textarea placeholder="请输入景区简介" name="brief" class="layui-textarea"></textarea>
+				<textarea placeholder="请输入景区简介" name="brief" lay-verify="required|abstract" class="layui-textarea"></textarea>
 			</div>
 		</div>
 		<div class="layui-form-item">
@@ -86,6 +86,7 @@
 		    </div>
 		</div>
 	</form>
+	<script type="text/javascript" src="../../laydate/laydate.js"></script>
 	<script type="text/javascript" src="../../layui/layui.js"></script>
 	<script type="text/javascript" src="scenicAdd.js"></script>
 </body>

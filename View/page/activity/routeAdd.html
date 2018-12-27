@@ -44,13 +44,13 @@
 			<div class="layui-inline">
 				<label class="layui-form-label">路线名称</label>
 				<div class="layui-input-block">
-					<input type="text" name="rname" class="layui-input rname" lay-verify="required" placeholder="请输入路线名称">
+					<input type="text" name="rname" class="layui-input rname" lay-verify="required|routename" placeholder="请输入路线名称">
 				</div>
 			</div>
 			<div class="layui-inline">
 				<label class="layui-form-label">发布时间</label>
 				<div class="layui-input-inline">
-					<input type="text" name="created_at" class="layui-input created_at" lay-verify="required|date" onclick="layui.laydate({elem:this})">
+					<input type="text" readonly id="start" name="created_at" class="layui-input created_at" lay-verify="required|date" lay-key="1">
 				</div>
 			</div>
 		</div>
@@ -69,7 +69,7 @@
 		<div class="layui-form-item">
 			<label class="layui-form-label">路线</label>
 			<div class="layui-input-block">
-				<textarea placeholder="请按顺序输入景点名，以“-”分隔。例：黄洋界-大井-八面山" name="route" class="layui-textarea"></textarea>
+				<textarea placeholder="请按顺序输入景点名，以“-”分隔。例：黄洋界-大井-八面山" name="route" lay-verify="required|route" class="layui-textarea"></textarea>
 			</div>
 		</div>
 		<div class="layui-form-item">
@@ -79,6 +79,7 @@
 		    </div>
 		</div>
 	</form>
+	<script type="text/javascript" src="../../laydate/laydate.js"></script>
 	<script type="text/javascript" src="../../layui/layui.js"></script>
 	<script type="text/javascript" src="routeAdd.js"></script>
 </body>

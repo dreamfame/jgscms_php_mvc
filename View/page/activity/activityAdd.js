@@ -15,6 +15,45 @@ layui.config({
         }
     });
 
+    form.verify({
+        activityname:function(value,item){
+            if(!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)){
+                return '活动名不能有特殊字符';
+            }
+            if(/(^\_)|(\__)|(\_+$)/.test(value)){
+                return '活动名首尾不能出现下划线\'_\'';
+            }
+            if(/^\d+\d+\d$/.test(value)){
+                return '活动名不能全为数字';
+            }
+            if(value.length>50){
+                return '活动名不得超过50个字';
+            }
+            var msg = "";
+            $.ajax({
+                data: {"name":value},
+                type: "POST",
+                dataType: "text",
+                async: false,
+                url: "/index.php/activity/JudgeOperate/verify_name",
+                success: function (result) {
+                    if(result=="1"){
+                        msg = '已存在此活动';
+                    }
+                },
+                error:function(data){
+                    msg = data.responseText;
+                }
+            })
+            return msg;
+        } ,
+        mobile:function(value,item){
+            if(!new RegExp("(^(\\d{3,4}-)?\\d{7,8})$|(13[0-9]{9})").test(value)){
+                return '请输入正确的电话号码或手机号码';
+            }
+        }
+    });
+
     var sys = window.sessionStorage.getItem("system");
     $("#pic").attr("src",JSON.parse(sys).defaultPic);
     var pic_src = "";

@@ -15,6 +15,13 @@ layui.config({
         }
     });
 
+    laydate.render({
+        elem: '#start', //指定元素
+        done: function(value, date){
+
+        }
+    });
+
     var json_data = JSON.parse( window.sessionStorage.getItem("edit_scenic"));
     $(".sname").val(json_data['name']);
     $(".recommend").val(json_data['recommend']);
@@ -22,6 +29,47 @@ layui.config({
     $("textarea[name^='brief']").val(json_data['brief']);
     $("#scenic_intro").val(json_data['intro']);
 
+    form.verify({
+        scenicname:function(value,item){
+            if(!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)){
+                return '景点名不能有特殊字符';
+            }
+            if(/(^\_)|(\__)|(\_+$)/.test(value)){
+                return '景点名首尾不能出现下划线\'_\'';
+            }
+            if(/^\d+\d+\d$/.test(value)){
+                return '景点名不能全为数字';
+            }
+            var msg = "";
+            $.ajax({
+                data: {"id":json_data['id'],"area_id":json_data['area_id'],"name":value},
+                type: "POST",
+                dataType: "text",
+                async: false,
+                url: "/index.php/scenic/JudgeOperate/verify_id_name",
+                success: function (result) {
+                    if(result=="1"){
+                        msg = '此景区已存在该景点';
+                    }
+                },
+                error:function(data){
+                    msg = data.responseText;
+                }
+            })
+            return msg;
+        } ,
+        abstract:function(value,item){
+            if(!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)){
+                return '景点概要不能有特殊字符';
+            }
+            if(/(^\_)|(\__)|(\_+$)/.test(value)){
+                return '景点概要首尾不能出现下划线\'_\'';
+            }
+            if(value.length>10){
+                return '景点概要不得超过150个字';
+            }
+        }
+    });
 
 	//创建一个编辑器
  	var editIndex = layedit.build('scenic_intro');

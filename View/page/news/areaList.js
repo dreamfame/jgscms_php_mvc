@@ -291,7 +291,7 @@ layui.config({
         var index = layui.layer.open({
 			title : "编辑文章",
 			type : 2,
-			content : "activityEdit.html",
+			content : "areaEdit.html",
 			success : function(layero, index){
 				setTimeout(function(){
 					layui.layer.tips('点击此处返回信息列表', '.layui-layer-setwin .layui-layer-close', {

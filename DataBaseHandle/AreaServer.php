@@ -42,6 +42,12 @@
             return $result;
         }
 
+        public function VerifyName($name){
+            $sql = "select id from ".$this->db_table." where name = '$name'";
+            $result = $this->db->ExeSql($sql, $this->conn);
+            return $result;
+        }
+
 		public function InsertArea($area){
             $sql = "insert into ".$this->db_table."(name,recommend,brief,intro,isshow,top,updated_at,created_at,see,area_map) values('$area->name','$area->recommend','$area->brief','$area->intro','$area->isshow','$area->top','$area->updated_at','$area->created_at','$area->see','$area->area_map')";
             try{

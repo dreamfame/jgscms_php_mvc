@@ -1,11 +1,10 @@
 layui.config({
 	base : "js/"
-}).use(['form','layer','jquery','layedit','laydate','upload'],function(){
+}).use(['form','layer','jquery','layedit','upload'],function(){
 		var form = layui.form(),
 		layer = parent.layer === undefined ? layui.layer : parent.layer,
 		laypage = layui.laypage,
 		layedit = layui.layedit,
-		laydate = layui.laydate,
 		$ = layui.jquery;
 
     layedit.set({
@@ -19,6 +18,56 @@ layui.config({
     $(".aname").val(json_data['area_name']);
     $(".rname").val(json_data['name']);
     $("textarea[name^='route']").val(json_data['route']);
+
+    form.verify({
+        routename:function(value,item){
+            if(!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)){
+                return '路线名称不能有特殊字符';
+            }
+            if(/(^\_)|(\__)|(\_+$)/.test(value)){
+                return '路线名称首尾不能出现下划线\'_\'';
+            }
+            if(/^\d+\d+\d$/.test(value)){
+                return '路线名称不能全为数字';
+            }
+            if(value.length>50){
+                return '路线名称不得超过50个字';
+            }
+            var msg = "";
+            var id = json_data['id']
+            var area_id = json_data['area_id'];
+            $.ajax({
+                data: {"id":id,"area_id":area_id,"name":value},
+                type: "POST",
+                dataType: "text",
+                async: false,
+                url: "/index.php/route/JudgeOperate/verify_id_name",
+                success: function (result) {
+                    if(result=="1"){
+                        msg = '此景区已存在此路线名';
+                    }
+                },
+                error:function(data){
+                    msg = data.responseText;
+                }
+            })
+            return msg;
+        } ,
+        route:function(value,item){
+            if(/(^\_)|(\__)|(\_+$)/.test(value)){
+                return '路线首尾不能出现下划线\'_\'';
+            }
+            var n = value.split("-");
+            if(n.length>=1){
+                if(value.indexOf("-")>-1&&n.length<2){
+                    return '路线至少由两个景点组成';
+                }
+                else if(value.indexOf("-")<=-1){
+                    return '路线格式有误，请按照例子中的格式填写';
+                }
+            }
+        }
+    });
 
  	var editRoute;
  	form.on("submit(editRoute)",function(data){

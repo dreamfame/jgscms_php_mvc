@@ -40,6 +40,12 @@
                 case "pic":
                     ActivityControl::UploadPic();
                     break;
+                case "verify_name":
+                    ActivityControl::VerifyName();
+                    break;
+                case "verify_id_name":
+                    ActivityControl::VerifyIdName();
+                    break;
 			}
 		}
 
@@ -118,6 +124,40 @@
                 $re['content'] = $row;
             }
             echo json_encode($re,JSON_UNESCAPED_UNICODE);
+            return;
+        }
+
+        public function VerifyName(){
+            $name = $_REQUEST['name'];
+            $ss = new ActivityServer();
+            $result = $ss->VerifyName($name);
+            $re = array('state'=>'0','content'=>"未获取数据");
+            while ($n = mysqli_fetch_array($result))
+            {
+                $re['state'] = '1';
+                $row[] = array('id' => $n['id']);
+                $re['content'] = $row;
+            }
+            echo $re['state'];
+            return;
+        }
+
+        public function VerifyIdName(){
+            $id = $_REQUEST['id'];
+            $name = $_REQUEST['name'];
+            $ss = new ActivityServer();
+            $result = $ss->VerifyName($name);
+            $state = "0";
+            while ($n = mysqli_fetch_array($result))
+            {
+                if($n['id']==$id){
+                    $state = 0;
+                }
+                else{
+                    $state = 1;
+                }
+            }
+            echo $state;
             return;
         }
 

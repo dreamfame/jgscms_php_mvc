@@ -24,6 +24,12 @@
             return $result;
 		}
 
+        public function VerifyName($name){
+            $sql = "select id from ".$this->db_table." where name = '$name'";
+            $result = $this->db->ExeSql($sql, $this->conn);
+            return $result;
+        }
+
         public function GetShow(){
             $sql = "select activity.id,num,activity.name,activity.pic,activity.date,activity.join,activity.intro,activity.prize,activity.prize_way,activity.phone,activity.`enable` from activity where activity.enable = 1";
             $result = $this->db->ExeSql($sql, $this->conn);
@@ -43,7 +49,7 @@
         }
 
 		public function InsertActivity($activity){
-            $sql = "insert into ".$this->db_table."(name,date,pic,intro,enable,prize,prize_way,activity.join,phone) values('$activity->name','$activity->date','$activity->pic','$activity->intro','$activity->enable','$activity->prize','$activity->prize_way','$activity->join','$activity->phone')";
+            $sql = "insert into ".$this->db_table."(name,date,pic,intro,enable,prize,prize_way,activity.join,phone,num) values('$activity->name','$activity->date','$activity->pic','$activity->intro','$activity->enable','$activity->prize','$activity->prize_way','$activity->join','$activity->phone','$activity->num')";
             try{
                 $this->db->ExeSql($sql,$this->conn);
                 return true;

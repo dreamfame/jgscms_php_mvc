@@ -1,11 +1,10 @@
 layui.config({
 	base : "js/"
-}).use(['form','layer','jquery','layedit','laydate','upload'],function(){
+}).use(['form','layer','jquery','layedit','upload'],function(){
 		var form = layui.form(),
 		layer = parent.layer === undefined ? layui.layer : parent.layer,
 		laypage = layui.laypage,
 		layedit = layui.layedit,
-		laydate = layui.laydate,
 		$ = layui.jquery;
 
     layedit.set({
@@ -15,12 +14,62 @@ layui.config({
         }
     });
 
+    laydate.render({
+        elem: '#start', //指定元素
+        done: function(value, date){
+
+        }
+    });
+
     var json_data = JSON.parse( window.sessionStorage.getItem("edit_area"));
     $(".aname").val(json_data['name']);
     $(".recommend").val(json_data['recommend']);
     $(".created_at").val(json_data['created_at']);
     $("textarea[name^='brief']").val(json_data['brief']);
     $("#area_intro").val(json_data['intro']);
+
+
+    form.verify({
+        areaname:function(value,item){
+            if(!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)){
+                return '景区名不能有特殊字符';
+            }
+            if(/(^\_)|(\__)|(\_+$)/.test(value)){
+                return '景区名首尾不能出现下划线\'_\'';
+            }
+            if(/^\d+\d+\d$/.test(value)){
+                return '景区名不能全为数字';
+            }
+            var msg = "";
+            $.ajax({
+                data: {"id":json_data['id'],"name":value},
+                type: "POST",
+                dataType: "text",
+                async: false,
+                url: "/index.php/area/JudgeOperate/verify_id_name",
+                success: function (result) {
+                    if(result=="1"){
+                        msg = '景区名已存在';
+                    }
+                },
+                error:function(data){
+                    msg = data.responseText;
+                }
+            })
+            return msg;
+        } ,
+        abstract:function(value,item){
+            if(!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)){
+                return '文章概要不能有特殊字符';
+            }
+            if(/(^\_)|(\__)|(\_+$)/.test(value)){
+                return '文章概要首尾不能出现下划线\'_\'';
+            }
+            if(value.length>10){
+                return '文章概要不得超过150个字';
+            }
+        },
+    });
 
 
 	//创建一个编辑器

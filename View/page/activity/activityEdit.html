@@ -35,7 +35,7 @@
 	<div class="layui-form-item">
 		<label class="layui-form-label">活动名</label>
 		<div class="layui-input-block">
-			<input type="text" name="aname" class="layui-input aname" lay-verify="required" placeholder="请输入活动名称">
+			<input type="text" name="aname" class="layui-input aname" lay-verify="required|activityname" placeholder="请输入活动名称">
 		</div>
 	</div>
 	<div class="layui-form-item">
@@ -48,7 +48,7 @@
 		<div class="layui-inline">
 			<label class="layui-form-label">咨询电话</label>
 			<div class="layui-input-inline">
-				<input type="text" name="phone" class="layui-input phone" lay-verify="required|phone" placeholder="请输入咨询电话">
+				<input type="text" name="phone" class="layui-input phone" lay-verify="required|mobile" placeholder="请输入咨询电话">
 			</div>
 		</div>
 		<div class="layui-inline">
@@ -61,19 +61,19 @@
 	<div class="layui-form-item">
 		<label class="layui-form-label">参与方式</label>
 		<div class="layui-input-block">
-			<textarea placeholder="请输入参与方式" name="join" class="layui-textarea"></textarea>
+			<textarea placeholder="请输入参与方式" name="join" lay-verify="required" class="layui-textarea"></textarea>
 		</div>
 	</div>
 	<div class="layui-form-item">
 		<label class="layui-form-label">获奖资格</label>
 		<div class="layui-input-block">
-			<textarea placeholder="请输入获奖资格" name="prize_way" class="layui-textarea"></textarea>
+			<textarea placeholder="请输入获奖资格" name="prize_way" lay-verify="required" class="layui-textarea"></textarea>
 		</div>
 	</div>
 	<div class="layui-form-item">
 		<label class="layui-form-label">活动简介</label>
 		<div class="layui-input-block">
-			<textarea placeholder="请输入活动简介" name="intro" class="layui-textarea"></textarea>
+			<textarea placeholder="请输入活动简介" name="intro" lay-verify="required" class="layui-textarea"></textarea>
 		</div>
 	</div>
 	<div class="layui-form-item">

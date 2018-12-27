@@ -46,6 +46,12 @@
                 case "id_name":
                     AreaControl::GetIdAndName();
                     break;
+                case "verify_name":
+                    AreaControl::VerifyName();
+                    break;
+                case "verify_id_name":
+                    AreaControl::VerifyIdName();
+                    break;
 			}
 		}
 
@@ -158,6 +164,40 @@
             }
             fclose($jsonfile);
 		}
+
+		public function VerifyName(){
+		    $name = $_REQUEST['name'];
+            $ss = new AreaServer();
+            $result = $ss->VerifyName($name);
+            $re = array('state'=>'0','content'=>"未获取数据");
+            while ($n = mysqli_fetch_array($result))
+            {
+                $re['state'] = '1';
+                $row[] = array('id' => $n['id']);
+                $re['content'] = $row;
+            }
+            echo $re['state'];
+            return;
+        }
+
+        public function VerifyIdName(){
+		    $id = $_REQUEST['id'];
+            $name = $_REQUEST['name'];
+            $ss = new AreaServer();
+            $result = $ss->VerifyName($name);
+            $state = "0";
+            while ($n = mysqli_fetch_array($result))
+            {
+                if($n['id']==$id){
+                    $state = 0;
+                }
+                else{
+                    $state = 1;
+                }
+            }
+            echo $state;
+            return;
+        }
 
 		public function AddArea()
 		{
