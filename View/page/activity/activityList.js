@@ -219,26 +219,49 @@ layui.config({
             }
         })
     })
- 
-	//操作
-	$("body").on("click",".activity_edit",function(e){  //编辑
-        var no = $(e.currentTarget).data('id');
-        var str = JSON.stringify(activityData[no]);
-        window.sessionStorage.setItem("edit_activity",str);
-        var index = layui.layer.open({
-			title : "编辑文章",
-			type : 2,
-			content : "activityEdit.html",
-			success : function(layero, index){
-				setTimeout(function(){
-					layui.layer.tips('点击此处返回信息列表', '.layui-layer-setwin .layui-layer-close', {
-						tips: 3
-					});
-					},500)
-			}
+
+    $(window).one("resize",function(){
+        $("body").on("click",".activity_person",function(e){  //活动参与者
+            var no = $(e.currentTarget).data('id');
+            var str = activityData[no].name;
+            var id = activityData[no].id;
+            var index = layui.layer.open({
+                title : str,
+                type : 2,
+                content : "activitypersonList.html?id="+id,
+                success : function(layero, index){
+                    setTimeout(function(){
+                        layui.layer.tips('点击此处返回信息列表', '.layui-layer-setwin .layui-layer-close', {
+                            tips: 3
+                        });
+                    },500)
+                }
+            })
+            layui.layer.full(index);
         })
-		layui.layer.full(index);
-	})
+    }).resize();
+
+	//操作
+    $(window).one("resize",function(){
+        $("body").on("click",".activity_edit",function(e){  //编辑
+            var no = $(e.currentTarget).data('id');
+            var str = JSON.stringify(activityData[no]);
+            window.sessionStorage.setItem("edit_activity",str);
+            var index = layui.layer.open({
+                title : "编辑文章",
+                type : 2,
+                content : "activityEdit.html",
+                success : function(layero, index){
+                    setTimeout(function(){
+                        layui.layer.tips('点击此处返回信息列表', '.layui-layer-setwin .layui-layer-close', {
+                            tips: 3
+                        });
+                        },500)
+                }
+            })
+            layui.layer.full(index);
+        })
+    }).resize();
 
     $("body").on("click",".activity_del",function(){  //删除
         var _this = $(this);
@@ -315,7 +338,7 @@ layui.config({
 		}
 
 		//分页
-		var nums = 13; //每页出现的数据量
+		var nums = 10; //每页出现的数据量
 		if(that){
 			activityData = that;
 		}

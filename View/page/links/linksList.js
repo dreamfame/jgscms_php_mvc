@@ -206,7 +206,7 @@ layui.config({
 		}
 
 		//分页
-		var nums = 13; //每页出现的数据量
+		var nums = 10; //每页出现的数据量
 		if(that){
 			linksData = that;
 		}

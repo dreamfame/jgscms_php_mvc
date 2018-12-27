@@ -11,7 +11,7 @@
 		public $db_table;
 		public function PostcardServer()
 		{
-			$this->db = new DBHelper();
+			$this->db = new DBHelper("明信片表");
 			$xc = new XmlControl();
 			$this->dbase = $xc->GetXmlAttribute("../ProjectConfig/DBase.xml","db",0,"name");
 			$this->db_table = $xc->GetXmlAttribute("../ProjectConfig/DBase.xml","table",9,"name");

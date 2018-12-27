@@ -11,7 +11,7 @@
 		public $db_table;
 		public function AreaServer()
 		{
-			$this->db = new DBHelper();
+			$this->db = new DBHelper("景区表");
 			$xc = new XmlControl();
 			$this->dbase = $xc->GetXmlAttribute("../ProjectConfig/DBase.xml","db",0,"name");
 			$this->db_table = $xc->GetXmlAttribute("../ProjectConfig/DBase.xml","table",4,"name");

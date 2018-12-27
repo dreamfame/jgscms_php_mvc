@@ -291,7 +291,7 @@ layui.config({
 		}
 
 		//分页
-		var nums = 13; //每页出现的数据量
+		var nums = 10; //每页出现的数据量
 		laypage({
 			cont : "page",
 			pages : Math.ceil(usersData.length/nums),

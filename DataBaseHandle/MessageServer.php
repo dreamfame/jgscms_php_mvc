@@ -14,7 +14,7 @@
 		
 		public function MessageServer()
 		{
-			$this->db = new DBHelper();
+			$this->db = new DBHelper("消息表");
 			$xc = new XmlControl();
 			$this->dbase = $xc->GetXmlAttribute("../ProjectConfig/DBase.xml","db",0,"name");
 			$this->db_table = $xc->GetXmlAttribute("../ProjectConfig/DBase.xml","table",11,"name");

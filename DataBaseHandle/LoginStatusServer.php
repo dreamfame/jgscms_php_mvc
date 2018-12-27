@@ -18,7 +18,7 @@
         public $db_table;
         public function LoginStatusServer()
         {
-            $this->db = new DBHelper();
+            $this->db = new DBHelper("登录状态表");
             $xc = new XmlControl();
             $this->dbase = $xc->GetXmlAttribute("../ProjectConfig/DBase.xml","db",0,"name");
             $this->db_table = $xc->GetXmlAttribute("../ProjectConfig/DBase.xml","table",12,"name");

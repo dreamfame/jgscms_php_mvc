@@ -296,26 +296,28 @@ layui.config({
     })
  
 	//操作
-	$("body").on("click",".news_edit",function(e){  //编辑
-        var no = $(e.currentTarget).data('id');
-        var str = JSON.stringify(newsData[no]);
-        var typestr = JSON.stringify(typeData);
-        window.sessionStorage.setItem("edit_news",str);
-        window.sessionStorage.setItem("type",typestr);
-        var index = layui.layer.open({
-			title : "编辑文章",
-			type : 2,
-			content : "newsEdit.html",
-			success : function(layero, index){
-				setTimeout(function(){
-					layui.layer.tips('点击此处返回信息列表', '.layui-layer-setwin .layui-layer-close', {
-						tips: 3
-					});
-					},500)
-			}
+    $(window).one("resize",function(){
+        $("body").on("click",".news_edit",function(e){  //编辑
+            var no = $(e.currentTarget).data('id');
+            var str = JSON.stringify(newsData[no]);
+            var typestr = JSON.stringify(typeData);
+            window.sessionStorage.setItem("edit_news",str);
+            window.sessionStorage.setItem("type",typestr);
+            var index = layui.layer.open({
+                title : "编辑文章",
+                type : 2,
+                content : "newsEdit.html",
+                success : function(layero, index){
+                    setTimeout(function(){
+                        layui.layer.tips('点击此处返回信息列表', '.layui-layer-setwin .layui-layer-close', {
+                            tips: 3
+                        });
+                        },500)
+                }
+            })
+            layui.layer.full(index);
         })
-		layui.layer.full(index);
-	})
+    }).resize();
 
     $("body").on("click",".news_del",function(){  //删除
         var _this = $(this);
@@ -391,7 +393,7 @@ layui.config({
 		}
 
 		//分页
-		var nums = 13; //每页出现的数据量
+		var nums = 10; //每页出现的数据量
 		if(that){
 			newsData = that;
 		}

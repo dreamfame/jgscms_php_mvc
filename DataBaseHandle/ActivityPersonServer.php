@@ -11,7 +11,7 @@
 		public $db_table;
 		public function ActivityPersonServer()
 		{
-			$this->db = new DBHelper();
+			$this->db = new DBHelper("活动人员表");
 			$xc = new XmlControl();
 			$this->dbase = $xc->GetXmlAttribute("../ProjectConfig/DBase.xml","db",0,"name");
 			$this->db_table = $xc->GetXmlAttribute("../ProjectConfig/DBase.xml","table",7,"name");
@@ -51,17 +51,8 @@
 
 		public function UpdateActivityPerson($activity,$field){
             $sql = "";
-            if($field=="top"){
-                $sql = "update " . $this->db_table . " set ".$field." = '$activity->top' where id = '$activity->id'";
-            }
-            else if($field=="isshow"){
-                $sql = "update " . $this->db_table . " set ".$field." = '$activity->show' where id = '$activity->id'";
-			}
-			else if($field=="all"){
-                $sql = "update " . $this->db_table . " set name = '$activity->name',created_at = '$activity->created_at',brief = '$activity->brief',recommend = '$activity->recommend',intro = '$activity->intro' where id = '$activity->id'";
-            }
-            else if($field=="activity_map"){
-                $sql = "update " . $this->db_table . " set ".$field." = '$activity->activity_map' where id = '$activity->id'";
+            if($field=="prize"){
+                $sql = "update " . $this->db_table . " set ".$field." = '$activity->prize' where id = '$activity->id' and activity_id = '$activity->activity_id'";
             }
             try{
                 $this->db->ExeSql($sql,$this->conn);

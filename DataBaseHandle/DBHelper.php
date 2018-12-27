@@ -1,17 +1,20 @@
 <?php
 	require_once '../ProjectInterface/IDBHelper.php';
 	require_once '../Model/Log.php';
+	require_once 'LogServer.php';
 	session_start();
 	Class DBHelper implements IDBHelper
 	{
 		private $serverName;
 		private $username;
 		private $password;
-		public function DBHelper()
+		private $dbStr;
+		public function DBHelper($param)
 		{
 			$this->serverName = "localhost";
 			$this->username = "root";
-			$this->password = "root";
+			$this->password = "";
+			$this->dbStr = $param;
 		}
 
 		public function DBaseConnection()
@@ -53,10 +56,35 @@
 			}
             date_default_timezone_set('PRC');
 			$log->time = date('Y-m-d H:i:s', time());
+			$content = "";
+			if(substr($sql , 0 , 6)=="insert"){
+				$content = "插入".$this->dbStr;
+			}
+			else if(substr($sql , 0 , 6)=="update"){
+                $content = "更新".$this->dbStr;
+			}
+            else if(substr($sql , 0 , 6)=="select"){
+                $content = "查询".$this->dbStr;
+            }
+            else if(substr($sql , 0 , 6)=="delete"){
+                $content = "删除".$this->dbStr;
+            }
+            $log->content = $content;
+            $ls = new LogServer();
+            $ls->RecordLog($log);
             mysqli_query($conn, "set Names UTF8");
             $result = mysqli_query($conn,$sql);
             return $result;
         }
+
+        public function ExcuteSql($sql,$conn){
+            mysqli_query($conn, "set Names UTF8");
+            $result = "";
+            if(!mysqli_query($conn,$sql)){
+                $result = mysqli_error($conn);
+            }
+            return $result;
+		}
 
 		public function ExecSql($sql,$conn)
 		{

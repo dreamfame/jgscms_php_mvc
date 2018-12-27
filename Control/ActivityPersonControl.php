@@ -25,13 +25,17 @@
 				case "query":
                     ActivityPersonControl::GetActivityPerson();
 					break;
+                case "prize":
+                    ActivityPersonControl::PrizeStatus();
+                    break;
 			}
 		}
 
 		public function GetList()
 		{
+            $activity_id = $_REQUEST['activity_id'];
             $ss = new ActivityPersonServer();
-            $result = $ss->GetAll();
+            $result = $ss->GetAll($activity_id);
             $re = array('state'=>'0','content'=>"未获取数据");
             $jsonfile = fopen("../View/json/activityPersonList.json", "w") or die("Unable to open file!");
             while ($n = mysqli_fetch_array($result)) {
@@ -85,9 +89,9 @@
             return;
         }
 
-		public function UpdateActivityPersonJson(){
+		public function UpdateActivityPersonJson($activity_id){
             $ss = new ActivityPersonServer();
-            $result = $ss->GetAll();
+            $result = $ss->GetAll($activity_id);
             $jsonfile = fopen("../View/json/activityPersonList.json", "w") or die("Unable to open file!");
             while ($n = mysqli_fetch_array($result)) {
                 $re['state'] = '1';
@@ -158,5 +162,24 @@
             }
             echo  json_encode($re,JSON_UNESCAPED_UNICODE);
 		}
+
+        public function PrizeStatus(){
+            $id = $_REQUEST['id'];
+            $activity_id = $_REQUEST['activity_id'];
+            $prize = $_REQUEST['prize'];
+            $ss = new ActivityPersonServer();
+            $activityperson = new ActivityPerson();
+            $activityperson->id = $id;
+            $activityperson->activity_id = $activity_id;
+            $activityperson->prize = $prize;
+            $result = $ss->UpdateActivityPerson($activityperson,"prize");
+            $re = array('state'=>'0','content'=>'修改失败');
+            if($result) {
+                ActivityPersonControl::UpdateActivityPersonJson($activity_id);
+                $re['state']='1';
+                $re['content']='修改成功';
+            }
+            echo  json_encode($re,JSON_UNESCAPED_UNICODE);
+        }
 	}
 ?>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>文章列表--layui后台管理模板</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="../../layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_tnyc012u2rlwstt9.css" media="all" />
+    <link rel="stylesheet" href="../../css/activity.css" media="all" />
+</head>
+<body class="childrenBody">
+<div class="layui-form">
+<blockquote class="layui-elem-quote activityperson_search">
+    <div class="layui-input-inline">
+        <input type="radio" lay-filter="prize" name="prize" value="-1" title="全部" checked="">
+        <input type="radio" lay-filter="prize" name="prize" value="1" title="中奖">
+        <input type="radio" lay-filter="prize" name="prize" value="0" title="未中奖">
+    </div>
+    <div class="layui-inline">
+        <div class="layui-input-inline">
+            <input readonly type="text" class="layui-input" id="start" placeholder="时间" lay-key="1">
+        </div>
+    </div>
+    <div class="layui-inline">
+        <div class="layui-input-inline">
+            <input type="text" value="" placeholder="请输入关键字" class="layui-input search_input">
+        </div>
+        <a class="layui-btn search_btn">查询</a>
+    </div>
+    <div class="layui-inline">
+        <a class="layui-btn layui-btn-warm showAll_btn">显示全部</a>
+    </div>
+</blockquote>
+</div>
+<div class="layui-form activityperson_list">
+    <table class="layui-table">
+        <colgroup>
+            <col width="50">
+            <col>
+            <col width="20%">
+            <col width="30%">
+            <col width="20%">
+        </colgroup>
+        <thead>
+        <tr>
+            <th><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose" id="allChoose"></th>
+            <th>昵称</th>
+            <th>电话</th>
+            <th>报名时间</th>
+            <th>状态</th>
+        </tr>
+        </thead>
+        <tbody class="activityperson_content"></tbody>
+    </table>
+</div>
+<div id="page"></div>
+<script type="text/javascript" src="../../laydate/laydate.js"></script>
+<script type="text/javascript" src="../../layui/layui.js"></script>
+<script type="text/javascript" src="activitypersonList.js"></script>
+</body>
+</html>
