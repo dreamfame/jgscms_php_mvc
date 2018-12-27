@@ -1,11 +1,11 @@
 <?php
-	Class Planlist{
-
+	Class LoginStatus{
 		private $id;
-        private $planlistid;
-        private $videoid;
-        private $times;
-
+		private $username;
+		private $is_login;
+		private $client_ip;
+        private $session_id;
+		
 		function __set($name,$value)
 		{
 			$this->$name = $value ;
