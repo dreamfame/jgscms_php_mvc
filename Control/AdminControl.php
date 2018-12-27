@@ -245,13 +245,19 @@
 			}
 			else{
 				if(password_verify($password, $a[2])){
-                    $re = array('state'=>'0','nickname'=>null,'username'=>null);
-				    $_SESSION["name"] = $userid;
-					$re['state'] = "1";
-					$re['nickname'] = $a[3];
-					$re['username'] = Security::encrypt($a[1]);
-					$re['head_pic'] = $a[6];
-					$re['role'] = $a[7];
+				    if($a[8]=="1") {
+                        $re = array('state' => '0', 'nickname' => null, 'username' => null);
+                        $_SESSION["name"] = $userid;
+                        $re['state'] = "1";
+                        $re['nickname'] = $a[3];
+                        $re['username'] = Security::encrypt($a[1]);
+                        $re['head_pic'] = $a[6];
+                        $re['role'] = $a[7];
+                    }
+                    else{
+                        $re['state'] = "0";
+                        $re['content'] = "此用户已被禁用";
+                    }
 				} 
 				else{
                     $re['state'] = "0";

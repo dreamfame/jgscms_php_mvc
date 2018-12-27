@@ -41,6 +41,9 @@ layui.config({
                         window.sessionStorage.setItem("role",result.role);
                         window.location.href = "../../index.html";
                     }
+                    else{
+                        layer.alert(result.content, { title: '提示信息', icon: 5 });
+                    }
                 },
                 error:function(data){
                    console.log(data);

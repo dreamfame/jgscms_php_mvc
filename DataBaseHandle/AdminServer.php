@@ -91,7 +91,7 @@
 
 		public function GetAdmin($userId)
 		{
-			$sql = "select id,username,password,nickname,phone,email,head_pic,role from ".$this->db_table." where username = '$userId'";
+			$sql = "select id,username,password,nickname,phone,email,head_pic,role,status from ".$this->db_table." where username = '$userId'";
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
 		}
