@@ -16,7 +16,7 @@
         public $conn;
         public $dbase;
         public $db_table;
-        public function AreaServer()
+        public function LoginStatusServer()
         {
             $this->db = new DBHelper();
             $xc = new XmlControl();
@@ -25,7 +25,9 @@
             $this->conn = $this->db->Open($this->dbase);
         }
 
-        public function LogIn(){
-
+        public function LogIn($loginStatus){
+            $sql = "insert into ".$this->db_table."(username,is_login,client_ip,session_id) values('$loginStatus->username','$loginStatus->is_login','$loginStatus->client_ip','$loginStatus->session_id')";
+            $result = $this->db->ExecSql($sql,$this->conn);
+            return $result;
         }
     }

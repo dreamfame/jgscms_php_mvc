@@ -1,6 +1,7 @@
 <?php
 	require_once '../ProjectInterface/IDBHelper.php';
-
+	require_once '../Model/Log.php';
+	session_start();
 	Class DBHelper implements IDBHelper
 	{
 		private $serverName;
@@ -44,6 +45,14 @@
 
         public function ExeSql($sql,$conn)
         {
+        	$log = new Log();
+        	if(isset($_SESSION["operator"])){
+        		$log->username = $_SESSION["operator"];
+			}else{
+                $log->username = "未知";
+			}
+            date_default_timezone_set('PRC');
+			$log->time = date('Y-m-d H:i:s', time());
             mysqli_query($conn, "set Names UTF8");
             $result = mysqli_query($conn,$sql);
             return $result;

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50554
 File Encoding         : 65001
 
-Date: 2018-12-26 18:59:16
+Date: 2018-12-27 17:37:38
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -32,12 +32,12 @@ CREATE TABLE `activity` (
   `enable` int(2) DEFAULT NULL,
   `num` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of activity
 -- ----------------------------
-INSERT INTO `activity` VALUES ('1', '元旦', '/images/15453792651545308976default.png', '2018年12月22日-12月24日', '短视频', '庆祝元旦佳节', '转载30次，点赞100次', '井冈山门票1张', 'xxx-1234567', '1', '2');
+INSERT INTO `activity` VALUES ('1', '元旦', '/images/15453792651545308976default.png', '2018年12月22日-12月24日', '短视频', '庆祝元旦佳节', '转载30次，点赞100次', '井冈山门票1张', '0717-1234567', '1', '2');
 INSERT INTO `activity` VALUES ('2', '测试活动', '/images/15453807661545309744alipay.jpg', '2018年12月21日-12月29日', '测试', '测试', '测试', 'iphone一台', '13628635884', '1', '0');
 
 -- ----------------------------
@@ -53,7 +53,7 @@ CREATE TABLE `activity_person` (
   `prize` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE KEY `enrollverify` (`activity_id`,`phone`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of activity_person
@@ -88,7 +88,7 @@ CREATE TABLE `admin` (
 -- ----------------------------
 INSERT INTO `admin` VALUES ('1', 'liuliu', '/images/face.jpg', '夏日凉风', '$2y$10$RWyn8DbyRKGhpf934ugYEexcSA1BDFtoL6WBs7Ui1R2709WL.zpyi', '', '0', '', '', '', '0', '0', '1', '系统管理员');
 INSERT INTO `admin` VALUES ('2', 'admin', 'default.jpg', '不合格的程序员66', '$2y$10$zfjXwiXE2Xvy8DZZHhXKZOoZZeMrWk6tt5InorkMCIPlam1982JNC', null, '0', '13628635884', 'f6efbbc7da7381c0f8e1644ca1b003d1', '406384958@qq.com', '1545095005', '1545095005', '1', '照片审核管理员');
-INSERT INTO `admin` VALUES ('4', 'gaoxiao', '/images/face.jpg', '潇得嘞', '$2y$10$usrjcTfv7psurlRrmxYqYuUGhU7sYYI620Npl1D3Rxuhc4WOkEpiy', null, '0', '15072558596', '0ea0feda0042d5c4b60d0bf44f56421e', 'liuliuonlai@163.com', '1545658832', '1545658832', '1', '内容管理员');
+INSERT INTO `admin` VALUES ('4', 'gaoxiao', '/images/face.jpg', '潇得嘞', '$2y$10$usrjcTfv7psurlRrmxYqYuUGhU7sYYI620Npl1D3Rxuhc4WOkEpiy', null, '0', '15072558596', '0ea0feda0042d5c4b60d0bf44f56421e', 'liuliuonlai@163.com', '1545658832', '1545658832', '0', '内容管理员');
 
 -- ----------------------------
 -- Table structure for area
@@ -107,7 +107,7 @@ CREATE TABLE `area` (
   `created_at` varchar(255) DEFAULT NULL,
   `updated_at` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of area
@@ -162,6 +162,25 @@ CREATE TABLE `log` (
 -- ----------------------------
 -- Records of log
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for login_status
+-- ----------------------------
+DROP TABLE IF EXISTS `login_status`;
+CREATE TABLE `login_status` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) DEFAULT NULL,
+  `is_login` int(11) DEFAULT NULL,
+  `client_ip` varchar(255) DEFAULT NULL,
+  `session_id` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ls` (`username`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of login_status
+-- ----------------------------
+INSERT INTO `login_status` VALUES ('1', 'liuliu', '1', '127.0.0.1', 'MTU0NTkwMjUzOQ==');
 
 -- ----------------------------
 -- Table structure for menu
@@ -291,7 +310,7 @@ CREATE TABLE `photo` (
 -- ----------------------------
 -- Records of photo
 -- ----------------------------
-INSERT INTO `photo` VALUES ('1', 'dreamfame', '分享测试', '2018-12-21', '0', '0', '/images/default.jpg', '/images/default.jpg', '/images/default.jpg', '/images/default.jpg', '/images/default.jpg', '/images/default.jpg', '/images/default.jpg', '/images/default.jpg', '/images/default.jpg', '1', '-', '1');
+INSERT INTO `photo` VALUES ('1', 'dreamfame', '分享测试', '2018-12-21', '0', '0', '/images/default.png', '/images/default.png', '/images/default.png', '/images/default.png', '/images/default.png', '/images/default.png', '/images/default.png', '/images/default.png', '/images/default.png', '1', '-', '1');
 
 -- ----------------------------
 -- Table structure for postcard
@@ -344,12 +363,13 @@ CREATE TABLE `route` (
   `time` varchar(255) DEFAULT NULL,
   `created_at` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of route
 -- ----------------------------
 INSERT INTO `route` VALUES ('1', '1', '黄洋界-大井', '一日游', '线路二', '上午', '2018-12-21');
+INSERT INTO `route` VALUES ('2', '1', '大井-八面山', '一日游', '线路一', '下午', '2018-12-27');
 
 -- ----------------------------
 -- Table structure for scenic
@@ -368,7 +388,7 @@ CREATE TABLE `scenic` (
   `created_at` varchar(255) NOT NULL,
   `updated_at` varchar(255) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of scenic

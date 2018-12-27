@@ -1,7 +1,10 @@
 <?php
 	require_once '../Model/Admin.php';
+    require_once '../Model/LoginStatus.php';
 	require_once '../DataBaseHandle/AdminServer.php';
 	require_once '../Extensions/Security.php';
+    require_once '../Extensions/IPInfo.php';
+	require_once '../DataBaseHandle/LoginStatusServer.php';
 	header("Content-Type: text/html;charset=utf-8");
 	//session_start();
 	error_reporting(0);
@@ -246,13 +249,30 @@
 			else{
 				if(password_verify($password, $a[2])){
 				    if($a[8]=="1") {
+				        if(isset( $_SESSION['session_id'])){
+                            //待开发，短信验证限制单用户多地登录
+                        }
                         $re = array('state' => '0', 'nickname' => null, 'username' => null);
-                        $_SESSION["name"] = $userid;
                         $re['state'] = "1";
                         $re['nickname'] = $a[3];
                         $re['username'] = Security::encrypt($a[1]);
                         $re['head_pic'] = $a[6];
                         $re['role'] = $a[7];
+                        session_start();
+                        $is_login = 1;
+                        $_SESSION['operator'] = $userid;
+                        $_SESSION["session_id"] = base64_encode(time() + 1200 );
+                        $client_ip = IPControl::getClientIp();
+                        $ls = new LoginStatus();
+                        $ls->username = $userid;
+                        $ls->is_login = $is_login;
+                        $ls->client_ip = $client_ip;
+                        $ls->session_id = $_SESSION["session_id"];
+                        $lss = new LoginStatusServer();
+                        $res = $lss->LogIn($ls);
+                        if($res==""){
+
+                        }
                     }
                     else{
                         $re['state'] = "0";

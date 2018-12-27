@@ -255,8 +255,8 @@ layui.config({
                     var wishes = currData[i].wishes==''?'-':currData[i].wishes;
 					dataHtml += '<tr>'
 			    	+'<td><input type="checkbox" name="checked" lay-skin="primary" lay-filter="choose"></td>'
-			    	+'<td>'+wx+'</td>'
-                    +'<td>'+name+'</td>'
+			    	+'<td>'+name+'</td>'
+                    +'<td>'+wx+'</td>'
                     +'<td><a href="#" onclick="fileSelect('+currData[i].id+')"><img id="am'+currData[i].id+'" src="'+pic+'" height="200" /></a></td>'
 			    	+ '<td>'+date+'</td>'
 			    	+'<td align="left">'+wishes+'</td>'
