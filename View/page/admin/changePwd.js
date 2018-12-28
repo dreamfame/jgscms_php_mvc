@@ -3,12 +3,11 @@ var form;
 var $;
 layui.config({
 	base : "../../js/"
-}).use(['form','layer','upload','laydate','element'],function(){
+}).use(['form','layer','upload','element'],function(){
 	form = layui.form();
 	var layer = parent.layer === undefined ? layui.layer : parent.layer;
 		$ = layui.jquery;
 		$form = $('form');
-		laydate = layui.laydate;
     var element = layui.element();
 		var nickname = window.localStorage.getItem("nickname");
 
@@ -35,9 +34,23 @@ layui.config({
     //添加验证规则
     form.verify({
         oldPwd : function(value, item){
-            if(value.length < 6){
-                return "密码长度不能小于6位";
-            }
+            var msg = "";
+            $.ajax({
+                data: {"password": value,"username":window.sessionStorage.getItem("username")},
+                type: "POST",
+                dataType: "text",
+                async: false,
+                url: "/index.php/admin/JudgeOperate/verify_pwd",
+                success: function (result) {
+                    if (result == "0") {
+                        msg = '原密码输入错误';
+                    }
+                },
+                error: function (data) {
+                    msg = data.responseText;
+                }
+            })
+            return msg;
         },
         newPwd : function(value, item){
             if(value.length < 6){

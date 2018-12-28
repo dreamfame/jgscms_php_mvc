@@ -51,6 +51,15 @@
 				case "pwd":
 					AdminControl::UpdatePwd();
 					break;
+                case "verify":
+                    AdminControl::VerifyInfo();
+                    break;
+                case "verify_edit":
+                    AdminControl::VerifyEditInfo();
+                    break;
+                case "verify_pwd":
+                    AdminControl::VerifyPwd();
+                    break;
 			}
 		}
 
@@ -75,6 +84,82 @@
             echo json_encode($re,JSON_UNESCAPED_UNICODE);
             return;
 		}
+
+		public function VerifyInfo(){
+            $wherelist = array();
+            if(!empty($_REQUEST['name'])){
+                $username = $_REQUEST['name'];
+                $wherelist[] = "username = '{$username}'";
+            }
+            if(!empty($_REQUEST['nickname'])){
+                $nickname = $_REQUEST['nickname'];
+                $wherelist[] = "nickname = '{$nickname}'";
+            }
+            if(!empty($_REQUEST['phone'])){
+                $phone = $_REQUEST['phone'];
+                $wherelist[] = "phone = '{$phone}'";
+            }
+            if(!empty($_REQUEST['email'])){
+                $email = $_REQUEST['email'];
+                $wherelist[] = "email = '{$email}'";
+            }
+            //组装查询条件
+            if(count($wherelist) > 0){
+                $where = " where ".implode(' and ' , $wherelist);
+            }
+            //判断查询条件
+            $where = isset($where) ? $where : '';
+            $as = new AdminServer();
+            $result = $as->VerifyInfo($where);
+            $n = mysqli_fetch_object($result);
+            echo $n->result;
+            return;
+        }
+
+        public function VerifyEditInfo(){
+		    $username = Security::decrypt($_REQUEST['username']);
+            $wherelist = array();
+            if(!empty($_REQUEST['nickname'])){
+                $nickname = $_REQUEST['nickname'];
+                $wherelist[] = "nickname = '{$nickname}'";
+            }
+            if(!empty($_REQUEST['phone'])){
+                $phone = $_REQUEST['phone'];
+                $wherelist[] = "phone = '{$phone}'";
+            }
+            if(!empty($_REQUEST['email'])){
+                $email = $_REQUEST['email'];
+                $wherelist[] = "email = '{$email}'";
+            }
+            //组装查询条件
+            if(count($wherelist) > 0){
+                $where = " where ".implode(' and ' , $wherelist);
+            }
+            //判断查询条件
+            $where = isset($where) ? $where : '';
+            $as = new AdminServer();
+            $result = $as->VerifyEditInfo($where,$username);
+            $n = mysqli_fetch_object($result);
+            echo $n->result;
+            return;
+        }
+
+        public function VerifyPwd(){
+            $username = Security::decrypt($_REQUEST['username']);
+            $password = $_REQUEST['password'];
+            $as = new AdminServer();
+            $result = $as->VerifyPwd($username);
+            $n = mysqli_fetch_object($result);
+            if(password_verify($password,$n->password))
+            {
+                echo "1";
+                return ;
+            }
+            else{
+                echo "0";
+                return;
+            }
+        }
 
 		public function UpdateAdminJson(){
             $as = new AdminServer();
@@ -110,51 +195,17 @@
 			$admin->created_at = time();
 			$admin->password_reset_token = md5($admin->username.AdminControl::key,false);
 			$as = new AdminServer();
-			$result = $as->GetAdmin($admin->username);
-			$temp = false;
             $re = array('state'=>'0','content'=>'添加失败,');
-			while ($u = mysqli_fetch_array($result))//检查用户名
-			{
-				$temp = true;
-				$re['content'] = $re['content'].'已存在该用户!';
-				$row[]= array('username'=>$u['username'],'password'=>$u['password']);
-			}
-			$condition="nickname";
-			$content = $admin->nickname;
-            $result1 = $as->GetAdminByCondition($condition,$content);
-            while ($u = mysqli_fetch_array($result1))//检查昵称
-            {
-                $temp = true;
-                $re['content'] = $re['content'].'昵称已存在!';
-                $row[]= array('username'=>$u['username'],'password'=>$u['password']);
+            $result = $as->InsertAdmin($admin);
+            if($result==""){
+                $re['state'] = '1';
+                $re['content'] = '添加成功';
             }
-            $condition="phone";
-            $content = $admin->phone;
-            $result2 = $as->GetAdminByCondition($condition,$content);
-            while ($u = mysqli_fetch_array($result2))//检查手机号
-            {
-                $temp = true;
-                $re['content'] = $re['content'].'手机号已被使用!';
-                $row[]= array('username'=>$u['username'],'password'=>$u['password']);
+            else{
+                $re['state'] = '0';
+                $re['content'] = '添加失败，错误信息：'.$result;
             }
-            $condition="email";
-            $content = $admin->email;
-            $result3 = $as->GetAdminByCondition($condition,$content);
-            while ($u = mysqli_fetch_array($result3))//检查邮箱
-            {
-                $temp = true;
-                $re['content'] = $re['content'].'邮箱已被使用!';
-                $row[]= array('username'=>$u['username'],'password'=>$u['password']);
-            }
-			if(!$temp){
-				$row = $as->InsertAdmin($admin);
-				$re['state'] = '1';
-				$re['content'] = '添加成功';
-				echo json_encode($re,JSON_UNESCAPED_UNICODE);
-			}
-			else{
-                echo json_encode($re,JSON_UNESCAPED_UNICODE);
-			}
+            echo json_encode($re,JSON_UNESCAPED_UNICODE);
 		}
 
 		public function UpdateAdmin()
@@ -169,10 +220,14 @@
 			$re = array('state'=>'0','content'=>'修改失败');
 			$as = new AdminServer();
 			$result = $as->UpdateAdmin($admin,"all");
-			if($result){
-				$re['state'] = '1';
-				$re['content'] = '修改成功';
-			}
+            if($result == "") {
+                AdminControl::UpdateAdminJson();
+                $re['state']='1';
+                $re['content']='修改成功';
+            }
+            else{
+                $re['content']='修改失败，错误信息：'.$result;
+            }
 			echo json_encode($re,JSON_UNESCAPED_UNICODE);
 			return;
 		}
@@ -296,10 +351,13 @@
 			$admin->role = $role;
 			$result = $as->UpdateAdmin($admin,"role");
             $re = array('state'=>'0','content'=>'修改失败');
-            if($result) {
+            if($result == "") {
                 AdminControl::UpdateAdminJson();
                 $re['state']='1';
                 $re['content']='修改成功';
+            }
+            else{
+                $re['content']='修改失败，错误信息：'.$result;
             }
             echo  json_encode($re,JSON_UNESCAPED_UNICODE);
 		}
@@ -313,10 +371,13 @@
             $admin->role = $status;
             $result = $as->UpdateAdmin($admin,"status");
             $re = array('state'=>'0','content'=>'修改失败');
-            if($result) {
+            if($result == "") {
                 AdminControl::UpdateAdminJson();
                 $re['state']='1';
                 $re['content']='修改成功';
+            }
+            else{
+                $re['content']='修改失败，错误信息：'.$result;
             }
             echo  json_encode($re,JSON_UNESCAPED_UNICODE);
         }
@@ -330,43 +391,33 @@
             $admin->password = $password;
             $result = $as->UpdateAdmin($admin,"password");
             $re = array('state'=>'0','content'=>'修改失败');
-            if($result) {
+            if($result == "") {
                 AdminControl::UpdateAdminJson();
                 $re['state']='1';
                 $re['content']='修改成功';
             }
+            else{
+                $re['content']='修改失败，错误信息：'.$result;
+            }
             echo  json_encode($re,JSON_UNESCAPED_UNICODE);
 		}
 
-        public function ValidatePwd($username,$password){
-            $as = new AdminServer();
-            $result = $as->GetAdmin($username);
-            $a = mysqli_fetch_row($result);
-            if(password_verify($password, $a[2])){
-                return true;
-            }
-            else return false;
-        }
-
         public function UpdatePwd(){
             $username = Security::decrypt($_REQUEST['username']);
-            $oldpwd = $_REQUEST['oldpwd'];
             $newpwd = $_REQUEST['newpwd'];
             $re = array('state'=>'0','content'=>'修改失败');
-            if(AdminControl::ValidatePwd($username,$oldpwd)){
-            	$admin = new Admin();
-            	$admin->username = $username;
-            	$admin->password = password_hash($newpwd,PASSWORD_DEFAULT);
-                $as = new AdminServer();
-                $result = $as->UpdateAdmin($admin,"password");
-                if($result) {
-                    AdminControl::UpdateAdminJson();
-                    $re['state']='1';
-                    $re['content']='修改成功';
-                }
+            $admin = new Admin();
+            $admin->username = $username;
+            $admin->password = password_hash($newpwd,PASSWORD_DEFAULT);
+            $as = new AdminServer();
+            $result = $as->UpdateAdmin($admin,"password");
+            if($result == "") {
+                AdminControl::UpdateAdminJson();
+                $re['state']='1';
+                $re['content']='修改成功';
 			}
 			else{
-                $re['content']='原密码输入错误';
+                $re['content']='修改失败，错误信息：'.$result;
 			}
             echo  json_encode($re,JSON_UNESCAPED_UNICODE);
         }

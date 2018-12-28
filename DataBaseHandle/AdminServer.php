@@ -40,15 +40,8 @@
 		public function InsertAdmin($admin)
 		{
 			$sql = "insert into ".$this->db_table."(username,head_pic,nickname,password,age,phone,password_reset_token,email,updated_at,created_at,role,status) values('$admin->username','$admin->head_pic','$admin->nickname','$admin->password','$admin->age','$admin->phone','$admin->password_reset_token','$admin->email','$admin->updated_at','$admin->created_at','$admin->role','$admin->status')";
-			try{
-				$this->db->ExeSql($sql,$this->conn);
-				return true;
-			}
-			catch(Exception $e)
-			{
-				return false;
-			}
-			return false;
+			$result = $this->db->ExecSql($sql,$this->conn);
+			return $result;
 		}
 
 		public function UpdateAdmin($admin,$field)
@@ -71,15 +64,28 @@
                     $sql = "update " . $this->db_table . " set nickname = '$admin->nickname',age = '$admin->age',phone = '$admin->phone',email = '$admin->email',head_pic = '$admin->head_pic' where username = '$admin->username'";
                 }
 			}
-			try{
-				$this->db->ExeSql($sql,$this->conn);
-				return true;
-			}
-			catch(Exception $e)
-			{
-				return false;
-			}
-			return true;
+			$result = $this->db->ExecSql($sql,$this->conn);
+            return $result;
+		}
+
+        public function VerifyInfo($where)
+        {
+            $sql = "select if( exists(select id from ".$this->db_table.$where." limit 1), 1, 0) as result";
+            $result = $this->db->ExeSql($sql, $this->conn);
+            return $result;
+        }
+
+        public function VerifyPwd($username)
+        {
+            $sql = "select password from ".$this->db_table." where username = '$username' limit 1";
+            $result = $this->db->ExeSql($sql, $this->conn);
+            return $result;
+        }
+
+        public function VerifyEditInfo($where,$username){
+            $sql = "select if( exists(select id from ".$this->db_table.$where." and username <> '$username' limit 1 ), 1, 0) as result";
+            $result = $this->db->ExeSql($sql, $this->conn);
+            return $result;
 		}
 
 		public function QueryAdmin($where)

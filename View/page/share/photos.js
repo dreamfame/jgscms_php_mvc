@@ -66,12 +66,49 @@ layui.config({
                     var maxPage = imgNums*page < images.length ? imgNums*page : images.length;
                         for (var j = imgNums * (page - 1); j < maxPage; j++) {
                             var n = j+1;
-                            picList.push('<li><img src="' + images[j] + '"><div class="operate"><div class="check">图片'+n+'</div></li>')
+                            picList.push('<li><a class="photo_pic"><img style="height:215px;cursor:pointer;" src="' + images[j] + '"></a><div class="operate"><div class="check">图片'+n+'</div></li>')
                         }
                         next(picList.join(''), page < (images.length / imgNums));
                         form.render();
                 }
             });
         }
+    });
+
+    $("body").on("click",".photo_pic",function(){
+        var _this = $(this);
+        var url = _this.find("img").attr("src");
+        if(!url || url==""){
+            layer.msg("没有发现图片！");
+            return ;
+        }
+        $("<img/>").attr("src", url).load(function(){
+            var height = this.height;
+            var width = this.width;
+            var max_height = $(window).height() - 100;
+            var max_width = $(window).width();
+            var rate1 = max_height/height;
+            var rate2 = max_width/width;
+            var rate3 = 1;
+            var rate = Math.min(rate1,rate2,rate3);
+            //等比例缩放
+            var imgHeight = height * rate; //获取图片高度
+            var imgWidth = width  * rate; //获取图片宽度
+            var imgHtml = "<img src='" + url + "' width='"+imgWidth+"px' height='"+imgHeight+"px'/>";
+            //弹出层
+            top.layer.open({
+                type: 1,
+                shade: 0.8,
+                offset: 'auto',
+                area: [imgWidth + 'px',imgHeight +'px'], ////宽，高
+                shadeClose:true,
+                scrollbar: false,
+                title: false, //不显示标题
+                content: imgHtml, //捕获的元素，注意：最好该指定的元素要存放在body最外层，否则可能被其它的相对元素所影响
+                cancel: function () {
+                    //layer.msg('捕获就是从页面已经存在的元素上，包裹layer的结构', { time: 5000, icon: 6 });
+                }
+            });
+        });
     });
 })

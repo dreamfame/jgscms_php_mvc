@@ -3,16 +3,81 @@ var form;
 var $;
 layui.config({
 	base : "../../js/"
-}).use(['form','layer','upload','laydate'],function(){
+}).use(['form','layer','upload'],function(){
 	form = layui.form();
 	var layer = parent.layer === undefined ? layui.layer : parent.layer;
 		$ = layui.jquery;
 		$form = $('form');
-		laydate = layui.laydate;
 
 		var id = window.sessionStorage.getItem("username");
 
 		var info;
+
+		form.verify({
+            nickname:function(value,item) {
+                if(!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)){
+                    return '昵称不能有特殊字符';
+                }
+                if(value.length>8){
+                    return '昵称不得超过8个字';
+                }
+                var msg = "";
+                $.ajax({
+                    data: {"nickname":value,"username":id},
+                    type: "POST",
+                    dataType: "text",
+                    async: false,
+                    url: "/index.php/admin/JudgeOperate/verify_edit",
+                    success: function (result) {
+                        if(result=="1"){
+                            msg = '昵称已存在';
+                        }
+                    },
+                    error:function(data){
+                        msg = data.responseText;
+                    }
+                })
+                return msg;
+            },
+            checkEmail:function(value, item) {
+                var msg = "";
+                $.ajax({
+                    data: {"email": value,"username":id},
+                    type: "POST",
+                    dataType: "text",
+                    async: false,
+                    url: "/index.php/admin/JudgeOperate/verify_edit",
+                    success: function (result) {
+                        if (result == "1") {
+                            msg = '邮箱已被使用';
+                        }
+                    },
+                    error: function (data) {
+                        msg = data.responseText;
+                    }
+                })
+                return msg;
+            },
+            checkPhone:function(value, item) {
+                var msg = "";
+                $.ajax({
+                    data: {"phone": value,"username":id},
+                    type: "POST",
+                    dataType: "text",
+                    async: false,
+                    url: "/index.php/admin/JudgeOperate/verify_edit",
+                    success: function (result) {
+                        if (result == "1") {
+                            msg = '手机号已被使用';
+                        }
+                    },
+                    error: function (data) {
+                        msg = data.responseText;
+                    }
+                })
+                return msg;
+            }
+        })
 
     $.ajax({
         data:{"username":id},
