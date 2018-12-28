@@ -81,6 +81,13 @@ Class UserServer
         return $result;
     }
 
+    public function GetWx($openid){
+        $sql = "select wx from ".$this->db_table." where openid = '$openid'";
+        $result = $this->db->ExeSql($sql, $this->conn);
+        $n = mysqli_fetch_object($result);
+        return $n->wx;
+    }
+
     public function GetUser()
     {
         $sql = "select id,openid,wx,nickname,avatar,gender,city,country,created_at from ".$this->db_table;

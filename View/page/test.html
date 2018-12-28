@@ -5,9 +5,32 @@
     <title>Title</title>
 </head>
 <body>
-<form action="/index.php/picture/JugdeOperate/uploadImg" method="post" enctype="multipart/form-data">
-    <input type="file" name="file" />
-    <input type="submit" value="上传文件" />
-</form>
+<input id="btn" type="button" value="发送" />
+<input id="b" type="button" value="关闭" />
+<script type="text/javascript" src="../Media/Js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $("#btn").bind("click",{btn:$("#btn")},function(evdata){
+            $.ajax({
+                type:"POST",
+                dataType:"text",
+                url:"/server.php",
+                success:function(data,textStatus){
+
+                }
+            });
+        });
+        $("#b").bind("click",{btn:$("#b")},function(evdata){
+            $.ajax({
+                type:"POST",
+                dataType:"json",
+                url:"/index.php/server/server_close",
+                success:function(data,textStatus){
+
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>
