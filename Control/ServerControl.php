@@ -18,8 +18,10 @@ class ServerControl
         set_time_limit(0);//无限请求超时时间
         while (true){
             //sleep(1);
-            if(isset($_SESSION['openid'])&&!empty($_SESSION['openid'])){
-                $openid = $_SESSION['openid'];
+            $json_string = file_get_contents('../View/json/openid.json');
+            $data = json_decode($json_string, true);
+            if($data!=null){
+                $openid = $data['openid'];
             }
             else{
                 $openid = "";
@@ -44,14 +46,22 @@ class ServerControl
     }
 
     public function server_close(){
-        unset($_SESSION['openid']);
-        if(isset($_SESSION['openid'])&&!empty($_SESSION['openid'])){
-            $arr=array('success'=>"0",'name'=>"");
-            echo json_encode($arr);
+        $jsonfile = fopen("../View/json/openid.json", "w") or die("Unable to open file!");
+        $row = array('openid' => "");
+        if (flock($jsonfile, LOCK_EX)) {//加写锁 
+            ftruncate($jsonfile, 0); // 将文件截断到给定的长度 
+            rewind($jsonfile); // 倒回文件指针的位置 
+            fwrite($jsonfile, json_encode($row, JSON_UNESCAPED_UNICODE));
+            flock($jsonfile, LOCK_UN); //解锁 
+        }
+        fclose($jsonfile);
+        $json_string = file_get_contents('../View/json/openid.json');
+        $data = json_decode($json_string, true);
+        if($data!=null&&$data["openid"]==""){
+            echo "0";
         }
         else{
-            $arr=array('success'=>"1",'name'=>"");
-            echo json_encode($arr);
+            echo "1";
         }
     }
 }
