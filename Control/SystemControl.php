@@ -82,7 +82,7 @@
             $mail->Username = "liuliuonlai@163.com";
             $mail->Password = "ll92712";
             $mail->From = "liuliuonlai@163.com";
-            $mail->Port = 25;
+            $mail->Port = 465;
             $mail->FromName = "系统邮件";
             $mail->CharSet = "UTF-8";
             $mail->Encoding = "base64";

@@ -2,173 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c7749a1-70c7-404f-906e-a59d4ff055e3" name="默认的" comment="">
-      <change afterPath="$PROJECT_DIR$/View/page/system/bug.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/View/page/system/bug.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Control/SystemControl.php" beforeDir="false" afterPath="$PROJECT_DIR$/Control/SystemControl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/(1).gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/.scrutinizer(1).yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/.travis(1).yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/LICENSE(1)" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/PHPMailerAutoload(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/README(1).md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/VERSION(1)" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/changelog(1).md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/class.phpmailer(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/class.pop3(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/class.smtp(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/composer(1).json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/docs/Callback_function_notes(1).txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/docs/DomainKeys_notes(1).txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/docs/Note_for_SMTP_debugging(1).txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/docs/extending(1).html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/docs/faq(1).html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/docs/generatedocs(1).sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/docs/pop3_article(1).txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/examples/LGPLv3(1).txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/examples/code_generator(1).phps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/examples/contents(1).html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/examples/exceptions(1).phps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/examples/gmail(1).phps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/examples/index(1).html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/examples/mail(1).phps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/examples/mailing_list(1).phps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/examples/pop_before_smtp(1).phps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/examples/scripts/XRegExp(1).js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/examples/scripts/shAutoloader(1).js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/examples/scripts/shBrushPhp(1).js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/examples/scripts/shCore(1).js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/examples/scripts/shLegacy(1).js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/examples/sendmail(1).phps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/examples/smtp(1).phps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/examples/smtp_check(1).phps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/examples/smtp_no_auth(1).phps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/examples/styles/shCore(1).css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/examples/styles/shCoreDefault(1).css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/examples/styles/shCoreDjango(1).css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/examples/styles/shCoreEclipse(1).css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/examples/styles/shCoreEmacs(1).css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/examples/styles/shCoreFadeToGrey(1).css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/examples/styles/shCoreMDUltra(1).css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/examples/styles/shCoreMidnight(1).css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/examples/styles/shCoreRDark(1).css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/examples/styles/shThemeAppleScript(1).css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/examples/styles/shThemeDefault(1).css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/examples/styles/shThemeDjango(1).css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/examples/styles/shThemeEclipse(1).css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/examples/styles/shThemeEmacs(1).css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/examples/styles/shThemeFadeToGrey(1).css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/examples/styles/shThemeMDUltra(1).css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/examples/styles/shThemeMidnight(1).css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/examples/styles/shThemeRDark(1).css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/examples/styles/shThemeVisualStudio(1).css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/examples/styles/wrapping(1).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/extras/EasyPeasyICS(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/extras/README(1).md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/extras/class.html2text(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/extras/htmlfilter(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/extras/ntlm_sasl_client(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-ar(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-ar.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-az(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-az.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-be(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-be.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-br(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-br.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-ca(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-ca.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-ch(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-ch.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-cz(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-cz.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-de(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-de.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-dk(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-dk.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-el(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-el.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-eo(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-eo.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-es(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-es.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-et(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-et.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-fa(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-fa.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-fi(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-fi.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-fo(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-fo.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-fr(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-fr.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-gl(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-gl.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-he(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-he.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-hr(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-hr.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-hu(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-hu.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-id(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-id.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-it(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-it.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-ja(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-ja.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-ka(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-ka.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-lt(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-lt.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-lv(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-lv.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-nl(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-nl.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-no(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-no.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-pl(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-pl.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-pt(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-pt.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-ro(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-ro.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-ru(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-ru.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-se(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-se.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-sk(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-sk.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-sr(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-sr.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-tr(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-tr.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-uk(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-uk.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-vi(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-vi.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-zh(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-zh.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-zh_cn(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-zh_cn.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/test/fakepopserver(1).sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/test/fakesendmail(1).sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/test/phpmailerLangTest(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/test/phpmailerTest(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/test/runfakepopserver(1).sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/test/test_callback(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/test/testbootstrap-dist(1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHPMailer-master/travis.phpunit.xml(1).dist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/client_socket.php" beforeDir="false" afterPath="$PROJECT_DIR$/View/client_socket.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/View/js/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/View/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataBaseHandle/DBHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/DataBaseHandle/DBHelper.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/View/json/PhotoList.json" beforeDir="false" afterPath="$PROJECT_DIR$/View/json/PhotoList.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/json/activityList.json" beforeDir="false" afterPath="$PROJECT_DIR$/View/json/activityList.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/json/adminList.json" beforeDir="false" afterPath="$PROJECT_DIR$/View/json/adminList.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/json/area.json" beforeDir="false" afterPath="$PROJECT_DIR$/View/json/area.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/View/json/navs.json" beforeDir="false" afterPath="$PROJECT_DIR$/View/json/navs.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/json/routeList.json" beforeDir="false" afterPath="$PROJECT_DIR$/View/json/routeList.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/View/page/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/news/areaAdd.html" beforeDir="false" afterPath="$PROJECT_DIR$/View/page/news/areaAdd.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/json/newsList.json" beforeDir="false" afterPath="$PROJECT_DIR$/View/json/newsList.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -199,7 +38,7 @@
         <counts>
           <entry key="project.closed" value="2" />
           <entry key="project.open.time.11" value="2" />
-          <entry key="project.open.time.12" value="1" />
+          <entry key="project.open.time.12" value="2" />
           <entry key="project.open.time.13" value="3" />
           <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.17" value="1" />
@@ -208,7 +47,7 @@
           <entry key="project.open.time.26" value="1" />
           <entry key="project.open.time.43" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="14" />
+          <entry key="project.opened" value="15" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -217,7 +56,7 @@
           <entry key="html" value="42" />
           <entry key="js" value="122" />
           <entry key="json" value="23" />
-          <entry key="php" value="117" />
+          <entry key="php" value="120" />
           <entry key="png" value="2" />
           <entry key="sql" value="1" />
           <entry key="svg" value="2" />
@@ -231,7 +70,7 @@
           <entry key="Image" value="2" />
           <entry key="JSON" value="23" />
           <entry key="JavaScript" value="122" />
-          <entry key="PHP" value="117" />
+          <entry key="PHP" value="120" />
           <entry key="SVG" value="2" />
           <entry key="Scratch" value="1" />
           <entry key="XML" value="6" />
@@ -244,7 +83,7 @@
           <entry key="html" value="1107" />
           <entry key="js" value="5108" />
           <entry key="json" value="224" />
-          <entry key="php" value="5113" />
+          <entry key="php" value="5129" />
           <entry key="txt" value="3" />
           <entry key="xml" value="13" />
         </counts>
@@ -255,7 +94,7 @@
           <entry key="HTML" value="1107" />
           <entry key="JSON" value="224" />
           <entry key="JavaScript" value="5108" />
-          <entry key="PHP" value="5113" />
+          <entry key="PHP" value="5129" />
           <entry key="PLAIN_TEXT" value="11" />
           <entry key="XML" value="13" />
         </counts>
@@ -389,8 +228,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/View/json/navs.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="313">
-              <caret line="140" column="22" selection-start-line="140" selection-start-column="22" selection-end-line="140" selection-end-column="30" />
+            <state relative-caret-position="3220">
+              <caret line="147" column="1" selection-start-line="147" selection-start-column="1" selection-end-line="147" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -398,7 +237,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/View/page/system/bug.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="703">
+            <state relative-caret-position="851">
               <caret line="37" column="68" selection-start-line="37" selection-start-column="63" selection-end-line="37" selection-end-column="68" />
             </state>
           </provider>
@@ -407,17 +246,35 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/View/page/system/bug.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="28">
+            <state relative-caret-position="598">
               <caret line="26" column="53" selection-start-line="26" selection-start-column="50" selection-end-line="26" selection-end-column="53" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Control/SystemControl.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
-              <caret line="105" column="36" selection-start-line="105" selection-start-column="36" selection-end-line="105" selection-end-column="36" />
+            <state relative-caret-position="396">
+              <caret line="84" column="29" selection-start-line="84" selection-start-column="29" selection-end-line="84" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PHPMailer-master/class.phpmailer.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="194">
+              <caret line="223" column="29" selection-start-line="223" selection-start-column="20" selection-end-line="223" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PHPMailer-master/class.smtp.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="215">
+              <caret line="274" column="25" lean-forward="true" selection-start-line="274" selection-start-column="25" selection-end-line="274" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -425,24 +282,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/View/js/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
+            <state relative-caret-position="138">
               <caret line="6" column="34" selection-start-line="6" selection-start-column="34" selection-end-line="6" selection-end-column="34" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/View/page/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="337">
-              <caret line="97" column="26" selection-start-line="97" selection-start-column="26" selection-end-line="97" selection-end-column="26" />
-              <folding>
-                <element signature="n#style#0;n#i#1;n#blockquote#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#i#0;n#i#1;n#blockquote#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#cite#0;n#i#1;n#blockquote#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#i#1;n#blockquote#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="511">
+              <caret line="107" selection-start-line="107" selection-end-line="107" />
             </state>
           </provider>
         </entry>
@@ -450,8 +300,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/View/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="13" column="43" selection-start-line="13" selection-start-column="43" selection-end-line="13" selection-end-column="43" />
+            <state relative-caret-position="552">
+              <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -459,7 +309,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/View/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
+            <state relative-caret-position="2415">
               <caret line="105" column="14" selection-start-line="105" selection-start-column="14" selection-end-line="105" selection-end-column="14" />
             </state>
           </provider>
@@ -478,7 +328,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>userList.json</find>
       <find>Admin</find>
       <find>刷新当前</find>
       <find>User</find>
@@ -508,6 +357,7 @@
       <find>unlock</find>
       <find>layui-unselect</find>
       <find>606</find>
+      <find>stream_socket_client</find>
     </findStrings>
     <replaceStrings>
       <replace>ss</replace>
@@ -543,7 +393,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/View/page/share/photowaitList.js" />
         <option value="$PROJECT_DIR$/View/page/share/photoList.js" />
         <option value="$PROJECT_DIR$/View/page/share/postcardList.js" />
         <option value="$PROJECT_DIR$/View/page/activity/routeList.js" />
@@ -589,11 +438,12 @@
         <option value="$PROJECT_DIR$/View/page/system/bug.html" />
         <option value="$PROJECT_DIR$/View/page/news/areaAdd.html" />
         <option value="$PROJECT_DIR$/View/page/system/bug.js" />
-        <option value="$PROJECT_DIR$/Control/SystemControl.php" />
         <option value="$PROJECT_DIR$/View/index.html" />
         <option value="$PROJECT_DIR$/View/js/index.js" />
         <option value="$PROJECT_DIR$/View/js/main.js" />
         <option value="$PROJECT_DIR$/View/page/main.html" />
+        <option value="$PROJECT_DIR$/PHPMailer-master/class.phpmailer.php" />
+        <option value="$PROJECT_DIR$/Control/SystemControl.php" />
       </list>
     </option>
   </component>
@@ -603,7 +453,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="260" />
     <option name="y" value="20" />
     <option name="width" value="1386" />
@@ -726,17 +576,18 @@
       <workItem from="1546013090403" duration="895000" />
       <workItem from="1546046223005" duration="108000" />
       <workItem from="1546048886956" duration="27225000" />
+      <workItem from="1546087531294" duration="1526000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="413246000" />
+    <option name="totallyTimeSpent" value="414772000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49886876" visible="true" weight="0.19515885" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49886876" visible="true" weight="0.19796138" />
       <window_info id="Structure" order="1" sideWeight="0.50113124" side_tool="true" weight="0.25751072" />
       <window_info id="Favorites" order="2" sideWeight="0.50113124" side_tool="true" weight="0.25751072" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -852,9 +703,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1510">
           <caret line="113" column="56" selection-start-line="113" selection-start-column="56" selection-end-line="113" selection-end-column="56" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -869,10 +717,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="237">
           <caret line="46" column="47" lean-forward="true" selection-start-line="46" selection-start-column="47" selection-end-line="46" selection-end-column="47" />
-          <folding>
-            <element signature="n#style#0;n#fieldset#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -949,32 +793,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/BaiduNetdiskDownload/RegisterUser.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="32" lean-forward="true" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/BaiduNetdiskDownload/UserServer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2513">
-          <caret line="6" column="48" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/BaiduNetdiskDownload/AdminServer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-694" />
-      </provider>
-    </entry>
-    <entry file="file://D:/BaiduNetdiskDownload/SendEmail.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="13" column="27" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://D:/BaiduNetdiskDownload/RegisterUser.php" />
+    <entry file="file://D:/BaiduNetdiskDownload/UserServer.php" />
+    <entry file="file://D:/BaiduNetdiskDownload/AdminServer.php" />
+    <entry file="file://D:/BaiduNetdiskDownload/SendEmail.php" />
     <entry file="file://$PROJECT_DIR$/View/page/activity/activityAdd.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-741" />
@@ -1010,16 +832,6 @@
         <state relative-caret-position="-969" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PHPMailer-master/class.phpmailer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="100" column="11" selection-start-line="100" selection-start-column="11" selection-end-line="100" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PHPMailer-master/class.smtp.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/Control/AdminControl.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-137">
@@ -1027,66 +839,73 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Control/SystemControl.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="105" column="36" selection-start-line="105" selection-start-column="36" selection-end-line="105" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/View/json/navs.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="140" column="22" selection-start-line="140" selection-start-column="22" selection-end-line="140" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/page/system/bug.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="26" column="53" selection-start-line="26" selection-start-column="50" selection-end-line="26" selection-end-column="53" />
+        <state relative-caret-position="3220">
+          <caret line="147" column="1" selection-start-line="147" selection-start-column="1" selection-end-line="147" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/View/page/system/bug.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="703">
+        <state relative-caret-position="851">
           <caret line="37" column="68" selection-start-line="37" selection-start-column="63" selection-end-line="37" selection-end-column="68" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/View/index.html">
+    <entry file="file://$PROJECT_DIR$/View/page/system/bug.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="105" column="14" selection-start-line="105" selection-start-column="14" selection-end-line="105" selection-end-column="14" />
+        <state relative-caret-position="598">
+          <caret line="26" column="53" selection-start-line="26" selection-start-column="50" selection-end-line="26" selection-end-column="53" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/View/js/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
+        <state relative-caret-position="138">
           <caret line="6" column="34" selection-start-line="6" selection-start-column="34" selection-end-line="6" selection-end-column="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/View/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="13" column="43" selection-start-line="13" selection-start-column="43" selection-end-line="13" selection-end-column="43" />
+        <state relative-caret-position="552">
+          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2415">
+          <caret line="105" column="14" selection-start-line="105" selection-start-column="14" selection-end-line="105" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/View/page/main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="97" column="26" selection-start-line="97" selection-start-column="26" selection-end-line="97" selection-end-column="26" />
-          <folding>
-            <element signature="n#style#0;n#i#1;n#blockquote#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#i#1;n#blockquote#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#cite#0;n#i#1;n#blockquote#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#i#1;n#blockquote#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="511">
+          <caret line="107" selection-start-line="107" selection-end-line="107" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PHPMailer-master/class.smtp.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="274" column="25" lean-forward="true" selection-start-line="274" selection-start-column="25" selection-end-line="274" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PHPMailer-master/class.phpmailer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="223" column="29" selection-start-line="223" selection-start-column="20" selection-end-line="223" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Control/SystemControl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="84" column="29" selection-start-line="84" selection-start-column="29" selection-end-line="84" selection-end-column="29" />
         </state>
       </provider>
     </entry>
