@@ -59,12 +59,6 @@ layui.config({
             return msg;
         } ,
         abstract:function(value,item){
-            if(!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)){
-                return '景点概要不能有特殊字符';
-            }
-            if(/(^\_)|(\__)|(\_+$)/.test(value)){
-                return '景点概要首尾不能出现下划线\'_\'';
-            }
             if(value.length>10){
                 return '景点概要不得超过150个字';
             }
