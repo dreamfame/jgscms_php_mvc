@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c7749a1-70c7-404f-906e-a59d4ff055e3" name="默认的" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Control/SystemControl.php" beforeDir="false" afterPath="$PROJECT_DIR$/Control/SystemControl.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataBaseHandle/DBHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/DataBaseHandle/DBHelper.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/View/json/PhotoList.json" beforeDir="false" afterPath="$PROJECT_DIR$/View/json/PhotoList.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/json/navs.json" beforeDir="false" afterPath="$PROJECT_DIR$/View/json/navs.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/View/json/newsList.json" beforeDir="false" afterPath="$PROJECT_DIR$/View/json/newsList.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -83,7 +81,7 @@
           <entry key="html" value="1107" />
           <entry key="js" value="5108" />
           <entry key="json" value="224" />
-          <entry key="php" value="5129" />
+          <entry key="php" value="5159" />
           <entry key="txt" value="3" />
           <entry key="xml" value="13" />
         </counts>
@@ -94,7 +92,7 @@
           <entry key="HTML" value="1107" />
           <entry key="JSON" value="224" />
           <entry key="JavaScript" value="5108" />
-          <entry key="PHP" value="5129" />
+          <entry key="PHP" value="5159" />
           <entry key="PLAIN_TEXT" value="11" />
           <entry key="XML" value="13" />
         </counts>
@@ -255,26 +253,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Control/SystemControl.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="84" column="29" selection-start-line="84" selection-start-column="29" selection-end-line="84" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PHPMailer-master/class.phpmailer.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="223" column="29" selection-start-line="223" selection-start-column="20" selection-end-line="223" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PHPMailer-master/class.smtp.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
-              <caret line="274" column="25" lean-forward="true" selection-start-line="274" selection-start-column="25" selection-end-line="274" selection-end-column="25" />
+            <state relative-caret-position="373">
+              <caret line="83" column="39" selection-start-line="83" selection-start-column="39" selection-end-line="83" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -328,7 +308,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Admin</find>
       <find>刷新当前</find>
       <find>User</find>
       <find>users</find>
@@ -358,6 +337,7 @@
       <find>layui-unselect</find>
       <find>606</find>
       <find>stream_socket_client</find>
+      <find>25</find>
     </findStrings>
     <replaceStrings>
       <replace>ss</replace>
@@ -576,12 +556,12 @@
       <workItem from="1546013090403" duration="895000" />
       <workItem from="1546046223005" duration="108000" />
       <workItem from="1546048886956" duration="27225000" />
-      <workItem from="1546087531294" duration="1526000" />
+      <workItem from="1546087531294" duration="2195000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="414772000" />
+    <option name="totallyTimeSpent" value="415441000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
@@ -888,13 +868,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PHPMailer-master/class.smtp.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="274" column="25" lean-forward="true" selection-start-line="274" selection-start-column="25" selection-end-line="274" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PHPMailer-master/class.phpmailer.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="194">
@@ -902,10 +875,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/PHPMailer-master/class.smtp.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="902" column="52" selection-start-line="902" selection-start-column="50" selection-end-line="902" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Control/SystemControl.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="84" column="29" selection-start-line="84" selection-start-column="29" selection-end-line="84" selection-end-column="29" />
+        <state relative-caret-position="373">
+          <caret line="83" column="39" selection-start-line="83" selection-start-column="39" selection-end-line="83" selection-end-column="39" />
         </state>
       </provider>
     </entry>

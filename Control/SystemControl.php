@@ -78,9 +78,10 @@
             $mail = new PHPMailer();
             $mail->isSMTP();
             $mail->Host = "smtp.163.com";
+            $mail->SMTPSecure = "ssl";
             $mail->SMTPAuth = true;
             $mail->Username = "liuliuonlai@163.com";
-            $mail->Password = "ll92712";
+            $mail->Password = "ll667092";
             $mail->From = "liuliuonlai@163.com";
             $mail->Port = 465;
             $mail->FromName = "系统邮件";
