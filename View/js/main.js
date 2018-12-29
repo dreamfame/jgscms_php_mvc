@@ -29,6 +29,15 @@ layui.config({
         }
 	})
 
+    $("#morenews").on("click",function(){
+        if(role=="照片审核管理员"){
+            layer.msg("对不起，您没有内容权限");
+        }
+        else{
+            window.parent.addTab($(this));
+        }
+    })
+
     var role = window.sessionStorage.getItem("role");
 
     $.ajax({
