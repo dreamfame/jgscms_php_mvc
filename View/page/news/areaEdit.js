@@ -59,7 +59,7 @@ layui.config({
             return msg;
         } ,
         abstract:function(value,item){
-            if(value.length>10){
+            if(value.length>150){
                 return '文章概要不得超过150个字';
             }
         },
