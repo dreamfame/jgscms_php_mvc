@@ -7,12 +7,8 @@
       <change beforePath="$PROJECT_DIR$/View/json/PhotoList.json" beforeDir="false" afterPath="$PROJECT_DIR$/View/json/PhotoList.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/View/json/adminList.json" beforeDir="false" afterPath="$PROJECT_DIR$/View/json/adminList.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/View/json/newsList.json" beforeDir="false" afterPath="$PROJECT_DIR$/View/json/newsList.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/activity/activityAdd.js" beforeDir="false" afterPath="$PROJECT_DIR$/View/page/activity/activityAdd.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/activity/activityEdit.js" beforeDir="false" afterPath="$PROJECT_DIR$/View/page/activity/activityEdit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/admin/adminEdit.js" beforeDir="false" afterPath="$PROJECT_DIR$/View/page/admin/adminEdit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/links/linksAdd.js" beforeDir="false" afterPath="$PROJECT_DIR$/View/page/links/linksAdd.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/news/areaList.js" beforeDir="false" afterPath="$PROJECT_DIR$/View/page/news/areaList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/share/postcardList.js" beforeDir="false" afterPath="$PROJECT_DIR$/View/page/share/postcardList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/json/systemnotice.json" beforeDir="false" afterPath="$PROJECT_DIR$/View/json/systemnotice.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/page/system/systemnotice.js" beforeDir="false" afterPath="$PROJECT_DIR$/View/page/system/systemnotice.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,7 +55,7 @@
         <counts>
           <entry key="css" value="11" />
           <entry key="html" value="44" />
-          <entry key="js" value="130" />
+          <entry key="js" value="133" />
           <entry key="json" value="23" />
           <entry key="php" value="120" />
           <entry key="png" value="2" />
@@ -74,7 +70,7 @@
           <entry key="HTML" value="44" />
           <entry key="Image" value="2" />
           <entry key="JSON" value="23" />
-          <entry key="JavaScript" value="130" />
+          <entry key="JavaScript" value="133" />
           <entry key="PHP" value="120" />
           <entry key="SVG" value="2" />
           <entry key="Scratch" value="1" />
@@ -86,7 +82,7 @@
           <entry key="css" value="64" />
           <entry key="dummy" value="8" />
           <entry key="html" value="1107" />
-          <entry key="js" value="5122" />
+          <entry key="js" value="5154" />
           <entry key="json" value="224" />
           <entry key="php" value="5159" />
           <entry key="txt" value="3" />
@@ -98,7 +94,7 @@
           <entry key="CSS" value="64" />
           <entry key="HTML" value="1107" />
           <entry key="JSON" value="224" />
-          <entry key="JavaScript" value="5122" />
+          <entry key="JavaScript" value="5154" />
           <entry key="PHP" value="5159" />
           <entry key="PLAIN_TEXT" value="11" />
           <entry key="XML" value="13" />
@@ -231,24 +227,6 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Control/SystemControl.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="11" column="54" lean-forward="true" selection-start-line="11" selection-start-column="54" selection-end-line="11" selection-end-column="54" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/View/page/admin/adminEdit.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="10" column="31" lean-forward="true" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/View/page/news/map.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1292">
@@ -260,75 +238,15 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/View/page/news/areaList.html">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/View/page/news/areaList.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="362" column="153" lean-forward="true" selection-start-line="362" selection-start-column="129" selection-end-line="362" selection-end-column="153" />
-              <folding>
-                <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/View/page/share/photoList.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2277">
-              <folding>
-                <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/View/page/share/postcardList.js">
+        <entry file="file://$PROJECT_DIR$/View/js/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
-              <caret line="259" column="148" selection-start-line="259" selection-start-column="148" selection-end-line="259" selection-end-column="148" />
+            <state relative-caret-position="351">
+              <caret line="238" column="30" selection-start-line="238" selection-start-column="30" selection-end-line="238" selection-end-column="30" />
               <folding>
-                <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/View/page/activity/activityEdit.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="6" column="32" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/View/page/main.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="511">
-              <caret line="107" selection-start-line="107" selection-end-line="107" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/View/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2415">
-              <caret line="105" column="14" selection-start-line="105" selection-start-column="14" selection-end-line="105" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -346,7 +264,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>User</find>
       <find>users</find>
       <find>news</find>
       <find>setTimeout</find>
@@ -376,6 +293,7 @@
       <find>stream_socket_client</find>
       <find>25</find>
       <find>laydate</find>
+      <find>系统公告</find>
     </findStrings>
     <replaceStrings>
       <replace>ss</replace>
@@ -411,7 +329,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/DataBaseHandle/ActivityPersonServer.php" />
         <option value="$PROJECT_DIR$/Control/ActivityPersonControl.php" />
         <option value="$PROJECT_DIR$/View/page/activity/activityList.html" />
         <option value="$PROJECT_DIR$/View/page/activity/activitypersonList.html" />
@@ -451,7 +368,6 @@
         <option value="$PROJECT_DIR$/View/page/news/areaAdd.html" />
         <option value="$PROJECT_DIR$/View/page/system/bug.js" />
         <option value="$PROJECT_DIR$/View/index.html" />
-        <option value="$PROJECT_DIR$/View/js/index.js" />
         <option value="$PROJECT_DIR$/View/js/main.js" />
         <option value="$PROJECT_DIR$/View/page/main.html" />
         <option value="$PROJECT_DIR$/PHPMailer-master/class.phpmailer.php" />
@@ -462,6 +378,8 @@
         <option value="$PROJECT_DIR$/View/page/activity/activityAdd.js" />
         <option value="$PROJECT_DIR$/View/page/news/areaList.js" />
         <option value="$PROJECT_DIR$/View/page/share/postcardList.js" />
+        <option value="$PROJECT_DIR$/View/page/system/systemnotice.js" />
+        <option value="$PROJECT_DIR$/View/js/index.js" />
       </list>
     </option>
   </component>
@@ -501,14 +419,7 @@
               <item name="JGSCMS" type="b2602c69:ProjectViewProjectNode" />
               <item name="JGSCMS" type="462c0819:PsiDirectoryNode" />
               <item name="View" type="462c0819:PsiDirectoryNode" />
-              <item name="page" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="JGSCMS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JGSCMS" type="462c0819:PsiDirectoryNode" />
-              <item name="View" type="462c0819:PsiDirectoryNode" />
-              <item name="page" type="462c0819:PsiDirectoryNode" />
-              <item name="share" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -601,12 +512,12 @@
       <workItem from="1546013090403" duration="895000" />
       <workItem from="1546046223005" duration="108000" />
       <workItem from="1546048886956" duration="27225000" />
-      <workItem from="1546087531294" duration="3085000" />
+      <workItem from="1546087531294" duration="3700000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="416331000" />
+    <option name="totallyTimeSpent" value="416946000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
@@ -645,13 +556,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/DataBaseHandle/NewsServer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="28" column="275" selection-start-line="28" selection-start-column="275" selection-end-line="28" selection-end-column="275" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/View/json/areaList.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -817,13 +721,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/View/js/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="6" column="34" selection-start-line="6" selection-start-column="34" selection-end-line="6" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/View/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="552">
@@ -835,13 +732,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2415">
           <caret line="105" column="14" selection-start-line="105" selection-start-column="14" selection-end-line="105" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/page/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="511">
-          <caret line="107" selection-start-line="107" selection-end-line="107" />
         </state>
       </provider>
     </entry>
@@ -880,13 +770,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/View/page/activity/activityEdit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="6" column="32" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/View/page/activity/activityAdd.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
@@ -898,16 +781,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="230">
           <caret line="10" column="31" lean-forward="true" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/page/news/map.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1292">
-          <caret line="113" column="56" selection-start-line="113" selection-start-column="56" selection-end-line="113" selection-end-column="56" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -942,9 +815,47 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="327">
           <caret line="259" column="148" selection-start-line="259" selection-start-column="148" selection-end-line="259" selection-end-column="148" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/page/system/systemnotice.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="43" column="24" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/page/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2461">
+          <caret line="107" selection-start-line="107" selection-end-line="107" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/page/activity/activityEdit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="6" column="32" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/page/news/map.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1292">
+          <caret line="113" column="56" selection-start-line="113" selection-start-column="56" selection-end-line="113" selection-end-column="56" />
           <folding>
-            <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/js/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="238" column="30" selection-start-line="238" selection-start-column="30" selection-end-line="238" selection-end-column="30" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
