@@ -272,7 +272,7 @@ layui.config({
 						area: '310px',
 						shade: 0.8,
 						id: 'LAY_layuipro',
-						btn: ['火速围观'],
+						btn: ['确定'],
 						moveType: 1,
 						content: '<div style="padding:15px 20px; text-align:justify; line-height: 22px; text-indent:2em;border-bottom:1px solid #e2e2e2;"><p>'+result.sysNotice+'</p></div>',
 						success: function(layero){

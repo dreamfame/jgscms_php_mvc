@@ -28,6 +28,10 @@ layui.config({
                 layer.close(index);
                 layer.msg("系统信息修改成功！");
                 window.sessionStorage.setItem("system",system);
+                $("#title").text($(".webName").val()+"-管理登录");
+                $(document).attr("title",$(".webTitle").val());
+                $(".logo").text($(".webName").val());
+                $(".layui-footer p").text($(".powerby").val());
             }
         })
  		return false;
