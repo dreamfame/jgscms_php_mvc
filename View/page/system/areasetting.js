@@ -29,7 +29,7 @@ layui.config({
         area += '"point2":"'+point2+'",';
         area += '"point3":"'+point3+'",';
         area += '"point4":"'+point4+'"}';
-        if((point1==""||point2==""||point3==""||point4=="")||(point1!=""&&point2!=""&&point3!=""&&point4!="")){
+        if((point1==""&&point2==""&&point3==""&&point4=="")||(point1!=""&&point2!=""&&point3!=""&&point4!="")){
             $.ajax({
                 data:JSON.parse(area),
                 url : "/index.php/system/JudgeOperate/area",

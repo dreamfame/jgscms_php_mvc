@@ -2,16 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c7749a1-70c7-404f-906e-a59d4ff055e3" name="默认的" comment="">
-      <change afterPath="$PROJECT_DIR$/Extensions/ConstantConfig.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/View/page/news/map.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Control/SystemControl.php" beforeDir="false" afterPath="$PROJECT_DIR$/Control/SystemControl.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/View/client_socket.php" beforeDir="false" afterPath="$PROJECT_DIR$/View/client_socket.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/View/json/PhotoList.json" beforeDir="false" afterPath="$PROJECT_DIR$/View/json/PhotoList.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/View/json/activityList.json" beforeDir="false" afterPath="$PROJECT_DIR$/View/json/activityList.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/View/json/area.json" beforeDir="false" afterPath="$PROJECT_DIR$/View/json/area.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/View/json/routeList.json" beforeDir="false" afterPath="$PROJECT_DIR$/View/json/routeList.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/system/areasetting.html" beforeDir="false" afterPath="$PROJECT_DIR$/View/page/system/areasetting.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/View/page/system/areasetting.js" beforeDir="false" afterPath="$PROJECT_DIR$/View/page/system/areasetting.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -154,7 +149,7 @@
         <counts>
           <entry key="css" value="34" />
           <entry key="html" value="5166" />
-          <entry key="js" value="14053" />
+          <entry key="js" value="14059" />
           <entry key="json" value="578" />
           <entry key="php" value="14723" />
           <entry key="xml" value="68" />
@@ -165,7 +160,7 @@
           <entry key="CSS" value="34" />
           <entry key="HTML" value="5167" />
           <entry key="JSON" value="578" />
-          <entry key="JavaScript" value="14053" />
+          <entry key="JavaScript" value="14059" />
           <entry key="PHP" value="14722" />
           <entry key="XML" value="68" />
         </counts>
@@ -252,11 +247,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/View/page/system/areasetting.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="26" column="31" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
+            <state relative-caret-position="361">
+              <caret line="31" column="48" selection-start-line="31" selection-start-column="48" selection-end-line="31" selection-end-column="48" />
             </state>
           </provider>
         </entry>
@@ -279,10 +274,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/View/page/news/map.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2023">
+            <state relative-caret-position="1510">
               <caret line="113" column="56" selection-start-line="113" selection-start-column="56" selection-end-line="113" selection-end-column="56" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -427,8 +422,8 @@
         <option value="$PROJECT_DIR$/View/json/area.json" />
         <option value="$PROJECT_DIR$/View/page/system/areasetting.html" />
         <option value="$PROJECT_DIR$/Control/SystemControl.php" />
-        <option value="$PROJECT_DIR$/View/page/system/areasetting.js" />
         <option value="$PROJECT_DIR$/View/page/news/map.html" />
+        <option value="$PROJECT_DIR$/View/page/system/areasetting.js" />
       </list>
     </option>
   </component>
@@ -560,12 +555,12 @@
       <workItem from="1545871817514" duration="24164000" />
       <workItem from="1546013090403" duration="895000" />
       <workItem from="1546046223005" duration="108000" />
-      <workItem from="1546048886956" duration="20089000" />
+      <workItem from="1546048886956" duration="20323000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="406110000" />
+    <option name="totallyTimeSpent" value="406344000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -912,13 +907,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/View/page/system/areasetting.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="26" column="31" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/View/json/area.json">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -928,11 +916,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/View/page/news/map.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2023">
+        <state relative-caret-position="1510">
           <caret line="113" column="56" selection-start-line="113" selection-start-column="56" selection-end-line="113" selection-end-column="56" />
           <folding>
             <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/page/system/areasetting.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="31" column="48" selection-start-line="31" selection-start-column="48" selection-end-line="31" selection-end-column="48" />
         </state>
       </provider>
     </entry>
