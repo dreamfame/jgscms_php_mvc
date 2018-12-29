@@ -55,7 +55,7 @@
 
         public function UpdateAreaJson(){
             $jsonfile = fopen("../View/json/area.json", "w") or die("Unable to open file!");
-            $jsonarray = array('area'=>$_REQUEST['area']);
+            $jsonarray = array('point1'=>$_REQUEST['point1'],'point2'=>$_REQUEST['point2'],'point3'=>$_REQUEST['point3'],'point4'=>$_REQUEST['point4']);
             if (flock($jsonfile, LOCK_EX)) {//加写锁 
                 ftruncate($jsonfile, 0); // 将文件截断到给定的长度 
                 rewind($jsonfile); // 倒回文件指针的位置 

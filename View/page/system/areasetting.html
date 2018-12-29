@@ -22,39 +22,40 @@
     <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
         <legend>区域设置</legend>
     </fieldset>
-    <table class="layui-table">
-        <colgroup>
-            <col width="30%">
-            <col width="70%">
-        </colgroup>
-        <thead>
-        <tr>
-            <th>选项</th>
-            <th>区域</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>
-                <div style=" border: 2px solid #ddd; overflow: auto;">
-                    <ul id="area_tree"></ul>
-                </div>
-            </td>
-            <td>
-               <textarea id="content" name="content" style="resize:none;padding: 10px;border: 2px solid #ddd;" placeholder="所选内容" class="layui-textarea"></textarea>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-    <div class="layui-form-item" style="text-align: center;">
+    <div class="layui-form-item">
         <div class="layui-input-block">
-            <button class="layui-btn" lay-submit="" lay-filter="area">立即提交</button>
-            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            <iframe id="map" class="flexiframe" width="90%" frameborder="no" border="0" marginwidth="0" marginheight="0" src="/page/news/map.html"></iframe>
         </div>
     </div>
+    <div class="layui-form-item" style="text-align: left;">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit="" lay-filter="area">立即提交</button>
+        </div>
+    </div>
+    <input type="hidden" id="point1" value=""/>
+    <input type="hidden" id="point2" value=""/>
+    <input type="hidden" id="point3" value="">
+    <input type="hidden" id="point4" value=""/>
 </form>
+
 <script type="text/javascript" src="../../laydate/laydate.js"></script>
 <script type="text/javascript" src="../../layui/layui.js"></script>
 <script type="text/javascript" src="areasetting.js"></script>
+<script type="text/javascript" src="/Media/Js/jquery-2.1.1.min.js"></script>
+<script>
+    function flexframe(h) {
+        $(".flexiframe").attr("height",h+"px");
+    }
+    setInterval(function () {
+        var h = 0;
+        var a = $(window.parent.document).find(".layui-body").height();
+        h = a-111;
+        flexframe(h);
+    }, 200)
+
+    function setPoint(num,content){
+        $("#point"+num).val(content);
+    }
+</script>
 </body>
 </html>

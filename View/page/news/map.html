@@ -1,0 +1,286 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>设置地图当前行政区</title>
+    <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" />
+    <style>
+        html,
+        body,
+        #container {
+            width: 100%;
+            height: 100%;
+        }
+        .input-item .btn{
+            margin-right: .3rem;
+        }
+        .input-item .btn:last-child{
+            margin-right: 0;
+        }
+    </style>
+</head>
+
+<body onload="gotoCity()">
+<div id="container"></div>
+<div class="input-card" style="width:24rem;">
+    <h4>点击地图选择4个点完成区域设置：</h4>
+    <div class="input-item">
+        点1：<input type="text" readonly="true" id="lnglat1">
+    </div>
+    <div class="input-item">
+        点2：<input type="text" readonly="true" id="lnglat2">
+    </div>
+    <div class="input-item">
+        点3：<input type="text" readonly="true" id="lnglat3">
+    </div>
+    <div class="input-item">
+        点4：<input type="text" readonly="true" id="lnglat4">
+    </div>
+    <div class="input-item">
+        <button class="btn" id="query">回到井冈山风景名胜区</button>
+        <button class="btn" id="clear">清空标记</button>
+        <button class="btn" id="reset">重置</button>
+    </div>
+    <div id="clear_btn" class="input-item">
+        <button class="btn" id="del1">删除点1</button>
+        <button class="btn" id="del2">删除点2</button>
+        <button class="btn" id="del3">删除点3</button>
+        <button class="btn" id="del4">删除点4</button>
+    </div>
+</div>
+
+<script src="https://webapi.amap.com/maps?v=1.4.12&key=be6f3448d40c5b3ed6c161e97a3168db"></script>
+<script src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script>
+<script>
+    var marker1,marker2,marker3,marker4,map = new AMap.Map('container', {
+        resizeEnable: true,
+    });
+    document.querySelector('#reset').onclick = initPoint;
+
+    function initPoint(){
+        if(window.sessionStorage.getItem("area")!=""){
+            var data = JSON.parse(window.sessionStorage.getItem("area"));
+            if(data!=null) {
+                var point1 = data.point1;
+                var lng1 = point1.split(",")[0];
+                var lat1 = point1.split(",")[1];
+                var point2 = data.point2;
+                var lng2 = point2.split(",")[0];
+                var lat2 = point2.split(",")[1];
+                var point3 = data.point3;
+                var lng3 = point3.split(",")[0];
+                var lat3 = point3.split(",")[1];
+                var point4 = data.point4;
+                var lng4 = point4.split(",")[0];
+                var lat4 = point4.split(",")[1];
+                if(!marker1)
+                {
+                    marker1 = new AMap.Marker({
+                        icon: "//a.amap.com/jsapi_demos/static/demo-center/icons/poi-marker-red.png",
+                        position: [lng1, lat1],
+                        offset: new AMap.Pixel(-28, -60)
+                    });
+                    marker1.setMap(map);
+                    document.getElementById("lnglat1").value = point1;
+                    window.parent.setPoint(1,point1);
+                }
+                if(!marker2)
+                {
+                    marker2 = new AMap.Marker({
+                        icon: "//a.amap.com/jsapi_demos/static/demo-center/icons/poi-marker-red.png",
+                        position: [lng2, lat2],
+                        offset: new AMap.Pixel(-28, -60)
+                    });
+                    marker2.setMap(map);
+                    document.getElementById("lnglat2").value = point2;
+                    window.parent.setPoint(2,point2);
+                }
+                if(!marker3){
+                    marker3 = new AMap.Marker({
+                        icon: "//a.amap.com/jsapi_demos/static/demo-center/icons/poi-marker-red.png",
+                        position: [lng3, lat3],
+                        offset: new AMap.Pixel(-28, -60)
+                    });
+                    marker3.setMap(map);
+                    document.getElementById("lnglat3").value = point3;
+                    window.parent.setPoint(3,point3);
+                }
+                if(!marker4){
+                    marker4 = new AMap.Marker({
+                        icon: "//a.amap.com/jsapi_demos/static/demo-center/icons/poi-marker-red.png",
+                        position: [lng4, lat4],
+                        offset: new AMap.Pixel(-28, -60)
+                    });
+                    marker4.setMap(map);
+                    document.getElementById("lnglat4").value = point4;
+                    window.parent.setPoint(4,point4);
+                }
+            }
+            else{
+                alert("区域数据有问题");
+            }
+        }
+        else{
+            alert("区域还未设置");
+        }
+
+    }
+
+
+    //根据cityname、adcode、citycode设置地图位置
+    document.querySelector('#query').onclick = gotoArea;
+
+    function gotoArea(){
+        var zoom = 11;
+        var lng = 114.285923;
+        var lat = 26.621764;
+        map.setZoomAndCenter(zoom, [lng, lat]);
+    }
+    function gotoCity() {
+        //var val = "井冈山";
+        //map.setCity(val);
+        var zoom = 11;
+        var lng = 114.285923;
+        var lat = 26.621764;
+        map.setZoomAndCenter(zoom, [lng, lat]);
+        log.info(`已跳转至井冈山风景名胜区`);
+        map.setDefaultCursor("default");
+        initPoint();
+
+        //window.parent.parent.fillData(213);
+        ///限制地图范围
+        /*var mybounds = new AMap.Bounds([113.920729, 26.495447], [114.385244,26.694687]);
+        map.setLimitBounds(mybounds);
+        var limitBounds = map.getLimitBounds();
+        if (limitBounds) {
+            log.info("东经："+limitBounds.northeast.toString()+" ,南纬"+limitBounds.southwest.toString());
+        }*/
+    }
+
+    map.on('click', function(e) {
+        if(!marker1)
+        {
+            marker1 = new AMap.Marker({
+                icon: "//a.amap.com/jsapi_demos/static/demo-center/icons/poi-marker-red.png",
+                position: [e.lnglat.getLng(),e.lnglat.getLat()],
+                offset: new AMap.Pixel(-28, -60)
+                });
+            marker1.setMap(map);
+            document.getElementById("lnglat1").value = e.lnglat.getLng() + ',' + e.lnglat.getLat();
+            window.parent.setPoint(1,e.lnglat.getLng() + ',' + e.lnglat.getLat());
+        }
+        else{
+            if(!marker2)
+            {
+                marker2 = new AMap.Marker({
+                    icon: "//a.amap.com/jsapi_demos/static/demo-center/icons/poi-marker-red.png",
+                    position: [e.lnglat.getLng(),e.lnglat.getLat()],
+                    offset: new AMap.Pixel(-28, -60)
+                });
+                marker2.setMap(map);
+                document.getElementById("lnglat2").value = e.lnglat.getLng() + ',' + e.lnglat.getLat();
+                window.parent.setPoint(2,e.lnglat.getLng() + ',' + e.lnglat.getLat());
+            }
+            else{
+                if(!marker3)
+                {
+                    marker3 = new AMap.Marker({
+                        icon: "//a.amap.com/jsapi_demos/static/demo-center/icons/poi-marker-red.png",
+                        position: [e.lnglat.getLng(),e.lnglat.getLat()],
+                        offset: new AMap.Pixel(-28, -60)
+                    });
+                    marker3.setMap(map);
+                    document.getElementById("lnglat3").value = e.lnglat.getLng() + ',' + e.lnglat.getLat();
+                    window.parent.setPoint(3,e.lnglat.getLng() + ',' + e.lnglat.getLat());
+                }
+                else{
+                    if(!marker4)
+                    {
+                        marker4 = new AMap.Marker({
+                            icon: "//a.amap.com/jsapi_demos/static/demo-center/icons/poi-marker-red.png",
+                            position: [e.lnglat.getLng(),e.lnglat.getLat()],
+                            offset: new AMap.Pixel(-28, -60)
+                        });
+                        marker4.setMap(map);
+                        document.getElementById("lnglat4").value = e.lnglat.getLng() + ',' + e.lnglat.getLat();
+                        window.parent.setPoint(4,e.lnglat.getLng() + ',' + e.lnglat.getLat());
+                    }
+                }
+            }
+        }
+    });
+
+    document.querySelector('#del1').onclick = delMarker;
+    document.querySelector('#del2').onclick = delMarker;
+    document.querySelector('#del3').onclick = delMarker;
+    document.querySelector('#del4').onclick = delMarker;
+
+    function delMarker()
+    {
+        if(this.id=="del1"){
+            if (marker1) {
+                marker1.setMap(null);
+                marker1 = null;
+            }
+            document.getElementById("lnglat1").value = "";
+            window.parent.setPoint(1,"");
+        }
+        if(this.id=="del2"){
+            if (marker2) {
+                marker2.setMap(null);
+                marker2 = null;
+            }
+            document.getElementById("lnglat2").value = "";
+            window.parent.setPoint(2,"");
+        }
+        if(this.id=="del3"){
+            if (marker3) {
+                marker3.setMap(null);
+                marker3 = null;
+            }
+            document.getElementById("lnglat3").value = "";
+            window.parent.setPoint(3,"");
+        }
+        if(this.id=="del4"){
+            if (marker4) {
+                marker4.setMap(null);
+                marker4 = null;
+            }
+            document.getElementById("lnglat4").value = "";
+            window.parent.setPoint(4,"");
+        }
+    }
+
+    document.querySelector('#clear').onclick = clearMarker;
+    function clearMarker(){
+        if (marker1) {
+            marker1.setMap(null);
+            marker1 = null;
+        }
+        if (marker2) {
+            marker2.setMap(null);
+            marker2 = null;
+        }
+        if (marker3) {
+            marker3.setMap(null);
+            marker3 = null;
+        }
+        if (marker4) {
+            marker4.setMap(null);
+            marker4 = null;
+        }
+        document.getElementById("lnglat1").value = "";
+        document.getElementById("lnglat2").value = "";
+        document.getElementById("lnglat3").value = "";
+        document.getElementById("lnglat4").value = "";
+        window.parent.setPoint(1,"");
+        window.parent.setPoint(2,"");
+        window.parent.setPoint(3,"");
+        window.parent.setPoint(4,"");
+    }
+</script>
+</body>
+
+</html>
