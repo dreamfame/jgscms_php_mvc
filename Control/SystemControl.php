@@ -1,5 +1,7 @@
 <?php
     require_once '../Model/System.php';
+    include '../PHPMailer-master/class.phpmailer.php';
+    include '../PHPMailer-master/class.smtp.php';
 	header("Content-Type: text/html;charset=utf-8");
 	Class SystemControl
     {
@@ -14,6 +16,9 @@
                     break;
                 case "area":
                     SystemControl::UpdateAreaJson();
+                    break;
+                case "bug":
+                    SystemControl::SendBugToEmail();
                     break;
             }
         }
@@ -63,6 +68,44 @@
                 flock($jsonfile, LOCK_UN); //解锁 
             }
             fclose($jsonfile);
+        }
+
+        public function SendBugToEmail()
+        {
+            $re = array('state'=>'0','content'=>null);
+            $title = $_REQUEST['title'];
+            $content = $_REQUEST['content'];
+            $mail = new PHPMailer();
+            $mail->isSMTP();
+            $mail->Host = "smtp.163.com";
+            $mail->SMTPAuth = true;
+            $mail->Username = "liuliuonlai@163.com";
+            $mail->Password = "ll92712";
+            $mail->From = "liuliuonlai@163.com";
+            $mail->Port = 25;
+            $mail->FromName = "系统邮件";
+            $mail->CharSet = "UTF-8";
+            $mail->Encoding = "base64";
+            $mail->addAddress("406384958@qq.com");
+            $mail->WordWrap = 50;
+            $mail->isHTML(true);
+            $mail->Subject = $title;
+            $body = $content;
+            $mail->Body= $body;
+            $mail->AltBody ="text/html";
+            $result = $mail->send();
+            if($result)
+            {
+                $re["state"] = "1";
+                $re["content"] = "邮箱发送成功！";
+                echo json_encode($re);
+            }
+            else{
+                $re["state"] = "0";
+                $re["content"] = "邮件发送有误，邮件错误信息：".$mail->ErrorInfo;
+                echo json_encode($re);
+                exit;
+            }
         }
     }
 ?>

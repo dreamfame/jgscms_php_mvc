@@ -1,10 +1,21 @@
 layui.config({
 	base : "js/"
-}).use(['form','element','layer','jquery'],function(){
+}).use(['form','element','layer','jquery','util'],function(){
 	var form = layui.form(),
 		layer = parent.layer === undefined ? layui.layer : parent.layer,
 		element = layui.element(),
+        util = layui.util;
 		$ = layui.jquery;
+
+    util.fixbar({
+        bar1: true
+        ,click: function(type){
+            if(type === 'bar1'){
+                console.log($("#sendBug"));
+                $("#sendBug").click();
+            }
+        }
+    })
 
 	$(".panel a").on("click",function(){
         var id = $(this).attr("id");
