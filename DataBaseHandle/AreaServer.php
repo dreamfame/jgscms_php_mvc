@@ -25,7 +25,7 @@
 		}
 
         public function GetShow(){
-            $sql = "select * from ".$this->db_table." where isshow = 1 order by created_at desc";
+            $sql = "select * from ".$this->db_table." where isshow = 1 order by created_at,top desc";
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
         }

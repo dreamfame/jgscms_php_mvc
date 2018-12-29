@@ -75,7 +75,7 @@
         public function GetAll()
         {
             $ss = new PhotoServer();
-            $result = $ss->GetAll();
+            $result = $ss->GetShow();
             $re = array('state'=>'0','content'=>"未获取数据");
             while ($n = mysqli_fetch_array($result)) {
                 $re['state'] = '1';

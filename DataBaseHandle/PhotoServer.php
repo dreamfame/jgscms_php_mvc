@@ -24,6 +24,12 @@
             return $result;
 		}
 
+        public function GetShow(){
+            $sql = "select * from ".$this->db_table." order by created_at,top desc";
+            $result = $this->db->ExeSql($sql, $this->conn);
+            return $result;
+        }
+
         public function GetName(){
             $sql = "select id,name from ".$this->db_table;
             $result = $this->db->ExeSql($sql, $this->conn);

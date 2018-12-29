@@ -73,11 +73,14 @@ layui.config({
         }
     });
 
+    var pic_src = JSON.parse( window.sessionStorage.getItem("edit_news"))['pic'];
+
     layui.upload({
         url: '/index.php/picture/JudgeOperate/uploadImg'
         ,success: function(res){
             if(res.code==0){
                 $("#pic").attr("src",res.data.src);
+                pic_src = res.data.src;
             }
             console.log(res); //上传成功返回值，必须为json格式
         }
@@ -116,7 +119,6 @@ layui.config({
  	form.on("submit(editNews)",function(data){
 	 	//显示、审核状态
         var content = layedit.getContent(editIndex);
-        var pic = $("#pic")[0].src;
         editNews = '{"id":"'+json_data['id']+'",';
         editNews += '"title":"'+data.field.title+'",';  //文章名称
         editNews += '"type":"'+$(".newsLook option:selected").val()+'",'; //文章分类
@@ -124,7 +126,7 @@ layui.config({
         editNews += '"operator":"'+data.field.operator+'",'; //文章作者
         editNews += '"keyword":"'+ data.field.keyword +'",'; //关键字
         editNews += '"abstract":"'+ data.field.abstract +'",'; //摘要
-        editNews += '"pic":"'+ pic +'",'; //图片
+        editNews += '"pic":"'+ pic_src +'",'; //图片
 		content = content.replace(/\"/g,"'");
         editNews += '"content":"'+ content +'"}'; //内容
  		//弹出loading
