@@ -360,7 +360,7 @@ layui.config({
 					dataHtml += '<tr>'
 			    	+'<td><input type="checkbox" name="checked" lay-skin="primary" lay-filter="choose"></td>'
 			    	+'<td align="left">'+name+'</td>'
-					+'<td><a href="#" onclick="fileSelect('+currData[i].id+')"><img id="am'+currData[i].id+'" src="'+area_map+'" height="200" /></a></td>'
+					+'<td><a href="#" onclick="fileSelect('+currData[i].id+')"><img id="am'+currData[i].id+'" src="'+area_map+'" width="200" height="200" /></a></td>'
                     +'<td>'+see+'</td>'
 			    	+'<td><input type="checkbox" name="show" id="aa" lay-skin="switch" data-id="'+data[i].id+'" lay-text="是|否" lay-filter="isShow"'+show+'></td>'
                     +'<td><input type="checkbox" name="top" lay-skin="switch" data-id="'+data[i].id+'" lay-text="是|否" lay-filter="isTop"'+top+'></td>'
