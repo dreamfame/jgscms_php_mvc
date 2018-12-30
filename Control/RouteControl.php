@@ -234,7 +234,7 @@
             $result=$as->BatchDeleteRoute($str);
             $re = array('state'=>'0','content'=>'删除失败');
             if($result) {
-                NewsControl::UpdateRouteJson();
+                RouteControl::UpdateRouteJson();
                 $re['state']='1';
                 $re['content']='删除成功';
             }

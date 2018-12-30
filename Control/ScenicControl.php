@@ -263,7 +263,7 @@
             $result=$as->BatchDeleteScenic($str);
             $re = array('state'=>'0','content'=>'删除失败');
             if($result) {
-                NewsControl::UpdateScenicJson();
+                ScenicControl::UpdateScenicJson();
                 $re['state']='1';
                 $re['content']='删除成功';
             }

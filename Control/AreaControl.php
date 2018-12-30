@@ -264,7 +264,7 @@
             $result=$as->BatchDeleteArea($str);
             $re = array('state'=>'0','content'=>'删除失败');
             if($result) {
-                NewsControl::UpdateAreaJson();
+                AreaControl::UpdateAreaJson();
                 $re['state']='1';
                 $re['content']='删除成功';
             }

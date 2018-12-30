@@ -140,10 +140,13 @@ layui.config({
                     var delinfo = []
 	            	for(var j=0;j<$checked.length;j++){
 	            		for(var i=0;i<activityData.length;i++){
-							if(activityData[i].id == $checked.eq(j).parents("tr").find(".activity_del").attr("data-id")){
-								delinfo.push(activityData[i].id);
-							    activityData.splice(i,1);
-								activityList(activityData);
+	            		    var n = $checked.eq(j).parents("tr").find(".activity_del").attr("data-id");
+							if(activityData[i].id == activityData[n].id){
+							    if(activityData[i].num<=0) {
+                                    delinfo.push(activityData[i].id);
+                                    activityData.splice(i, 1);
+                                    activityList(activityData);
+                                }
 							}
 						}
 	            	}
@@ -154,7 +157,7 @@ layui.config({
                     url: "/index.php/activity/JudgeOperate/batchDel",
                     success: function (result) {
                         if(result.state=="1"){
-                            $('.news_list thead input[type="checkbox"]').prop("checked",false);
+                            $('.activity_list thead input[type="checkbox"]').prop("checked",false);
                             form.render();
                             layer.close(index);
                             layer.msg("删除成功");
@@ -265,36 +268,44 @@ layui.config({
 
     $("body").on("click",".activity_del",function(){  //删除
         var _this = $(this);
-        layer.confirm('确定删除此信息？',{icon:3, title:'提示信息'},function(index){
-            //_this.parents("tr").remove();
-            var url = "/index.php/activity/JudgeOperate/del";
-            $.ajax({
-                data: {"id":_this.attr("data-id")},
-                type: "POST",
-                dataType: "JSON",
-                url: url,
-                beforeSend: function () {
+        var n = _this.attr("data-id")
+        var id = activityData[n].id;
+        var num = activityData[n].num;
+        if(num<=0){
+            layer.confirm('确定删除此信息？',{icon:3, title:'提示信息'},function(index){
+                //_this.parents("tr").remove();
+                var url = "/index.php/activity/JudgeOperate/del";
+                $.ajax({
+                    data: {"id":id},
+                    type: "POST",
+                    dataType: "JSON",
+                    url: url,
+                    beforeSend: function () {
 
-                },
-                complete: function () {
+                    },
+                    complete: function () {
 
-                },
-                success: function (result) {
-                    if(result.state=="1"){
-                        for(var i=0;i<activityData.length;i++){
-                            if(activityData[i].id == _this.attr("data-id")){
-                                activityData.splice(i,1);
-                                activityList(activityData);
+                    },
+                    success: function (result) {
+                        if(result.state=="1"){
+                            for(var i=0;i<activityData.length;i++){
+                                if(activityData[i].id == id){
+                                    activityData.splice(i,1);
+                                    activityList(activityData);
+                                }
                             }
                         }
+                    },
+                    error:function(data){
+                        console.log(data.responseText);
                     }
-                },
-                error:function(data){
-                    console.log(data.responseText);
-                }
-            })
-            layer.close(index);
-        });
+                })
+                layer.close(index);
+            });
+        }
+        else{
+            layer.msg("此活动已有人报名参加，不能删除，请与活动人员做好协商");
+        }
     })
 
 	function activityList(that){
@@ -327,7 +338,7 @@ layui.config({
 			    	+'<td>'
                     +  '<a class="layui-btn layui-btn-warm layui-btn-mini activity_person" data-id="'+i+'"><i class="layui-icon">&#xe612;</i> 查看参与者</a>'
 					+  '<a class="layui-btn layui-btn-mini activity_edit" data-id="'+i+'"><i class="iconfont icon-edit"></i> 编辑</a>'
-					+  '<a class="layui-btn layui-btn-danger layui-btn-mini activity_del" data-id="'+data[i].id+'"><i class="layui-icon">&#xe640;</i> 删除</a>'
+					+  '<a class="layui-btn layui-btn-danger layui-btn-mini activity_del" data-id="'+i+'"><i class="layui-icon">&#xe640;</i> 删除</a>'
 			        +'</td>'
 			    	+'</tr>';
 				}

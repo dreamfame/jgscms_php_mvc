@@ -193,7 +193,7 @@ layui.config({
                     url: "/index.php/scenic/JudgeOperate/batchDel",
                     success: function (result) {
                         if(result.state=="1"){
-                            $('.news_list thead input[type="checkbox"]').prop("checked",false);
+                            $('.scenic_list thead input[type="checkbox"]').prop("checked",false);
                             form.render();
                             layer.close(index);
                             layer.msg("删除成功");

@@ -111,18 +111,37 @@ layui.config({
         var $checked = $('#Images li input[type="checkbox"]:checked');
         if($checkbox.is(":checked")){
             layer.confirm('确定删除选中的图片？',{icon:3, title:'提示信息'},function(index){
-                var index = layer.msg('删除中，请稍候',{icon: 16,time:false,shade:0.8});
-                setTimeout(function(){
-                    //删除数据
-                    $checked.each(function(){
-                        $(this).parents("li").hide(1000);
-                        setTimeout(function(){$(this).parents("li").remove();},950);
-                    })
-                    $('#Images li input[type="checkbox"]').prop("checked",false);
-                    form.render();
-                    layer.close(index);
-                    layer.msg("删除成功");
-                },2000);
+                var index = top.layer.msg('删除中，请稍候',{icon: 16,time:false,shade:0.8});
+                var delinfo = [];
+                for(var j=0;j<$checked.length;j++){
+                    for(var i=0;i<imagesData.length;i++){
+                        if(imagesData[i].id == $checked.eq(j).parents("div.operate").find(".img_del").attr("data-id")){
+                            delinfo.push(imagesData[i].id);
+                            imagesData.splice(i,1);
+                        }
+                    }
+                }
+                $.ajax({
+                    data: {"del_id":delinfo},
+                    type: "POST",
+                    dataType: "JSON",
+                    url: "/index.php/img/JudgeOperate/batchDel",
+                    success: function (result) {
+                        if(result.state=="1"){
+                            $checked.each(function(){
+                                $(this).parents("li").hide(400);
+                                $(this).parents("li").remove();
+                            })
+                            $('#Images li input[type="checkbox"]').prop("checked",false);
+                            form.render();
+                            top.layer.close(index);
+                            layer.msg("删除成功");
+                        }
+                    },
+                    error:function(data){
+                        console.log(data.responseText);
+                    }
+                })
             })
         }else{
             layer.msg("请选择需要删除的图片");
