@@ -134,6 +134,8 @@ error_reporting(0);
             return;
         }
 
+
+
 		public function UpdateNewsJson(){
             $ns = new NewsServer();
             $result = $ns->GetAll();
