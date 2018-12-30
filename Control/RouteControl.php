@@ -130,7 +130,7 @@
         public function GetRoute(){
             $wherelist = array();
             if($_REQUEST['id']!=""||$_REQUEST['id']!=null){
-                $wherelist[] = "id = '{$_REQUEST['id']}'";
+                $wherelist[] = "route.id = '{$_REQUEST['id']}'";
             }
             if($_REQUEST['name']!=""||$_REQUEST['name']!=null){
                 $wherelist[] = "name like '%{$_REQUEST['name']}%'";
