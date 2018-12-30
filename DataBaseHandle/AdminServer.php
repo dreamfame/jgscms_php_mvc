@@ -110,7 +110,7 @@
         }
 
 		public function GetAll(){
-            $sql = "select id,username,nickname,phone,email,age,status,role from ".$this->db_table." where id <> 1";
+            $sql = "select id,username,nickname,phone,email,age,status,role from ".$this->db_table." where role <> '系统管理员'";
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
 		}
