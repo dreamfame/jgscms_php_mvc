@@ -209,7 +209,7 @@
             $Photo->img7 = "";
             $Photo->img8 = "";
             $Photo->img9 = "";
-            for($i=1;$i<=$images;$i++)
+            for($i=1;$i<=count($images);$i++)
             {
                 $img = "img".$i;
                 $Photo->$img = $images[$i-1];
