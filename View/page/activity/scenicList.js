@@ -53,7 +53,7 @@ layui.config({
         var data = eval('(' + data + ')');
         if(data.state=="0")
         {
-            var dataHtml = '<tr><td colspan="9">暂无数据</td></tr>';
+            var dataHtml = '<tr><td colspan="10">暂无数据</td></tr>';
             $(".scenic_content").html(dataHtml);
             $('.scenic_list thead input[type="checkbox"]').prop("checked",false);
             form.render();
@@ -372,6 +372,7 @@ layui.config({
 			}
 			if(currData.length != 0){
 				for(var i=0;i<currData.length;i++){
+                    var pic = currData[i].pic==''?'-':currData[i].pic;
                     var name = currData[i].name==''?'-':currData[i].name;
                     var area_name = currData[i].area_name==''?'-':currData[i].area_name;
                     var see = currData[i].see==''?'-':currData[i].see;
@@ -382,6 +383,7 @@ layui.config({
 					dataHtml += '<tr>'
 			    	+'<td><input type="checkbox" name="checked" lay-skin="primary" lay-filter="choose"></td>'
 			    	+'<td align="left">'+name+'</td>'
+                    +'<td><a href="#" onclick="fileSelect('+currData[i].id+')"><img id="am'+currData[i].id+'" src="'+pic+'" width="200" height="200" /></a></td>'
                     +'<td>'+area_name+'</td>'
                     +'<td>'+see+'</td>'
 			    	+'<td><input type="checkbox" name="show" lay-skin="switch" data-id="'+data[i].id+'" lay-text="是|否" lay-filter="isShow"'+show+'></td>'
@@ -396,7 +398,7 @@ layui.config({
 			    	+'</tr>';
 				}
 			}else{
-				dataHtml = '<tr><td colspan="9">暂无数据</td></tr>';
+				dataHtml = '<tr><td colspan="10">暂无数据</td></tr>';
 			}
 		    return dataHtml;
 		}

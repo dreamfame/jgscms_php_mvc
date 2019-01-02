@@ -37,22 +37,29 @@
 		</div>
 	</blockquote>
 	<div class="layui-form scenic_list">
+		<form id="uploadForm" action="/index.php/scenic/JudgeOperate/pic" method="post" target="myiframe" enctype="multipart/form-data" style="width:auto;display:none;">
+			<input id="scenicid" name="scenicid" type="hidden" />
+			<input type="file" accept="image/gif, image/jpeg,image/png" name="uploadfile" id="uploadfile" onchange="fileSelected();" style="display:none;">
+		</form>
+		<iframe id="myiframe" name="myiframe" style="display:none;"></iframe>
 	  	<table class="layui-table" lay-data="{initSort:{field:'time', type:'desc'}}">
 		    <colgroup>
 				<col width="50">
+				<col width="10%">
 				<col>
 				<col width="10%">
 				<col width="10%">
+				<col width="7%">
 				<col width="10%">
 				<col width="10%">
-				<col width="10%">
-				<col width="10%">
-				<col width="25%">
+				<col width="7%">
+				<col width="20%">
 		    </colgroup>
 		    <thead>
 				<tr>
 					<th><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose" id="allChoose"></th>
 					<th style="text-align:left;">景点</th>
+					<th>景点图片</th>
 					<th>所在景区</th>
 					<th>浏览量</th>
 					<th>是否展示</th>
@@ -69,5 +76,6 @@
 	<script type="text/javascript" src="../../laydate/laydate.js"></script>
 	<script type="text/javascript" src="../../layui/layui.js"></script>
 	<script type="text/javascript" src="scenicList.js"></script>
+	<script type="text/javascript" src="scenicPic.js"></script>
 </body>
 </html>

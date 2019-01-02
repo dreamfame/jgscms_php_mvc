@@ -63,6 +63,22 @@ layui.config({
         }
     });
 
+    var sys = window.sessionStorage.getItem("system");
+    $("#pic").attr("src",JSON.parse(sys).defaultPic);
+
+    var pic_src = "";
+
+    layui.upload({
+        url: '/index.php/picture/JudgeOperate/uploadImg'
+        ,success: function(res){
+            if(res.code==0){
+                pic_src = res.data.src;
+                $("#pic").attr("src",res.data.src);
+            }
+            console.log(res); //上传成功返回值，必须为json格式
+        }
+    });
+
     var area = JSON.parse(window.sessionStorage.getItem("area_id_name"));
     for(var i= 0;i<area.length;i++){
         $(".newsLook").append("<option value='"+area[i].id+"'>"+area[i].name+"</option>");
@@ -78,12 +94,16 @@ layui.config({
  		var show = data.field.show=="on" ? 1 : 0,
  			topstr = data.field.top=="on" ? 1 : 0;
         var content = layedit.getContent(editIndex);
- 		addScenic = '{"name":"'+data.field.sname+'",';  //文章名称
+        if(pic_src==""){
+            pic_src = JSON.parse(sys).defaultPic;
+        }
+ 		addScenic = '{"name":"'+data.field.sname+'",';
         addScenic += '"area_id":"'+$(".newsLook option:selected").val()+'",';
- 		addScenic += '"created_at":"'+data.field.created_at+'",'; //发布时间
- 		addScenic += '"show":"'+ show +'",';  //是否展示
- 		addScenic += '"top":"'+ topstr +'",'; //是否置顶
-        addScenic += '"brief":"'+ data.field.brief +'",'; //简介
+ 		addScenic += '"created_at":"'+data.field.created_at+'",';
+ 		addScenic += '"show":"'+ show +'",';
+ 		addScenic += '"top":"'+ topstr +'",';
+        addScenic += '"pic":"'+ pic_src +'",';
+        addScenic += '"brief":"'+ data.field.brief +'",';
         addScenic += '"see":"'+ 0 +'",';
         addScenic += '"recommend":"'+ data.field.recommend +'",';
 		content = content.replace(/\"/g,"'");

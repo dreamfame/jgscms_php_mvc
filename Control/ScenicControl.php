@@ -49,6 +49,9 @@
                 case "verify_id_name":
                     ScenicControl::VerifyIdName();
                     break;
+                case "pic":
+                    ScenicControl::UploadPic();
+                    break;
 			}
 		}
 
@@ -60,7 +63,7 @@
             $jsonfile = fopen("../View/json/scenicList.json", "w") or die("Unable to open file!");
             while ($n = mysqli_fetch_array($result)) {
                 $re['state'] = '1';
-                $row[] = array('id' => $n['id'],'area_id'=>$n['area_id'],'area_name'=>$n['area_name'] ,'name' => $n['name'], 'brief' => $n['brief'], 'intro' => $n['intro'], 'see' => $n['see'], 'top' => $n['top'],'show'=>$n['isshow'],'created_at'=>$n['created_at'],'updated_at'=>$n['updated_at'],'recommend'=>$n['recommend']);
+                $row[] = array('id' => $n['id'],'pic'=>$n['pic'],'area_id'=>$n['area_id'],'area_name'=>$n['area_name'] ,'name' => $n['name'], 'brief' => $n['brief'], 'intro' => $n['intro'], 'see' => $n['see'], 'top' => $n['top'],'show'=>$n['isshow'],'created_at'=>$n['created_at'],'updated_at'=>$n['updated_at'],'recommend'=>$n['recommend']);
                 $re['content'] = $row;
                 if (flock($jsonfile, LOCK_EX)) {//加写锁 
                     ftruncate($jsonfile, 0); // 将文件截断到给定的长度 
@@ -81,7 +84,7 @@
             $re = array('state'=>'0','content'=>"未获取数据");
             while ($n = mysqli_fetch_array($result)) {
                 $re['state'] = '1';
-                $row[] = array('id' => $n['id'],'area_id'=>$n['area_id'],'area_name'=>$n['area_name'] ,'name' => $n['name'], 'brief' => $n['brief'], 'intro' => $n['intro'], 'see' => $n['see'], 'top' => $n['top'],'show'=>$n['isshow'],'created_at'=>$n['created_at'],'updated_at'=>$n['updated_at'],'recommend'=>$n['recommend']);
+                $row[] = array('id' => $n['id'],'pic'=>$n['pic'],'area_id'=>$n['area_id'],'area_name'=>$n['area_name'] ,'name' => $n['name'], 'brief' => $n['brief'], 'intro' => $n['intro'], 'see' => $n['see'], 'top' => $n['top'],'show'=>$n['isshow'],'created_at'=>$n['created_at'],'updated_at'=>$n['updated_at'],'recommend'=>$n['recommend']);
                 $re['content'] = $row;
             }
             echo json_encode($re,JSON_UNESCAPED_UNICODE);
@@ -137,7 +140,7 @@
             while ($n = mysqli_fetch_array($result))
             {
                 $re['state'] = '1';
-                $row[] = array('id' => $n['id'],'area_name'=>$n['area_name'] ,'name' => $n['name'], 'brief' => $n['brief'], 'intro' => $n['intro'], 'see' => $n['see'], 'top' => $n['top'],'show'=>$n['isshow'],'created_at'=>$n['created_at'],'updated_at'=>$n['updated_at'],'recommend'=>$n['recommend']);
+                $row[] = array('id' => $n['id'],'pic'=>$n['pic'],'area_id'=>$n['area_id'],'area_name'=>$n['area_name'] ,'name' => $n['name'], 'brief' => $n['brief'], 'intro' => $n['intro'], 'see' => $n['see'], 'top' => $n['top'],'show'=>$n['isshow'],'created_at'=>$n['created_at'],'updated_at'=>$n['updated_at'],'recommend'=>$n['recommend']);
                 $re['content'] = $row;
             }
             echo json_encode($re,JSON_UNESCAPED_UNICODE);
@@ -210,6 +213,7 @@
             $scenic->updated_at = $_REQUEST['created_at'];
             $scenic->brief = $_REQUEST['brief'];
             $scenic->recommend = $_REQUEST['recommend'];
+            $scenic->pic = $_REQUEST['pic'];
             $scenic->see = 0;
 			$ss = new ScenicServer();
             $re = array('state'=>'0','content'=>'添加失败');
@@ -302,6 +306,59 @@
                 $re['content']='修改成功';
             }
             echo  json_encode($re,JSON_UNESCAPED_UNICODE);
+        }
+
+        public function UploadPic(){
+            $re = array('state'=>'0','content'=>'');
+            $src = "";
+            $id = $_REQUEST['scenicid'];
+            $allowedExts = array("gif", "jpeg", "jpg", "png");
+            $temp = explode(".", $_FILES["uploadfile"]["name"]);
+            $extension = end($temp);
+            if ((($_FILES["uploadfile"]["type"] == "image/gif")
+                    || ($_FILES["uploadfile"]["type"] == "image/jpeg")
+                    || ($_FILES["uploadfile"]["type"] == "image/jpg")
+                    || ($_FILES["uploadfile"]["type"] == "image/pjpeg")
+                    || ($_FILES["uploadfile"]["type"] == "image/x-png")
+                    || ($_FILES["uploadfile"]["type"] == "image/png"))
+                && in_array($extension, $allowedExts)){
+                if ($_FILES["uploadfile"]["error"] > 0)
+                {
+                    $re['state']='0';
+                    $re['content']='文件上传失败：'.$_FILES["uploadfile"]["error"];
+                }
+                else
+                {
+                    $filename ="../View/images/".time().$_FILES["uploadfile"]["name"];
+                    $src = "/images/".time().$_FILES["uploadfile"]["name"];
+                    $filename =iconv("UTF-8","gb2312",$filename);
+                    //检查文件或目录是否存在
+                    if(file_exists($filename))
+                    {
+                        $re['state']='0';
+                        $re['content']='文件已存在';
+                    }
+                    else{
+                        move_uploaded_file($_FILES["uploadfile"]["tmp_name"],$filename);
+                        $scenic = new Scenic();
+                        $scenic->id = $id;
+                        $scenic->pic = $src;
+                        $as = new ScenicServer();
+                        $result = $as->UpdateScenic($scenic,"pic");
+                        if($result) {
+                            ScenicControl::UpdateScenicJson();
+                            $re['state']='1';
+                            $re['content']='修改成功';
+                        }
+                    }
+                }
+            }
+            else{
+                $re['state']='0';
+                $re['content']='非法的文件格式';
+            }
+            echo "<script type='text/javascript'>if(".$re['state']."=='0'){alert('".$re['content']."')}else{window.parent.document.getElementById('am".$id."').src='".$src."'}</script>";
+            //echo "<script type='text/javascript'>callback('".$re['state']."','".$re['content']."','".$src."');</script>";
         }
 	}
 ?>

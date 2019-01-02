@@ -11,6 +11,7 @@
         private $see;
         private $created_at;
         private $updated_at;
+        private $pic;
 		
 		function __set($name,$value)
 		{

@@ -19,13 +19,13 @@
 		}
 
 		public function GetAll(){
-			$sql = "select scenic.id,scenic.area_id,area.name as area_name,scenic.see,scenic.name,scenic.brief,scenic.intro,scenic.recommend,scenic.isshow,scenic.top,scenic.created_at,scenic.updated_at from scenic LEFT JOIN area on scenic.area_id = area.id order by created_at desc";
+			$sql = "select scenic.id,scenic.pic,scenic.area_id,area.name as area_name,scenic.see,scenic.name,scenic.brief,scenic.intro,scenic.recommend,scenic.isshow,scenic.top,scenic.created_at,scenic.updated_at from scenic LEFT JOIN area on scenic.area_id = area.id order by created_at desc";
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
 		}
 
         public function GetShow(){
-            $sql = "select scenic.id,scenic.area_id,area.name as area_name,scenic.see,scenic.name,scenic.brief,scenic.intro,scenic.recommend,scenic.isshow,scenic.top,scenic.created_at,scenic.updated_at from scenic LEFT JOIN area on scenic.area_id = area.id where scenic.isshow = 1 order by created_at,top desc";
+            $sql = "select scenic.id,scenic.pic,scenic.area_id,area.name as area_name,scenic.see,scenic.name,scenic.brief,scenic.intro,scenic.recommend,scenic.isshow,scenic.top,scenic.created_at,scenic.updated_at from scenic LEFT JOIN area on scenic.area_id = area.id where scenic.isshow = 1 order by created_at,top desc";
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
         }
@@ -49,7 +49,7 @@
         }
 
 		public function InsertScenic($scenic){
-            $sql = "insert into ".$this->db_table."(area_id,name,recommend,brief,intro,isshow,top,updated_at,created_at,see) values('$scenic->area_id','$scenic->name','$scenic->recommend','$scenic->brief','$scenic->intro','$scenic->isshow','$scenic->top','$scenic->updated_at','$scenic->created_at','$scenic->see')";
+            $sql = "insert into ".$this->db_table."(pic,area_id,name,recommend,brief,intro,isshow,top,updated_at,created_at,see) values('$scenic->pic','$scenic->area_id','$scenic->name','$scenic->recommend','$scenic->brief','$scenic->intro','$scenic->isshow','$scenic->top','$scenic->updated_at','$scenic->created_at','$scenic->see')";
             try{
                 $this->db->ExeSql($sql,$this->conn);
                 return true;
@@ -72,6 +72,9 @@
 			else if($field=="all"){
                 $sql = "update " . $this->db_table . " set name = '$scenic->name',created_at = '$scenic->created_at',brief = '$scenic->brief',intro = '$scenic->intro',recommend = '$scenic->recommend' where id = '$scenic->id'";
 			}
+			else if($field=="pic"){
+                $sql = "update " . $this->db_table . " set ".$field." = '$scenic->pic' where id = '$scenic->id'";
+            }
             try{
                 $this->db->ExeSql($sql,$this->conn);
                 return true;
