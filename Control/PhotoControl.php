@@ -116,7 +116,7 @@
             //判断查询条件
             $where = isset($where) ? $where : '';
             $ss = new PhotoServer();
-            $result = $ss->QueryPhoto($where);
+            $result = $ss->GetWaitPhoto($where);
             $re = array('state'=>'0','content'=>null);
             $jsonfile = fopen("../View/json/PhotoList.json", "w") or die("Unable to open file!");
             while ($n = mysqli_fetch_array($result))
