@@ -63,7 +63,7 @@ layui.config({
         var newArray = [];
         var index = layer.msg('查询中，请稍候',{icon: 16,time:false,shade:0.8});
             $.ajax({
-                url : "../../json/photoList.json",
+                url : "../../json/PhotoList.json",
                 type : "get",
                 dataType : "json",
                 success : function(data){
@@ -130,7 +130,7 @@ layui.config({
         $(".search_input").val("");
         $("#start").val("");
             $.ajax({
-                url : "../../json/photoList.json",
+                url : "../../json/PhotoList.json",
                 type : "get",
                 dataType : "json",
                 success : function(data){

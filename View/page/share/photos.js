@@ -27,31 +27,31 @@ layui.config({
                 var picList = [];
                 for(var i=0;i<data.length;i++){
                     if(data[i].id==id){
-                        if(data[i].img1!=""||data[i].img1!=null){
+                        if(data[i].img1!=""&&data[i].img1!=null){
                             imgList.push(data[i].img1);
                         }
-                        if(data[i].img2!=""||data[i].img2!=null){
+                        if(data[i].img2!=""&&data[i].img2!=null){
                             imgList.push(data[i].img2);
                         }
-                        if(data[i].img3!=""||data[i].img3!=null){
+                        if(data[i].img3!=""&&data[i].img3!=null){
                             imgList.push(data[i].img3);
                         }
-                        if(data[i].img4!=""||data[i].img4!=null){
+                        if(data[i].img4!=""&&data[i].img4!=null){
                             imgList.push(data[i].img4);
                         }
-                        if(data[i].img5!=""||data[i].img5!=null){
+                        if(data[i].img5!=""&&data[i].img5!=null){
                             imgList.push(data[i].img5);
                         }
-                        if(data[i].img6!=""||data[i].img6!=null){
+                        if(data[i].img6!=""&&data[i].img6!=null){
                             imgList.push(data[i].img6);
                         }
-                        if(data[i].img7!=""||data[i].img7!=null){
+                        if(data[i].img7!=""&&data[i].img7!=null){
                             imgList.push(data[i].img7);
                         }
-                        if(data[i].img8!=""||data[i].img8!=null){
+                        if(data[i].img8!=""&&data[i].img8!=null){
                             imgList.push(data[i].img8);
                         }
-                        if(data[i].img9!=""||data[i].img9!=null){
+                        if(data[i].img9!=""&&data[i].img9!=null){
                             imgList.push(data[i].img9);
                         }
                     }
