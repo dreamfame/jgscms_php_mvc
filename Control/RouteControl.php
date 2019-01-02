@@ -37,6 +37,9 @@
                 case "verify_id_name":
                     RouteControl::VerifyIdName();
                     break;
+                case "pic":
+                    RouteControl::UploadPic();
+                    break;
 			}
 		}
 
@@ -48,7 +51,7 @@
             $jsonfile = fopen("../View/json/routeList.json", "w") or die("Unable to open file!");
             while ($n = mysqli_fetch_array($result)) {
                 $re['state'] = '1';
-                $row[] = array('id' => $n['id'], 'area_id'=>$n['area_id'],'area_name' => $n['area_name'], 'route' => $n['route'], 'type' => $n['type'], 'name' => $n['name'], 'time' => $n['time'],'created_at'=>$n['created_at']);
+                $row[] = array('id' => $n['id'],'pic'=>$n['pic'], 'area_id'=>$n['area_id'],'area_name' => $n['area_name'], 'route' => $n['route'], 'type' => $n['type'], 'name' => $n['name'], 'time' => $n['time'],'created_at'=>$n['created_at']);
                 $re['content'] = $row;
                 if (flock($jsonfile, LOCK_EX)) {//加写锁 
                     ftruncate($jsonfile, 0); // 将文件截断到给定的长度 
@@ -69,7 +72,7 @@
             $re = array('state'=>'0','content'=>"未获取数据");
             while ($n = mysqli_fetch_array($result)) {
                 $re['state'] = '1';
-                $row[] = array('id' => $n['id'], 'area_id'=>$n['area_id'],'area_name' => $n['area_name'], 'route' => $n['route'], 'type' => $n['type'], 'name' => $n['name'], 'time' => $n['time'],'created_at'=>$n['created_at']);
+                $row[] = array('id' => $n['id'],'pic'=>$n['pic'], 'area_id'=>$n['area_id'],'area_name' => $n['area_name'], 'route' => $n['route'], 'type' => $n['type'], 'name' => $n['name'], 'time' => $n['time'],'created_at'=>$n['created_at']);
                 $re['content'] = $row;
             }
             echo json_encode($re,JSON_UNESCAPED_UNICODE);
@@ -150,7 +153,7 @@
             while ($n = mysqli_fetch_array($result))
             {
                 $re['state'] = '1';
-                $row[] = array('id' => $n['id'], 'area_id'=>$n['area_id'],'area_name' => $n['area_name'], 'route' => $n['route'], 'type' => $n['type'], 'name' => $n['name'], 'time' => $n['time'],'created_at'=>$n['created_at']);
+                $row[] = array('id' => $n['id'],'pic'=>$n['pic'], 'area_id'=>$n['area_id'],'area_name' => $n['area_name'], 'route' => $n['route'], 'type' => $n['type'], 'name' => $n['name'], 'time' => $n['time'],'created_at'=>$n['created_at']);
                 $re['content'] = $row;
             }
             echo json_encode($re,JSON_UNESCAPED_UNICODE);
@@ -163,7 +166,7 @@
             $jsonfile = fopen("../View/json/routeList.json", "w") or die("Unable to open file!");
             while ($n = mysqli_fetch_array($result)) {
                 $re['state'] = '1';
-                $row[] = array('id' => $n['id'],'scenic_id'=>$n['scenic_id'], 'scenic_name' => $n['scenic_name'], 'route' => $n['route'], 'type' => $n['type'], 'name' => $n['name'], 'time' => $n['time'],'created_at'=>$n['created_at']);
+                $row[] = array('id' => $n['id'],'pic'=>$n['pic'], 'area_id'=>$n['area_id'],'area_name' => $n['area_name'], 'route' => $n['route'], 'type' => $n['type'], 'name' => $n['name'], 'time' => $n['time'],'created_at'=>$n['created_at']);
                 $re['content'] = $row;
                 if (flock($jsonfile, LOCK_EX)) {//加写锁 
                     ftruncate($jsonfile, 0); // 将文件截断到给定的长度 
@@ -183,6 +186,7 @@
             $route->type = $_REQUEST['type'];
             $route->time = $_REQUEST['time'];
             $route->created_at = $_REQUEST['created_at'];
+            $route->pic = $_REQUEST['pic'];
             $route->route = $_REQUEST['route'];
 			$ss = new RouteServer();
             $re = array('state'=>'0','content'=>'添加失败');
@@ -239,6 +243,59 @@
                 $re['content']='删除成功';
             }
             echo  json_encode($re,JSON_UNESCAPED_UNICODE);
+        }
+
+        public function UploadPic(){
+            $re = array('state'=>'0','content'=>'');
+            $src = "";
+            $id = $_REQUEST['routeid'];
+            $allowedExts = array("gif", "jpeg", "jpg", "png");
+            $temp = explode(".", $_FILES["uploadfile"]["name"]);
+            $extension = end($temp);
+            if ((($_FILES["uploadfile"]["type"] == "image/gif")
+                    || ($_FILES["uploadfile"]["type"] == "image/jpeg")
+                    || ($_FILES["uploadfile"]["type"] == "image/jpg")
+                    || ($_FILES["uploadfile"]["type"] == "image/pjpeg")
+                    || ($_FILES["uploadfile"]["type"] == "image/x-png")
+                    || ($_FILES["uploadfile"]["type"] == "image/png"))
+                && in_array($extension, $allowedExts)){
+                if ($_FILES["uploadfile"]["error"] > 0)
+                {
+                    $re['state']='0';
+                    $re['content']='文件上传失败：'.$_FILES["uploadfile"]["error"];
+                }
+                else
+                {
+                    $filename ="../View/images/".time().$_FILES["uploadfile"]["name"];
+                    $src = "/images/".time().$_FILES["uploadfile"]["name"];
+                    $filename =iconv("UTF-8","gb2312",$filename);
+                    //检查文件或目录是否存在
+                    if(file_exists($filename))
+                    {
+                        $re['state']='0';
+                        $re['content']='文件已存在';
+                    }
+                    else{
+                        move_uploaded_file($_FILES["uploadfile"]["tmp_name"],$filename);
+                        $route = new Route();
+                        $route->id = $id;
+                        $route->pic = $src;
+                        $as = new RouteServer();
+                        $result = $as->UpdateRoute($route,"pic");
+                        if($result) {
+                            RouteControl::UpdateRouteJson();
+                            $re['state']='1';
+                            $re['content']='修改成功';
+                        }
+                    }
+                }
+            }
+            else{
+                $re['state']='0';
+                $re['content']='非法的文件格式';
+            }
+            echo "<script type='text/javascript'>if(".$re['state']."=='0'){alert('".$re['content']."')}else{window.parent.document.getElementById('am".$id."').src='".$src."'}</script>";
+            //echo "<script type='text/javascript'>callback('".$re['state']."','".$re['content']."','".$src."');</script>";
         }
 	}
 ?>

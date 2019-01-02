@@ -46,7 +46,7 @@ layui.config({
         var data = eval('(' + data + ')');
         if(data.state=="0")
         {
-            var dataHtml = '<tr><td colspan="8">暂无数据</td></tr>';
+            var dataHtml = '<tr><td colspan="9">暂无数据</td></tr>';
             $(".route_content").html(dataHtml);
             $('.route_list thead input[type="checkbox"]').prop("checked",false);
             form.render();
@@ -375,6 +375,7 @@ layui.config({
 			}
 			if(currData.length != 0){
 				for(var i=0;i<currData.length;i++){
+				    var pic = currData[i].pic==''?'-':currData[i].pic;
 					var area_name = currData[i].area_name==''?'-':currData[i].area_name;
                     var name = currData[i].name==''?'-':currData[i].name;
                     var route = currData[i].route==''?'-':currData[i].route;
@@ -384,6 +385,7 @@ layui.config({
 					dataHtml += '<tr>'
 			    	+'<td><input type="checkbox" name="checked" lay-skin="primary" lay-filter="choose"></td>'
 			    	+'<td align="left">'+area_name+'</td>'
+                    +'<td><a href="#" onclick="fileSelect('+currData[i].id+')"><img id="am'+currData[i].id+'" src="'+pic+'" width="200" height="200" /></a></td>'
                     +'<td>'+name+'</td>'
 			    	+'<td>'+route+'</td>'
                     +'<td>'+type+'</td>'
@@ -396,7 +398,7 @@ layui.config({
 			    	+'</tr>';
 				}
 			}else{
-				dataHtml = '<tr><td colspan="8">暂无数据</td></tr>';
+				dataHtml = '<tr><td colspan="9">暂无数据</td></tr>';
 			}
 		    return dataHtml;
 		}

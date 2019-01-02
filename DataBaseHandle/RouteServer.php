@@ -19,7 +19,7 @@
 		}
 
 		public function GetAll(){
-			$sql = "select route.id,route.area_id,area.name as area_name,route.route,route.name,route.type,route.time,route.created_at from route left join area on route.area_id=area.id order by created_at desc";
+			$sql = "select route.pic,route.id,route.area_id,area.name as area_name,route.route,route.name,route.type,route.time,route.created_at from route left join area on route.area_id=area.id order by created_at desc";
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
 		}
@@ -31,7 +31,7 @@
         }
 
         public function QueryRoute($where){
-            $sql = "select route.id,route.area_id,area.name as area_name,route.route,route.name,route.type,route.time,route.created_at from route left join area on route.area_id=area.id".$where." order by created_at desc";
+            $sql = "select route.pic,route.id,route.area_id,area.name as area_name,route.route,route.name,route.type,route.time,route.created_at from route left join area on route.area_id=area.id".$where." order by created_at desc";
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
         }
@@ -43,7 +43,7 @@
         }
 
 		public function InsertRoute($route){
-            $sql = "insert into ".$this->db_table."(area_id,route,type,name,time,created_at) values('$route->area_id','$route->route','$route->type','$route->name','$route->time','$route->created_at')";
+            $sql = "insert into ".$this->db_table."(pic,area_id,route,type,name,time,created_at) values('$route->pic','$route->area_id','$route->route','$route->type','$route->name','$route->time','$route->created_at')";
             try{
                 $this->db->ExeSql($sql,$this->conn);
                 return true;
@@ -66,6 +66,9 @@
 			else if($field=="all"){
                 $sql = "update " . $this->db_table . " set name = '$route->name',route = '$route->route' where id = '$route->id' and scenic_id = '$route->area_id'";
 			}
+			else if($field=="pic"){
+                $sql = "update " . $this->db_table . " set ".$field." = '$route->pic' where id = '$route->id'";
+            }
             try{
                 $this->db->ExeSql($sql,$this->conn);
                 return true;

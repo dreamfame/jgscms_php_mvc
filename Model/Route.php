@@ -7,6 +7,7 @@
 		private $route;
         private $time;
         private $created_at;
+        private $pic;
 		
 		function __set($name,$value)
 		{

@@ -16,6 +16,22 @@ layui.config({
         }
     });
 
+    var sys = window.sessionStorage.getItem("system");
+    $("#pic").attr("src",JSON.parse(sys).defaultPic);
+
+    var pic_src = "";
+
+    layui.upload({
+        url: '/index.php/picture/JudgeOperate/uploadImg'
+        ,success: function(res){
+            if(res.code==0){
+                pic_src = res.data.src;
+                $("#pic").attr("src",res.data.src);
+            }
+            console.log(res); //上传成功返回值，必须为json格式
+        }
+    });
+
     form.verify({
         routename:function(value,item){
             if(!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)){
@@ -94,8 +110,12 @@ layui.config({
  	var addRoute;
  	form.on("submit(addRoute)",function(data){
         var area_id = $(".aname option:selected").val();
+        if(pic_src==""){
+            pic_src = JSON.parse(sys).defaultPic;
+        }
         addRoute = '{"area_id":"'+area_id+'",';
  		addRoute += '"name":"'+data.field.rname+'",';
+        addRoute += '"pic":"'+pic_src+'",';
  		addRoute += '"created_at":"'+data.field.created_at+'",';
         addRoute += '"route":"'+ data.field.route +'",';
         addRoute += '"type":"'+ data.field.type +'",';
