@@ -25,7 +25,7 @@
 		}
 
         public function GetShow(){
-            $sql = "select * from ".$this->db_table." order by created_at,top desc";
+            $sql = "select * from ".$this->db_table." left join user on uid = wx where verify = 1 order by photo.created_at,photo.top desc";
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
         }
@@ -37,7 +37,7 @@
         }
 
         public function QueryPhoto($where){
-            $sql = "select * from ".$this->db_table.$where;
+            $sql = "select * from ".$this->db_table."  left join user on uid = wx".$where." order by photo.created_at,photo.top desc";
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
         }
