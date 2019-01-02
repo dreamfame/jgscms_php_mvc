@@ -43,7 +43,7 @@
         }
 
 		public function InsertPhoto($Photo){
-            $sql = "insert into ".$this->db_table."(name,recommend,brief,intro,isshow,top,updated_at,created_at,see) values('$Photo->name','$Photo->recommend','$Photo->brief','$Photo->intro','$Photo->isshow','$Photo->top','$Photo->updated_at','$Photo->created_at','$Photo->see')";
+            $sql = "insert into ".$this->db_table."(uid,des,created_at,praise,comment,img1,img2,img3,img4,img5,img6,img7,img8,img9,verify,operator,top,private) values('$Photo->uid','$Photo->des','$Photo->created_at','$Photo->praise','$Photo->comment','$Photo->img1','$Photo->img2','$Photo->img3','$Photo->img4','$Photo->img5','$Photo->img6','$Photo->img7','$Photo->img8','$Photo->img9','$Photo->verify','$Photo->operator','$Photo->top','$Photo->private')";
             try{
                 $this->db->ExeSql($sql,$this->conn);
                 return true;

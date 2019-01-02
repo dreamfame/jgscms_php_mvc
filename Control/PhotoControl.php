@@ -190,15 +190,30 @@
 		public function AddPhoto()
 		{
 			$Photo = new Photo();
-            $Photo->name = $_REQUEST['name'];
-            $Photo->intro = $str = str_replace('\'', '\"', $_REQUEST['intro']);
-            $Photo->isshow = $_REQUEST['show'];
-            $Photo->top = $_REQUEST['top'];
+            $Photo->uid = $_REQUEST['wx'];
+            $Photo->des = $_REQUEST['intro'];
+            $Photo->praise = 0;
+            $Photo->comment = 0;
             $Photo->created_at = $_REQUEST['created_at'];
-            $Photo->updated_at = $_REQUEST['created_at'];
-            $Photo->brief = $_REQUEST['brief'];
-            $Photo->recommend = $_REQUEST['recommend'];
-            $Photo->see = 0;
+            $Photo->operator = "";
+            $Photo->top = 0;
+            $Photo->verify = 0;
+            $Photo->private = $_REQUEST['pri'];
+            $images = explode("|",$_REQUEST["img"]);
+            $Photo->img1 = "";
+            $Photo->img2 = "";
+            $Photo->img3 = "";
+            $Photo->img4 = "";
+            $Photo->img5 = "";
+            $Photo->img6 = "";
+            $Photo->img7 = "";
+            $Photo->img8 = "";
+            $Photo->img9 = "";
+            for($i=1;$i<=$images;$i++)
+            {
+                $img = "img".$i;
+                $Photo->$img = $images[$i-1];
+            }
 			$ss = new PhotoServer();
             $re = array('state'=>'0','content'=>'添加失败');
             $result = $ss->InsertPhoto($Photo);

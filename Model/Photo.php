@@ -17,6 +17,8 @@
         private $created_at;
         private $verify;
         private $operator;
+        private $top;
+        private $private;
 		
 		function __set($name,$value)
 		{
