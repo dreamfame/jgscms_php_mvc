@@ -119,64 +119,26 @@ Class UserControl
     public function AddUser()
     {
         $user = new User();
-        $user->username = $_REQUEST['username'];
-        $user->password = password_hash("666666", PASSWORD_DEFAULT);
+        $user->openid = $_REQUEST['openid'];
+        $user->wx = $_REQUEST['wx'];
         $user->nickname = $_REQUEST['nickname'];
-        $user->role = $_REQUEST['role'];
-        $user->age = 0;
-        $user->head_pic = "default.jpg";
-        $user->phone = $_REQUEST['phone'];
-        $user->email = $_REQUEST['email'];
-        $user->status = $_REQUEST['status'];
-        $user->updated_at = time();
-        $user->created_at = time();
-        $user->password_reset_token = md5($user->username.UserControl::key,false);
+        $user->avatar = $_REQUEST['avatar'];
+        $user->city = $_REQUEST['city'];
+        $user->country = $_REQUEST['country'];
+        $user->gender = $_REQUEST['gender'];
+        $user->created_at = $_REQUEST['time'];
         $as = new UserServer();
-        $result = $as->GetUser($user->username);
-        $temp = false;
         $re = array('state'=>'0','content'=>'添加失败,');
-        while ($u = mysqli_fetch_array($result))//检查用户名
-        {
-            $temp = true;
-            $re['content'] = $re['content'].'已存在该用户!';
-            $row[]= array('username'=>$u['username'],'password'=>$u['password']);
-        }
-        $condition="nickname";
-        $content = $user->nickname;
-        $result1 = $as->GetUserByCondition($condition,$content);
-        while ($u = mysqli_fetch_array($result1))//检查昵称
-        {
-            $temp = true;
-            $re['content'] = $re['content'].'昵称已存在!';
-            $row[]= array('username'=>$u['username'],'password'=>$u['password']);
-        }
-        $condition="phone";
-        $content = $user->phone;
-        $result2 = $as->GetUserByCondition($condition,$content);
-        while ($u = mysqli_fetch_array($result2))//检查手机号
-        {
-            $temp = true;
-            $re['content'] = $re['content'].'手机号已被使用!';
-            $row[]= array('username'=>$u['username'],'password'=>$u['password']);
-        }
-        $condition="email";
-        $content = $user->email;
-        $result3 = $as->GetUserByCondition($condition,$content);
-        while ($u = mysqli_fetch_array($result3))//检查邮箱
-        {
-            $temp = true;
-            $re['content'] = $re['content'].'邮箱已被使用!';
-            $row[]= array('username'=>$u['username'],'password'=>$u['password']);
-        }
-        if(!$temp){
-            $row = $as->InsertUser($user);
+        $result = $as->InsertUser($user);
+        if($result==""){
             $re['state'] = '1';
             $re['content'] = '添加成功';
-            echo json_encode($re,JSON_UNESCAPED_UNICODE);
         }
         else{
-            echo json_encode($re,JSON_UNESCAPED_UNICODE);
+            $re['state'] = '0';
+            $re['content'] = '添加失败，错误信息：'.$result;
         }
+        echo json_encode($re,JSON_UNESCAPED_UNICODE);
     }
 
     public function UpdateUser()

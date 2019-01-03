@@ -39,16 +39,9 @@ Class UserServer
 
     public function InsertUser($user)
     {
-        $sql = "insert into ".$this->db_table."(username,head_pic,nickname,password,age,phone,password_reset_token,email,updated_at,created_at,role,status) values('$user->username','$user->head_pic','$user->nickname','$user->password','$user->age','$user->phone','$user->password_reset_token','$user->email','$user->updated_at','$user->created_at','$user->role','$user->status')";
-        try{
-            $this->db->ExeSql($sql,$this->conn);
-            return true;
-        }
-        catch(Exception $e)
-        {
-            return false;
-        }
-        return false;
+        $sql = "insert into ".$this->db_table."(openid,wx,avatar,nickname,city,country,gender,created_at) values('$user->openid','$user->wx','$user->avatar','$user->nickname','$user->city','$user->country','$user->gender','$user->created_at') on duplicate key update avatar = values(avatar),nickname = values(nickname),city = values(city),country = values(country),gender = values(gender)";
+        $result = $this->db->ExecSql($sql,$this->conn);
+        return $result;
     }
 
     public function UpdateUser($user,$field)
