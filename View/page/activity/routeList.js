@@ -392,8 +392,8 @@ layui.config({
 			    	+'<td>'+time+'</td>'
                     +'<td>'+created_at+'</td>'
 			    	+'<td>'
-					+  '<a class="layui-btn layui-btn-mini route_edit" data-id="'+i+'"><i class="iconfont icon-edit"></i> 编辑</a>'
-					+  '<a class="layui-btn layui-btn-danger layui-btn-mini route_del" data-id="'+data[i].id+'"><i class="layui-icon">&#xe640;</i> 删除</a>'
+					+  '<a class="layui-btn layui-btn-mini route_edit" data-id="'+(i+curr*nums)+'"><i class="iconfont icon-edit"></i> 编辑</a>'
+					+  '<a class="layui-btn layui-btn-danger layui-btn-mini route_del" data-id="'+currData[i].id+'"><i class="layui-icon">&#xe640;</i> 删除</a>'
 			        +'</td>'
 			    	+'</tr>';
 				}

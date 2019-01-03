@@ -339,11 +339,11 @@ layui.config({
                     +'<td>'+age+'</td>'
                     +'<td>'+phone+'</td>'
                     +'<td>'+email+'</td>'
-					+'<td><input type="checkbox" name="show" lay-skin="switch" data-id="'+data[i].username+'" lay-text="启用|禁用" lay-filter="isShow"'+status+'></td>'
+					+'<td><input type="checkbox" name="show" lay-skin="switch" data-id="'+currData[i].username+'" lay-text="启用|禁用" lay-filter="isShow"'+status+'></td>'
 			    	+'<td>'
-					+  '<a class="layui-btn layui-btn-mini admin_role" data-id="'+data[i].id+'"><i class="iconfont icon-edit"></i> 权限设置</a>'
-					+  '<a class="layui-btn layui-btn-normal layui-btn-mini admin_reset" data-id="'+data[i].username+'"><i class="layui-icon">&#xe600;</i> 重置密码</a>'
-					+  '<a class="layui-btn layui-btn-danger layui-btn-mini admin_del" data-id="'+data[i].id+'"><i class="layui-icon">&#xe640;</i> 删除</a>'
+					+  '<a class="layui-btn layui-btn-mini admin_role" data-id="'+currData[i].id+'"><i class="iconfont icon-edit"></i> 权限设置</a>'
+					+  '<a class="layui-btn layui-btn-normal layui-btn-mini admin_reset" data-id="'+currData[i].username+'"><i class="layui-icon">&#xe600;</i> 重置密码</a>'
+					+  '<a class="layui-btn layui-btn-danger layui-btn-mini admin_del" data-id="'+currData[i].id+'"><i class="layui-icon">&#xe640;</i> 删除</a>'
 			        +'</td>'
 			    	+'</tr>';
 				}

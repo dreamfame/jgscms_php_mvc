@@ -380,11 +380,11 @@ layui.config({
                         +'<td>'+time+'</td>'
                         +'<td>'+verify+'</td>'
                         +'<td><span id="photo_operator'+i+'">'+operator+'</span></td>'
-                        +'<td><input type="checkbox" name="top" lay-skin="switch" data-id="'+data[i].id+'" lay-text="是|否" lay-filter="isTop"'+top+'></td>'
+                        +'<td><input type="checkbox" name="top" lay-skin="switch" data-id="'+currData[i].id+'" lay-text="是|否" lay-filter="isTop"'+top+'></td>'
                         +'<td>'
-                        +  '<a class="layui-btn layui-btn-warm layui-btn-mini photo_pic" data-id="'+data[i].id+'"><i class="layui-icon">&#xe65d;</i> 分享图库</a>'
-                        +  '<a class="layui-btn layui-btn-normal layui-btn-mini photo_verify" data-id="'+i+'"><i class="layui-icon">&#xe6b2;</i> 审核</a>'
-                        +  '<a class="layui-btn layui-btn-danger layui-btn-mini photo_del" data-id="'+data[i].id+'"><i class="layui-icon">&#xe640;</i> 删除</a>'
+                        +  '<a class="layui-btn layui-btn-warm layui-btn-mini photo_pic" data-id="'+currData[i].id+'"><i class="layui-icon">&#xe65d;</i> 分享图库</a>'
+                        +  '<a class="layui-btn layui-btn-normal layui-btn-mini photo_verify" data-id="'+(i+curr*nums)+'"><i class="layui-icon">&#xe6b2;</i> 审核</a>'
+                        +  '<a class="layui-btn layui-btn-danger layui-btn-mini photo_del" data-id="'+currData[i].id+'"><i class="layui-icon">&#xe640;</i> 删除</a>'
                         +'</td>'
                         +'</tr>';
                 }

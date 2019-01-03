@@ -377,12 +377,12 @@ layui.config({
                     +'<td>'+type+'</td>'
                     +'<td>'+operator+'</td>'
 			    	+ '<td>'+see+'</td>'
-			    	+'<td><input type="checkbox" name="show" lay-skin="switch" data-id="'+data[i].id+'" lay-text="是|否" lay-filter="isShow"'+show+'></td>'
-                    +'<td><input type="checkbox" name="top" lay-skin="switch" data-id="'+data[i].id+'" lay-text="是|否" lay-filter="isTop"'+top+'></td>'
+			    	+'<td><input type="checkbox" name="show" lay-skin="switch" data-id="'+currData[i].id+'" lay-text="是|否" lay-filter="isShow"'+show+'></td>'
+                    +'<td><input type="checkbox" name="top" lay-skin="switch" data-id="'+currData[i].id+'" lay-text="是|否" lay-filter="isTop"'+top+'></td>'
 			    	+'<td>'+time+'</td>'
 			    	+'<td>'
-					+  '<a class="layui-btn layui-btn-mini news_edit" data-id="'+i+'"><i class="iconfont icon-edit"></i> 编辑</a>'
-					+  '<a class="layui-btn layui-btn-danger layui-btn-mini news_del" data-id="'+data[i].id+'"><i class="layui-icon">&#xe640;</i> 删除</a>'
+					+  '<a class="layui-btn layui-btn-mini news_edit" data-id="'+(i+curr*nums)+'"><i class="iconfont icon-edit"></i> 编辑</a>'
+					+  '<a class="layui-btn layui-btn-danger layui-btn-mini news_del" data-id="'+currData[i].id+'"><i class="layui-icon">&#xe640;</i> 删除</a>'
 			        +'</td>'
 			    	+'</tr>';
 				}

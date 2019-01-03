@@ -211,7 +211,7 @@ layui.config({
                         +'<td>'+nickname+'</td>'
                         +'<td>'+phone+'</td>'
                         +'<td>'+time+'</td>'
-                        +'<td><input type="checkbox" name="prize" lay-skin="switch" data-id="'+data[i].id+'" lay-text="中奖|未中" lay-filter="isPrize"'+prize+'></td>'
+                        +'<td><input type="checkbox" name="prize" lay-skin="switch" data-id="'+currData[i].id+'" lay-text="中奖|未中" lay-filter="isPrize"'+prize+'></td>'
                         +'</tr>';
                 }
             }else{

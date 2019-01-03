@@ -261,7 +261,7 @@ layui.config({
 			    	+ '<td>'+date+'</td>'
 			    	+'<td align="left">'+wishes+'</td>'
 			    	+'<td>'
-					+'<a class="layui-btn layui-btn-danger layui-btn-mini postcard_del" data-id="'+data[i].id+'"><i class="layui-icon">&#xe640;</i> 删除</a>'
+					+'<a class="layui-btn layui-btn-danger layui-btn-mini postcard_del" data-id="'+currData[i].id+'"><i class="layui-icon">&#xe640;</i> 删除</a>'
 			        +'</td>'
 			    	+'</tr>';
 				}
