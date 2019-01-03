@@ -336,9 +336,9 @@ layui.config({
                     +'<td>'+num+'</td>'
                     +'<td><input type="checkbox" name="enable" lay-skin="switch" data-id="'+currData[i].id+'" lay-text="启用|禁用" lay-filter="isEnable"'+enable+'></td>'
 			    	+'<td>'
-                    +  '<a class="layui-btn layui-btn-warm layui-btn-mini activity_person" data-id="'+(i+curr*nums)+'"><i class="layui-icon">&#xe612;</i> 查看参与者</a>'
-					+  '<a class="layui-btn layui-btn-mini activity_edit" data-id="'+(i+curr*nums)+'"><i class="iconfont icon-edit"></i> 编辑</a>'
-					+  '<a class="layui-btn layui-btn-danger layui-btn-mini activity_del" data-id="'+(i+curr*nums)+'"><i class="layui-icon">&#xe640;</i> 删除</a>'
+                    +  '<a class="layui-btn layui-btn-warm layui-btn-mini activity_person" data-id="'+(i+(curr-1)*nums)+'"><i class="layui-icon">&#xe612;</i> 查看参与者</a>'
+					+  '<a class="layui-btn layui-btn-mini activity_edit" data-id="'+(i+(curr-1)*nums)+'"><i class="iconfont icon-edit"></i> 编辑</a>'
+					+  '<a class="layui-btn layui-btn-danger layui-btn-mini activity_del" data-id="'+(i+(curr-1)*nums)+'"><i class="layui-icon">&#xe640;</i> 删除</a>'
 			        +'</td>'
 			    	+'</tr>';
 				}

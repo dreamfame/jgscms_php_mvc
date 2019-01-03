@@ -392,7 +392,7 @@ layui.config({
                     +'<td>'+recommend+'</td>'
 			    	+'<td>'
                     +  '<a class="layui-btn layui-btn-warm layui-btn-mini scenic_pic" data-id="'+currData[i].id+'"><i class="layui-icon">&#xe65d;</i> 景点图库</a>'
-					+  '<a class="layui-btn layui-btn-mini scenic_edit" data-id="'+(i+curr*nums)+'"><i class="iconfont icon-edit"></i> 编辑</a>'
+					+  '<a class="layui-btn layui-btn-mini scenic_edit" data-id="'+(i+(curr-1)*nums)+'"><i class="iconfont icon-edit"></i> 编辑</a>'
 					+  '<a class="layui-btn layui-btn-danger layui-btn-mini scenic_del" data-id="'+currData[i].id+'"><i class="layui-icon">&#xe640;</i> 删除</a>'
 			        +'</td>'
 			    	+'</tr>';

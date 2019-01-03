@@ -367,7 +367,7 @@ layui.config({
 			    	+'<td>'+time+'</td>'
                     +'<td>'+recommend+'</td>'
 			    	+'<td>'
-					+  '<a class="layui-btn layui-btn-mini area_edit" data-id="'+(i*curr*nums)+'"><i class="iconfont icon-edit"></i> 编辑</a>'
+					+  '<a class="layui-btn layui-btn-mini area_edit" data-id="'+(i+(curr-1)*nums)+'"><i class="iconfont icon-edit"></i> 编辑</a>'
 					+  '<a class="layui-btn layui-btn-danger layui-btn-mini area_del" data-id="'+currData[i].id+'"><i class="layui-icon">&#xe640;</i> 删除</a>'
 			        +'</td>'
 			    	+'</tr>';
