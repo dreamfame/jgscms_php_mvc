@@ -141,6 +141,9 @@
             if($_REQUEST['area_id']!=""||$_REQUEST['area_id']!=null){
                 $wherelist[] = "area_id = '{$_REQUEST['area_id']}'";
             }
+            if($_REQUEST['type']!=""||$_REQUEST['type']!=null){
+                $wherelist[] = "type = '{$_REQUEST['type']}'";
+            }
             //组装查询条件
             if(count($wherelist) > 0){
                 $where = " where ".implode(' and ' , $wherelist);
@@ -150,6 +153,8 @@
 		    $ss = new RouteServer();
             $result = $ss->QueryRoute($where);
             $re = array('state'=>'0','content'=>"未获取数据");
+            $route = array();
+            $plan = array();
             while ($n = mysqli_fetch_array($result))
             {
                 $re['state'] = '1';
