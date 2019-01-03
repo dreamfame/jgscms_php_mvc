@@ -36,8 +36,8 @@
             return $result;
         }
 
-        public function VerifyName($area_id,$name){
-            $sql = "select id from ".$this->db_table." where area_id = '$area_id' and name = '$name'";
+        public function VerifyName($area_id,$name,$time){
+            $sql = "select id from ".$this->db_table." where area_id = '$area_id' and name = '$name' and time = '$time'";
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
         }

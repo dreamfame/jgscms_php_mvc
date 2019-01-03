@@ -82,8 +82,9 @@
         public function VerifyName(){
 		    $area_id = $_REQUEST['area_id'];
             $name = $_REQUEST['name'];
+            $time = $_REQUEST['time'];
             $ss = new RouteServer();
-            $result = $ss->VerifyName($area_id,$name);
+            $result = $ss->VerifyName($area_id,$name,$time);
             $re = array('state'=>'0','content'=>"未获取数据");
             while ($n = mysqli_fetch_array($result))
             {

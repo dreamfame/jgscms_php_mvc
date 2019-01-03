@@ -36,8 +36,9 @@ layui.config({
             var msg = "";
             var id = json_data['id']
             var area_id = json_data['area_id'];
+            var time = json_data['time'];
             $.ajax({
-                data: {"id":id,"area_id":area_id,"name":value},
+                data: {"id":id,"area_id":area_id,"name":value,"time":time},
                 type: "POST",
                 dataType: "text",
                 async: false,

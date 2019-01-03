@@ -48,8 +48,9 @@ layui.config({
             }
             var msg = "";
             var area_id = $(".aname option:selected").val();
+            var time = $(".time").val();
             $.ajax({
-                data: {"area_id":area_id,"name":value},
+                data: {"area_id":area_id,"name":value,"time":time},
                 type: "POST",
                 dataType: "text",
                 async: false,
