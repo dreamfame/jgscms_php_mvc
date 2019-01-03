@@ -64,7 +64,7 @@
                 $sql = "update " . $this->db_table . " set ".$field." = '$route->show' where id = '$route->id'";
 			}
 			else if($field=="all"){
-                $sql = "update " . $this->db_table . " set name = '$route->name',route = '$route->route' where id = '$route->id' and scenic_id = '$route->area_id'";
+                $sql = "update " . $this->db_table . " set name = '$route->name',route = '$route->route' where id = '$route->id' and area_id = '$route->area_id'";
 			}
 			else if($field=="pic"){
                 $sql = "update " . $this->db_table . " set ".$field." = '$route->pic' where id = '$route->id'";
