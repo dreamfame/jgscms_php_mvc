@@ -368,7 +368,7 @@
             $as = new AdminServer();
             $admin = new Admin();
             $admin->username = $username;
-            $admin->role = $status;
+            $admin->status = $status;
             $result = $as->UpdateAdmin($admin,"status");
             $re = array('state'=>'0','content'=>'修改失败');
             if($result == "") {

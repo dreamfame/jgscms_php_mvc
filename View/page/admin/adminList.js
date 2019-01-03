@@ -227,6 +227,8 @@ layui.config({
                 }
             },
             error:function(data){
+                layer.close(index);
+                layer.msg("状态修改失败"+data.responseText);
                 console.log(data.responseText);
             }
         })
@@ -273,6 +275,8 @@ layui.config({
                 },
                 error:function(data){
                     console.log(data.responseText);
+                    layer.close(index);
+                    layer.msg("重置失败"+data.responseText);
                 }
             })
             layer.close(index);
@@ -307,6 +311,8 @@ layui.config({
                 },
                 error:function(data){
                     console.log(data.responseText);
+                    layer.close(index);
+                    layer.msg("删除失败"+data.responseText);
                 }
             })
 			layer.close(index);
