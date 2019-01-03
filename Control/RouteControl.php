@@ -1,6 +1,7 @@
 <?php
 	require_once '../Model/Route.php';
 	require_once '../DataBaseHandle/RouteServer.php';
+	require_once '../Extensions/NumUtil.php';
 	header("Content-Type: text/html;charset=utf-8");
     error_reporting(0);
 	//session_start();
@@ -167,7 +168,34 @@
             for($i=0;$i<count($route);$i++){
                 for($j=0;$j<count($row);$j++){
                     if($row[$j]['name']==$route[$i]['name']&&$row[$j]['type']==$route[$i]['type']){
+                        if($row[$j]['time']=="上午")
+                        {
+                            $row[$j]['time'] = "0";
+                        }
+                        else if($row[$j]['time']=="下午"){
+                            $row[$j]['time'] = "9999";
+                        }
+                        else{
+                            $row[$j]['time'] = NumUtil::findNum($row[$j]['time']);
+                        }
                         $routes[] = array('time'=>$row[$j]['time'],'route'=>$row[$j]['route']);
+                    }
+                }
+                $time = array();
+                foreach ($routes as $r)
+                {
+                    $time[]  = $r['time'];
+                }
+                array_multisort($time, SORT_ASC, $routes);
+                for($m=0;$m<count($routes);$m++){
+                    if($routes[$m]['time']=="0"){
+                        $routes[$m]['time'] = "上午";
+                    }
+                    else if($routes[$m]['time']=="9999"){
+                        $routes[$m]['time'] = "下午";
+                    }
+                    else{
+                        $routes[$m]['time'] = "第".NumUtil::zhuan($routes[$m]['time'])."天";
                     }
                 }
                 $route[$i]['routes'] = $routes;
@@ -176,6 +204,11 @@
             $re['content'] = $route;
             echo json_encode($re,JSON_UNESCAPED_UNICODE);
             return;
+        }
+
+        public function mySort($a,$b){
+            if ($a['time']<$b['time']) return 1;
+            else return -1;
         }
 
         function array_unset_tt($arr,$key){
