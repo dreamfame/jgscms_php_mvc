@@ -155,15 +155,45 @@
             $result = $ss->QueryRoute($where);
             $re = array('state'=>'0','content'=>"未获取数据");
             $route = array();
-            $plan = array();
+            $routes = array();
             while ($n = mysqli_fetch_array($result))
             {
                 $re['state'] = '1';
-                $row[] = array('id' => $n['id'],'pic'=>$n['pic'], 'area_id'=>$n['area_id'],'area_name' => $n['area_name'], 'route' => $n['route'], 'type' => $n['type'], 'name' => $n['name'], 'time' => $n['time'],'created_at'=>$n['created_at']);
-                $re['content'] = $row;
+                $row[] = array('type'=>$n['type'],'name'=>$n['name'],'time'=>$n['time'],'route'=>$n['route']);
+                $route[] =  array('type'=>$n['type'],'name'=>$n['name']);
+                //$row[] = array('id' => $n['id'],'pic'=>$n['pic'], 'area_id'=>$n['area_id'],'area_name' => $n['area_name'], 'route' => $n['route'], 'type' => $n['type'], 'name' => $n['name'], 'time' => $n['time'],'created_at'=>$n['created_at']);
             }
+            $route = RouteControl::array_unset_tt($route,"name");
+            for($i=0;$i<count($route);$i++){
+                for($j=0;$j<count($row);$j++){
+                    if($row[$j]['name']==$route[$i]['name']&&$row[$j]['type']==$route[$i]['type']){
+                        $routes[] = array('time'=>$row[$j]['time'],'route'=>$row[$j]['route']);
+                    }
+                }
+                $route[$i]['routes'] = $routes;
+                $routes = array();
+            }
+            $re['content'] = $route;
             echo json_encode($re,JSON_UNESCAPED_UNICODE);
             return;
+        }
+
+        function array_unset_tt($arr,$key){
+            //建立一个目标数组
+            $res = array();
+            foreach ($arr as $value) {
+                //查看有没有重复项
+                if(isset($res[$value[$key]])){
+                    unset($value[$key]);  //有：销毁
+                }else{
+                    $res[$value[$key]] = $value;
+                }
+            }
+            foreach ($res as $value)
+            {
+                $newres[] = array('type'=>$value['type'],'name'=>$value['name']);
+            }
+            return $newres;
         }
 
 		public function UpdateRouteJson(){
