@@ -220,10 +220,11 @@ layui.config({
             },
             success: function (result) {
                 if(result.state=="1"){
-                    setTimeout(function(){
-                        layer.close(index);
-                        layer.msg("提交成功！");
-                    },2000);
+                    layer.close(index);
+                    layer.msg("提交成功！");
+                    sessionStorage.setItem("head_pic",pic_src);
+                    $(window.parent.document).find("#head_pic").attr("src",sessionStorage.getItem("head_pic"));
+                    $(window.parent.document).find(".head_pic").attr("src",sessionStorage.getItem("head_pic"));
                 }
             },
             error:function(data){

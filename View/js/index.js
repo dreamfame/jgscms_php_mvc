@@ -11,6 +11,9 @@ layui.config({
 			url : "json/navs.json" //获取菜单json地址
 		});
 
+		$("#head_pic").attr("src",sessionStorage.getItem("head_pic"));
+    	$(".head_pic").attr("src",sessionStorage.getItem("head_pic"));
+
 	//更换皮肤
 	function skins(){
 		var skin = window.sessionStorage.getItem("skin");

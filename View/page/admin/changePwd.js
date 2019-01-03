@@ -58,7 +58,7 @@ layui.config({
             }
         },
         confirmPwd : function(value, item){
-            if(!new RegExp($("#oldPwd").val()).test(value)){
+            if($("#oldPwd").val()!=value){
                 return "两次输入密码不一致，请重新输入！";
             }
         }
