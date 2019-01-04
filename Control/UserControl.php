@@ -3,7 +3,7 @@ require_once '../Model/User.php';
 require_once '../DataBaseHandle/UserServer.php';
 header("Content-Type: text/html;charset=utf-8");
 //session_start();
-error_reporting(0)
+error_reporting(0);
 Class UserControl
 {
     public function JudgeOperate($operate)

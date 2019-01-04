@@ -79,7 +79,7 @@
           <entry key="html" value="1107" />
           <entry key="js" value="5389" />
           <entry key="json" value="224" />
-          <entry key="php" value="5791" />
+          <entry key="php" value="5792" />
           <entry key="txt" value="3" />
           <entry key="xml" value="13" />
         </counts>
@@ -90,7 +90,7 @@
           <entry key="HTML" value="1107" />
           <entry key="JSON" value="224" />
           <entry key="JavaScript" value="5389" />
-          <entry key="PHP" value="5791" />
+          <entry key="PHP" value="5792" />
           <entry key="PLAIN_TEXT" value="11" />
           <entry key="XML" value="13" />
         </counts>
@@ -244,7 +244,7 @@
         <entry file="file://$PROJECT_DIR$/Control/UserControl.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="115">
-              <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+              <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -534,7 +534,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="426381000" />
+    <option name="totallyTimeSpent" value="426439000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
@@ -922,7 +922,7 @@
     <entry file="file://$PROJECT_DIR$/Control/UserControl.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
-          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
         </state>
       </provider>
     </entry>
