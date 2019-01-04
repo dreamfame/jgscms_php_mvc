@@ -40,7 +40,7 @@
             $jsonfile = fopen("../View/json/PostcardList.json", "w") or die("Unable to open file!");
             while ($n = mysqli_fetch_array($result)) {
                 $re['state'] = '1';
-                $row[] = array('id' => $n['id'], 'name' => $n['name'],'wx'=>$n['wx'],'pic' => $n['pic'], 'date' => $n['date'], 'wishes' => $n['wishes']);
+                $row[] = array('id' => $n['id'], 'nickname'=>$n['nickname'],'name' => $n['name'],'wx'=>$n['wx'],'pic' => $n['pic'], 'date' => $n['date'], 'wishes' => $n['wishes']);
                 $re['content'] = $row;
                 if (flock($jsonfile, LOCK_EX)) {//加写锁
                     ftruncate($jsonfile, 0); // 将文件截断到给定的长度 

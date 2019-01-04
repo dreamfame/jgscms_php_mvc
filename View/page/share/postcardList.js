@@ -248,7 +248,7 @@ layui.config({
 			}
 			if(currData.length != 0){
 				for(var i=0;i<currData.length;i++){
-                    var wx = currData[i].wx==''?'-':currData[i].wx;
+                    var wx = currData[i].nickname==''?'-':currData[i].nickname;
                     var name = currData[i].name==''?'-':currData[i].name;
                     var pic = currData[i].pic==''?'-':currData[i].pic;
                     var date = currData[i].date==''?'-':currData[i].date;
