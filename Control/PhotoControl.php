@@ -68,7 +68,7 @@ require_once '../DataBaseHandle/PraiseServer.php';
             $jsonfile = fopen("../View/json/PhotoList.json", "w") or die("Unable to open file!");
             while ($n = mysqli_fetch_array($result)) {
                 $re['state'] = '1';
-                $row[] = array('id' => $n['id'],'top'=>$n['top'] ,'uid' => $n['uid'], 'des' => $n['des'], 'praise' => $n['praise'], 'comment' => $n['comment'], 'img1' => $n['img1'],'img2'=>$n['img2'],'img3'=>$n['img3'],'img4'=>$n['img4'],'img5'=>$n['img5'],'img6'=>$n['img6'],'img7'=>$n['img7'],'img8'=>$n['img8'],'img9'=>$n['img9'],'created_at'=>$n['created_at'],'verify'=>$n['verify'],'operator'=>$n['operator']);
+                $row[] = array('id' => $n['id'],'top'=>$n['top'] ,'nickname'=>$n['nickname'],'uid' => $n['uid'], 'des' => $n['des'], 'praise' => $n['praise'], 'comment' => $n['comment'], 'img1' => $n['img1'],'img2'=>$n['img2'],'img3'=>$n['img3'],'img4'=>$n['img4'],'img5'=>$n['img5'],'img6'=>$n['img6'],'img7'=>$n['img7'],'img8'=>$n['img8'],'img9'=>$n['img9'],'created_at'=>$n['created_at'],'verify'=>$n['verify'],'operator'=>$n['operator']);
                 $re['content'] = $row;
                 if (flock($jsonfile, LOCK_EX)) {//加写锁 
                     ftruncate($jsonfile, 0); // 将文件截断到给定的长度 
@@ -132,7 +132,7 @@ require_once '../DataBaseHandle/PraiseServer.php';
             while ($n = mysqli_fetch_array($result))
             {
                 $re['state'] = '1';
-                $row[] = array('id' => $n['id'],'top'=>$n['top'] ,'uid' => $n['uid'], 'des' => $n['des'], 'praise' => $n['praise'], 'comment' => $n['comment'], 'img1' => $n['img1'],'img2'=>$n['img2'],'img3'=>$n['img3'],'img4'=>$n['img4'],'img5'=>$n['img5'],'img6'=>$n['img6'],'img7'=>$n['img7'],'img8'=>$n['img8'],'img9'=>$n['img9'],'created_at'=>$n['created_at'],'verify'=>$n['verify'],'operator'=>$n['operator']);
+                $row[] = array('id' => $n['id'],'top'=>$n['top'] ,'nickname'=>$n['nickname'],'uid' => $n['uid'], 'des' => $n['des'], 'praise' => $n['praise'], 'comment' => $n['comment'], 'img1' => $n['img1'],'img2'=>$n['img2'],'img3'=>$n['img3'],'img4'=>$n['img4'],'img5'=>$n['img5'],'img6'=>$n['img6'],'img7'=>$n['img7'],'img8'=>$n['img8'],'img9'=>$n['img9'],'created_at'=>$n['created_at'],'verify'=>$n['verify'],'operator'=>$n['operator']);
                 $re['content'] = $row;
                 if (flock($jsonfile, LOCK_EX)) {//加写锁 
                     ftruncate($jsonfile, 0); // 将文件截断到给定的长度 
