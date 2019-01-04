@@ -12,8 +12,6 @@ error_reporting(0);
 class ServerControl
 {
     public function server_open(){
-        $us = new UserServer();
-        $wx = "";
         $openid = "";
         set_time_limit(0);//无限请求超时时间
         while (true){
@@ -27,16 +25,11 @@ class ServerControl
                 $openid = "";
             }
             usleep(500000);//0.5秒
-            if($openid!=""&&$wx==""){
-                $wx = $us->GetWx($openid);
-            }
-            //若得到数据则马上返回数据给客服端，并结束本次请求
-            if($wx!=""&&$openid!=""){
-                $arr=array('success'=>"1",'name'=>$wx);
+            if($openid!=""){
+                $arr=array('success'=>"1",'openid'=>$openid);
                 echo json_encode($arr);
                 exit();
             }
-            //服务器($_POST['time']*0.5)秒后告诉客服端无数据
             else{
                 $arr=array('success'=>"0",'name'=>'');
                 echo json_encode($arr);

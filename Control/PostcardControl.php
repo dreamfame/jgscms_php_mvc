@@ -2,6 +2,7 @@
     error_reporting(0);
 	require_once '../Model/Postcard.php';
 	require_once '../DataBaseHandle/PostcardServer.php';
+	require_once 'ServerControl.php';
 	header("Content-Type: text/html;charset=utf-8");
 	//session_start();
 	Class PostcardControl
@@ -41,7 +42,7 @@
                 $re['state'] = '1';
                 $row[] = array('id' => $n['id'], 'name' => $n['name'],'wx'=>$n['wx'],'pic' => $n['pic'], 'date' => $n['date'], 'wishes' => $n['wishes']);
                 $re['content'] = $row;
-                if (flock($jsonfile, LOCK_EX)) {//加写锁 
+                if (flock($jsonfile, LOCK_EX)) {//加写锁
                     ftruncate($jsonfile, 0); // 将文件截断到给定的长度 
                     rewind($jsonfile); // 倒回文件指针的位置 
                     fwrite($jsonfile, json_encode($row, JSON_UNESCAPED_UNICODE));
@@ -83,9 +84,10 @@
         }
 
         public function GetPostcard(){
+            ServerControl::server_close();
             $wherelist = array();
-            if(!empty($_REQUEST['wx'])){
-                $wherelist[] = "wx like '%{$_REQUEST['wx']}%'";
+            if(!empty($_REQUEST['openid'])){
+                $wherelist[] = "openid = '{$_REQUEST['openid']}'";
             }
             if(!empty($_REQUEST['name'])){
                 $wherelist[] = "name like '%{$_REQUEST['name']}%'";
@@ -130,10 +132,23 @@
             fclose($jsonfile);
 		}
 
+		public function SetOpenId($openid){
+            $jsonfile = fopen("../View/json/openid.json", "w") or die("Unable to open file!");
+            $row = array('openid' => $openid);
+            if (flock($jsonfile, LOCK_EX)) {//加写锁 
+                ftruncate($jsonfile, 0); // 将文件截断到给定的长度 
+                rewind($jsonfile); // 倒回文件指针的位置 
+                fwrite($jsonfile, json_encode($row, JSON_UNESCAPED_UNICODE));
+                flock($jsonfile, LOCK_UN); //解锁 
+            }
+            fclose($jsonfile);
+        }
+
 		public function AddPostcard()
 		{
+            ServerControl::server_close();
             $re = array('state'=>'0','content'=>'添加失败');
-            if(empty($_REQUEST['wx'])||empty($_REQUEST['name'])||empty($_REQUEST['wishes'])||empty($_REQUEST['date'])||empty($_REQUEST['pic']))
+            if(empty($_REQUEST['openid'])||empty($_REQUEST['name'])||empty($_REQUEST['wishes'])||empty($_REQUEST['date'])||empty($_REQUEST['pic']))
             {
                 $re['state'] = '0';
                 $re['content'] = '数据有误';
@@ -141,7 +156,7 @@
                 return;
             }
 			$Postcard = new Postcard();
-            $Postcard->wx = $_REQUEST['wx'];
+            $Postcard->wx = $_REQUEST['openid'];
             $Postcard->name = $_REQUEST['name'];
             $Postcard->wishes = $_REQUEST['wishes'];
             $Postcard->date = $_REQUEST['date'];
