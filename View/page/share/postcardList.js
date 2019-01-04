@@ -257,7 +257,7 @@ layui.config({
 			    	+'<td><input type="checkbox" name="checked" lay-skin="primary" lay-filter="choose"></td>'
 			    	+'<td>'+name+'</td>'
                     +'<td>'+wx+'</td>'
-                    +'<td><a href="#" onclick="fileSelect('+currData[i].id+')"><img id="am'+currData[i].id+'" src="'+pic+'" width="200" height="200" /></a></td>'
+                    +'<td><img id="am'+currData[i].id+'" src="'+pic+'" width="200" height="200" /></td>'
 			    	+ '<td>'+date+'</td>'
 			    	+'<td align="left">'+wishes+'</td>'
 			    	+'<td>'

@@ -1,6 +1,7 @@
 <?php
 	require_once '../Model/Photo.php';
 	require_once '../DataBaseHandle/PhotoServer.php';
+require_once '../DataBaseHandle/PraiseServer.php';
 	require_once '../Extensions/Security.php';
 	header("Content-Type: text/html;charset=utf-8");
 	error_reporting(0);
@@ -46,6 +47,15 @@
                     break;
                 case "verify":
                     PhotoControl::VerifyPhoto();
+                    break;
+                case "praise":
+                    PhotoControl::Praise();
+                    break;
+                case "unpraise":
+                    PhotoControl::UnPraise();
+                    break;
+                case "allpraise":
+                    PhotoControl::GetPraise();
                     break;
 			}
 		}
@@ -324,6 +334,77 @@
                 $re['content']= $operator;
             }
             echo  json_encode($re,JSON_UNESCAPED_UNICODE);
+        }
+
+        public function Praise(){
+		    $openid = $_REQUEST['openid'];
+		    $photo_id = $_REQUEST['photo_id'];
+		    $praise = new Praise();
+		    $praise->openid = $openid;
+		    $praise->photo_id = $photo_id;
+            date_default_timezone_set('PRC');
+            $praise->created_at = date('Y-m-d H:i:s', time());
+		    $ps = new PraiseServer();
+            $re = array('state'=>'0','content'=>'点赞失败');
+		    $result = $ps->InsertPraise($praise);
+		    if($result==""){
+                $re['state'] = "1";
+                $re['content'] = "点赞成功";
+            }
+            else{
+                $re['state'] = "0";
+                $re['content'] = "点赞失败，"+$result;
+            }
+            echo  json_encode($re,JSON_UNESCAPED_UNICODE);
+        }
+
+        public function UnPraise(){
+            $id = $_REQUEST['id'];
+            $ps = new PraiseServer();
+            $re = array('state'=>'0','content'=>'取消点赞失败');
+            $result = $ps->DeletePraise($id);
+            if($result==""){
+                $re['state'] = "1";
+                $re['content'] = "取消点赞成功";
+            }
+            else{
+                $re['state'] = "0";
+                $re['content'] = "取消点赞失败，"+$result;
+            }
+            echo  json_encode($re,JSON_UNESCAPED_UNICODE);
+        }
+
+        public function GetPraise(){
+            $wherelist = array();
+            if($_REQUEST['id']!=""||$_REQUEST['id']!=null){
+                $id = $_REQUEST['id'];
+                $wherelist[] = "id = '{$id}'";
+            }
+            if($_REQUEST['openid']!=""||$_REQUEST['openid']!=null){
+                $openid = $_REQUEST['openid'];
+                $wherelist[] = "openid = '{$openid}'";
+            }
+            if($_REQUEST['photo_id']!=""||$_REQUEST['photo_id']!=null){
+                $photo_id = $_REQUEST['photo_id'];
+                $wherelist[] = "photo_id = '{$photo_id}'";
+            }
+            //组装查询条件
+            if(count($wherelist) > 0){
+                $where = " where ".implode(' and ' , $wherelist);
+            }
+            //判断查询条件
+            $where = isset($where) ? $where : '';
+            $ps = new PraiseServer();
+            $result = $ps->QueryPraise($where);
+            $re = array('state'=>'0','content'=>"未获取数据");
+            while ($n = mysqli_fetch_array($result))
+            {
+                $re['state'] = '1';
+                $row[] = array('id' => $n['id'], 'openid' => $n['openid'],'photo_id'=>$n['photo_id'],'created_at' => $n['created_at']);
+                $re['content'] = $row;
+            }
+            echo json_encode($re,JSON_UNESCAPED_UNICODE);
+            return;
         }
 	}
 ?>

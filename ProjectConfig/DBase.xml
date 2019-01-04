@@ -17,4 +17,5 @@
 	<table name="message"></table>
 	<table name="login_status"></table>
 	<table name="log"></table>
+	<table name="praise"></table>
 </db>
