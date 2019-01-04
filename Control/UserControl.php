@@ -135,7 +135,8 @@ Class UserControl
         $user->city = $_REQUEST['city'];
         $user->country = $_REQUEST['country'];
         $user->gender = $_REQUEST['gender'];
-        $user->created_at = $_REQUEST['time'];
+        date_default_timezone_set('PRC');
+        $user->created_at = date('Y-m-d H:i:s', time());
         $user->auth = $_REQUEST['auth'];
         $as = new UserServer();
         $re = array('state'=>'0','content'=>'添加失败,');
