@@ -367,7 +367,7 @@ layui.config({
 			}
             if(currData.length != 0){
                 for(var i=0;i<currData.length;i++){
-                    var wx = currData[i].uid==''?'-':currData[i].uid;
+                    var wx = currData[i].nickname==''?'-':currData[i].nickname;
                     var des = currData[i].des==''?'-':currData[i].des;
                     var verify = currData[i].verify==0?"<span id='photo_verify"+i+"' style='color:red'>待审核</span>":currData[i].verify==1?"<span id='photo_verify"+i+"' style='color:green'>审核通过</span>":"<span id='photo_verify"+i+"' style='color:grey'>审核未通过</span>";
                     var time = currData[i].created_at==''?'-':currData[i].created_at;

@@ -19,7 +19,7 @@
 		}
 
 		public function GetAll(){
-			$sql = "select * from ".$this->db_table;
+			$sql = "select photo.id,user.nickname as nickname,uid,des,photo.created_at,praise,comment,img1,img2,img3,img4,img5,img6,img7,img8,img9,verify,operator,top,private from photo LEFT JOIN user on photo.uid = user.openid";
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
 		}

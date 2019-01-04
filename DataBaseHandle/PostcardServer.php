@@ -19,7 +19,7 @@
 		}
 
 		public function GetAll(){
-			$sql = "select * from ".$this->db_table;
+			$sql = "select postcard.id,user.nickname as nickname,postcard.wx,postcard.name,postcard.pic,postcard.date,postcard.wishes from postcard LEFT JOIN user on postcard.wx = user.openid";
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
 		}
