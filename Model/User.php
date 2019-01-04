@@ -8,6 +8,7 @@
 		private $city;
 		private $country;
 		private $gender;
+		private $auth;
 		function __set($name,$value)
 		{
 			$this->$name = $value ;

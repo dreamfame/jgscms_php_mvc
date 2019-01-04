@@ -2,21 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c7749a1-70c7-404f-906e-a59d4ff055e3" name="默认的" comment="">
-      <change afterPath="$PROJECT_DIR$/View/page/activity/routePic.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Control/RouteControl.php" beforeDir="false" afterPath="$PROJECT_DIR$/Control/RouteControl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Control/ScenicControl.php" beforeDir="false" afterPath="$PROJECT_DIR$/Control/ScenicControl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataBaseHandle/DBHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/DataBaseHandle/DBHelper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataBaseHandle/RouteServer.php" beforeDir="false" afterPath="$PROJECT_DIR$/DataBaseHandle/RouteServer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/Route.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Route.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/json/PhotoList.json" beforeDir="false" afterPath="$PROJECT_DIR$/View/json/PhotoList.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/json/activityList.json" beforeDir="false" afterPath="$PROJECT_DIR$/View/json/activityList.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/json/routeList.json" beforeDir="false" afterPath="$PROJECT_DIR$/View/json/routeList.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/json/scenicList.json" beforeDir="false" afterPath="$PROJECT_DIR$/View/json/scenicList.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/activity/routeAdd.html" beforeDir="false" afterPath="$PROJECT_DIR$/View/page/activity/routeAdd.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/activity/routeAdd.js" beforeDir="false" afterPath="$PROJECT_DIR$/View/page/activity/routeAdd.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/activity/routeList.html" beforeDir="false" afterPath="$PROJECT_DIR$/View/page/activity/routeList.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/page/activity/routeList.js" beforeDir="false" afterPath="$PROJECT_DIR$/View/page/activity/routeList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Control/UserControl.php" beforeDir="false" afterPath="$PROJECT_DIR$/Control/UserControl.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataBaseHandle/UserServer.php" beforeDir="false" afterPath="$PROJECT_DIR$/DataBaseHandle/UserServer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/User.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -66,7 +55,7 @@
           <entry key="html" value="44" />
           <entry key="js" value="148" />
           <entry key="json" value="23" />
-          <entry key="php" value="151" />
+          <entry key="php" value="155" />
           <entry key="png" value="2" />
           <entry key="sql" value="1" />
           <entry key="svg" value="2" />
@@ -80,7 +69,7 @@
           <entry key="Image" value="2" />
           <entry key="JSON" value="23" />
           <entry key="JavaScript" value="148" />
-          <entry key="PHP" value="151" />
+          <entry key="PHP" value="155" />
           <entry key="SVG" value="2" />
           <entry key="Scratch" value="1" />
           <entry key="XML" value="7" />
@@ -93,7 +82,7 @@
           <entry key="html" value="1107" />
           <entry key="js" value="5389" />
           <entry key="json" value="224" />
-          <entry key="php" value="5638" />
+          <entry key="php" value="5784" />
           <entry key="txt" value="3" />
           <entry key="xml" value="13" />
         </counts>
@@ -104,7 +93,7 @@
           <entry key="HTML" value="1107" />
           <entry key="JSON" value="224" />
           <entry key="JavaScript" value="5389" />
-          <entry key="PHP" value="5638" />
+          <entry key="PHP" value="5784" />
           <entry key="PLAIN_TEXT" value="11" />
           <entry key="XML" value="13" />
         </counts>
@@ -237,73 +226,46 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/View/page/activity/scenicAdd.js">
+        <entry file="file://$PROJECT_DIR$/Control/ScanControl.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="96" column="8" selection-start-line="96" selection-start-column="8" selection-end-line="98" selection-end-column="9" />
+            <state relative-caret-position="69">
+              <caret line="44" column="31" lean-forward="true" selection-start-line="44" selection-start-column="31" selection-end-line="44" selection-end-column="31" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/View/page/activity/scenicAdd.html">
+        <entry file="file://$PROJECT_DIR$/Control/ServerControl.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="712">
-              <caret line="61" column="8" selection-start-line="61" selection-start-column="8" selection-end-line="69" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/View/page/activity/routeAdd.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="117" column="37" selection-start-line="117" selection-start-column="37" selection-end-line="117" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Control/ScenicControl.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2893">
-              <caret line="156" column="16" selection-start-line="156" selection-start-column="16" selection-end-line="156" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Control/RouteControl.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="285" column="40" selection-start-line="285" selection-start-column="28" selection-end-line="285" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DataBaseHandle/ScenicServer.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="75" column="113" lean-forward="true" selection-start-line="75" selection-start-column="16" selection-end-line="75" selection-end-column="113" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/View/page/activity/routeList.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="893">
-              <caret line="47" column="9" lean-forward="true" selection-start-line="47" selection-start-column="9" selection-end-line="47" selection-end-column="9" />
+            <state relative-caret-position="529">
+              <caret line="33" column="25" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/View/page/activity/routeList.html">
+        <entry file="file://$PROJECT_DIR$/Control/UserControl.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="39" column="54" selection-start-line="39" selection-start-column="54" selection-end-line="39" selection-end-column="54" />
+            <state relative-caret-position="304">
+              <caret line="95" column="12" selection-start-line="95" selection-start-column="12" selection-end-line="95" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DataBaseHandle/UserServer.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="299">
+              <caret line="104" column="83" selection-start-line="104" selection-start-column="83" selection-end-line="104" selection-end-column="83" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Model/User.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="230">
+              <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -386,10 +348,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/View/css/main.css" />
-        <option value="$PROJECT_DIR$/View/js/bodyTab.js" />
-        <option value="$PROJECT_DIR$/View/page/system/systeminfo.js" />
-        <option value="$PROJECT_DIR$/View/layui/lay/modules/form.js" />
         <option value="$PROJECT_DIR$/View/json/navs.json" />
         <option value="D:/BaiduNetdiskDownload/SendEmail.php" />
         <option value="$PROJECT_DIR$/View/page/system/bug.html" />
@@ -437,6 +395,10 @@
         <option value="$PROJECT_DIR$/Control/ScenicControl.php" />
         <option value="$PROJECT_DIR$/Control/RouteControl.php" />
         <option value="$PROJECT_DIR$/View/page/activity/routeList.html" />
+        <option value="$PROJECT_DIR$/Control/ServerControl.php" />
+        <option value="$PROJECT_DIR$/Model/User.php" />
+        <option value="$PROJECT_DIR$/DataBaseHandle/UserServer.php" />
+        <option value="$PROJECT_DIR$/Control/UserControl.php" />
       </list>
     </option>
   </component>
@@ -470,20 +432,12 @@
             <path>
               <item name="JGSCMS" type="b2602c69:ProjectViewProjectNode" />
               <item name="JGSCMS" type="462c0819:PsiDirectoryNode" />
-              <item name="View" type="462c0819:PsiDirectoryNode" />
+              <item name="Control" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="JGSCMS" type="b2602c69:ProjectViewProjectNode" />
               <item name="JGSCMS" type="462c0819:PsiDirectoryNode" />
-              <item name="View" type="462c0819:PsiDirectoryNode" />
-              <item name="page" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="JGSCMS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JGSCMS" type="462c0819:PsiDirectoryNode" />
-              <item name="View" type="462c0819:PsiDirectoryNode" />
-              <item name="page" type="462c0819:PsiDirectoryNode" />
-              <item name="activity" type="462c0819:PsiDirectoryNode" />
+              <item name="ProjectConfig" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -583,13 +537,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="425295000" />
+    <option name="totallyTimeSpent" value="426254000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49886876" visible="true" weight="0.20121029" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49886876" visible="true" weight="0.20332618" />
       <window_info id="Structure" order="1" sideWeight="0.50113124" side_tool="true" weight="0.25751072" />
       <window_info id="Favorites" order="2" sideWeight="0.50113124" side_tool="true" weight="0.25751072" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -622,23 +576,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/View/page/admin/roleList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2001" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/page/message/message.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5083" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/page/share/photoList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="168" column="37" selection-start-line="168" selection-start-column="37" selection-end-line="168" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/View/page/share/photowaitList.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
@@ -681,15 +618,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Control/UserControl.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-345" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/View/page/admin/adminList.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="160" column="21" lean-forward="true" selection-start-line="151" selection-start-column="20" selection-end-line="160" selection-end-column="21" />
+        <state relative-caret-position="3680">
+          <caret line="160" column="21" selection-start-line="151" selection-start-column="20" selection-end-line="160" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -723,7 +655,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/View/page/img/images.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
+        <state relative-caret-position="2691">
           <caret line="117" column="82" selection-start-line="117" selection-start-column="82" selection-end-line="117" selection-end-column="82" />
         </state>
       </provider>
@@ -744,7 +676,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/DataBaseHandle/DBHelper.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
+        <state relative-caret-position="2116">
           <caret line="92" column="24" selection-start-line="92" selection-start-column="24" selection-end-line="92" selection-end-column="24" />
         </state>
       </provider>
@@ -761,15 +693,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/DataBaseHandle/ScanServer.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
+        <state relative-caret-position="598">
           <caret line="31" column="28" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Control/ScanControl.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="667">
-          <caret line="62" column="21" selection-start-line="62" selection-start-column="21" selection-end-line="62" selection-end-column="21" />
+        <state relative-caret-position="69">
+          <caret line="44" column="31" lean-forward="true" selection-start-line="44" selection-start-column="31" selection-end-line="44" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -966,6 +898,34 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="261">
           <caret line="39" column="54" selection-start-line="39" selection-start-column="54" selection-end-line="39" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Control/ServerControl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="529">
+          <caret line="33" column="25" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataBaseHandle/UserServer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="104" column="83" selection-start-line="104" selection-start-column="83" selection-end-line="104" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Control/UserControl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="95" column="12" selection-start-line="95" selection-start-column="12" selection-end-line="95" selection-end-column="12" />
         </state>
       </provider>
     </entry>

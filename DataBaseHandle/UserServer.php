@@ -39,7 +39,7 @@ Class UserServer
 
     public function InsertUser($user)
     {
-        $sql = "insert into ".$this->db_table."(openid,wx,avatar,nickname,city,country,gender,created_at) values('$user->openid','$user->wx','$user->avatar','$user->nickname','$user->city','$user->country','$user->gender','$user->created_at') on duplicate key update avatar = values(avatar),nickname = values(nickname),city = values(city),country = values(country),gender = values(gender)";
+        $sql = "insert into ".$this->db_table."(openid,wx,avatar,nickname,city,country,gender,created_at,auth) values('$user->openid','$user->wx','$user->avatar','$user->nickname','$user->city','$user->country','$user->gender','$user->created_at','$user->auth') on duplicate key update avatar = values(avatar),nickname = values(nickname),city = values(city),country = values(country),gender = values(gender)";
         $result = $this->db->ExecSql($sql,$this->conn);
         return $result;
     }
@@ -102,7 +102,7 @@ Class UserServer
     }
 
     public function QueryUser($where){
-        $sql = "select id,openid,wx,nickname,avatar,gender,city,country,created_at from ".$this->db_table.$where;
+        $sql = "select id,openid,wx,nickname,avatar,gender,city,country,created_at,auth from ".$this->db_table.$where;
         $result = $this->db->ExeSql($sql, $this->conn);
         return $result;
     }
