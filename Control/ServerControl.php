@@ -26,12 +26,12 @@ class ServerControl
             }
             usleep(500000);//0.5秒
             if($openid!=""){
-                $arr=array('success'=>"1",'openid'=>$openid);
+                $arr[] = array('success'=>"1",'openid'=>$openid);
                 echo json_encode($arr);
                 exit();
             }
             else{
-                $arr=array('success'=>"0",'name'=>'');
+                $arr[] = array('success'=>"0",'name'=>'');
                 echo json_encode($arr);
                 exit();
             }
