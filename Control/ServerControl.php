@@ -38,6 +38,20 @@ class ServerControl
         }
     }
 
+    public function getOpenId(){
+        $open_id = $_REQUEST['openid'];
+        $jsonfile = fopen("../View/json/openid.json", "w") or die("Unable to open file!");
+        $row = array('openid' => $open_id);
+        if (flock($jsonfile, LOCK_EX)) {//加写锁 
+            ftruncate($jsonfile, 0); // 将文件截断到给定的长度 
+            rewind($jsonfile); // 倒回文件指针的位置 
+            fwrite($jsonfile, json_encode($row, JSON_UNESCAPED_UNICODE));
+            flock($jsonfile, LOCK_UN); //解锁 
+        }
+        fclose($jsonfile);
+        echo $open_id;
+    }
+
     public function server_close(){
         $jsonfile = fopen("../View/json/openid.json", "w") or die("Unable to open file!");
         $row = array('openid' => "");
