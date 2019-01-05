@@ -1,7 +1,8 @@
 <?php
 	require_once '../Model/Photo.php';
+    require_once '../Model/Praise.php';
 	require_once '../DataBaseHandle/PhotoServer.php';
-require_once '../DataBaseHandle/PraiseServer.php';
+    require_once '../DataBaseHandle/PraiseServer.php';
 	require_once '../Extensions/Security.php';
 	header("Content-Type: text/html;charset=utf-8");
 	error_reporting(0);

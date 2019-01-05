@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c7749a1-70c7-404f-906e-a59d4ff055e3" name="默认的" comment="">
-      <change beforePath="$PROJECT_DIR$/DataBaseHandle/PhotoServer.php" beforeDir="false" afterPath="$PROJECT_DIR$/DataBaseHandle/PhotoServer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Control/PhotoControl.php" beforeDir="false" afterPath="$PROJECT_DIR$/Control/PhotoControl.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -53,7 +54,7 @@
           <entry key="html" value="49" />
           <entry key="js" value="153" />
           <entry key="json" value="23" />
-          <entry key="php" value="164" />
+          <entry key="php" value="167" />
           <entry key="png" value="2" />
           <entry key="sql" value="1" />
           <entry key="svg" value="2" />
@@ -67,7 +68,7 @@
           <entry key="Image" value="2" />
           <entry key="JSON" value="23" />
           <entry key="JavaScript" value="153" />
-          <entry key="PHP" value="164" />
+          <entry key="PHP" value="167" />
           <entry key="SVG" value="2" />
           <entry key="Scratch" value="1" />
           <entry key="XML" value="7" />
@@ -80,7 +81,7 @@
           <entry key="html" value="1112" />
           <entry key="js" value="5465" />
           <entry key="json" value="224" />
-          <entry key="php" value="5996" />
+          <entry key="php" value="6018" />
           <entry key="txt" value="3" />
           <entry key="xml" value="13" />
         </counts>
@@ -91,7 +92,7 @@
           <entry key="HTML" value="1112" />
           <entry key="JSON" value="224" />
           <entry key="JavaScript" value="5465" />
-          <entry key="PHP" value="5996" />
+          <entry key="PHP" value="6018" />
           <entry key="PLAIN_TEXT" value="11" />
           <entry key="XML" value="13" />
         </counts>
@@ -235,20 +236,29 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Control/PhotoControl.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="87" column="31" selection-start-line="87" selection-start-column="31" selection-end-line="87" selection-end-column="31" />
+            <state relative-caret-position="46">
+              <caret line="2" column="33" selection-start-line="2" selection-start-column="33" selection-end-line="2" selection-end-column="33" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/DataBaseHandle/PhotoServer.php">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DataBaseHandle/PraiseServer.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="27" column="83" selection-start-line="27" selection-start-column="83" selection-end-line="27" selection-end-column="83" />
+            <state relative-caret-position="621">
+              <caret line="27" column="149" selection-start-line="27" selection-start-column="149" selection-end-line="27" selection-end-column="149" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DataBaseHandle/DBHelper.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="533">
+              <caret line="92" column="24" selection-start-line="92" selection-start-column="24" selection-end-line="92" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -340,7 +350,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/View/page/system/bug.js" />
         <option value="$PROJECT_DIR$/View/index.html" />
         <option value="$PROJECT_DIR$/View/js/main.js" />
         <option value="$PROJECT_DIR$/View/page/main.html" />
@@ -383,7 +392,6 @@
         <option value="$PROJECT_DIR$/View/page/share/photoList.js" />
         <option value="$PROJECT_DIR$/View/page/share/photowaitList.html" />
         <option value="$PROJECT_DIR$/View/page/share/photowaitList.js" />
-        <option value="$PROJECT_DIR$/Control/PhotoControl.php" />
         <option value="$PROJECT_DIR$/View/page/share/postcardList.js" />
         <option value="$PROJECT_DIR$/Control/PostcardControl.php" />
         <option value="$PROJECT_DIR$/Control/ServerControl.php" />
@@ -391,6 +399,8 @@
         <option value="$PROJECT_DIR$/DataBaseHandle/RouteServer.php" />
         <option value="$PROJECT_DIR$/Control/RouteControl.php" />
         <option value="$PROJECT_DIR$/DataBaseHandle/PhotoServer.php" />
+        <option value="$PROJECT_DIR$/DataBaseHandle/PraiseServer.php" />
+        <option value="$PROJECT_DIR$/Control/PhotoControl.php" />
       </list>
     </option>
   </component>
@@ -524,12 +534,12 @@
       <workItem from="1546658492523" duration="2579000" />
       <workItem from="1546689244835" duration="532000" />
       <workItem from="1546693543882" duration="3718000" />
-      <workItem from="1546706080260" duration="319000" />
+      <workItem from="1546706080260" duration="2920000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="437685000" />
+    <option name="totallyTimeSpent" value="440286000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -577,27 +587,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/DataBaseHandle/ImgServer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="91" column="8" selection-start-line="91" selection-start-column="8" selection-end-line="102" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataBaseHandle/AdminServer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="53" column="124" selection-start-line="53" selection-start-column="24" selection-end-line="53" selection-end-column="124" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataBaseHandle/DBHelper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2116">
-          <caret line="92" column="24" selection-start-line="92" selection-start-column="24" selection-end-line="92" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Control/AdminControl.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="69">
@@ -911,17 +900,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Control/PhotoControl.php">
+    <entry file="file://$PROJECT_DIR$/DataBaseHandle/PhotoServer.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="87" column="31" selection-start-line="87" selection-start-column="31" selection-end-line="87" selection-end-column="31" />
+        <state relative-caret-position="621">
+          <caret line="27" column="83" selection-start-line="27" selection-start-column="83" selection-end-line="27" selection-end-column="83" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataBaseHandle/PhotoServer.php">
+    <entry file="file://$PROJECT_DIR$/DataBaseHandle/DBHelper.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="27" column="83" selection-start-line="27" selection-start-column="83" selection-end-line="27" selection-end-column="83" />
+        <state relative-caret-position="533">
+          <caret line="92" column="24" selection-start-line="92" selection-start-column="24" selection-end-line="92" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/Praise.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="1" column="10" selection-start-line="1" selection-start-column="10" selection-end-line="1" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataBaseHandle/PraiseServer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="621">
+          <caret line="27" column="149" selection-start-line="27" selection-start-column="149" selection-end-line="27" selection-end-column="149" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Control/PhotoControl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="33" selection-start-line="2" selection-start-column="33" selection-end-line="2" selection-end-column="33" />
         </state>
       </provider>
     </entry>
