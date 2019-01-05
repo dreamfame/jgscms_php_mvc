@@ -452,7 +452,7 @@
             $wherelist = array();
             if($_REQUEST['openid']!=""||$_REQUEST['openid']!=null){
                 $openid = $_REQUEST['openid'];
-                $wherelist[] = "openid = '{$openid}'";
+                $wherelist[] = "praise.openid = '{$openid}'";
             }
             //组装查询条件
             if(count($wherelist) > 0){
