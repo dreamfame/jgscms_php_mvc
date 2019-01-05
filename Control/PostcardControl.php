@@ -86,8 +86,8 @@
         public function GetPostcard(){
             ServerControl::server_close();
             $wherelist = array();
-            if(!empty($_REQUEST['openid'])){
-                $wherelist[] = "openid = '{$_REQUEST['openid']}'";
+            if(!empty($_REQUEST['wx'])){
+                $wherelist[] = "wx = '{$_REQUEST['wx']}'";
             }
             if(!empty($_REQUEST['name'])){
                 $wherelist[] = "name like '%{$_REQUEST['name']}%'";

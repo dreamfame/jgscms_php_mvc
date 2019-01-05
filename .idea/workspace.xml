@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c7749a1-70c7-404f-906e-a59d4ff055e3" name="默认的" comment="">
-      <change beforePath="$PROJECT_DIR$/DataBaseHandle/PhotoServer.php" beforeDir="false" afterPath="$PROJECT_DIR$/DataBaseHandle/PhotoServer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Control/PostcardControl.php" beforeDir="false" afterPath="$PROJECT_DIR$/Control/PostcardControl.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -80,7 +80,7 @@
           <entry key="html" value="1112" />
           <entry key="js" value="5424" />
           <entry key="json" value="224" />
-          <entry key="php" value="5870" />
+          <entry key="php" value="5876" />
           <entry key="txt" value="3" />
           <entry key="xml" value="13" />
         </counts>
@@ -91,7 +91,7 @@
           <entry key="HTML" value="1112" />
           <entry key="JSON" value="224" />
           <entry key="JavaScript" value="5424" />
-          <entry key="PHP" value="5870" />
+          <entry key="PHP" value="5876" />
           <entry key="PLAIN_TEXT" value="11" />
           <entry key="XML" value="13" />
         </counts>
@@ -232,7 +232,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DataBaseHandle/PhotoServer.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="391">
@@ -280,17 +280,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Control/PostcardControl.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="966">
-              <caret line="42" column="73" selection-start-line="42" selection-start-column="73" selection-end-line="42" selection-end-column="73" />
+            <state relative-caret-position="212">
+              <caret line="89" column="52" selection-start-line="89" selection-start-column="52" selection-end-line="89" selection-end-column="52" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/DataBaseHandle/PostcardServer.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="20" column="24" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
+            <state relative-caret-position="-363">
+              <caret line="16" column="98" lean-forward="true" selection-start-line="16" selection-start-column="98" selection-end-line="16" selection-end-column="98" />
             </state>
           </provider>
         </entry>
@@ -439,9 +439,9 @@
         <option value="$PROJECT_DIR$/View/page/share/photowaitList.html" />
         <option value="$PROJECT_DIR$/View/page/share/photowaitList.js" />
         <option value="$PROJECT_DIR$/Control/PhotoControl.php" />
-        <option value="$PROJECT_DIR$/Control/PostcardControl.php" />
         <option value="$PROJECT_DIR$/View/page/share/postcardList.js" />
         <option value="$PROJECT_DIR$/DataBaseHandle/PhotoServer.php" />
+        <option value="$PROJECT_DIR$/Control/PostcardControl.php" />
       </list>
     </option>
   </component>
@@ -572,12 +572,12 @@
       <workItem from="1546135209823" duration="5784000" />
       <workItem from="1546398607733" duration="955000" />
       <workItem from="1546608292832" duration="2898000" />
-      <workItem from="1546658492523" duration="557000" />
+      <workItem from="1546658492523" duration="1906000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="431094000" />
+    <option name="totallyTimeSpent" value="432443000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
@@ -927,20 +927,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Control/PostcardControl.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="966">
-          <caret line="42" column="73" selection-start-line="42" selection-start-column="73" selection-end-line="42" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataBaseHandle/PostcardServer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="20" column="24" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/View/page/share/postcardList.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -966,6 +952,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="39" column="268" selection-start-line="39" selection-start-column="268" selection-end-line="39" selection-end-column="268" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Control/PostcardControl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="89" column="52" selection-start-line="89" selection-start-column="52" selection-end-line="89" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataBaseHandle/PostcardServer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-363">
+          <caret line="16" column="98" lean-forward="true" selection-start-line="16" selection-start-column="98" selection-end-line="16" selection-end-column="98" />
         </state>
       </provider>
     </entry>
