@@ -37,7 +37,7 @@
         }
 
         public function QueryPhoto($where){
-            $sql = "select * from ".$this->db_table."  left join user on uid = wx".$where." order by photo.created_at,photo.top desc";
+            $sql = "select photo.id,user.nickname as nickname,uid,des,photo.created_at,praise,comment,img1,img2,img3,img4,img5,img6,img7,img8,img9,verify,operator,top,private from ".$this->db_table."  left join user on uid = openid".$where." order by photo.created_at,photo.top desc";
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
         }
