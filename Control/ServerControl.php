@@ -64,11 +64,11 @@ class ServerControl
         fclose($jsonfile);
         $json_string = file_get_contents('../View/json/openid.json');
         $data = json_decode($json_string, true);
-        if($data!=null&&$data["openid"]==""){
+        /*if($data!=null&&$data["openid"]==""){
             echo "0";
         }
         else{
             echo "1";
-        }
+        }*/
     }
 }

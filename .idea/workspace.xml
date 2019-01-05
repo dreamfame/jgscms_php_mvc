@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c7749a1-70c7-404f-906e-a59d4ff055e3" name="默认的" comment="">
-      <change beforePath="$PROJECT_DIR$/Control/PostcardControl.php" beforeDir="false" afterPath="$PROJECT_DIR$/Control/PostcardControl.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Control/ServerControl.php" beforeDir="false" afterPath="$PROJECT_DIR$/Control/ServerControl.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -53,7 +53,7 @@
           <entry key="html" value="47" />
           <entry key="js" value="151" />
           <entry key="json" value="23" />
-          <entry key="php" value="159" />
+          <entry key="php" value="160" />
           <entry key="png" value="2" />
           <entry key="sql" value="1" />
           <entry key="svg" value="2" />
@@ -67,7 +67,7 @@
           <entry key="Image" value="2" />
           <entry key="JSON" value="23" />
           <entry key="JavaScript" value="151" />
-          <entry key="PHP" value="159" />
+          <entry key="PHP" value="160" />
           <entry key="SVG" value="2" />
           <entry key="Scratch" value="1" />
           <entry key="XML" value="7" />
@@ -80,7 +80,7 @@
           <entry key="html" value="1112" />
           <entry key="js" value="5424" />
           <entry key="json" value="224" />
-          <entry key="php" value="5876" />
+          <entry key="php" value="5880" />
           <entry key="txt" value="3" />
           <entry key="xml" value="13" />
         </counts>
@@ -91,7 +91,7 @@
           <entry key="HTML" value="1112" />
           <entry key="JSON" value="224" />
           <entry key="JavaScript" value="5424" />
-          <entry key="PHP" value="5876" />
+          <entry key="PHP" value="5880" />
           <entry key="PLAIN_TEXT" value="11" />
           <entry key="XML" value="13" />
         </counts>
@@ -242,15 +242,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/View/page/share/photoList.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1150">
-              <caret line="50" column="51" selection-start-line="50" selection-start-column="51" selection-end-line="50" selection-end-column="51" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/View/page/share/photoList.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="9154">
@@ -280,17 +271,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Control/PostcardControl.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="89" column="52" selection-start-line="89" selection-start-column="52" selection-end-line="89" selection-end-column="52" />
+            <state relative-caret-position="143">
+              <caret line="86" column="36" lean-forward="true" selection-start-line="86" selection-start-column="36" selection-end-line="86" selection-end-column="36" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Control/ServerControl.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="644">
+              <caret line="71" column="11" selection-start-line="71" selection-start-column="11" selection-end-line="71" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DataBaseHandle/PostcardServer.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-363">
-              <caret line="16" column="98" lean-forward="true" selection-start-line="16" selection-start-column="98" selection-end-line="16" selection-end-column="98" />
+            <state relative-caret-position="281">
+              <caret line="26" column="37" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -429,7 +429,6 @@
         <option value="$PROJECT_DIR$/Control/ScenicControl.php" />
         <option value="$PROJECT_DIR$/Control/RouteControl.php" />
         <option value="$PROJECT_DIR$/View/page/activity/routeList.html" />
-        <option value="$PROJECT_DIR$/Control/ServerControl.php" />
         <option value="$PROJECT_DIR$/Model/User.php" />
         <option value="$PROJECT_DIR$/DataBaseHandle/UserServer.php" />
         <option value="$PROJECT_DIR$/Control/UserControl.php" />
@@ -442,6 +441,7 @@
         <option value="$PROJECT_DIR$/View/page/share/postcardList.js" />
         <option value="$PROJECT_DIR$/DataBaseHandle/PhotoServer.php" />
         <option value="$PROJECT_DIR$/Control/PostcardControl.php" />
+        <option value="$PROJECT_DIR$/Control/ServerControl.php" />
       </list>
     </option>
   </component>
@@ -572,12 +572,12 @@
       <workItem from="1546135209823" duration="5784000" />
       <workItem from="1546398607733" duration="955000" />
       <workItem from="1546608292832" duration="2898000" />
-      <workItem from="1546658492523" duration="1906000" />
+      <workItem from="1546658492523" duration="2226000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="432443000" />
+    <option name="totallyTimeSpent" value="432763000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
@@ -885,13 +885,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Control/ServerControl.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="33" column="25" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Control/UserControl.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="460">
@@ -955,17 +948,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Control/PostcardControl.php">
+    <entry file="file://$PROJECT_DIR$/DataBaseHandle/PostcardServer.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="89" column="52" selection-start-line="89" selection-start-column="52" selection-end-line="89" selection-end-column="52" />
+        <state relative-caret-position="281">
+          <caret line="26" column="37" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="37" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataBaseHandle/PostcardServer.php">
+    <entry file="file://$PROJECT_DIR$/Control/PostcardControl.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-363">
-          <caret line="16" column="98" lean-forward="true" selection-start-line="16" selection-start-column="98" selection-end-line="16" selection-end-column="98" />
+        <state relative-caret-position="143">
+          <caret line="86" column="36" lean-forward="true" selection-start-line="86" selection-start-column="36" selection-end-line="86" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Control/ServerControl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="644">
+          <caret line="71" column="11" selection-start-line="71" selection-start-column="11" selection-end-line="71" selection-end-column="11" />
         </state>
       </provider>
     </entry>
