@@ -58,6 +58,9 @@
                 case "allpraise":
                     PhotoControl::GetPraise();
                     break;
+                case "getuserpraise":
+                    PhotoControl::GetUserPraise();
+                    break;
 			}
 		}
 
@@ -403,6 +406,39 @@
             {
                 $re['state'] = '1';
                 $row[] = array('id' => $n['id'], 'openid' => $n['openid'],'photo_id'=>$n['photo_id'],'created_at' => $n['created_at']);
+                $re['content'] = $row;
+            }
+            echo json_encode($re,JSON_UNESCAPED_UNICODE);
+            return;
+        }
+
+        public function GetUserPraise(){
+            $wherelist = array();
+            if($_REQUEST['id']!=""||$_REQUEST['id']!=null){
+                $id = $_REQUEST['id'];
+                $wherelist[] = "id = '{$id}'";
+            }
+            if($_REQUEST['openid']!=""||$_REQUEST['openid']!=null){
+                $openid = $_REQUEST['openid'];
+                $wherelist[] = "openid = '{$openid}'";
+            }
+            if($_REQUEST['photo_id']!=""||$_REQUEST['photo_id']!=null){
+                $photo_id = $_REQUEST['photo_id'];
+                $wherelist[] = "photo_id = '{$photo_id}'";
+            }
+            //组装查询条件
+            if(count($wherelist) > 0){
+                $where = " where ".implode(' and ' , $wherelist);
+            }
+            //判断查询条件
+            $where = isset($where) ? $where : '';
+            $ps = new PraiseServer();
+            $result = $ps->QueryUserPraise($where);
+            $re = array('state'=>'0','content'=>"未获取数据");
+            while ($n = mysqli_fetch_array($result))
+            {
+                $re['state'] = '1';
+                $row[] = array('id' => $n['id'], 'nickname'=>$n['nickname'],'avatar'=>$n['avatar'],'openid' => $n['openid'],'photo_id'=>$n['photo_id'],'created_at' => $n['created_at']);
                 $re['content'] = $row;
             }
             echo json_encode($re,JSON_UNESCAPED_UNICODE);
