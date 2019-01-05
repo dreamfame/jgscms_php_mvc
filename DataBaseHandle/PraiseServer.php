@@ -30,9 +30,9 @@
             return $result;
 		}
 
-		public function DeletePraise($id)
+		public function DeletePraise($openid,$photo_id)
         {
-            $sql="delete from ".$this->db_table." where id= '$id'";
+            $sql="delete from ".$this->db_table." where openid= '$openid' and photo_id = '$photo_id'";
             $result = $this->db->ExecSql($sql,$this->conn);
             return $result;
         }

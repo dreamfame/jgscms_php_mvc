@@ -360,10 +360,11 @@
         }
 
         public function UnPraise(){
-            $id = $_REQUEST['id'];
+            $openid = $_REQUEST['openid'];
+            $photo_id = $_REQUEST['photo_id'];
             $ps = new PraiseServer();
             $re = array('state'=>'0','content'=>'取消点赞失败');
-            $result = $ps->DeletePraise($id);
+            $result = $ps->DeletePraise($openid,$photo_id);
             if($result==""){
                 $re['state'] = "1";
                 $re['content'] = "取消点赞成功";
