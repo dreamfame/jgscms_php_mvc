@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c7749a1-70c7-404f-906e-a59d4ff055e3" name="默认的" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataBaseHandle/PhotoServer.php" beforeDir="false" afterPath="$PROJECT_DIR$/DataBaseHandle/PhotoServer.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -81,7 +80,7 @@
           <entry key="html" value="1112" />
           <entry key="js" value="5424" />
           <entry key="json" value="224" />
-          <entry key="php" value="5869" />
+          <entry key="php" value="5870" />
           <entry key="txt" value="3" />
           <entry key="xml" value="13" />
         </counts>
@@ -92,7 +91,7 @@
           <entry key="HTML" value="1112" />
           <entry key="JSON" value="224" />
           <entry key="JavaScript" value="5424" />
-          <entry key="PHP" value="5869" />
+          <entry key="PHP" value="5870" />
           <entry key="PLAIN_TEXT" value="11" />
           <entry key="XML" value="13" />
         </counts>
@@ -237,7 +236,7 @@
         <entry file="file://$PROJECT_DIR$/DataBaseHandle/PhotoServer.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="391">
-              <caret line="39" column="231" selection-start-line="39" selection-start-column="231" selection-end-line="39" selection-end-column="231" />
+              <caret line="39" column="268" selection-start-line="39" selection-start-column="268" selection-end-line="39" selection-end-column="268" />
             </state>
           </provider>
         </entry>
@@ -573,12 +572,12 @@
       <workItem from="1546135209823" duration="5784000" />
       <workItem from="1546398607733" duration="955000" />
       <workItem from="1546608292832" duration="2898000" />
-      <workItem from="1546658492523" duration="315000" />
+      <workItem from="1546658492523" duration="557000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="430852000" />
+    <option name="totallyTimeSpent" value="431094000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
@@ -966,7 +965,7 @@
     <entry file="file://$PROJECT_DIR$/DataBaseHandle/PhotoServer.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
-          <caret line="39" column="231" selection-start-line="39" selection-start-column="231" selection-end-line="39" selection-end-column="231" />
+          <caret line="39" column="268" selection-start-line="39" selection-start-column="268" selection-end-line="39" selection-end-column="268" />
         </state>
       </provider>
     </entry>
