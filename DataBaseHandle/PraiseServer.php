@@ -48,5 +48,11 @@
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
         }
+
+        public function QueryMyPraise($where){
+			$sql = "select user.avatar as avatar,user.nickname as nickname,uid,img1,img2,img3,img4,img5,img6,img7,img8,img9,des,praise from (select uid,img1,img2,img3,img4,img5,img6,img7,img8,img9,des,praise from photo left join praise on praise.photo_id = photo.id".$where.") as p left join user on user.openid = p.uid";
+            $result = $this->db->ExeSql($sql, $this->conn);
+            return $result;
+		}
 	}
 ?>

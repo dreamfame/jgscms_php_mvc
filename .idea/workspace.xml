@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c7749a1-70c7-404f-906e-a59d4ff055e3" name="默认的" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Control/PhotoControl.php" beforeDir="false" afterPath="$PROJECT_DIR$/Control/PhotoControl.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataBaseHandle/PraiseServer.php" beforeDir="false" afterPath="$PROJECT_DIR$/DataBaseHandle/PraiseServer.php" afterDir="false" />
     </list>
@@ -32,7 +33,7 @@
     <session id="1361982438">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="7" />
+          <entry key="project.closed" value="8" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.11" value="4" />
           <entry key="project.open.time.12" value="3" />
@@ -44,8 +45,8 @@
           <entry key="project.open.time.26" value="1" />
           <entry key="project.open.time.33" value="1" />
           <entry key="project.open.time.43" value="1" />
-          <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="21" />
+          <entry key="project.open.time.9" value="2" />
+          <entry key="project.opened" value="22" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -81,7 +82,7 @@
           <entry key="html" value="1112" />
           <entry key="js" value="5465" />
           <entry key="json" value="224" />
-          <entry key="php" value="6226" />
+          <entry key="php" value="6386" />
           <entry key="txt" value="3" />
           <entry key="xml" value="13" />
         </counts>
@@ -92,7 +93,7 @@
           <entry key="HTML" value="1112" />
           <entry key="JSON" value="224" />
           <entry key="JavaScript" value="5465" />
-          <entry key="PHP" value="6226" />
+          <entry key="PHP" value="6386" />
           <entry key="PLAIN_TEXT" value="11" />
           <entry key="XML" value="13" />
         </counts>
@@ -236,11 +237,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Control/PhotoControl.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="529">
-              <caret line="440" column="96" selection-start-line="440" selection-start-column="96" selection-end-line="440" selection-end-column="96" />
+            <state relative-caret-position="488">
+              <caret line="471" column="133" selection-start-line="471" selection-start-column="133" selection-end-line="471" selection-end-column="133" />
             </state>
           </provider>
         </entry>
@@ -248,17 +249,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DataBaseHandle/PhotoServer.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="39" column="84" selection-start-line="39" selection-start-column="84" selection-end-line="39" selection-end-column="84" />
+            <state relative-caret-position="281">
+              <caret line="42" column="9" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/DataBaseHandle/PraiseServer.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="657">
-              <caret line="46" column="200" selection-start-line="46" selection-start-column="200" selection-end-line="46" selection-end-column="200" />
+            <state relative-caret-position="501">
+              <caret line="52" column="134" selection-start-line="52" selection-start-column="134" selection-end-line="52" selection-end-column="134" />
             </state>
           </provider>
         </entry>
@@ -266,7 +267,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DataBaseHandle/DBHelper.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="533">
+            <state relative-caret-position="2116">
               <caret line="92" column="24" selection-start-line="92" selection-start-column="24" selection-end-line="92" selection-end-column="24" />
             </state>
           </provider>
@@ -408,8 +409,8 @@
         <option value="$PROJECT_DIR$/DataBaseHandle/RouteServer.php" />
         <option value="$PROJECT_DIR$/Control/RouteControl.php" />
         <option value="$PROJECT_DIR$/DataBaseHandle/PhotoServer.php" />
-        <option value="$PROJECT_DIR$/DataBaseHandle/PraiseServer.php" />
         <option value="$PROJECT_DIR$/Control/PhotoControl.php" />
+        <option value="$PROJECT_DIR$/DataBaseHandle/PraiseServer.php" />
       </list>
     </option>
   </component>
@@ -439,6 +440,11 @@
             <path>
               <item name="JGSCMS" type="b2602c69:ProjectViewProjectNode" />
               <item name="JGSCMS" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="JGSCMS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="JGSCMS" type="462c0819:PsiDirectoryNode" />
+              <item name="Control" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -538,12 +544,13 @@
       <workItem from="1546658492523" duration="2579000" />
       <workItem from="1546689244835" duration="532000" />
       <workItem from="1546693543882" duration="3718000" />
-      <workItem from="1546706080260" duration="5770000" />
+      <workItem from="1546706080260" duration="6182000" />
+      <workItem from="1546715408377" duration="946000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="443136000" />
+    <option name="totallyTimeSpent" value="444494000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -558,7 +565,7 @@
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49886876" visible="true" weight="0.15396996" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49886876" visible="true" weight="0.15611587" />
       <window_info id="Structure" order="1" sideWeight="0.50113124" side_tool="true" weight="0.25751072" />
       <window_info id="Favorites" order="2" sideWeight="0.50113124" side_tool="true" weight="0.25751072" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -887,13 +894,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Control/RouteControl.php">
+    <entry file="file://$PROJECT_DIR$/Model/Praise.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="67">
-          <caret line="35" column="43" selection-start-line="35" selection-start-column="43" selection-end-line="35" selection-end-column="43" />
-          <folding>
-            <element signature="n#GetRoute#0;n#RouteControl#0;n#!!top" />
-          </folding>
+        <state relative-caret-position="23">
+          <caret line="1" column="10" selection-start-line="1" selection-start-column="10" selection-end-line="1" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataBaseHandle/DBHelper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2116">
+          <caret line="92" column="24" selection-start-line="92" selection-start-column="24" selection-end-line="92" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -904,38 +915,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataBaseHandle/DBHelper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="533">
-          <caret line="92" column="24" selection-start-line="92" selection-start-column="24" selection-end-line="92" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Model/Praise.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="1" column="10" selection-start-line="1" selection-start-column="10" selection-end-line="1" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataBaseHandle/PraiseServer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="657">
-          <caret line="46" column="200" selection-start-line="46" selection-start-column="200" selection-end-line="46" selection-end-column="200" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DataBaseHandle/PhotoServer.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="39" column="84" selection-start-line="39" selection-start-column="84" selection-end-line="39" selection-end-column="84" />
+        <state relative-caret-position="281">
+          <caret line="42" column="9" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Control/RouteControl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="67">
+          <caret line="35" column="43" selection-start-line="35" selection-start-column="43" selection-end-line="35" selection-end-column="43" />
+          <folding>
+            <element signature="n#GetRoute#0;n#RouteControl#0;n#!!top" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Control/PhotoControl.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="440" column="96" selection-start-line="440" selection-start-column="96" selection-end-line="440" selection-end-column="96" />
+        <state relative-caret-position="488">
+          <caret line="471" column="133" selection-start-line="471" selection-start-column="133" selection-end-line="471" selection-end-column="133" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataBaseHandle/PraiseServer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="501">
+          <caret line="52" column="134" selection-start-line="52" selection-start-column="134" selection-end-line="52" selection-end-column="134" />
         </state>
       </provider>
     </entry>

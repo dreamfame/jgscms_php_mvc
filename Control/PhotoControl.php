@@ -61,6 +61,9 @@
                 case "getuserpraise":
                     PhotoControl::GetUserPraise();
                     break;
+                case "mypraise":
+                    PhotoControl::GetMyPraise();
+                    break;
 			}
 		}
 
@@ -439,6 +442,34 @@
             {
                 $re['state'] = '1';
                 $row[] = array('id' => $n['id'], 'nickname'=>$n['nickname'],'avatar'=>$n['avatar'],'openid' => $n['openid'],'photo_id'=>$n['photo_id'],'created_at' => $n['created_at']);
+                $re['content'] = $row;
+            }
+            echo json_encode($re,JSON_UNESCAPED_UNICODE);
+            return;
+        }
+
+        public function GetMyPraise(){
+            $wherelist = array();
+            if($_REQUEST['openid']!=""||$_REQUEST['openid']!=null){
+                $openid = $_REQUEST['openid'];
+                $wherelist[] = "openid = '{$openid}'";
+            }
+            //组装查询条件
+            if(count($wherelist) > 0){
+                $where = " where ".implode(' and ' , $wherelist);
+            }
+            //判断查询条件
+            $where = isset($where) ? $where : '';
+            $ps = new PraiseServer();
+            $result = $ps->QueryMyPraise($where);
+            $re = array('state'=>'0','content'=>"未获取数据");
+            while ($n = mysqli_fetch_array($result))
+            {
+                $re['state'] = '1';
+                $r = array();
+                array_push($r,$n['img1'],$n['img2'],$n['img3'],$n['img4'],$n['img5'],$n['img6'],$n['img7'],$n['img8'],$n['img9']);
+                $r = array_filter($r);
+                $row[] = array( 'nickname'=>$n['nickname'],'avatar'=>$n['avatar'],'img' => $r,'des' => $n['des'],'praise'=>$n['praise']);
                 $re['content'] = $row;
             }
             echo json_encode($re,JSON_UNESCAPED_UNICODE);
