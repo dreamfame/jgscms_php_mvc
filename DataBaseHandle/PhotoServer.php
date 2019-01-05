@@ -25,7 +25,7 @@
 		}
 
         public function GetShow(){
-            $sql = "select * from ".$this->db_table." left join user on uid = openid where verify = 1 and private = 0 order by photo.created_at,photo.top desc";
+            $sql = "select * from ".$this->db_table." left join user on uid = openid where verify = 1 and private = 0 order by photo.created_at,photo.top desc limit 50";
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
         }
