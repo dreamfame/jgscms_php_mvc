@@ -36,8 +36,14 @@
             return $result;
         }
 
-        public function VerifyName($area_id,$name,$time){
-            $sql = "select id from ".$this->db_table." where area_id = '$area_id' and name = '$name' and time = '$time'";
+        public function VerifyName($area_id,$name,$time,$type){
+            $sql = "select id from ".$this->db_table." where area_id = '$area_id' and name = '$name' and time = '$time' and type = '$type'";
+            $result = $this->db->ExeSql($sql, $this->conn);
+            return $result;
+        }
+
+        public function VerifyIdName($area_id,$name){
+            $sql = "select id from ".$this->db_table." where area_id = '$area_id' and name = '$name'";
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
         }
