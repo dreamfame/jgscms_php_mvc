@@ -32,6 +32,9 @@
 				case "query":
                     RouteControl::GetRoute();
 					break;
+                case "search":
+                    RouteControl::GetRoutes();
+                    break;
                 case "verify_name":
                     RouteControl::VerifyName();
                     break;
@@ -129,6 +132,39 @@
                 $row[]= array('id'=>$n['id'],'name'=>$n['name']);
                 $re['content'] = $row;
             }
+            echo json_encode($re,JSON_UNESCAPED_UNICODE);
+            return;
+        }
+
+        public function GetRoutes(){
+            $wherelist = array();
+            if($_REQUEST['id']!=""||$_REQUEST['id']!=null){
+                $wherelist[] = "route.id = '{$_REQUEST['id']}'";
+            }
+            if($_REQUEST['name']!=""||$_REQUEST['name']!=null){
+                $wherelist[] = "name like '%{$_REQUEST['name']}%'";
+            }
+            if($_REQUEST['area_id']!=""||$_REQUEST['area_id']!=null){
+                $wherelist[] = "area_id = '{$_REQUEST['area_id']}'";
+            }
+            if($_REQUEST['type']!=""||$_REQUEST['type']!=null){
+                $wherelist[] = "type = '{$_REQUEST['type']}'";
+            }
+            //组装查询条件
+            if(count($wherelist) > 0){
+                $where = " where ".implode(' and ' , $wherelist);
+            }
+            //判断查询条件
+            $where = isset($where) ? $where : '';
+            $ss = new RouteServer();
+            $result = $ss->QueryRoutes($where);
+            $re = array('state'=>'0','content'=>"未获取数据");
+            while ($n = mysqli_fetch_array($result))
+            {
+                $re['state'] = '1';
+                $row[] = array('id' => $n['id'],'pic'=>$n['pic'], 'area_id'=>$n['area_id'],'area_name' => $n['area_name'], 'route' => $n['route'], 'type' => $n['type'], 'name' => $n['name'], 'time' => $n['time'],'created_at'=>$n['created_at']);
+            }
+            $re['content'] = $row;
             echo json_encode($re,JSON_UNESCAPED_UNICODE);
             return;
         }
