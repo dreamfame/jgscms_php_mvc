@@ -1,6 +1,7 @@
 <?php
 	require_once '../Model/Photo.php';
     require_once '../Model/Praise.php';
+    require_once 'SysmsgControl.php';
 	require_once '../DataBaseHandle/PhotoServer.php';
     require_once '../DataBaseHandle/PraiseServer.php';
 	require_once '../Extensions/Security.php';
@@ -339,6 +340,7 @@
                 PhotoControl::UpdatePhotoJson();
                 $re['state']='1';
                 $re['content']= $operator;
+                SysmsgControl::AddMsg($id,$verify);
             }
             echo  json_encode($re,JSON_UNESCAPED_UNICODE);
         }

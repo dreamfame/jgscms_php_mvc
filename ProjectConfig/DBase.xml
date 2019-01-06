@@ -18,4 +18,5 @@
 	<table name="login_status"></table>
 	<table name="log"></table>
 	<table name="praise"></table>
+	<table name="sys_msg"></table>
 </db>
