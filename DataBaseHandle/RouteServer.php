@@ -41,7 +41,7 @@
 		    if(count($condition)>1&&count($condition)<=2){
 		        $type = $condition[0];
 		        $name = $condition[1];
-                $sql = "select route.pic,route.id,route.area_id,area.name as area_name,route.route,route.name,route.type,route.time,route.created_at from route left join area on route.area_id=area.id where route.name = '$name' or route.time = '$name' and route.type = '$type'  order by created_at desc";
+                $sql = "select route.pic,route.id,route.area_id,area.name as area_name,route.route,route.name,route.type,route.time,route.created_at from route left join area on route.area_id=area.id where (route.name = '$name' or route.time = '$name') and route.type = '$type'  order by created_at desc";
             }
             else if(count($condition)>2){
                 $type = $condition[0];

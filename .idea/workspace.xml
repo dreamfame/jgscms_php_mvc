@@ -82,7 +82,7 @@
           <entry key="html" value="1112" />
           <entry key="js" value="5465" />
           <entry key="json" value="224" />
-          <entry key="php" value="7053" />
+          <entry key="php" value="7055" />
           <entry key="txt" value="3" />
           <entry key="xml" value="13" />
         </counts>
@@ -93,7 +93,7 @@
           <entry key="HTML" value="1112" />
           <entry key="JSON" value="224" />
           <entry key="JavaScript" value="5465" />
-          <entry key="PHP" value="7053" />
+          <entry key="PHP" value="7055" />
           <entry key="PLAIN_TEXT" value="11" />
           <entry key="XML" value="13" />
         </counts>
@@ -274,7 +274,7 @@
         <entry file="file://$PROJECT_DIR$/DataBaseHandle/RouteServer.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="460">
-              <caret line="43" column="249" selection-start-line="43" selection-start-column="249" selection-end-line="43" selection-end-column="249" />
+              <caret line="43" column="252" selection-start-line="43" selection-start-column="252" selection-end-line="43" selection-end-column="252" />
             </state>
           </provider>
         </entry>
@@ -544,12 +544,12 @@
       <workItem from="1546706080260" duration="6182000" />
       <workItem from="1546715408377" duration="1708000" />
       <workItem from="1546748669776" duration="1225000" />
-      <workItem from="1546750155098" duration="2018000" />
+      <workItem from="1546750155098" duration="2143000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="448499000" />
+    <option name="totallyTimeSpent" value="448624000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -938,7 +938,7 @@
     <entry file="file://$PROJECT_DIR$/DataBaseHandle/RouteServer.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="460">
-          <caret line="43" column="249" selection-start-line="43" selection-start-column="249" selection-end-line="43" selection-end-column="249" />
+          <caret line="43" column="252" selection-start-line="43" selection-start-column="252" selection-end-line="43" selection-end-column="252" />
         </state>
       </provider>
     </entry>
