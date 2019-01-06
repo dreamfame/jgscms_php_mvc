@@ -34,7 +34,7 @@
 		}
 
         public function GetMsgByOpenid($openid){
-            $sql = "select * from".$this->db_table." where openid = '$openid'";
+            $sql = "select * from ".$this->db_table." where openid = '$openid'";
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
         }
