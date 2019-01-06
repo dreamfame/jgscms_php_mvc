@@ -44,6 +44,9 @@
                 case "pic":
                     RouteControl::UploadPic();
                     break;
+                case "condition":
+                    RouteControl::ConditionSearch();
+                    break;
 			}
 		}
 
@@ -158,6 +161,27 @@
             $where = isset($where) ? $where : '';
             $ss = new RouteServer();
             $result = $ss->QueryRoutes($where);
+            $re = array('state'=>'0','content'=>"未获取数据");
+            while ($n = mysqli_fetch_array($result))
+            {
+                $re['state'] = '1';
+                $row[] = array('id' => $n['id'],'pic'=>$n['pic'], 'area_id'=>$n['area_id'],'area_name' => $n['area_name'], 'route' => $n['route'], 'type' => $n['type'], 'name' => $n['name'], 'time' => $n['time'],'created_at'=>$n['created_at']);
+            }
+            $re['content'] = $row;
+            echo json_encode($re,JSON_UNESCAPED_UNICODE);
+            return;
+        }
+
+        public function ConditionSearch(){
+            $condition = $_REQUEST['condition'];
+            if(strpos($condition,'/') !==false){
+                $conditionArray  = explode("/",$condition);
+            }
+            else{
+                $conditionArray = array($condition);
+            }
+            $ss = new RouteServer();
+            $result = $ss->QueryConditionRoutes($conditionArray);
             $re = array('state'=>'0','content'=>"未获取数据");
             while ($n = mysqli_fetch_array($result))
             {

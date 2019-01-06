@@ -36,6 +36,23 @@
             return $result;
         }
 
+        public function QueryConditionRoutes($condition){
+		    $sql = "";
+		    if(count($condition)>1){
+		        $type = $condition[0];
+		        $name = $condition[1];
+		        $time = $condition[2];
+                $sql = "select route.pic,route.id,route.area_id,area.name as area_name,route.route,route.name,route.type,route.time,route.created_at from route left join area on route.area_id=area.id where route.name = '$name' and route.type = '$type' and route.time = '$time'  order by created_at desc";
+            }
+            else{
+                $condition = $condition[0];
+                $sql = "select route.pic,route.id,route.area_id,area.name as area_name,route.route,route.name,route.type,route.time,route.created_at from route left join area on route.area_id=area.id where route.name = '$condition' or route.type = '$condition'  order by created_at desc";
+
+            }
+            $result = $this->db->ExeSql($sql, $this->conn);
+            return $result;
+        }
+
         public function QueryRoute($where){
             $sql = "select route.pic,route.id,route.area_id,area.name as area_name,route.route,route.name,route.type,route.time,route.created_at from route left join area on route.area_id=area.id".$where." order by created_at desc";
             $result = $this->db->ExeSql($sql, $this->conn);
