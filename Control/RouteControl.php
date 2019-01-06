@@ -175,7 +175,7 @@
                 $wherelist[] = "route.id = '{$_REQUEST['id']}'";
             }
             if($_REQUEST['name']!=""||$_REQUEST['name']!=null){
-                $wherelist[] = "name like '%{$_REQUEST['name']}%'";
+                $wherelist[] = "route.name like '%{$_REQUEST['name']}%'";
             }
             if($_REQUEST['area_id']!=""||$_REQUEST['area_id']!=null){
                 $wherelist[] = "area_id = '{$_REQUEST['area_id']}'";
