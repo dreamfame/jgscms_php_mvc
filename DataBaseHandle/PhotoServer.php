@@ -112,5 +112,12 @@
             }
             return false;
         }
+
+        public function GetPhotoById($id){
+            $sql = "select uid,created_at from photo where id = '$id'";
+            $result = $this->db->ExeSql($sql, $this->conn);
+            $photo = mysqli_fetch_object($result);
+            return $photo;
+        }
 	}
 ?>

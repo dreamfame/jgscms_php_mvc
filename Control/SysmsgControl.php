@@ -1,6 +1,7 @@
 <?php
 	require_once '../Model/Sysmsg.php';
 	require_once '../DataBaseHandle/SysmsgServer.php';
+    require_once '../DataBaseHandle/PhotoServer.php';
 	header("Content-Type: text/html;charset=utf-8");
 	date_default_timezone_set('PRC');
 	error_reporting(0);
@@ -50,9 +51,8 @@
 
         public function AddMsg($id,$verify){
             $sysmsg = new Sysmsg();
-            $sql = "select uid,created_at from photo where id = '$id'";
-            $result = $this->db->ExeSql($sql, $this->conn);
-            $photo = mysqli_fetch_object($result);
+            $ps = new PhotoServer();
+            $photo = $ps->GetPhotoById($id);
             if($verify=="0"){
                 return;
             }
