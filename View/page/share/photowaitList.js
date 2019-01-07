@@ -369,7 +369,7 @@ layui.config({
                 for(var i=0;i<currData.length;i++){
                     var wx = currData[i].nickname==''?'-':currData[i].nickname;
                     var des = currData[i].des==''?'-':currData[i].des;
-                    var verify = currData[i].verify==0?"<span id='photo_verify"+i+"' style='color:red'>待审核</span>":currData[i].verify==1?"<span id='photo_verify"+i+"' style='color:green'>审核通过</span>":"<span id='photo_verify"+i+"' style='color:grey'>审核未通过</span>";
+                    var verify = currData[i].verify==0?"<span id='photo_verify"+(i+(curr-1)*nums)+"' style='color:red'>待审核</span>":currData[i].verify==1?"<span id='photo_verify"+(i+(curr-1)*nums)+"' style='color:green'>审核通过</span>":"<span id='photo_verify"+(i+(curr-1)*nums)+"' style='color:grey'>审核未通过</span>";
                     var time = currData[i].created_at==''?'-':currData[i].created_at;
                     var operator = currData[i].operator==''?'-':currData[i].operator;
                     var top = currData[i].top==1?"checked":"";
@@ -379,7 +379,7 @@ layui.config({
                         +'<td>'+des+'</td>'
                         +'<td>'+time+'</td>'
                         +'<td>'+verify+'</td>'
-                        +'<td><span id="photo_operator'+i+'">'+operator+'</span></td>'
+                        +'<td><span id="photo_operator'+(i+(curr-1)*nums)+'">'+operator+'</span></td>'
                         +'<td><input type="checkbox" name="top" lay-skin="switch" data-id="'+currData[i].id+'" lay-text="是|否" lay-filter="isTop"'+top+'></td>'
                         +'<td>'
                         +  '<a class="layui-btn layui-btn-warm layui-btn-mini photo_pic" data-id="'+currData[i].id+'"><i class="layui-icon">&#xe65d;</i> 分享图库</a>'
