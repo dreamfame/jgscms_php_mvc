@@ -64,7 +64,7 @@ Class SysmsgControl
             $sysmsg->title = "审核结果";
             $sysmsg->content = "您在".$photo->created_at."分享的照片未通过审核";
         }
-        $sysmsg->openid = $photo->openid;
+        $sysmsg->openid = $photo->uid;
         $sysmsg->see = 0;
         date_default_timezone_set('PRC');
         $sysmsg->created_at = date('Y-m-d H:i:s', time());
