@@ -50,7 +50,7 @@
 		}
 
 		public function UpdateMessage($id){
-            $sql = "update " . $this->db_table . " set see = 1 where id in {$id}";
+            $sql = "update " . $this->db_table . " set see = 1 where id in ({$id})";
             $result = $this->db->ExecSql($sql,$this->conn);
             return $result;
 		}
