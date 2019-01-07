@@ -6,6 +6,7 @@
 	require_once '../ProjectInterface/IDBHelper.php';
 	require_once '../Model/Log.php';
 	require_once 'LogServer.php';
+	require_once '../Extensions/LoadXmlData.php';
 	session_start();
 	Class DBHelper implements IDBHelper
 	{
@@ -15,9 +16,10 @@
 		private $dbStr;
 		public function DBHelper($param)
 		{
-			$this->serverName = "localhost";
-			$this->username = "root";
-			$this->password = "root";
+            $xc = new XmlControl();
+			$this->serverName = $xc->GetXmlAttribute("../ProjectConfig/SysConfig.xml","db",0,"server_name");
+			$this->username = $xc->GetXmlAttribute("../ProjectConfig/SysConfig.xml","username",0,"name");
+			$this->password = $xc->GetXmlAttribute("../ProjectConfig/SysConfig.xml","password",0,"name");
 			$this->dbStr = $param;
 		}
 

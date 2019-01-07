@@ -6,6 +6,7 @@
     require_once '../Model/System.php';
     include '../PHPMailer-master/class.phpmailer.php';
     include '../PHPMailer-master/class.smtp.php';
+    require_once '../Extensions/LoadXmlData.php';
 	header("Content-Type: text/html;charset=utf-8");
 	Class SystemControl
     {
@@ -76,6 +77,7 @@
 
         public function SendBugToEmail()
         {
+            $xc = new XmlControl();
             $re = array('state'=>'0','content'=>null);
             $title = $_REQUEST['title'];
             $content = $_REQUEST['content'];
@@ -84,14 +86,15 @@
             $mail->Host = "smtp.163.com";
             $mail->SMTPSecure = "ssl";
             $mail->SMTPAuth = true;
-            $mail->Username = "liuliuonlai@163.com";
-            $mail->Password = "ll667092";
-            $mail->From = "liuliuonlai@163.com";
+            $mail->Username = $xc->GetXmlAttribute("../ProjectConfig/SysConfig.xml","sendemail",0,"name");
+            $mail->Password = $xc->GetXmlAttribute("../ProjectConfig/SysConfig.xml","sendemail",0,"password");
+            $mail->From = $xc->GetXmlAttribute("../ProjectConfig/SysConfig.xml","sendemail",0,"name");
             $mail->Port = 465;
             $mail->FromName = "系统邮件";
             $mail->CharSet = "UTF-8";
             $mail->Encoding = "base64";
-            $mail->addAddress("406384958@qq.com");
+            $toEmail = $xc->GetXmlAttribute("../ProjectConfig/SysConfig.xml","toemail",0,"name");
+            $mail->addAddress($toEmail);
             $mail->WordWrap = 50;
             $mail->isHTML(true);
             $mail->Subject = $title;
