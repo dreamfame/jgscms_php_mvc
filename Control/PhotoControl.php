@@ -10,6 +10,7 @@
     require_once '../DataBaseHandle/PraiseServer.php';
 	require_once '../Extensions/Security.php';
 	header("Content-Type: text/html;charset=utf-8");
+header('cache-control:private');
 	error_reporting(0);
 	//session_start();
 	Class PhotoControl

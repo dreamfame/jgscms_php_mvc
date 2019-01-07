@@ -6,6 +6,7 @@
 	require_once '../Model/News.php';
 	require_once '../DataBaseHandle/NewsServer.php';
 	header("Content-Type: text/html;charset=utf-8");
+header('cache-control:private');
 	//session_start();
 error_reporting(0);
 	Class NewsControl

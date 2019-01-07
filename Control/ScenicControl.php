@@ -6,6 +6,7 @@
 	require_once '../Model/Scenic.php';
 	require_once '../DataBaseHandle/ScenicServer.php';
 	header("Content-Type: text/html;charset=utf-8");
+    header('cache-control:private');
 	error_reporting(0);
 	//session_start();
 	Class ScenicControl

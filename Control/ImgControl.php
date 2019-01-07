@@ -6,6 +6,7 @@
 	require_once '../Model/Images.php';
 	require_once '../DataBaseHandle/ImgServer.php';
 	header("Content-Type: text/html;charset=utf-8");
+	header('cache-control:private');
 	//session_start();
     error_reporting(0);
 	Class ImgControl

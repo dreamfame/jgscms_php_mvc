@@ -7,6 +7,7 @@
 	require_once '../DataBaseHandle/RecommendServer.php';
 	require_once '../DataBaseHandle/VideoServer.php';
 	header("Content-Type: text/html;charset=utf-8");
+header('cache-control:private');
 	Class RecommendControl
 	{
 		public function JugdeOperate()

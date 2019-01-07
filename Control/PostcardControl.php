@@ -8,6 +8,7 @@
 	require_once '../DataBaseHandle/PostcardServer.php';
 	require_once 'ServerControl.php';
 	header("Content-Type: text/html;charset=utf-8");
+header('cache-control:private');
 	//session_start();
 	Class PostcardControl
 	{

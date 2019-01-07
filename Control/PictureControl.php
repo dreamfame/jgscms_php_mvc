@@ -5,6 +5,7 @@
   */
 	header('Access-Control-Allow-Origin：*');
 	header("Content-Type: text/html;charset=utf-8");
+ header('cache-control:private');
 	error_reporting(0);
 	Class PictureControl
     {

@@ -7,6 +7,7 @@
 	require_once '../DataBaseHandle/RouteServer.php';
 	require_once '../Extensions/NumUtil.php';
 	header("Content-Type: text/html;charset=utf-8");
+header('cache-control:private');
     error_reporting(0);
 	//session_start();
 	Class RouteControl
