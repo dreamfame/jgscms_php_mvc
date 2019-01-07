@@ -69,7 +69,7 @@
                 $result['msg'] = $_FILES["file"]["error"];
             }
             else{
-                if(($_FILES["file"]["type"]=="image/png"||$_FILES["file"]["type"]=="image/jpeg"||$_FILES["file"]["type"]=="image/pjpeg")&&$_FILES["file"]["size"]<1024000)
+                if(($_FILES["file"]["type"]=="image/png"||$_FILES["file"]["type"]=="image/jpeg"||$_FILES["file"]["type"]=="image/pjpeg")&&$_FILES["file"]["size"]<20480000)
                 {
                     $filename ="../View/images/postcard/".time().$_FILES["file"]["name"];
                     $src = "/images/postcard/".time().$_FILES["file"]["name"];
@@ -105,7 +105,7 @@
                 $result['msg'] = $_FILES["file"]["error"];
             }
             else{
-                if(($_FILES["file"]["type"]=="image/png"||$_FILES["file"]["type"]=="image/jpeg"||$_FILES["file"]["type"]=="image/pjpeg")&&$_FILES["file"]["size"]<1024000)
+                if(($_FILES["file"]["type"]=="image/png"||$_FILES["file"]["type"]=="image/jpeg"||$_FILES["file"]["type"]=="image/pjpeg")&&$_FILES["file"]["size"]<20480000)
                 {
                     $filename ="../View/images/share/".time().$_FILES["file"]["name"];
                     $src = "/images/share/".time().$_FILES["file"]["name"];
