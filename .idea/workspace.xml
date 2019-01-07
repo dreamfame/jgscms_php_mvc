@@ -3,17 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1c7749a1-70c7-404f-906e-a59d4ff055e3" name="默认的" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Control/ActivityControl.php" beforeDir="false" afterPath="$PROJECT_DIR$/Control/ActivityControl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Control/ActivityPersonControl.php" beforeDir="false" afterPath="$PROJECT_DIR$/Control/ActivityPersonControl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Control/AreaControl.php" beforeDir="false" afterPath="$PROJECT_DIR$/Control/AreaControl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Control/ImgControl.php" beforeDir="false" afterPath="$PROJECT_DIR$/Control/ImgControl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Control/NewsControl.php" beforeDir="false" afterPath="$PROJECT_DIR$/Control/NewsControl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Control/PhotoControl.php" beforeDir="false" afterPath="$PROJECT_DIR$/Control/PhotoControl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Control/PictureControl.php" beforeDir="false" afterPath="$PROJECT_DIR$/Control/PictureControl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Control/PostcardControl.php" beforeDir="false" afterPath="$PROJECT_DIR$/Control/PostcardControl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Control/RecommendControl.php" beforeDir="false" afterPath="$PROJECT_DIR$/Control/RecommendControl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Control/RouteControl.php" beforeDir="false" afterPath="$PROJECT_DIR$/Control/RouteControl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Control/ScenicControl.php" beforeDir="false" afterPath="$PROJECT_DIR$/Control/ScenicControl.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Control/SystemControl.php" beforeDir="false" afterPath="$PROJECT_DIR$/Control/SystemControl.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectConfig/SysConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectConfig/SysConfig.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -47,7 +37,7 @@
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.11" value="4" />
           <entry key="project.open.time.12" value="3" />
-          <entry key="project.open.time.13" value="4" />
+          <entry key="project.open.time.13" value="5" />
           <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.17" value="1" />
           <entry key="project.open.time.18" value="1" />
@@ -60,7 +50,7 @@
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.8" value="1" />
           <entry key="project.open.time.9" value="2" />
-          <entry key="project.opened" value="27" />
+          <entry key="project.opened" value="28" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -73,7 +63,7 @@
           <entry key="png" value="2" />
           <entry key="sql" value="1" />
           <entry key="svg" value="2" />
-          <entry key="xml" value="8" />
+          <entry key="xml" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -86,7 +76,7 @@
           <entry key="PHP" value="193" />
           <entry key="SVG" value="2" />
           <entry key="Scratch" value="1" />
-          <entry key="XML" value="8" />
+          <entry key="XML" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -96,9 +86,9 @@
           <entry key="html" value="1114" />
           <entry key="js" value="5467" />
           <entry key="json" value="224" />
-          <entry key="php" value="8342" />
+          <entry key="php" value="8601" />
           <entry key="txt" value="3" />
-          <entry key="xml" value="21" />
+          <entry key="xml" value="57" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -107,9 +97,9 @@
           <entry key="HTML" value="1114" />
           <entry key="JSON" value="224" />
           <entry key="JavaScript" value="5467" />
-          <entry key="PHP" value="8342" />
+          <entry key="PHP" value="8601" />
           <entry key="PLAIN_TEXT" value="11" />
-          <entry key="XML" value="21" />
+          <entry key="XML" value="57" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.php.new.class">
@@ -244,18 +234,9 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Control/RouteControl.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="9" column="32" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Control/SysmsgControl.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
+            <state>
               <caret line="92" column="20" selection-start-line="92" selection-start-column="20" selection-end-line="92" selection-end-column="20" />
             </state>
           </provider>
@@ -264,8 +245,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Control/SystemControl.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2231">
-              <caret line="97" column="33" lean-forward="true" selection-start-line="97" selection-start-column="33" selection-end-line="97" selection-end-column="33" />
+            <state relative-caret-position="649">
+              <caret line="139" column="13" lean-forward="true" selection-start-line="139" selection-start-column="13" selection-end-line="139" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -274,7 +255,7 @@
         <entry file="file://$PROJECT_DIR$/Control/ScanControl.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="276">
-              <caret line="25" column="20" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
+              <caret line="37" column="54" lean-forward="true" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -441,8 +422,6 @@
         <option value="$PROJECT_DIR$/ProjectConfig/DBConfig.xml" />
         <option value="$PROJECT_DIR$/DataBaseHandle/ActivityPersonServer.php" />
         <option value="$PROJECT_DIR$/DataBaseHandle/DBHelper.php" />
-        <option value="$PROJECT_DIR$/ProjectConfig/SysConfig.xml" />
-        <option value="$PROJECT_DIR$/Control/SystemControl.php" />
         <option value="$PROJECT_DIR$/View/page/user/newuserlist.html" />
         <option value="$PROJECT_DIR$/View/page/user/newuserlist.js" />
         <option value="$PROJECT_DIR$/View/page/user/userlist.html" />
@@ -458,6 +437,8 @@
         <option value="$PROJECT_DIR$/Control/PostcardControl.php" />
         <option value="$PROJECT_DIR$/Control/RecommendControl.php" />
         <option value="$PROJECT_DIR$/Control/RouteControl.php" />
+        <option value="$PROJECT_DIR$/ProjectConfig/SysConfig.xml" />
+        <option value="$PROJECT_DIR$/Control/SystemControl.php" />
       </list>
     </option>
   </component>
@@ -481,6 +462,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -491,13 +473,12 @@
             <path>
               <item name="JGSCMS" type="b2602c69:ProjectViewProjectNode" />
               <item name="JGSCMS" type="462c0819:PsiDirectoryNode" />
-              <item name="Control" type="462c0819:PsiDirectoryNode" />
+              <item name="ProjectConfig" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -600,11 +581,12 @@
       <workItem from="1546834052865" duration="131000" />
       <workItem from="1546839545717" duration="6241000" />
       <workItem from="1546873983251" duration="219000" />
+      <workItem from="1546881956955" duration="845000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="463828000" />
+    <option name="totallyTimeSpent" value="464673000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -619,7 +601,7 @@
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49886876" visible="true" weight="0.12017167" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49886876" visible="true" weight="0.12178112" />
       <window_info id="Structure" order="1" sideWeight="0.50113124" side_tool="true" weight="0.25751072" />
       <window_info id="Favorites" order="2" sideWeight="0.50113124" side_tool="true" weight="0.25751072" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -823,13 +805,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ProjectConfig/SysConfig.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="19" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/View/page/user/userlist.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6279">
@@ -917,12 +892,22 @@
     <entry file="file://$PROJECT_DIR$/Control/MessageControl.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Control/NewsControl.php">
+    <entry file="file://$PROJECT_DIR$/Control/RouteControl.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
+        <state relative-caret-position="207">
+          <caret line="9" column="32" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Control/SysmsgControl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="92" column="20" selection-start-line="92" selection-start-column="20" selection-end-line="92" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Control/ServerControl.php">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Control/PhotoControl.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -952,34 +937,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Control/RouteControl.php">
+    <entry file="file://$PROJECT_DIR$/Control/NewsControl.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" column="32" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
+        <state relative-caret-position="184">
+          <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjectConfig/SysConfig.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="7" column="67" selection-start-line="7" selection-start-column="67" selection-end-line="7" selection-end-column="67" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Control/ScanControl.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
-          <caret line="25" column="20" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Control/ServerControl.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Control/SysmsgControl.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="92" column="20" selection-start-line="92" selection-start-column="20" selection-end-line="92" selection-end-column="20" />
+          <caret line="37" column="54" lean-forward="true" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="54" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Control/SystemControl.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2231">
-          <caret line="97" column="33" lean-forward="true" selection-start-line="97" selection-start-column="33" selection-end-line="97" selection-end-column="33" />
+        <state relative-caret-position="649">
+          <caret line="139" column="13" lean-forward="true" selection-start-line="139" selection-start-column="13" selection-end-line="139" selection-end-column="13" />
         </state>
       </provider>
     </entry>

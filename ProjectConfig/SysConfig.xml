@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <db server_name="localhost">
 	<username name="root"></username>
-	<password name="root"></password>
+	<password name=""></password>
 	<sendemail name="liuliuonlai@163.com" password="liuliuonlai@163.com"></sendemail>
 	<toemail name="406384958@qq.com"></toemail>
+	<appid name="wxcb588aad99aa2576"></appid>
+	<appsecret name="625ee5b2d0ad9d7d7a34d8ea66b7a05f"></appsecret>
 </db>
