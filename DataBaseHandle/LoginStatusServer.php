@@ -2,8 +2,6 @@
 /**
  * Created by PhpStorm.
  * User: liu liu
- * Date: 2018/12/27
- * Time: 15:13
  */
 
     require_once 'DBHelper.php';

@@ -1,4 +1,8 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: liu liu
+ */
 	require_once '../Model/News.php';
 	require_once '../DataBaseHandle/NewsServer.php';
 	header("Content-Type: text/html;charset=utf-8");

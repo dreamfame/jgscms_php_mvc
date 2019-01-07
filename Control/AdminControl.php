@@ -1,4 +1,8 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: liu liu
+ */
 	require_once '../Model/Admin.php';
     require_once '../Model/LoginStatus.php';
 	require_once '../DataBaseHandle/AdminServer.php';

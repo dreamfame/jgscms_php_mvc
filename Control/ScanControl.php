@@ -2,8 +2,6 @@
 /**
  * Created by PhpStorm.
  * User: liu liu
- * Date: 2018/12/30
- * Time: 11:37
  */
 require_once '../DataBaseHandle/ScanServer.php';
 error_reporting(0);

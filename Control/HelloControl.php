@@ -1,9 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Administrator
- * Date: 2018/12/12
- * Time: 15:44
+ * User: liu liu
  */
 
 class HelloControl{

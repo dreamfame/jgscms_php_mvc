@@ -1,4 +1,8 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: liu liu
+ */
 	Class Postcard{
 		private $id;
 		private $name;

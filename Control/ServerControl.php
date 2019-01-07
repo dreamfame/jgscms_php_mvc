@@ -2,8 +2,6 @@
 /**
  * Created by PhpStorm.
  * User: liu liu
- * Date: 2018/12/28
- * Time: 14:04
  */
 require_once '../DataBaseHandle/UserServer.php';
 header("Content-Type: text/html;charset=utf-8");

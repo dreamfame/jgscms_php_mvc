@@ -1,4 +1,8 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: liu liu
+ */
 require_once '../Model/Sysmsg.php';
 require_once '../DataBaseHandle/SysmsgServer.php';
 require_once '../DataBaseHandle/PhotoServer.php';

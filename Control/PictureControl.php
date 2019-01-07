@@ -1,4 +1,8 @@
  <?php
+ /**
+  * Created by PhpStorm.
+  * User: liu liu
+  */
 	header('Access-Control-Allow-Origin：*');
 	header("Content-Type: text/html;charset=utf-8");
 	error_reporting(0);

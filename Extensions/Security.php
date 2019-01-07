@@ -1,4 +1,8 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: liu liu
+ */
     header('Content-Type: text/plain;charset=utf-8');
 	Class Security
 	{

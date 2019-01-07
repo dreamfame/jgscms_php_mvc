@@ -1,4 +1,8 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: liu liu
+ */
 	Class User{//user info
 		private $id;//for login
 		private $openid;//nickname

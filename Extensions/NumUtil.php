@@ -2,8 +2,6 @@
 /**
  * Created by PhpStorm.
  * User: liu liu
- * Date: 2019/1/3
- * Time: 13:31
  */
 Class NumUtil{
 

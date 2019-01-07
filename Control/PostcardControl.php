@@ -1,4 +1,8 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: liu liu
+ */
     error_reporting(0);
 	require_once '../Model/Postcard.php';
 	require_once '../DataBaseHandle/PostcardServer.php';

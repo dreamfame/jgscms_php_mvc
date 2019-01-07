@@ -1,4 +1,8 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: liu liu
+ */
 	require_once '../ProjectInterface/IDBHelper.php';
 	require_once '../Model/Log.php';
 	require_once 'LogServer.php';
@@ -13,7 +17,7 @@
 		{
 			$this->serverName = "localhost";
 			$this->username = "root";
-			$this->password = "";
+			$this->password = "root";
 			$this->dbStr = $param;
 		}
 

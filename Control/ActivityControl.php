@@ -1,4 +1,8 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: liu liu
+ */
 	require_once '../Model/Activity.php';
 	require_once '../DataBaseHandle/ActivityServer.php';
 	header("Content-Type: text/html;charset=utf-8");

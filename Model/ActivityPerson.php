@@ -1,4 +1,8 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: liu liu
+ */
 	Class ActivityPerson{
 		private $id;
 		private $activity_id;

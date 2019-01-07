@@ -1,4 +1,8 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: liu liu
+ */
 	require_once '../Model/Scenic.php';
 	require_once '../DataBaseHandle/ScenicServer.php';
 	header("Content-Type: text/html;charset=utf-8");
