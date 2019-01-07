@@ -125,7 +125,7 @@ Class UserServer
     }
 
     public function GetUserByOpenId($id){
-        $sql = "select nickname from photo where openid = '$id'";
+        $sql = "select nickname from user where openid = '$id'";
         $result = $this->db->ExeSql($sql, $this->conn);
         $user = mysqli_fetch_object($result);
         return $user;
