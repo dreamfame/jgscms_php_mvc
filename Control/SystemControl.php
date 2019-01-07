@@ -122,7 +122,7 @@
         public function GetWxOpenId(){
             $xc = new XmlControl();
             $re = array('state'=>'0','content'=>"获取openid失败");
-            if(!isset($_REQUEST['code'])) {
+            if(isset($_REQUEST['code'])) {
                 $appid = $xc->GetXmlAttribute("../ProjectConfig/SysConfig.xml", "appid", 0, "name");
                 $appsecret = $xc->GetXmlAttribute("../ProjectConfig/SysConfig.xml", "appsecret", 0, "name");
                 $code = $_REQUEST['code'];
@@ -136,7 +136,7 @@
             }
             else{
                 $re["state"] = "0";
-                $re["content"] = "获取openid失败，为获取到code值";
+                $re["content"] = "获取openid失败，未获取到code值";
             }
             echo  json_encode($re,JSON_UNESCAPED_UNICODE);
         }

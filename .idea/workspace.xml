@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c7749a1-70c7-404f-906e-a59d4ff055e3" name="默认的" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Control/SystemControl.php" beforeDir="false" afterPath="$PROJECT_DIR$/Control/SystemControl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectConfig/SysConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectConfig/SysConfig.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -86,7 +84,7 @@
           <entry key="html" value="1114" />
           <entry key="js" value="5467" />
           <entry key="json" value="224" />
-          <entry key="php" value="8601" />
+          <entry key="php" value="8604" />
           <entry key="txt" value="3" />
           <entry key="xml" value="57" />
         </counts>
@@ -97,7 +95,7 @@
           <entry key="HTML" value="1114" />
           <entry key="JSON" value="224" />
           <entry key="JavaScript" value="5467" />
-          <entry key="PHP" value="8601" />
+          <entry key="PHP" value="8604" />
           <entry key="PLAIN_TEXT" value="11" />
           <entry key="XML" value="57" />
         </counts>
@@ -245,8 +243,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Control/SystemControl.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="649">
-              <caret line="139" column="13" lean-forward="true" selection-start-line="139" selection-start-column="13" selection-end-line="139" selection-end-column="13" />
+            <state relative-caret-position="345">
+              <caret line="124" column="15" selection-start-line="124" selection-start-column="15" selection-end-line="124" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -581,12 +579,12 @@
       <workItem from="1546834052865" duration="131000" />
       <workItem from="1546839545717" duration="6241000" />
       <workItem from="1546873983251" duration="219000" />
-      <workItem from="1546881956955" duration="845000" />
+      <workItem from="1546881956955" duration="1974000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="464673000" />
+    <option name="totallyTimeSpent" value="465802000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -960,8 +958,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Control/SystemControl.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="649">
-          <caret line="139" column="13" lean-forward="true" selection-start-line="139" selection-start-column="13" selection-end-line="139" selection-end-column="13" />
+        <state relative-caret-position="345">
+          <caret line="124" column="15" selection-start-line="124" selection-start-column="15" selection-end-line="124" selection-end-column="15" />
         </state>
       </provider>
     </entry>
