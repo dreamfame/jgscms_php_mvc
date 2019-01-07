@@ -364,6 +364,7 @@ header('cache-control:private');
 		    if($result==""){
                 $re['state'] = "1";
                 $re['content'] = "点赞成功";
+                SysmsgControl::AddPraise($openid,$photo_id,$praise->created_at,1);
             }
             else{
                 $re['state'] = "0";
@@ -381,6 +382,7 @@ header('cache-control:private');
             if($result==""){
                 $re['state'] = "1";
                 $re['content'] = "取消点赞成功";
+                SysmsgControl::AddPraise($openid,$photo_id,"",0);
             }
             else{
                 $re['state'] = "0";

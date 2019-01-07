@@ -37,6 +37,12 @@
             return $result;
 		}
 
+		public function DeleteMessage($openid,$time){
+            $sql="delete from ".$this->db_table." where openid= '$openid' and created_at = '$time'";
+            $result = $this->db->ExecSql($sql,$this->conn);
+            return $result;
+		}
+
         public function GetMsgByOpenid($openid){
             $sql = "select * from ".$this->db_table." where openid = '$openid'";
             $result = $this->db->ExeSql($sql, $this->conn);

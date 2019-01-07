@@ -57,6 +57,34 @@ Class SysmsgControl
         return;
     }
 
+    public function AddPraise($openid,$id,$time,$p){
+        $sysmsg = new Sysmsg();
+        $us = new UserServer();
+        $user = $us->GetUserByOpenId($openid);
+        $ps = new PhotoServer();
+        $photo = $ps->GetPhotoById($id);
+        $sysmsg->title = "点赞";
+        $sysmsg->content = "恭喜你获得了来自^".$user->nickname."^的一个赞";
+        $sysmsg->openid = $photo->uid;
+        $sysmsg->see = 0;
+        $sysmsg->created_at = $time;
+        $ss = new SysmsgServer();
+        if($p==1){
+            $result = $ss->InsertMsg($sysmsg);
+        }
+        else{
+            $result = $ss->DeleteMessage($photo->uid,$photo->created_at);
+        }
+        if($result==""){
+            $re['state'] = "1";
+            $re['content'] = "消息添加成功";
+        }
+        else{
+            $re['state'] = "0";
+            $re['content'] = "消息添加失败，"+$result;
+        }
+    }
+
     public function AddMsg($id,$verify){
         $sysmsg = new Sysmsg();
         $ps = new PhotoServer();
