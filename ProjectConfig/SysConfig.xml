@@ -2,7 +2,6 @@
 <db server_name="localhost">
 	<username name="root"></username>
 	<password name="root"></password>
-	<sendemail name="liuliuonlai@163.com"></sendemail>
-	<sendemail password="liuliuonlai@163.com"></sendemail>
+	<sendemail name="liuliuonlai@163.com" password="liuliuonlai@163.com"></sendemail>
 	<toemail name="406384958@qq.com"></toemail>
 </db>
