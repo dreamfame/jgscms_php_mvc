@@ -45,20 +45,10 @@
             return $result;
 		}
 
-		public function UpdateMessage($message,$field){
-            $sql = "";
-            if($field=="reply"){
-                $sql = "update " . $this->db_table . " set admin_id = '$message->admin_id',reply = '$message->reply',reply_time = '$message->reply_time',status=1 where id = '$message->id'";
-            }
-            try{
-                $this->db->ExeSql($sql,$this->conn);
-                return true;
-            }
-            catch(Exception $e)
-            {
-                return false;
-            }
-            return true;
+		public function UpdateMessage($id){
+            $sql = "update " . $this->db_table . " set see = 1 where id in ('$id')";
+            $result = $this->db->ExecSql($sql,$this->conn);
+            return $result;
 		}
 	}
 ?>

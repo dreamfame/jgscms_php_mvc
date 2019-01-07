@@ -39,11 +39,15 @@ Class SysmsgControl
     public function UpdateMessage(){
         $id = $_REQUEST['id'];
         $re = array('state'=>'0','content'=>'修改失败');
-        $ss = new PhotoServer();
+        $ss = new SysmsgServer();
         $result = $ss->UpdateMessage($id);
-        if($result){
+        if($result==""){
             $re['state'] = '1';
             $re['content'] = '修改成功';
+        }
+        else{
+            $re['state'] = '0';
+            $re['content'] = '修改失败,'.$result;
         }
         echo json_encode($re,JSON_UNESCAPED_UNICODE);
         return;
