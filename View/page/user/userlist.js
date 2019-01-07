@@ -271,7 +271,7 @@ layui.config({
 			currData = usersData.concat().splice(curr*nums-nums, nums);
 			if(currData.length != 0){
 				for(var i=0;i<currData.length;i++){
-                    var gender = currData[i].gender == 0?"女":"男";
+                    var gender = currData[i].gender == 2?"女":"男";
 					dataHtml += '<tr>'
 			    	+  '<td><input type="checkbox" name="checked" lay-skin="primary" lay-filter="choose"></td>'
                     +  '<td><img id="am'+currData[i].id+'" src="'+currData[i].avatar+'" height="132" /></td>'
