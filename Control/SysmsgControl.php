@@ -6,6 +6,7 @@
 require_once '../Model/Sysmsg.php';
 require_once '../DataBaseHandle/SysmsgServer.php';
 require_once '../DataBaseHandle/PhotoServer.php';
+require_once '../DataBaseHandle/UserServer.php';
 header("Content-Type: text/html;charset=utf-8");
 date_default_timezone_set('PRC');
 error_reporting(0);
