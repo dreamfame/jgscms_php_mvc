@@ -8,6 +8,7 @@
     include '../PHPMailer-master/class.smtp.php';
     require_once '../Extensions/LoadXmlData.php';
 	header("Content-Type: text/html;charset=utf-8");
+	error_reporting(0);
 	Class SystemControl
     {
         public function JudgeOperate($operate)
@@ -83,8 +84,7 @@
 
         public function GetAreaJson(){
             $json_string = file_get_contents('../View/json/area.json');
-            $data = json_decode($json_string, true);
-            echo $data;
+            echo json_decode($json_string, JSON_UNESCAPED_UNICODE);
         }
 
         public function SendBugToEmail()
