@@ -89,7 +89,8 @@ header('cache-control:private');
         }
 
         public function GetPostcard(){
-            ServerControl::server_close();
+		    $no = $_REQUEST['no'];
+            ServerControl::server_close($no);
             $wherelist = array();
             if(!empty($_REQUEST['wx'])){
                 $wherelist[] = "wx = '{$_REQUEST['wx']}'";
@@ -151,7 +152,8 @@ header('cache-control:private');
 
 		public function AddPostcard()
 		{
-            ServerControl::server_close();
+		    $no = $_REQUEST['no'];
+            ServerControl::server_close($no);
             $re = array('state'=>'0','content'=>'添加失败');
             if(empty($_REQUEST['openid'])||empty($_REQUEST['name'])||empty($_REQUEST['wishes'])||empty($_REQUEST['date'])||empty($_REQUEST['pic']))
             {

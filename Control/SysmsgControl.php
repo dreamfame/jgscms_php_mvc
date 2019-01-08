@@ -21,6 +21,9 @@ Class SysmsgControl
             case "del":
                 SysmsgControl::DelMessage();
                 break;
+            case "batchDel":
+                SysmsgControl::BatchDelMessage();
+                break;
             case "update":
                 SysmsgControl::UpdateMessage();
                 break;
@@ -123,6 +126,22 @@ Class SysmsgControl
         $id = $_REQUEST['id'];
         $ss = new SysmsgServer();
         $result=$ss->DeleteMsg($id);
+        $re = array('state'=>'0','content'=>'删除失败');
+        if($result=="") {
+            $re['state']='1';
+            $re['content']='删除成功';
+        }
+        else{
+            $re['state']='0';
+            $re['content']='删除失败'.+$result;
+        }
+        echo  json_encode($re,JSON_UNESCAPED_UNICODE);
+    }
+
+    public function BatchDelMessage(){
+        $id = $_REQUEST['id'];
+        $ss = new SysmsgServer();
+        $result=$ss->BatchDeleteMsg($id);
         $re = array('state'=>'0','content'=>'删除失败');
         if($result=="") {
             $re['state']='1';
