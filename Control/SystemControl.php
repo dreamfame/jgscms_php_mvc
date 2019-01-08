@@ -84,7 +84,7 @@
 
         public function GetAreaJson(){
             $json_string = file_get_contents('../View/json/area.json');
-            echo json_decode($json_string, JSON_UNESCAPED_UNICODE);
+            echo $json_string;
         }
 
         public function SendBugToEmail()
