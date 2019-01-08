@@ -23,9 +23,9 @@ layui.config({
 
     form.verify({
        title:function(value,item){
-           if(!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)){
+           /*if(!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)){
                return '文章标题不能有特殊字符';
-           }
+           }*/
            if(/(^\_)|(\__)|(\_+$)/.test(value)){
                return '文章标题首尾不能出现下划线\'_\'';
            }

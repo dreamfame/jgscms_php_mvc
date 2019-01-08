@@ -25,9 +25,9 @@ layui.config({
 
     form.verify({
         activityname:function(value,item){
-            if(!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)){
+            /*if(!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)){
                 return '活动名不能有特殊字符';
-            }
+            }*/
             if(/(^\_)|(\__)|(\_+$)/.test(value)){
                 return '活动名首尾不能出现下划线\'_\'';
             }
