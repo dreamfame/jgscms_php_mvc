@@ -52,8 +52,7 @@ class ServerControl
         echo $open_id;
     }
 
-    public function server_close(){
-        $no = $_REQUEST['no'];
+    public function server_close($no){
         $jsonfile = fopen("../View/json/openid".$no.".json", "w") or die("Unable to open file!");
         $row = array('openid' => "");
         if (flock($jsonfile, LOCK_EX)) {//加写锁 
