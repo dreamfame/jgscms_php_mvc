@@ -15,7 +15,7 @@ class ServerControl
         set_time_limit(0);//无限请求超时时间
         while (true){
             //sleep(1);
-            $json_string = file_get_contents('../View/json/openid'.$no.'json');
+            $json_string = file_get_contents('../View/json/openid'.$no.'.json');
             $data = json_decode($json_string, true);
             if($data!=null){
                 $openid = $data['openid'];
@@ -40,7 +40,7 @@ class ServerControl
     public function getOpenId(){
         $open_id = $_REQUEST['openid'];
         $no = $_REQUEST["no"];
-        $jsonfile = fopen("../View/json/openid".$no."json", "w") or die("Unable to open file!");
+        $jsonfile = fopen("../View/json/openid".$no.".json", "w") or die("Unable to open file!");
         $row = array('openid' => $open_id);
         if (flock($jsonfile, LOCK_EX)) {//加写锁 
             ftruncate($jsonfile, 0); // 将文件截断到给定的长度 
@@ -54,7 +54,7 @@ class ServerControl
 
     public function server_close(){
         $no = $_REQUEST['no'];
-        $jsonfile = fopen("../View/json/openid".$no."json", "w") or die("Unable to open file!");
+        $jsonfile = fopen("../View/json/openid".$no.".json", "w") or die("Unable to open file!");
         $row = array('openid' => "");
         if (flock($jsonfile, LOCK_EX)) {//加写锁 
             ftruncate($jsonfile, 0); // 将文件截断到给定的长度 
