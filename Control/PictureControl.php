@@ -120,7 +120,7 @@
                         //保存文件,   move_uploaded_file 将上传的文件移动到新位置
                         move_uploaded_file($_FILES["file"]["tmp_name"],$filename);//将临时地址移动到指定地址
                         $result['code'] = 0;
-                        $result['msg'] = "上传成功";
+                        $result['msg'] = "上传成功".$_FILES["file"]["type"];
                         $data['src'] = $src;
                         $result['data'] = $data;
                     }
