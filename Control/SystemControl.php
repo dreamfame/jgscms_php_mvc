@@ -22,6 +22,9 @@
                 case "area":
                     SystemControl::UpdateAreaJson();
                     break;
+                case "getArea":
+                    SystemControl::GetAreaJson();
+                    break;
                 case "bug":
                     SystemControl::SendBugToEmail();
                     break;
@@ -76,6 +79,12 @@
                 flock($jsonfile, LOCK_UN); //解锁 
             }
             fclose($jsonfile);
+        }
+
+        public function GetAreaJson(){
+            $json_string = file_get_contents('../View/json/area.json');
+            $data = json_decode($json_string, true);
+            echo $data;
         }
 
         public function SendBugToEmail()
