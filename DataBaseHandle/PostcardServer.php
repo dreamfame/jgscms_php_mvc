@@ -35,7 +35,7 @@
         }
 
         public function QueryCombinePostcard($openid){
-            $sql = "select postcard.id,user.nickname as nickname,postcard.wx,postcard.name,postcard.pic,postcard.date,postcard.wishes from postcard LEFT JOIN user on postcard.wx = user.openid where wx = '$openid' order by date desc";
+            $sql = "select postcard.id,user.nickname as nickname,postcard.wx,postcard.name,postcard.pic,postcard.date,postcard.wishes from postcard LEFT JOIN user on postcard.wx = user.openid where postcard.wx = '$openid' order by date desc";
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
         }

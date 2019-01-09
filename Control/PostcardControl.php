@@ -6,6 +6,7 @@
     error_reporting(0);
 	require_once '../Model/Postcard.php';
 	require_once '../DataBaseHandle/PostcardServer.php';
+    require_once '../DataBaseHandle/PhotoServer.php';
 	require_once 'ServerControl.php';
 	header("Content-Type: text/html;charset=utf-8");
 header('cache-control:private');
@@ -24,7 +25,6 @@ header('cache-control:private');
                     break;
                 case "combine":
                     PostcardControl::GetCombine();
-                    break;
                     break;
 				case "add":
                     PostcardControl::AddPostcard();
