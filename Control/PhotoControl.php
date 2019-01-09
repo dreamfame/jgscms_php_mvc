@@ -8,6 +8,7 @@
     require_once 'SysmsgControl.php';
 	require_once '../DataBaseHandle/PhotoServer.php';
     require_once '../DataBaseHandle/PraiseServer.php';
+    require_once '../DataBaseHandle/PostcardServer.php';
 	require_once '../Extensions/Security.php';
 	header("Content-Type: text/html;charset=utf-8");
 header('cache-control:private');
@@ -40,6 +41,9 @@ header('cache-control:private');
 				case "query":
                     PhotoControl::GetPhoto();
 					break;
+                case "combine":
+                    PhotoControl::GetCombine();
+                    break;
                 case "top":
                     PhotoControl::GoTop();
                     break;
@@ -157,6 +161,32 @@ header('cache-control:private');
             fclose($jsonfile);
             echo json_encode($re,JSON_UNESCAPED_UNICODE);
             return;
+        }
+
+        public function GetCombine(){
+		    $openid = $_REQUEST['openid'];
+            $ss = new PhotoServer();
+            $result = $ss->QueryCombinePhoto($openid);
+            $re = array('state'=>'0','content'=>"未获取数据");
+            while ($n = mysqli_fetch_array($result))
+            {
+                $re['state'] = '1';
+                $r = array();
+                array_push($r,$n['img1'],$n['img2'],$n['img3'],$n['img4'],$n['img5'],$n['img6'],$n['img7'],$n['img8'],$n['img9']);
+                $r = array_filter($r);
+                $row[] = array('avatar'=>$n['avatar'],'nickname'=>$n['nickname'], 'des' => $n['des'], 'img' => $r,'created_at'=>$n['created_at']);
+            }
+            $ss = new PostcardServer();
+            $result1 = $ss->QueryCombinePostcard($openid);
+            while ($n = mysqli_fetch_array($result1)) {
+                $r = array();
+                array_push($r,$n['pic']);
+                $re['state'] = '1';
+                $row[] = array('avatar'=>$n['avatar'],'nickname'=>$n['nickname'], 'des' => $n['wishes'], 'img' => $r,'created_at'=>$n['date']);
+            }
+            $row = array_multisort(array_column($row,'created_at'),SORT_DESC,$row);
+            $re['content'] = $row;
+            echo json_encode($re,JSON_UNESCAPED_UNICODE);
         }
 
         public function GetPhoto(){
