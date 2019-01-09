@@ -174,7 +174,7 @@ header('cache-control:private');
                 $r = array();
                 array_push($r,$n['img1'],$n['img2'],$n['img3'],$n['img4'],$n['img5'],$n['img6'],$n['img7'],$n['img8'],$n['img9']);
                 $r = array_filter($r);
-                $row[] = array('avatar'=>$n['avatar'],'nickname'=>$n['nickname'], 'des' => $n['des'], 'img' => $r,'created_at'=>$n['created_at']);
+                $row[] = array('avatar'=>$n['avatar'],'nickname'=>$n['nickname'], 'des' => $n['des'], 'img' => $r,'created_at'=>$n['created_at'],'type'=>0);
             }
             $ss = new PostcardServer();
             $result1 = $ss->QueryCombinePostcard($openid);
@@ -182,7 +182,7 @@ header('cache-control:private');
                 $r = array();
                 array_push($r,$n['pic']);
                 $re['state'] = '1';
-                $row[] = array('avatar'=>$n['avatar'],'nickname'=>$n['nickname'], 'des' => $n['wishes'], 'img' => $r,'created_at'=>$n['date']);
+                $row[] = array('avatar'=>$n['avatar'],'nickname'=>$n['nickname'], 'des' => $n['wishes'], 'img' => $r,'created_at'=>$n['date'],'type'=>1);
             }
             array_multisort(array_column($row,'created_at'),SORT_DESC,$row);
             $re['content'] = $row;
