@@ -38,7 +38,7 @@
 		}
 
         public function BatchDeleteMsg($id){
-            $sql="delete from ".$this->db_table." where in {$id}";
+            $sql="delete from ".$this->db_table." where id in ({$id})";
             $result = $this->db->ExecSql($sql,$this->conn);
             return $result;
         }
