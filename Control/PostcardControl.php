@@ -22,6 +22,10 @@ header('cache-control:private');
                 case "all":
                     PostcardControl::GetAll();
                     break;
+                case "combine":
+                    PostcardControl::GetCombine();
+                    break;
+                    break;
 				case "add":
                     PostcardControl::AddPostcard();
 					break;
@@ -68,6 +72,31 @@ header('cache-control:private');
                 $re['state'] = '1';
                 $row[] = array('id' => $n['id'], 'name' => $n['name'],'wx'=>$n['wx'],'pic' => $n['pic'], 'date' => $n['date'], 'wishes' => $n['wishes']);
                 $re['content'] = $row;
+            }
+            echo json_encode($re,JSON_UNESCAPED_UNICODE);
+            return;
+        }
+
+        public function GetCombine(){
+            $no = $_REQUEST['no'];
+            ServerControl::server_close($no);
+            $openid = $_REQUEST['openid'];
+            $ss = new PostcardServer();
+            $result1 = $ss->QueryCombinePostcard($openid);
+            $re = array('state'=>'0','postcard'=>"未获取数据",'photo'=>"未获取数据");
+            while ($n = mysqli_fetch_array($result1)) {
+                $re['state'] = '1';
+                $row[] = array('id' => $n['id'], 'name' => $n['name'],'wx'=>$n['wx'],'pic' => $n['pic'], 'date' => $n['date'], 'wishes' => $n['wishes']);
+                $re['postcard'] = $row;
+            }
+            $ps = new PhotoServer();
+            $result2 = $ps->QueryCombinePhoto($openid);
+            while ($n = mysqli_fetch_array($result2)) {
+                $r = array();
+                array_push($r,$n['img1'],$n['img2'],$n['img3'],$n['img4'],$n['img5'],$n['img6'],$n['img7'],$n['img8'],$n['img9']);
+                $r = array_filter($r);
+                $row[] = array('avatar'=>$n['avatar'],'nickname'=>$n['nickname'],'id' => $n['id'],'top'=>$n['top'] ,'uid' => $n['uid'], 'des' => $n['des'], 'praise' => $n['praise'], 'comment' => $n['comment'], 'img' => $r,'created_at'=>$n['created_at'],'verify'=>$n['verify'],'operator'=>$n['operator']);
+                $re['photo'] = $row;
             }
             echo json_encode($re,JSON_UNESCAPED_UNICODE);
             return;

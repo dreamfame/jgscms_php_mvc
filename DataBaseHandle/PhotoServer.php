@@ -46,6 +46,12 @@
             return $result;
         }
 
+        public function QueryCombinePhoto($openid){
+            $sql = "select photo.id,user.nickname as nickname,user.avatar as avatar,uid,des,photo.created_at,praise,comment,img1,img2,img3,img4,img5,img6,img7,img8,img9,verify,operator,top,private from ".$this->db_table."  left join user on uid = openid where uid = '$openid' order by photo.created_at desc";
+            $result = $this->db->ExeSql($sql, $this->conn);
+            return $result;
+        }
+
         public function GetWaitPhoto($where){
             $sql = "select photo.id,user.nickname as nickname,uid,des,photo.created_at,praise,comment,img1,img2,img3,img4,img5,img6,img7,img8,img9,verify,operator,top,private from photo LEFT JOIN user on photo.uid = user.openid".$where." order by photo.created_at,photo.top desc";
             $result = $this->db->ExeSql($sql, $this->conn);
