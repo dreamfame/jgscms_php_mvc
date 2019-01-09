@@ -184,7 +184,7 @@ header('cache-control:private');
                 $re['state'] = '1';
                 $row[] = array('avatar'=>$n['avatar'],'nickname'=>$n['nickname'], 'des' => $n['wishes'], 'img' => $r,'created_at'=>$n['date']);
             }
-            $row = array_multisort(array_column($row,'created_at'),SORT_DESC,$row);
+            array_multisort(array_column($row,'created_at'),SORT_DESC,$row);
             $re['content'] = $row;
             echo json_encode($re,JSON_UNESCAPED_UNICODE);
         }
