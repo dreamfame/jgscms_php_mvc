@@ -95,8 +95,8 @@ header('cache-control:private');
                 $r = array();
                 array_push($r,$n['img1'],$n['img2'],$n['img3'],$n['img4'],$n['img5'],$n['img6'],$n['img7'],$n['img8'],$n['img9']);
                 $r = array_filter($r);
-                $row[] = array('avatar'=>$n['avatar'],'nickname'=>$n['nickname'],'id' => $n['id'],'top'=>$n['top'] ,'uid' => $n['uid'], 'des' => $n['des'], 'praise' => $n['praise'], 'comment' => $n['comment'], 'img' => $r,'created_at'=>$n['created_at'],'verify'=>$n['verify'],'operator'=>$n['operator']);
-                $re['photo'] = $row;
+                $row1[] = array('avatar'=>$n['avatar'],'nickname'=>$n['nickname'],'id' => $n['id'],'top'=>$n['top'] ,'uid' => $n['uid'], 'des' => $n['des'], 'praise' => $n['praise'], 'comment' => $n['comment'], 'img' => $r,'created_at'=>$n['created_at'],'verify'=>$n['verify'],'operator'=>$n['operator']);
+                $re['photo'] = $row1;
             }
             echo json_encode($re,JSON_UNESCAPED_UNICODE);
             return;
