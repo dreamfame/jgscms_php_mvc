@@ -124,6 +124,17 @@ layui.config({
 		}
 	})
 
+    function RefreshData(){
+        $.ajax({
+            url : "../../json/PhotoList.json",
+            type : "get",
+            dataType : "json",
+            success : function(data){
+                photoData = data;
+            }
+        })
+    }
+
     //显示全部
     $(".showAll_btn").click(function(){
         var index = layer.msg('加载中，请稍候',{icon: 16,time:false,shade:0.8});
@@ -222,6 +233,7 @@ layui.config({
             },
             success: function (result) {
                 if(result.state=="1"){
+                    RefreshData();
                     layer.close(index);
                     layer.msg("置顶状态修改成功！");
                 }
