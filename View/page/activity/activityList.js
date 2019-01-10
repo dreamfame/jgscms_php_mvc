@@ -93,6 +93,17 @@ layui.config({
 		}
 	})
 
+    function RefreshData(){
+        $.ajax({
+            url : "../../json/activityList.json",
+            type : "get",
+            dataType : "json",
+            success : function(data){
+                activityData = data;
+            }
+        })
+    }
+
     //显示全部
     $(".showAll_btn").click(function(){
         $(".search_input").val("");
@@ -213,6 +224,7 @@ layui.config({
             },
             success: function (result) {
                 if(result.state=="1"){
+                    RefreshData();
                     layer.close(index);
                     layer.msg("活动状态修改成功！");
                 }

@@ -158,7 +158,7 @@ header('cache-control:private');
             $jsonfile = fopen("../View/json/areaList.json", "w") or die("Unable to open file!");
             while ($n = mysqli_fetch_array($result)) {
                 $re['state'] = '1';
-                $row[] = array('id' => $n['id'], 'name' => $n['name'], 'brief' => $n['brief'], 'intro' => $n['intro'], 'see' => $n['see'], 'top' => $n['top'],'show'=>$n['isshow'],'created_at'=>$n['created_at'],'updated_at'=>$n['updated_at'],'recommend'=>$n['recommend']);
+                $row[] = array('id' => $n['id'], 'name' => $n['name'],'area_map'=>$n['area_map'],'brief' => $n['brief'], 'intro' => $n['intro'], 'see' => $n['see'], 'top' => $n['top'],'show'=>$n['isshow'],'created_at'=>$n['created_at'],'updated_at'=>$n['updated_at'],'recommend'=>$n['recommend']);
                 $re['content'] = $row;
                 if (flock($jsonfile, LOCK_EX)) {//加写锁 
                     ftruncate($jsonfile, 0); // 将文件截断到给定的长度 
