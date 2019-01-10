@@ -47,6 +47,10 @@
                     {
                         //保存文件,   move_uploaded_file 将上传的文件移动到新位置
                         move_uploaded_file($_FILES["file"]["tmp_name"],$filename);//将临时地址移动到指定地址
+                        $source =  $filename;
+                        $dst_img = $filename;
+                        $percent = 0.5;
+                        $image = (new ImageCompress($source,$percent))->compressImg($dst_img);
 						$result['code'] = 0;
                         $result['msg'] = "上传成功";
                         $data['src'] = $src;
@@ -83,6 +87,10 @@
                     {
                         //保存文件,   move_uploaded_file 将上传的文件移动到新位置
                         move_uploaded_file($_FILES["file"]["tmp_name"],$filename);//将临时地址移动到指定地址
+                        $source =  $filename;
+                        $dst_img = $filename;
+                        $percent = 0.5;
+                        $image = (new ImageCompress($source,$percent))->compressImg($dst_img);
                         $result['code'] = 0;
                         $result['msg'] = "上传成功";
                         $data['src'] = $src;
@@ -119,6 +127,10 @@
                     {
                         //保存文件,   move_uploaded_file 将上传的文件移动到新位置
                         move_uploaded_file($_FILES["file"]["tmp_name"],$filename);//将临时地址移动到指定地址
+                        $source =  $filename;
+                        $dst_img = $filename;
+                        $percent = 0.5;
+                        $image = (new ImageCompress($source,$percent))->compressImg($dst_img);
                         $result['code'] = 0;
                         $result['msg'] = "上传成功";
                         $data['src'] = $src;

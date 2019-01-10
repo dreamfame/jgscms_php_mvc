@@ -412,6 +412,10 @@ header('cache-control:private');
                     }
                     else{
                         move_uploaded_file($_FILES["uploadfile"]["tmp_name"],$filename);
+                        $source =  $filename;
+                        $dst_img = $filename;
+                        $percent = 0.5;
+                        $image = (new ImageCompress($source,$percent))->compressImg($dst_img);
                         $route = new Route();
                         $route->id = $id;
                         $route->pic = $src;
