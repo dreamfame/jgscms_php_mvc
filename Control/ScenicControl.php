@@ -345,10 +345,10 @@
                     }
                     else{
                         move_uploaded_file($_FILES["uploadfile"]["tmp_name"],$filename);
-                        $source =  $filename;
+                        /*$source =  $filename;
                         $dst_img = $filename;
                         $percent = 0.5;
-                        $image = (new ImageCompress($source,$percent))->compressImg($dst_img);
+                        $image = (new ImageCompress($source,$percent))->compressImg($dst_img);*/
                         $scenic = new Scenic();
                         $scenic->id = $id;
                         $scenic->pic = $src;

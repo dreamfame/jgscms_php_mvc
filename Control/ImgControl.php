@@ -257,10 +257,10 @@
             }
             foreach ($name as $k=>$item){
                 if (move_uploaded_file($file['tmp_name'][$k],$upload_path.time().$name[$k])){
-                    $source =  $upload_path;
+                    /*$source =  $upload_path;
                     $dst_img = $upload_path;
                     $percent = 0.5;
-                    $image = (new ImageCompress($source,$percent))->compressImg($dst_img);
+                    $image = (new ImageCompress($source,$percent))->compressImg($dst_img);*/
                     $src = "/images/scenicImgs/".time().$name[$k];
                     $row[] = array('scenic_id'=>$id,'name'=>$name[$k],'src'=>$src);
                     $success++;
