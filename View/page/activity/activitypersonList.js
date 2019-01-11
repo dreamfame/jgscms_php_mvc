@@ -32,9 +32,9 @@ layui.config({
     });
 
     function DateUtil(date0,date1,date2){
-        var oDate0 = new Date(date0);
-        var oDate1 = new Date(date1);
-        var oDate2 = new Date(date2);
+        var oDate0 = new Date(Date.parse(date0.replace(/-/g,"/")));
+        var oDate1 = new Date(Date.parse(date1.replace(/-/g,"/")));
+        var oDate2 = new Date(Date.parse(date2.replace(/-/g,"/")));
         if(oDate0.getTime() >= oDate1.getTime()&&oDate0.getTime() <=oDate2.getTime()){
             return true;
         } else {
