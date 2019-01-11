@@ -60,8 +60,8 @@
     document.querySelector('#reset').onclick = initPoint;
 
     function initPoint(){
-        if(window.sessionStorage.getItem("area")!=""){
-            var data = JSON.parse(window.sessionStorage.getItem("area"));
+        if(window.sessionStorage.getItem("areasetting")!=""){
+            var data = JSON.parse(window.sessionStorage.getItem("areasetting"));
             if(data!=null) {
                 var point1 = data.point1;
                 var lng1 = point1.split(",")[0];

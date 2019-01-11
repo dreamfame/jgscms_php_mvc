@@ -11,11 +11,11 @@ layui.config({
         type: "get",
         dataType: "json",
         success: function (data) {
-            window.sessionStorage.setItem("area", JSON.stringify(data));
+            window.sessionStorage.setItem("areasetting", JSON.stringify(data));
             layer.close(index);
         },
         error:function(data){
-            window.sessionStorage.setItem("area", "");
+            window.sessionStorage.setItem("areasetting", "");
             layer.close(index);
         }
     })
@@ -37,7 +37,7 @@ layui.config({
                 dataType : "text",
                 success : function(data){
                     layer.msg("区域设置成功！");
-                    window.sessionStorage.setItem("area", $("#content").val());
+                    window.sessionStorage.setItem("areasetting", area);
                 }
             })
         }
