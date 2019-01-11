@@ -9,6 +9,7 @@
 	require_once '../DataBaseHandle/PhotoServer.php';
     require_once '../DataBaseHandle/PraiseServer.php';
     require_once '../DataBaseHandle/PostcardServer.php';
+    require_once '../Extensions/ImageMerge.php';
 	require_once '../Extensions/Security.php';
 	header("Content-Type: text/html;charset=utf-8");
 header('cache-control:private');
@@ -180,6 +181,10 @@ header('cache-control:private');
             $result1 = $ss->QueryCombinePostcard($openid);
             while ($n = mysqli_fetch_array($result1)) {
                 $r = array();
+                /*$img = ImageMerge::MergePic("../View/images/postcard/bg.png","../View/".$n['pic'],"../View/images/new_postcard/".time().$n['wx'].".png",260,340,145,200);
+                $images = ImageMerge::MergeText($img,$img,"C://WINDOWS//Fonts//STXINGKA.TTF",20,540,235,$n['nickname']);
+                $images = ImageMerge::MergeText($images,$images,"C://WINDOWS//Fonts//STXINGKA.TTF",20,540,315,$n['date']);
+                $images = ImageMerge::MergeText($images,$images,"C://WINDOWS//Fonts//STXINGKA.TTF",20,540,395,$n['wishes']);*/
                 array_push($r,$n['pic']);
                 $re['state'] = '1';
                 $row[] = array('avatar'=>$n['avatar'],'nickname'=>$n['nickname'], 'des' => $n['wishes'], 'img' => $r,'created_at'=>$n['date'],'type'=>1);
@@ -262,6 +267,9 @@ header('cache-control:private');
             $Photo->img7 = "";
             $Photo->img8 = "";
             $Photo->img9 = "";
+            $as = new AdminServer();
+            $r = $as->GetRoleByOpenid($_REQUEST['wx']);
+            $role = mysqli_fetch_object($r);
             for($i=1;$i<=count($images);$i++)
             {
                 $img = "img".$i;
@@ -269,7 +277,7 @@ header('cache-control:private');
             }
 			$ss = new PhotoServer();
             $re = array('state'=>'0','content'=>'添加失败');
-            $result = $ss->InsertPhoto($Photo);
+            $result = $ss->InsertPhoto($Photo,$role['role']);
             if($result){
 				$re['state'] = '1';
 				$re['content'] = '添加成功';

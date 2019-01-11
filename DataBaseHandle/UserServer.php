@@ -78,6 +78,13 @@ Class UserServer
         return $result;
     }
 
+    public function GetNickname()
+    {
+        $sql = "select id,nickname,openid from ".$this->db_table;
+        $result = $this->db->ExeSql($sql, $this->conn);
+        return $result;
+    }
+
     public function GetWx($openid){
         $sql = "select wx from ".$this->db_table." where openid = '$openid'";
         $result = $this->db->ExeSql($sql, $this->conn);
@@ -129,6 +136,19 @@ Class UserServer
         $result = $this->db->ExeSql($sql, $this->conn);
         $user = mysqli_fetch_object($result);
         return $user;
+    }
+
+    public function UpdateAuth($nickname,$auth){
+        $sql = "update " . $this->db_table . " set auth = '$auth' where nickname = '$nickname'";
+        try{
+            $this->db->ExeSql($sql,$this->conn);
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+        return true;
     }
 }
 ?>

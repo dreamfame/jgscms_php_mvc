@@ -18,6 +18,7 @@
         private $role;
         private $created_at;
         private $updated_at;
+        private $openid;
 		
 		function __set($name,$value)
 		{

@@ -43,7 +43,7 @@
 
 		public function InsertAdmin($admin)
 		{
-			$sql = "insert into ".$this->db_table."(username,head_pic,nickname,password,age,phone,password_reset_token,email,updated_at,created_at,role,status) values('$admin->username','$admin->head_pic','$admin->nickname','$admin->password','$admin->age','$admin->phone','$admin->password_reset_token','$admin->email','$admin->updated_at','$admin->created_at','$admin->role','$admin->status')";
+			$sql = "insert into ".$this->db_table."(username,head_pic,nickname,password,age,phone,password_reset_token,email,updated_at,created_at,role,status,openid) values('$admin->username','$admin->head_pic','$admin->nickname','$admin->password','$admin->age','$admin->phone','$admin->password_reset_token','$admin->email','$admin->updated_at','$admin->created_at','$admin->role','$admin->status','$admin->openid')";
 			$result = $this->db->ExecSql($sql,$this->conn);
 			return $result;
 		}
@@ -118,6 +118,12 @@
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
 		}
+
+        public function GetRoleByOpenid($openid){
+            $sql = "select role from ".$this->db_table." where openid = '$openid' and status = 1";
+            $result = $this->db->ExeSql($sql, $this->conn);
+            return $result;
+        }
 
 		public function DeleteAdmin($id){
             $sql="delete from ".$this->db_table." where id= '$id'";

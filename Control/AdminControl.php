@@ -195,6 +195,7 @@
 			$admin->phone = $_REQUEST['phone'];
 			$admin->email = $_REQUEST['email'];
 			$admin->status = $_REQUEST['status'];
+			$admin->openid = $_REQUEST["openid"];
 			$admin->updated_at = time();
 			$admin->created_at = time();
 			$admin->password_reset_token = md5($admin->username.AdminControl::key,false);

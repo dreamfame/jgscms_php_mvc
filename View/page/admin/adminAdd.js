@@ -43,31 +43,34 @@ layui.config({
             return msg;
         },
         nickname:function(value,item) {
-            if(!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)){
-                return '昵称不能有特殊字符';
+            var nick = $(".nickname option:selected").text();
+            if(nick=="-请选择-"){
+                return "请选择昵称";
             }
-            if(value.length>8){
-                return '昵称不得超过8个字';
-            }
-            var msg = "";
-            $.ajax({
-                data: {"nickname":value},
-                type: "POST",
-                dataType: "text",
-                async: false,
-                url: "/index.php/admin/JudgeOperate/verify",
-                success: function (result) {
-                    if(result=="1"){
-                        msg = '昵称已存在';
+            else{
+                var msg = "";
+                $.ajax({
+                    data: {"nickname":nick},
+                    type: "POST",
+                    dataType: "text",
+                    async: false,
+                    url: "/index.php/admin/JudgeOperate/verify",
+                    success: function (result) {
+                        if(result=="1"){
+                            msg = '昵称已存在';
+                        }
+                    },
+                    error:function(data){
+                        msg = data.responseText;
                     }
-                },
-                error:function(data){
-                    msg = data.responseText;
-                }
-            })
-            return msg;
+                })
+                return msg;
+            }
         },
         checkEmail:function(value, item) {
+            if(value==""){
+                return;
+            }
             var msg = "";
             $.ajax({
                 data: {"email": value},
@@ -107,6 +110,26 @@ layui.config({
         }
     });
 
+    $.ajax({
+        type: "POST",
+        dataType: "JSON",
+        url: "/index.php/user/JudgeOperate/nickname",
+        beforeSend:function(){
+            loading = top.layer.msg('数据加载中，请稍候',{icon: 16,time:false,shade:0.8});
+        },
+        success: function (result) {
+            if(result.state=="1")
+            {
+                for(var i= 0;i<result.content.length;i++){
+                    $(".nickname").append("<option value='"+result.content[i].openid+"'>"+result.content[i].nickname+"</option>");
+                }
+                form.render('select');
+                $(".layui-unselect").attr("lay-verify","nickname");
+            }
+            top.layer.close(loading);
+        },
+    })
+
 	//创建一个编辑器
  	var editIndex = layedit.build('admin_content');
  	var addAdminArray = [],addAdmin;
@@ -117,14 +140,16 @@ layui.config({
 	 	}
 	 	var sys = JSON.parse(window.sessionStorage.getItem("system"));
 	 	//显示、审核状态
- 		var status = data.field.status=="on" ? 1 : 0,
-
+ 		var status = data.field.status=="on" ? 1 : 0;
+        var nickname = $(".nickname option:selected").text();
+        var openid = $(".nickname option:selected").val();
  		addAdmin = '{"username":"'+data.field.username+'",';  //用户名
-        addAdmin += '"nickname":"'+data.field.nickname+'",';	 //昵称
+        addAdmin += '"nickname":"'+nickname+'",';	 //昵称
         addAdmin += '"head_pic":"'+sys.defaultHeadPic+'",';	 //默认头像
         addAdmin += '"phone":"'+data.field.phone+'",'; //手机
         addAdmin += '"email":"'+data.field.email+'",'; //邮箱
         addAdmin += '"role":"'+data.field.role+'",'; //角色
+        addAdmin += '"openid":"'+openid+'",'; //绑定微信
         addAdmin += '"status":"'+ status +'"}'; //状态
  		//弹出loading
  		var index = top.layer.msg('数据提交中，请稍候',{icon: 16,time:false,shade:0.8});

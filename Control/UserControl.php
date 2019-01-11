@@ -29,6 +29,12 @@ Class UserControl
             case "new":
                 UserControl::GetNewUser();
                 break;
+            case "nickname":
+                UserControl::GetNickname();
+                break;
+            case "auth":
+                UserControl::UpdateAuth();
+                break;
         }
     }
 
@@ -50,6 +56,20 @@ Class UserControl
             }
         }
         fclose($jsonfile);
+        echo json_encode($re,JSON_UNESCAPED_UNICODE);
+        return;
+    }
+
+    public function GetNickname()
+    {
+        $as = new UserServer();
+        $result = $as->GetNickname();
+        $re = array('state'=>'0','content'=>"未获取到数据");
+        while ($u = mysqli_fetch_array($result)) {
+            $re['state'] = '1';
+            $row[] = array('id' => $u['id'], 'nickname' => $u['nickname'],'openid'=>$u['openid']);
+            $re['content'] = $row;
+        }
         echo json_encode($re,JSON_UNESCAPED_UNICODE);
         return;
     }
@@ -141,7 +161,7 @@ Class UserControl
         $user->gender = $_REQUEST['gender'];
         date_default_timezone_set('PRC');
         $user->created_at = date('Y-m-d H:i:s', time());
-        $user->auth = $_REQUEST['auth'];
+        $user->auth = 0;
         $as = new UserServer();
         $re = array('state'=>'0','content'=>'添加失败,');
         $result = $as->InsertUser($user);
@@ -154,6 +174,10 @@ Class UserControl
             $re['content'] = '添加失败，错误信息：'.$result;
         }
         echo json_encode($re,JSON_UNESCAPED_UNICODE);
+    }
+
+    public function UpdateAuth(){
+
     }
 }
 ?>

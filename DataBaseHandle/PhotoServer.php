@@ -58,8 +58,14 @@
             return $result;
         }
 
-		public function InsertPhoto($Photo){
-            $sql = "insert into ".$this->db_table."(uid,des,created_at,praise,comment,img1,img2,img3,img4,img5,img6,img7,img8,img9,verify,operator,top,private) values('$Photo->uid','$Photo->des','$Photo->created_at','$Photo->praise','$Photo->comment','$Photo->img1','$Photo->img2','$Photo->img3','$Photo->img4','$Photo->img5','$Photo->img6','$Photo->img7','$Photo->img8','$Photo->img9','$Photo->verify','$Photo->operator','$Photo->top','$Photo->private')";
+		public function InsertPhoto($Photo,$role){
+		    $sql = "";
+		    if($role=="照片审核管理员"){
+                $sql = "insert into " . $this->db_table . "(uid,des,created_at,praise,comment,img1,img2,img3,img4,img5,img6,img7,img8,img9,verify,operator,top,private) values('$Photo->uid','$Photo->des','$Photo->created_at','$Photo->praise','$Photo->comment','$Photo->img1','$Photo->img2','$Photo->img3','$Photo->img4','$Photo->img5','$Photo->img6','$Photo->img7','$Photo->img8','$Photo->img9',1,'$Photo->operator',1,'$Photo->private')";
+            }
+            else {
+                $sql = "insert into " . $this->db_table . "(uid,des,created_at,praise,comment,img1,img2,img3,img4,img5,img6,img7,img8,img9,verify,operator,top,private) values('$Photo->uid','$Photo->des','$Photo->created_at','$Photo->praise','$Photo->comment','$Photo->img1','$Photo->img2','$Photo->img3','$Photo->img4','$Photo->img5','$Photo->img6','$Photo->img7','$Photo->img8','$Photo->img9','$Photo->verify','$Photo->operator','$Photo->top','$Photo->private')";
+            }
             try{
                 $this->db->ExeSql($sql,$this->conn);
                 return true;
