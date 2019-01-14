@@ -182,16 +182,30 @@ header('cache-control:private');
             $result1 = $ss->QueryCombinePostcard($openid);
             while ($n = mysqli_fetch_array($result1)) {
                 $r = array();
-                /*$img = ImageMerge::MergePic("../View/images/postcard/bg.png","../View/".$n['pic'],"../View/images/new_postcard/".time().$n['wx'].".png",260,340,145,200);
-                $images = ImageMerge::MergeText($img,$img,"C://WINDOWS//Fonts//STXINGKA.TTF",20,540,235,$n['nickname']);
-                $images = ImageMerge::MergeText($images,$images,"C://WINDOWS//Fonts//STXINGKA.TTF",20,540,315,$n['date']);
-                $images = ImageMerge::MergeText($images,$images,"C://WINDOWS//Fonts//STXINGKA.TTF",20,540,395,$n['wishes']);*/
-                array_push($r,$n['pic']);
+                $font = "C://WINDOWS//Fonts//simfang.ttf";
+                $code = uniqid();
+                $t = strtotime($n['date']);
+                $savePath = "../View/images/new_postcard/".$t.$n['wx'].".png";
+                if(!file_exists($savePath)){
+                    $img = ImageMerge::MergePic("../View/images/postcard/bg.png","../View/".$n['pic'],$savePath,260,340,145,200);
+                    $images = ImageMerge::MergeText($img,$img,$font,20,540,235,$n['nickname']);
+                    $images = ImageMerge::MergeText($images,$images,$font,20,540,315,$n['date']);
+                    $images = ImageMerge::MergeText($images,$images,$font,20,540,395,$n['wishes']);
+                    //$str = explode(",",$images)[0];
+                    //$image = substr($str,7);
+                }
+                $savePath = substr($savePath,7);
+                array_push($r,$savePath);
                 $re['state'] = '1';
                 $row[] = array('avatar'=>$n['avatar'],'nickname'=>$n['nickname'], 'des' => $n['wishes'], 'img' => $r,'created_at'=>$n['date'],'type'=>1);
             }
-            array_multisort(array_column($row,'created_at'),SORT_DESC,$row);
-            $re['content'] = $row;
+            if(count($row)==0){
+                $re['content'] = "未获取数据";
+            }
+            else{
+                array_multisort(array_column($row,'created_at'),SORT_DESC,$row);
+                $re['content'] = $row;
+            }
             echo json_encode($re,JSON_UNESCAPED_UNICODE);
         }
 
@@ -278,7 +292,7 @@ header('cache-control:private');
             }
 			$ss = new PhotoServer();
             $re = array('state'=>'0','content'=>'添加失败');
-            $result = $ss->InsertPhoto($Photo,$role['role']);
+            $result = $ss->InsertPhoto($Photo,$role->role);
             if($result){
 				$re['state'] = '1';
 				$re['content'] = '添加成功';

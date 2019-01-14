@@ -29,7 +29,7 @@
 		}
 
         public function GetShow(){
-            $sql = "select scenic.id,scenic.pic,scenic.area_id,area.name as area_name,scenic.see,scenic.name,scenic.brief,scenic.intro,scenic.recommend,scenic.isshow,scenic.top,scenic.created_at,scenic.updated_at from scenic LEFT JOIN area on scenic.area_id = area.id where scenic.isshow = 1 order by created_at,top desc";
+            $sql = "select scenic.id,scenic.pic,scenic.area_id,area.name as area_name,scenic.see,scenic.name,scenic.brief,scenic.intro,scenic.recommend,scenic.isshow,scenic.top,scenic.created_at,scenic.updated_at from scenic LEFT JOIN area on scenic.area_id = area.id where scenic.isshow = 1 order by created_at desc,top desc";
             $result = $this->db->ExeSql($sql, $this->conn);
             return $result;
         }

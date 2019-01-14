@@ -186,7 +186,7 @@ layui.config({
 
 	//全选
 	form.on('checkbox(allChoose)', function(data){
-		var child = $(data.elem).parents('table').find('tbody input[type="checkbox"]:not([name="show"]):not([name="top"])');
+		var child = $(data.elem).parents('table').find('tbody input[type="checkbox"]:not([name="enable"]):not([name="enable"])');
 		child.each(function(index, item){
 			item.checked = data.elem.checked;
 		});
@@ -195,8 +195,8 @@ layui.config({
 
 	//通过判断文章是否全部选中来确定全选按钮是否选中
 	form.on("checkbox(choose)",function(data){
-		var child = $(data.elem).parents('table').find('tbody input[type="checkbox"]:not([name="show"]):not([name="top"])');
-		var childChecked = $(data.elem).parents('table').find('tbody input[type="checkbox"]:not([name="show"]):not([name="top"]):checked')
+		var child = $(data.elem).parents('table').find('tbody input[type="checkbox"]:not([name="enable"]):not([name="enable"])');
+		var childChecked = $(data.elem).parents('table').find('tbody input[type="checkbox"]:not([name="enable"]):not([name="enable"]):checked')
 		if(childChecked.length == child.length){
 			$(data.elem).parents('table').find('thead input#allChoose').get(0).checked = true;
 		}else{

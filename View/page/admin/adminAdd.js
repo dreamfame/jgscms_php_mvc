@@ -21,9 +21,9 @@ layui.config({
             if(value.length>10){
                 return '用户名不得超过10个字';
             }
-            if(value.length<4){
+            /*if(value.length<4){
                 return '用户名不得少于4个字';
-            }
+            }*/
             var msg = "";
             $.ajax({
                 data: {"name":value},

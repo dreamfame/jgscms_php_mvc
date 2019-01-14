@@ -93,8 +93,8 @@ layui.config({
                     }
                     if(selectStr!=""){
 						//景点
-						if(routeStr.scenic_name.indexOf(selectStr) > -1){
-							routeStr["scenic_name"] = changeStr(routeStr.scenic_name);
+						if(routeStr.area_name.indexOf(selectStr) > -1){
+							routeStr["area_name"] = changeStr(routeStr.area_name);
 						}
 						if(routeStr.name.indexOf(selectStr) > -1){
 							routeStr["name"] = changeStr(routeStr.name);
@@ -112,7 +112,7 @@ layui.config({
 							routeStr["time"] = changeStr(routeStr.time);
 						}
                     }
-                    if(routeStr.name.indexOf(selectStr)>-1 ||routeStr.scenic_name.indexOf(selectStr)>-1 || routeStr.route.indexOf(selectStr)>-1 ||  routeStr.type.indexOf(selectStr)>-1 || routeStr.time.indexOf(selectStr)>-1){
+                    if(routeStr.name.indexOf(selectStr)>-1 ||routeStr.area_name.indexOf(selectStr)>-1 || routeStr.route.indexOf(selectStr)>-1 ||  routeStr.type.indexOf(selectStr)>-1 || routeStr.time.indexOf(selectStr)>-1){
                         newArray.push(routeStr);
                     }
                 }

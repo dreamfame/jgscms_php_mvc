@@ -93,8 +93,8 @@ layui.config({
                         }
                         if(selectStr!="") {
                             //景点
-                            if (photoStr.uid.indexOf(selectStr) > -1) {
-                                photoStr["uid"] = changeStr(photoStr.uid);
+                            if (photoStr.nickname.indexOf(selectStr) > -1) {
+                                photoStr["nickname"] = changeStr(photoStr.nickname);
                             }
                             //推荐星级
                             if (photoStr.des.indexOf(selectStr) > -1) {
@@ -105,7 +105,7 @@ layui.config({
                                 photoStr["operator"] = changeStr(photoStr.operator);
                             }
                         }
-                        if(photoStr.uid.indexOf(selectStr)>-1 || photoStr.des.indexOf(selectStr)>-1 ||  photoStr.operator.indexOf(selectStr)>-1){
+                        if(photoStr.nickname.indexOf(selectStr)>-1 || photoStr.des.indexOf(selectStr)>-1 ||  photoStr.operator.indexOf(selectStr)>-1){
                             newArray.push(photoStr);
                         }
                     }
@@ -415,9 +415,11 @@ layui.config({
                     var time = currData[i].created_at==''?'-':currData[i].created_at;
                     var operator = currData[i].operator==''?'-':currData[i].operator;
                     var top = currData[i].top==1?"checked":"";
+                    var img1 = currData[i].img1==''?'-':currData[i].img1;
 					dataHtml += '<tr>'
 			    	+'<td><input type="checkbox" name="checked" lay-skin="primary" lay-filter="choose"></td>'
 			    	+'<td align="left">'+wx+'</td>'
+                    +'<td><img src="'+img1+'" width="200" height="200" /></td>'
                     +'<td>'+des+'</td>'
                     +'<td>'+time+'</td>'
 			    	+'<td>'+verify+'</td>'
